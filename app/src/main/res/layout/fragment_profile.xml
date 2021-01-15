@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:drawingCacheQuality="high"
+    tools:context=".ui.ProfileFragment">
+
+    <TextView
+        android:id="@+id/text_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8sp"
+        android:layout_marginTop="8sp"
+        android:layout_marginEnd="8sp"
+        android:lines="3"
+        android:textSize="24sp" />
+
+    <ListView
+        android:id="@+id/profile_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:dividerHeight="4dp"
+        android:layout_weight="1"
+        android:minHeight="40sp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="0dp"
+        android:paddingLeft="10dp" />
+
+</LinearLayout>

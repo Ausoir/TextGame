@@ -1,0 +1,27 @@
+<resources>
+    <style name="TextGame" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/gray</item>
+        <item name="colorSecondary">@color/silver</item>
+        <item name="android:background">@color/silver</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:actionBarStyle">@style/actionBar</item>
+        <item name="android:buttonStyle">@style/button</item>
+    </style>
+
+    <style name="TextGameDark" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/light</item>
+        <item name="colorSecondary">@color/gray</item>
+        <item name="android:background">@color/gray</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:actionBarStyle">@style/actionBar</item>
+        <item name="android:buttonStyle">@style/button</item>
+    </style>
+
+    <style name="Theme.AppCompat.Fullscreen" parent="@style/Theme.AppCompat">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:buttonStyle">@style/button</item>
+    </style>
+</resources>

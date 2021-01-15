@@ -1,0 +1,29 @@
+{
+  "Start": {
+    "text": "Welcome.",
+    "opt": {
+      "Ant Hill": "Proceed to Ant Hill"
+    }
+  },
+  "Ant Hill": {
+    "text": "Some ant hill desc",
+    "req": {
+      "size tiny": "You are too big."
+    },
+    "opt": {
+      "Start": "Go back",
+      "Beehive": "Go bee"
+    }
+  },
+  "Beehive": {
+    "text": "Bzzzzzzz",
+    "req": {
+      "size tiny": "You are too big.",
+      "fly": "You cannot reach the beehive."
+    },
+    "opt": {
+      "Ant Hill": "go to Ant Hill",
+      "Start": "go to start"
+    }
+  }
+}

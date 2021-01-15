@@ -1,0 +1,12 @@
+{
+  "name": "Ant",
+  "page": "Start",
+  "time": 1,
+  "money": 0,
+  "location": "Ant Hill",
+  "head": "Ant",
+  "body": "Ant",
+  "limb": "Ant",
+  "item": "",
+  "moves": ["Bite", "Skitter"]
+}

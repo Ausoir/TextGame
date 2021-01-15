@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">2022</string>
+    <string name="title_home">Proceed</string>
+    <string name="title_dashboard">Moves</string>
+    <string name="title_notifications">You</string>
+    <string name="action_profile">Profile</string>
+    <string name="home_title">%1$s  -  %2$s</string>
+    <string name="profile_title">Your Profile  -  Day %1$d</string>
+    <string name="profile_header">You are %1$s.\nYou have $%2$d.\n%3$s.</string>
+    <string name="whatis_ability">This is an ability.</string>
+</resources>

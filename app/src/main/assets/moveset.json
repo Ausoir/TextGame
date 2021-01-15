@@ -1,0 +1,27 @@
+{
+  "Skitter": {
+    "reach": 2,
+    "type": "Move",
+    "desc": "Skitter around.",
+    "req": "side limb"
+  },
+  "Pinch": {
+    "reach": 0,
+    "type": "Attack",
+    "desc": "Grab with a pincer.",
+    "req": "pincer"
+  },
+  "Bite": {
+    "reach": 0,
+    "type": "Attack",
+    "desc": "Bite with ya mouth.",
+    "value": 3,
+    "req": "mouth"
+  },
+  "Tear": {
+    "reach": 0,
+    "type": "Attack",
+    "desc": "Bite with ya mouth.",
+    "value": 3
+  }
+}
