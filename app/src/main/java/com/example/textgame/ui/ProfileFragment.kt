@@ -10,11 +10,11 @@ import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.textgame.App
 import com.example.textgame.R
-import com.example.textgame.game.DataAccess
-import com.example.textgame.game.Model
+import com.example.textgame.game.MoveModel
+import com.example.textgame.game.PlayerModel
 import com.google.android.material.snackbar.Snackbar
-import org.json.JSONObject
 
 
 class ProfileFragment : Fragment() {
@@ -28,22 +28,23 @@ class ProfileFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_profile, container, false)
         listView = root.findViewById(R.id.profile_container) as ListView
         val textView: TextView = root.findViewById(R.id.text_profile)
-        val player = arguments?.getParcelable<Model>("player") ?: return root
-        textView.text = resources.getString(R.string.profile_header, player.getClassName(), player.money, player.getEquipment())
+        val player = arguments?.getParcelable<PlayerModel>("player") ?: return root
+        val serial = arguments?.getSerializable("moveset") ?: return root
+        val moveset = serial as ArrayList<MoveModel>
+        textView.text = player.getDescription()
         textView.setOnClickListener { _ ->
-            Snackbar.make(root, "${player.getClassDescription()}.", Snackbar.LENGTH_LONG).show()
+            val app: App = activity as App
+            app.viewEquipment()
         }
-        val dialog = DataAccess(activity as Context)
         val items = ArrayList<Map<String, String>>()
-        player.moves.forEach { move ->
-            val moveset: JSONObject = dialog.getMoveset(move)
+        for (i in moveset.indices){
             val datum = HashMap<String, String>(2)
-            datum["Name"] = move
-            datum["Description"] = moveset.getString("desc")
+            datum["Name"] = player.unit.moves[i].capitalize()
+            datum["Description"] = moveset[i].desc
             items.add(datum)
         }
         listView.adapter = SimpleAdapter(activity as Context, items, android.R.layout.two_line_list_item, arrayOf("Name", "Description"), intArrayOf(android.R.id.text1, android.R.id.text2))
-        listView.onItemClickListener = OnItemClickListener { parent, view, position, id ->
+        listView.onItemClickListener = OnItemClickListener { _, _, _, _ ->
             Snackbar.make(root, getString(R.string.whatis_ability), Snackbar.LENGTH_LONG).show()
         }
         return root

@@ -1,0 +1,7 @@
+{
+  "disengage": "%s disengaged and away from attack range.",
+  "counter": "%s prepared to counter attack.",
+  "wound": "%p %o is wounded.",
+  "bad wound": "%p %o is badly wounded.",
+  "mangle": "%s having trouble using the %o."
+}

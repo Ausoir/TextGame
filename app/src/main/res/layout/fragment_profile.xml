@@ -16,7 +16,7 @@
         android:layout_marginTop="8sp"
         android:layout_marginEnd="8sp"
         android:lines="3"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <ListView
         android:id="@+id/profile_container"

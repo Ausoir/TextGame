@@ -1,11 +1,15 @@
 <resources>
     <string name="app_name">2022</string>
-    <string name="title_home">Proceed</string>
-    <string name="title_dashboard">Moves</string>
-    <string name="title_notifications">You</string>
+    <string name="proceed">Proceed</string>
+    <string name="dialog_not_found">Dialog missing.</string>
     <string name="action_profile">Profile</string>
-    <string name="home_title">%1$s  -  %2$s</string>
+    <string name="page_title">%1$s  -  %2$s</string>
     <string name="profile_title">Your Profile  -  Day %1$d</string>
-    <string name="profile_header">You are %1$s.\nYou have $%2$d.\n%3$s.</string>
+    <string name="equipment_title">Equipment</string>
+    <string name="combat_title">Combat - %1$s</string>
+    <string name="in_combat">You are in combat!</string>
     <string name="whatis_ability">This is an ability.</string>
+    <string name="victory">\n\nIt collapses. You are victorious!</string>
+    <string name="defeat">\n\nYou die…</string>
+    <string name="combat_turn">%1$s\n\nYou %2$s.\n%3$s\n%4$s.</string>
 </resources>

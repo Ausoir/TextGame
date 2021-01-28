@@ -7,5 +7,6 @@
         <item name="android:background">@drawable/ic_button_bg</item>
         <item name="android:textSize">28sp</item>
         <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

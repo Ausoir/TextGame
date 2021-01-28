@@ -1,27 +1,317 @@
 {
-  "Skitter": {
-    "reach": 2,
-    "type": "Move",
-    "desc": "Skitter around.",
-    "req": "side limb"
+  "shuffle": {
+    "effects": [{
+      "effect": "shuffle",
+      "target": 1
+    },{
+      "effect": "dodge",
+      "target": -1
+    }],
+    "req": [],
+    "speed": 1,
+    "desc": "Refresh all abilities.",
+    "text": "gather %uf"
   },
-  "Pinch": {
-    "reach": 0,
-    "type": "Attack",
-    "desc": "Grab with a pincer.",
-    "req": "pincer"
+  "hesitate": {
+    "effects": [],
+    "req": [],
+    "speed": 1,
+    "desc": "The trademarked action for the undisciplined.",
+    "text": "hesitate%s"
   },
-  "Bite": {
-    "reach": 0,
-    "type": "Attack",
-    "desc": "Bite with ya mouth.",
-    "value": 3,
-    "req": "mouth"
+  "engage": {
+    "effects": [
+      {
+        "effect": "range",
+        "target": -3
+      }
+    ],
+    "req": [
+      {
+        "effect": "wrestle",
+        "target": -1
+      },
+      {
+        "effect": "range",
+        "target": 1
+      },
+      {
+        "effect": "injury",
+        "target": -1
+      }
+    ],
+    "speed": 1,
+    "desc": "Move closer for melee.",
+    "text": "engage%s"
   },
-  "Tear": {
-    "reach": 0,
-    "type": "Attack",
-    "desc": "Bite with ya mouth.",
-    "value": 3
+  "grab": {
+    "effects": [
+      {
+        "effect": "wrestle",
+        "target": 2,
+        "text": "%fr grabbed",
+        "req": [
+          {
+            "effect": "dodge",
+            "target": -2,
+            "text": "%u attempt%s to grab but %f dodge%!s"
+          }
+        ]
+      }
+    ],
+    "req": [
+      {
+        "effect": "range",
+        "target": -3
+      },
+      {
+        "effect": "wrestle",
+        "target": -3
+      }
+    ],
+    "speed": 3,
+    "desc": "Grab an enemy, making it unable to dodge.",
+    "text": "grab%s %f"
+  },
+  "disengage": {
+    "effects": [
+      {
+        "effect": "range",
+        "target": 3
+      },
+      {
+        "effect": "wrestle",
+        "target": -3
+      }
+    ],
+    "req": [
+      {
+        "effect": "range",
+        "target": -1
+      },
+      {
+        "effect": "injury",
+        "target": -1
+      }
+    ],
+    "speed": 1,
+    "desc": "Move away from melee range and break free from grabs.",
+    "text": "disengage%s"
+  },
+  "dodge": {
+    "effects": [{
+      "effect": "dodge",
+      "target": 1
+    }],
+    "req": [
+      {
+        "effect": "wrestle",
+        "target": -1
+      },
+      {
+        "effect": "dodge",
+        "target": -1
+      }
+    ],
+    "speed": 1,
+    "desc": "Dodge the next attack.",
+    "text": "prepare%s to dodge"
+  },
+  "recover": {
+    "effects": [{
+      "effect": "injury",
+      "target": -1
+    }],
+    "req": [{
+      "effect": "injury",
+      "target": 1
+    }],
+    "speed": 2,
+    "desc": "Recover from injury.",
+    "text": "recover%s from injury"
+  },
+  "stun": {
+    "effects": [{
+      "effect": "stunned",
+      "target": 2,
+      "text": "%fr stunned",
+      "req": [
+        {
+          "effect": "dodge",
+          "target": -2,
+          "text": "%u attempt%s to stun but %f dodge%!s"
+        }
+      ]
+    }],
+    "req": [{
+      "effect": "range",
+      "target": -3
+    }],
+    "speed": 2,
+    "desc": "Stun an enemy.",
+    "text": "stun%s %f"
+  },
+  "throw": {
+    "effects": [{
+      "effect": "wounded",
+      "target": 2,
+      "text": "%fr hit by the projectile",
+      "req": [
+        {
+          "effect": "dodge",
+          "target": -2,
+          "text": "%f dodge%!s"
+        }
+      ]
+    }],
+    "req": [{
+      "effect": "range",
+      "target": 1
+    }],
+    "speed": 2,
+    "desc": "Throw something at the enemy.",
+    "text": "throw%s %us %w at %f"
+  },
+  "shoot": {
+    "effects": [{
+      "effect": "wounded",
+      "target": 2,
+      "text": "%fr hit by the projectile",
+      "req": [
+        {
+          "effect": "dodge",
+          "target": -2,
+          "text": "%f dodge%!s"
+        }
+      ]
+    }],
+    "req": [{
+      "effect": "range",
+      "target": 1
+    }],
+    "speed": 2,
+    "desc": "Shoot your weapon at the enemy.",
+    "text": "shoot%s %us %w at %f"
+  },
+  "thrust": {
+    "effects": [{
+      "effect": "wounded",
+      "target": 2,
+      "text": "%fr is impaled by the %w",
+      "req": [
+        {
+          "effect": "dodge",
+          "target": -2,
+          "text": "%f dodge%!s"
+        }
+      ]
+    }],
+    "req": [{
+      "effect": "range",
+      "target": -1
+    }],
+    "speed": 3,
+    "desc": "Impale the enemy with your weapon.",
+    "text": "thrust%s %us %w at %f"
+  },
+  "swing": {
+    "effects": [{
+      "effect": "wounded",
+      "target": 2,
+      "text": "%fr is hit by the %w",
+      "req": [
+        {
+          "effect": "dodge",
+          "target": -2,
+          "text": "%f dodge%!s the %w"
+        }
+      ]
+    }],
+    "req": [{
+      "effect": "range",
+      "target": -1
+    }],
+    "speed": 3,
+    "desc": "Swing your weapon at the enemy.",
+    "text": "swing%s %us %w at %f"
+  },
+  "gouge": {
+    "effects": [{
+      "effect": "wounded",
+      "target": 2,
+      "text": "%fr is gouged in the face"
+    }],
+    "req": [{
+      "effect": "wrestle",
+      "target": 2
+    }],
+    "speed": 3,
+    "desc": "Gouge grabbed enemy.",
+    "text": "gouge%s %f"
+  },
+  "counter": {
+    "effects": [{
+      "effect": "countering",
+      "target": 1
+    }],
+    "req": [{
+      "effect": "range",
+      "target": -1
+    }],
+    "speed": 3,
+    "desc": "Counter the next attack, nullifying it and stunning the enemy.",
+    "text": "prepare%s to counter attack"
+  },
+  "panic": {
+    "effects": [],
+    "req": [],
+    "speed": 3,
+    "desc": "Panic like a fool.",
+    "text": "panic%s"
+  },
+
+
+
+  "wiggle": {
+    "effects": [{
+      "effect": "dazed",
+      "target": 2
+    }],
+    "req": [],
+    "speed": 2,
+    "desc": "",
+    "text": "wiggle%s %us antennae"
+  },
+  "ant bite": {
+    "effects": [{
+      "effect": "wounded",
+      "target": 2,
+      "text": "bite%s %f with %us mandibles",
+      "req": [
+        {
+          "effect": "dodge",
+          "target": -2,
+          "text": "%u attempt%s to bite but %f dodge%!s"
+        }
+      ]
+    }],
+    "req": [{
+      "effect": "wrestle",
+      "target": 2
+    }],
+    "speed": 2,
+    "desc": "",
+    "text": "thrust%s %us head forward"
+  },
+
+  "sneak": {
+    "effects": [],
+    "req": [{
+      "effect": "invalid",
+      "target": 1
+    }],
+    "speed": 0,
+    "desc": "Gives you 2 extra action at the beginning of combat, unless ambushed.",
+    "text": ""
   }
 }

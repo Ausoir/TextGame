@@ -7,19 +7,19 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.example.textgame.game.Game
+import com.example.textgame.ui.CombatFragment
+import com.example.textgame.ui.EquipmentFragment
 import com.example.textgame.ui.HomeFragment
 import com.example.textgame.ui.ProfileFragment
 
 
 class App : AppCompatActivity() {
-    private var game: Game? = null
+    private lateinit var game: Game
+    private var menu: Menu? = null
 
-    fun refresh() {
-        val destination = HomeFragment()
-        setPage(destination)
+    private fun transition(destination: Fragment){
         supportFragmentManager.commit {
             setCustomAnimations(
                     R.anim.slide_in,
@@ -32,40 +32,128 @@ class App : AppCompatActivity() {
         }
     }
 
-    fun updatePage(newPage: String, timePass: Int = 1){
-        game?.player?.timePass(timePass)
-        game?.player?.model?.page = newPage
-        game?.player?.save()
-        title = getString(R.string.home_title, game?.player?.model?.getTime(), newPage)
-        if (game?.player?.model?.isDay() != false) {
+    private fun viewHome(){
+        menu?.getItem(0)?.isEnabled = true
+        val frag = HomeFragment()
+        val bundle = Bundle()
+        bundle.putParcelable("page", game.getValidDialog())
+        if (game.player.model.isTransitionTime()) {
+            bundle.putString("time", game.player.model.getTime())
+        }
+        frag.arguments = bundle
+        title = game.dialog.model[game.player.model.page]?.title ?: ""
+        transition(frag)
+    }
+
+//    private fun viewCustomDialog(){
+//        menu?.getItem(0)?.isEnabled = true
+//        val frag = HomeFragment()
+//        val bundle = Bundle()
+//        bundle.putParcelable("page", game.getCustomDialog())
+//        frag.arguments = bundle
+//        title = ""
+//        transition(frag)
+//    }
+
+    private fun viewProfile(){
+        menu?.getItem(0)?.isEnabled = true
+        val frag = ProfileFragment()
+        val bundle = Bundle()
+        bundle.putParcelable("player", game.player.model)
+        bundle.putSerializable("moveset", game.moves.getMoves(game.player.model.unit.moves))
+        frag.arguments = bundle
+        title = getString(R.string.profile_title, game.player.model.getDay())
+        transition(frag)
+    }
+
+    fun viewEquipment(){
+        menu?.getItem(0)?.isEnabled = true
+        val frag = EquipmentFragment()
+        val bundle = Bundle()
+        bundle.putSerializable("inventory", game.item.model)
+        bundle.putStringArrayList("equip", game.player.model.equip)
+        bundle.putString("item", game.player.model.item)
+        frag.arguments = bundle
+        title = getString(R.string.equipment_title)
+        transition(frag)
+    }
+
+    private fun viewCombat(page: String, enemy: String, ambush: Boolean){
+        menu?.getItem(0)?.isEnabled = false
+        val frag = CombatFragment()
+        val bundle = Bundle()
+        val enemyModel = game.units.model[enemy]?.copy() ?: game.units.model["invalid"]!!.copy()
+        if (ambush){
+            game.player.model.unit.points = 0
+        } else {
+            game.player.model.unit.recharge()
+        }
+        game.player.model.unit.initialize(game.moves.getMoves(game.player.model.unit.moves), 3)
+        enemyModel.initialize(game.moves.getMoves(enemyModel.moves), 1)
+        bundle.putParcelable("player", game.player.model)
+        bundle.putSerializable("items", game.item.model)
+        bundle.putSerializable("enemy name", enemy)
+        bundle.putSerializable("enemy", enemyModel)
+        bundle.putString("page", page)
+        frag.arguments = bundle
+        title = getString(R.string.combat_title, enemy.capitalize())
+        transition(frag)
+    }
+
+    fun openDialog(to: String){
+        if (to.startsWith(":")) {
+            val split = to.split(":")
+            when (split[1]) {
+                "back" -> {
+                    viewPage(game.player.model.prev)
+                    viewHome()
+                }
+                "defeat" -> {
+                    game.player.reset()
+                    viewPage(to)
+                    viewHome()
+                }
+                "combat" -> {
+                    viewCombat(split[2], split[3], false)
+                }
+                "ambush" -> {
+                    viewCombat(split[2], split[3], true)
+                }
+                "item" -> {
+                    game.player.model.equipItem(game.item.model, split[3])
+                    viewPage(split[2])
+                    viewHome()
+                }
+            }
+        } else {
+            viewPage(to)
+            viewHome()
+        }
+    }
+
+    private fun viewPage(newPage: String, timePass: Int = 1){
+        game.player.timePass(timePass)
+        game.player.model.prev = game.player.model.page
+        game.player.model.page = newPage
+        game.player.save()
+        title = getString(R.string.page_title, game.player.model.getTime().capitalize(), game.dialog.model[newPage]?.title ?: "")
+        if (game.player.model.isDay()) {
             setTheme(R.style.TextGame)
         } else {
             setTheme(R.style.TextGameDark)
         }
     }
 
-    private fun setPage(fragment: Fragment?){
-        val bundle = Bundle()
-        bundle.putParcelable("player", game?.player?.model)
-        fragment?.arguments = bundle
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         game = Game(this)
-        if (savedInstanceState == null) {
-            supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                val bundle = Bundle()
-                bundle.putParcelable("player", game?.player?.model)
-                add<HomeFragment>(R.id.home, args=bundle)
-                updatePage(game?.player?.model?.page ?: "Start", timePass=0)
-            }
-        }
+        viewPage(game.player.model.page, timePass=0)
+        viewHome()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        this.menu = menu
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_action, menu)
         return true
@@ -73,42 +161,25 @@ class App : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_profile -> {
-            val frag = if (supportFragmentManager.findFragmentById(R.id.home) is ProfileFragment){
-                title = getString(R.string.home_title, game?.player?.model?.getTime(), game?.player?.model?.page)
-                HomeFragment()
-            } else {
-                title = getString(R.string.profile_title, game?.player?.model?.getDay())
-                ProfileFragment()
-            }
-            val bundle = Bundle()
-            bundle.putParcelable("player", game?.player?.model)
-            frag.arguments = bundle
-            supportFragmentManager.commit {
-                setCustomAnimations(
-                        R.anim.slide_in,
-                        R.anim.fade_out,
-                        R.anim.fade_in,
-                        R.anim.slide_out
-                )
-                replace(R.id.home, frag)
-                addToBackStack(null)
+            val frag = supportFragmentManager.findFragmentById(R.id.home)
+            if (frag is ProfileFragment){
+                viewHome()
+            } else if (frag !is CombatFragment) {
+                viewProfile()
             }
             true
         }
-
         else -> {
-            // If we got here, the user's action was not recognized.
             super.onOptionsItemSelected(item)
         }
     }
 
     @Suppress("DEPRECATION")
     private fun fullscreen() {
-        if (Build.VERSION.SDK_INT < 19) { // lower api
+        if (Build.VERSION.SDK_INT < 19) {
             val v = this.window.decorView
             v.systemUiVisibility = View.GONE
         } else if (Build.VERSION.SDK_INT >= 19) {
-            //for new api versions.
             val decorView = window.decorView
             val uiOptions =
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY

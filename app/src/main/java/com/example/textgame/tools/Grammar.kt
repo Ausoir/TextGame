@@ -5,29 +5,39 @@ import java.util.*
 object Grammar {
     fun getTime(time: Int): String{
         return when {
-            time == 12 -> {
-                "Noon"
-            }
-            time == 0 -> {
-                "Midnight"
-            }
             time < 5 -> {
-                "Late Night"
+                "late night"
             }
             time < 9 -> {
-                "Early Morning"
+                "early morning"
             }
             time < 12 -> {
-                "Morning"
+                "morning"
             }
             time < 18 -> {
-                "Evening"
+                "evening"
             }
             time < 20 -> {
-                "Night"
+                "night"
             }
             else -> {
-                "Late Night"
+                "late night"
+            }
+        }
+    }
+    fun getArticleList(words: List<String>): String{
+        if (words.size == 1){
+            return getArticle(words[0])
+        }
+        if (words.size == 2){
+            return getArticle(words[0]) + " and " + getArticle(words[1])
+        }
+        val last = words.last()
+        return words.joinToString { it ->
+            if (it == last){
+                "and " + getArticle(it)
+            } else {
+                getArticle(it)
             }
         }
     }

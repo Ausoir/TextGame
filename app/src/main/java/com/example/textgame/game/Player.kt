@@ -6,33 +6,29 @@ import com.example.textgame.tools.FileManager
 import com.example.textgame.tools.Grammar
 import com.google.gson.Gson
 
-data class Model(val name: String, var page: String, var time: Int, var money: Int,
-                 var head: String, var body: String, var limb: String, var item: String,
-                 var moves: Array<String>) : Parcelable {
-    @Suppress("JAVA_CLASS_ON_COMPANION", "UNCHECKED_CAST")
+data class PlayerModel(val name: String, var page: String, var prev : String, var time: Int, var money: Int,
+                       var equip: ArrayList<String>, var item: String, var unit: UnitModel) : Parcelable {
+    @Suppress("JAVA_CLASS_ON_COMPANION")
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
+        parcel.readString() ?: "",
         parcel.readInt(),
         parcel.readInt(),
+            parcel.readArrayList(String.javaClass.classLoader) as ArrayList<String>,
         parcel.readString() ?: "",
-        parcel.readString() ?: "",
-        parcel.readString() ?: "",
-        parcel.readString() ?: "",
-            parcel.readArray(String.javaClass.classLoader) as Array<String>
-    ) {
-    }
+        parcel.readSerializable() as UnitModel
+    ) {}
 
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        dest?.writeString(name)
-        dest?.writeString(page)
-        dest?.writeInt(time)
-        dest?.writeInt(money)
-        dest?.writeString(head)
-        dest?.writeString(body)
-        dest?.writeString(limb)
-        dest?.writeString(item)
-        dest?.writeSerializable(moves)
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(name)
+        dest.writeString(page)
+        dest.writeString(prev)
+        dest.writeInt(time)
+        dest.writeInt(money)
+        dest.writeList(equip)
+        dest.writeString(item)
+        dest.writeSerializable(unit)
     }
 
     override fun describeContents(): Int {
@@ -44,6 +40,10 @@ data class Model(val name: String, var page: String, var time: Int, var money: I
         return Grammar.getTime(hours)
     }
 
+    fun isTransitionTime(): Boolean{
+        return listOf(5, 9, 12, 18, 20).contains(time % 24)
+    }
+
     fun getDay(): Int{
         return 1 + (time / 24)
     }
@@ -53,76 +53,83 @@ data class Model(val name: String, var page: String, var time: Int, var money: I
         return hour in 6..19
     }
 
-    fun getClassDescription(): String{
-        val alimb = Grammar.getArticle(limb)
-        val abody = Grammar.getArticle(body)
-        val ahead = Grammar.getArticle(head)
-        return "You have limbs of $alimb, the body of $abody, and the head of $ahead"
-    }
-
-    fun getClassName(): String{
-        val name = if (body == limb && limb == head){
-            body
-        } else if (body == limb || limb == head){
-            "$body $head"
-        } else {
-            "$limb-$body $head"
+    fun equipItem(items: HashMap<String, ItemModel>, itemName: String){
+        val item: ItemModel = items[itemName] ?: return
+        for (i in equip){
+            val equippedItem = items[i] ?: return
+            if (equippedItem.type == item.type){
+                items.remove(i)
+                if (equippedItem.moves != null) {
+                    for (move in equippedItem.moves) {
+                        unit.moves.remove(move)
+                    }
+                }
+                break
+            }
         }
-        return Grammar.getArticle(name)
-    }
-
-    fun getEquipment(): String{
-        return if (item.isEmpty()){
-            "You are not carrying anything"
-        } else {
-            "You are carrying ${Grammar.getArticle(item)}"
+        if (item.moves != null) {
+            for (move in item.moves) {
+                unit.moves.add(move)
+            }
         }
+        equip.add(itemName)
     }
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-        other as Model
-        if (head != other.head) return false
-        if (body != other.body) return false
-        if (limb != other.limb) return false
-        return true
+    fun getEquipment(items: HashMap<String, ItemModel>, part: String, fail: String = ""): String{
+        for (i in equip){
+            val equippedItem = items[i] ?: return fail
+            if (equippedItem.type == part){
+                return i
+            }
+        }
+        return fail
     }
 
-    override fun hashCode(): Int {
-        var result = head.hashCode()
-        result = 31 * result + body.hashCode()
-        result = 31 * result + limb.hashCode()
+    fun getDescription(): String{
+        var result = ""
+        if (equip.isNotEmpty()){
+            for (equipped in equip){
+                result += "You have ${Grammar.getArticle(equipped)} equipped.\n"
+            }
+        }
+        if (item.isNotEmpty()){
+            result += "You are carrying ${Grammar.getArticle(item)}}"
+        }
+        result += "You have $${money}.\n"
         return result
     }
 
-    companion object CREATOR : Parcelable.Creator<Model> {
-        override fun createFromParcel(parcel: Parcel): Model {
-            return Model(parcel)
+    companion object CREATOR : Parcelable.Creator<PlayerModel> {
+        override fun createFromParcel(parcel: Parcel): PlayerModel {
+            return PlayerModel(parcel)
         }
 
-        override fun newArray(size: Int): Array<Model?> {
+        override fun newArray(size: Int): Array<PlayerModel?> {
             return arrayOfNulls(size)
         }
     }
 }
 
 class Player(private val fileManager: FileManager) {
-    val model: Model = make(fileManager.read("save"))
+//    val model: Model = make(fileManager.read("save"))
+    var model: PlayerModel = make(fileManager.readAsset("template.json"))
 
-    private fun make(data: String?): Model {
+    private fun make(data: String?): PlayerModel {
         val gson = Gson()
         val finalData: String = data ?: fileManager.readAsset("template.json") !!
-        return gson.fromJson(finalData, Model::class.java)
+        return gson.fromJson(finalData, PlayerModel::class.java)
     }
 
     fun timePass(time: Int){
         model.time += time
     }
 
+    fun reset(){
+        model = make(fileManager.readAsset("template.json"))
+    }
+
     fun save(){
-        val gson = Gson()
-        val json = gson.toJson(model)
+        val json = Gson().toJson(model)
         fileManager.write("save", json)
     }
 }

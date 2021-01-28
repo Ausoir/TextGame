@@ -1,12 +1,18 @@
 {
-  "name": "Ant",
-  "page": "Start",
-  "time": 1,
+  "name": "You",
+  "page": "Start1",
+  "prev": "Start1",
+  "time": 10,
   "money": 0,
   "location": "Ant Hill",
-  "head": "Ant",
-  "body": "Ant",
-  "limb": "Ant",
+  "equip": ["silk robe"],
   "item": "",
-  "moves": ["Bite", "Skitter"]
+  "unit": {
+    "speed": 2,
+    "desc": "It is a human.",
+    "moves": ["hesitate", "stun", "engage", "grab", "disengage", "panic", "dodge", "gouge"],
+    "status": [],
+    "health": ["are wounded", "are badly wounded", "fall unconscious"],
+    "loot": ["human corpse"]
+  }
 }

@@ -1,0 +1,78 @@
+{
+  "pine needle javelin": {
+    "type": "weapon",
+    "value": 1,
+    "desc": "a dead brown pine needle. A bit bulky to wield, and too light to do proper damage.",
+    "moves": ["throw"]
+  },
+  "greenwood bow": {
+    "type": "weapon",
+    "value": 1,
+    "desc": "a greenwood bow with raw silk bowstring. Fires arrows made of sapped wood splinters.",
+    "moves": ["shoot"]
+  },
+  "slingshot": {
+    "type": "weapon",
+    "value": 1,
+    "desc": "a wooden slingshot that uses the elasticity of spider silk to shoot sharp rocks.",
+    "moves": ["shoot"]
+  },
+  "chitin blade": {
+    "type": "weapon",
+    "value": 1,
+    "desc": "a curved black chitin blade.",
+    "moves": ["swing"]
+  },
+  "splinter spear": {
+    "type": "weapon",
+    "value": 1,
+    "desc": "a wooden splinter hardened with plant sap.",
+    "moves": ["thrust"]
+  },
+  "chitin spiked mace": {
+    "type": "weapon",
+    "value": 1,
+    "desc": "a chitin spiked mace that somewhat preserves the previous shape of an ant leg.",
+    "moves": ["swing"]
+  },
+  "ant leg": {
+    "type": "weapon",
+    "value": 1,
+    "desc": "a limb broken off from a dead ant. It is pretty strong and could be used to swing around.",
+    "moves": ["swing"]
+  },
+  "rose spike": {
+    "type": "weapon",
+    "value": 2,
+    "desc": "a rose spike.",
+    "moves": ["stab"]
+  },
+  "silk robe": {
+    "type": "robe",
+    "value": 0,
+    "desc": "made from a combination of spiderweb and some kind of fur. It allows you to approach enemies without them noticing. Grants you the 'Sneak' skill.",
+    "moves": ["sneak"]
+  },
+  "silk pants": {
+    "type": "pants",
+    "value": 0,
+    "desc": "made from a combination of spiderweb and some kind of fur. Very common."
+  },
+
+
+  "human corpse": {
+    "type": "ingredient",
+    "value": 0,
+    "desc": "a human corpse. Could be edible, I guess."
+  },
+  "ant meat": {
+    "type": "ingredient",
+    "value": 1,
+    "desc": "an ant meat. It has become the main source of protein for humans."
+  },
+  "blood drop": {
+    "type": "food",
+    "value": 1,
+    "desc": "a drop of blood. It sticks to you, making it convenient to carry around."
+  }
+}

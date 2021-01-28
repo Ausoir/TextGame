@@ -9,6 +9,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="silver">#FF666666</color>
-    <color name="light">#FF868686</color>
-    <color name="gray">#FF333333</color>
+    <color name="light">#FF999999</color>
+    <color name="gray">#FF313131</color>
 </resources>

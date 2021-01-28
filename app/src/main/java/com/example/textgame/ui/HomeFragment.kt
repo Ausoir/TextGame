@@ -1,6 +1,5 @@
 package com.example.textgame.ui
 
-import android.content.Context
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
@@ -12,13 +11,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.textgame.App
 import com.example.textgame.R
-import com.example.textgame.game.DataAccess
-import com.example.textgame.game.Model
+import com.example.textgame.game.DialogModel
 
 
 class HomeFragment : Fragment() {
     private lateinit var layout: LinearLayout
-    private lateinit var dialog: DataAccess
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -29,19 +26,26 @@ class HomeFragment : Fragment() {
         val textView: TextView = root.findViewById(R.id.text_home)
         textView.movementMethod = ScrollingMovementMethod()
         layout = root.findViewById(R.id.home_button_container) as LinearLayout
-        val page = arguments?.getParcelable<Model>("player")?.page ?: "Start"
-
-        dialog = DataAccess(activity as Context)
-        val currentPage = dialog.getPage(page)
-        textView.text = currentPage.getString("text")
-        val options = currentPage.getJSONObject("opt")
-        val keys = options.keys()
-        for (i in 0 until options.length()) {
-            val option = keys.next()
-            addButton(options.getString(option)).setOnClickListener {
+        val currentPage = arguments?.getParcelable<DialogModel>("page")
+        if (currentPage != null) {
+            val time = arguments?.getString("time")
+            if (time != null) {
+                textView.text = currentPage.text.replace("%time", "\nIt is now $time.\n")
+            } else {
+                textView.text = currentPage.text.replace("%time", "")
+            }
+            val options = currentPage.opt
+            options.forEach { option ->
+                addButton(option.text).setOnClickListener {
+                    val app: App = activity as App
+                    app.openDialog(option.to)
+                }
+            }
+        } else {
+            textView.text = resources.getString(R.string.dialog_not_found)
+            addButton("Go Back").setOnClickListener {
                 val app: App = activity as App
-                app.updatePage(option)
-                app.refresh()
+                app.openDialog("back")
             }
         }
         return root

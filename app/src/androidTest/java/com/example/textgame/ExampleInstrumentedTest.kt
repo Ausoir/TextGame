@@ -1,14 +1,13 @@
 package com.example.textgame
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
+import com.example.textgame.game.DialogController
 import com.example.textgame.tools.FileManager
-import org.json.JSONObject
-
+import com.example.textgame.tools.Grammar
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -20,14 +19,7 @@ class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val reader = JSONObject("{\n" +
-                "  \"Startout\": {\n" +
-                "    \"ChoiceName\": [\"Option 1\", \"Option 2\"],\n" +
-                "    \"ChoiceCb\": [\"Cb1\", \"Cb2\"]\n" +
-                "  }\n" +
-                "}")
-        val startout = reader.getJSONObject("Startout")
-        val choices = startout.getJSONArray("ChoiceName")
-        assertEquals("Option 2", choices[1])
+        val dialog: String = Grammar.getArticleList(arrayOf<String>("coat", "hanger"))
+        assertEquals("sdf,fff", "")
     }
 }

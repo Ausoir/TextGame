@@ -1,29 +1,210 @@
 {
-  "Start": {
-    "text": "Welcome.",
-    "opt": {
-      "Ant Hill": "Proceed to Ant Hill"
-    }
+  "invalid": {
+    "title": "",
+    "text": "Dialog missing.",
+    "opt": [
+      {
+        "to": "back",
+        "text": "Go back"
+      }
+    ]
   },
-  "Ant Hill": {
-    "text": "Some ant hill desc",
-    "req": {
-      "size tiny": "You are too big."
-    },
-    "opt": {
-      "Start": "Go back",
-      "Beehive": "Go bee"
-    }
+  "defeat": {
+    "title": "Game Over",
+    "text": "You died. Game Over!",
+    "opt": [
+      {
+        "to": "Start1",
+        "text": "Start Over"
+      }
+    ]
   },
-  "Beehive": {
-    "text": "Bzzzzzzz",
-    "req": {
-      "size tiny": "You are too big.",
-      "fly": "You cannot reach the beehive."
-    },
-    "opt": {
-      "Ant Hill": "go to Ant Hill",
-      "Start": "go to start"
-    }
+  "Start1": {
+    "title": "",
+    "text": "",
+    "opt": [
+      {
+        "to": "Start2",
+        "text": "Begin"
+      }
+    ]
+  },
+  "Start2": {
+    "title": "Story",
+    "text": "You were born and raised in a settlement built around a conquered ant hill. The settlement is bustling with hunters and craftsmen who devote their lives on feeding and protecting the community.\n\nYou, lacking the courage to hunt and lacking the skills to craft, have become a scout.",
+    "opt": [
+      {
+        "to": "Start3",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "Start3": {
+    "title": "Story",
+    "text": "Every day, you wake up early in the morning and patrol the nearby area to notify the settlement of any dangers or things to scavenge.\n\nThis is a dangerous job. Many scouts disappear without a trace every week. Like any scout, you must carry a weapon around at all times, even if you don't have the courage to fight. Your weapon of choice was...",
+    "opt": [
+      {
+        "to": "Startrange",
+        "text": "A ranged weapon"
+      },
+      {
+        "to": "Startmelee",
+        "text": "A melee weapon"
+      }
+    ]
+  },
+  "Startrange": {
+    "title": "Story",
+    "text": "You carry around a ranged weapon in case there is something weak that you can hunt from outside danger's reach.\n\nYour ranged weapon of choice was...",
+    "opt": [
+      {
+        "to": ":item:To Ant Hill:greenwood bow",
+        "text": "A greenwood bow"
+      },
+      {
+        "to": ":item:To Ant Hill:pine needle javelin",
+        "text": "A pine needle javelin"
+      },
+      {
+        "to": ":item:To Ant Hill:slingshot",
+        "text": "A chitin slingshot"
+      }
+    ]
+  },
+  "Startmelee": {
+    "title": "Story",
+    "text": "You carry around a melee weapon to prepare for the worst case scenario of being ambushed by one of the many dangerous predators near the hill.\n\nYour melee weapon of choice was...",
+    "opt": [
+      {
+        "to": ":item:To Ant Hill:splinter spear",
+        "text": "A splinter spear"
+      },
+      {
+        "to": ":item:To Ant Hill:chitin spiked mace",
+        "text": "A chitin spiked mace"
+      },
+      {
+        "to": ":item:To Ant Hill:chitin blade",
+        "text": "A chitin blade"
+      }
+    ]
+  },
+  "To Ant Hill": {
+    "title": "Ant Hill",
+    "text": "%timeYou walk for about 15 minutes.\nYou finally reach the end of the forest of grass to an open view of the outskirts of Ant Hill. The outskirts pretty desolate and are littered with chitin, furs, and pieces of leaves.\n\nYou see the main hill and the market street in the distance.",
+    "opt": [
+      {
+        "to": "Ant Hill1",
+        "text": "Enter the settlement",
+        "req": ["early morning"]
+      },
+      {
+        "to": "Ant Hill2",
+        "text": "Enter the settlement",
+        "req": ["morning"]
+      },
+      {
+        "to": "Ant Hill2",
+        "text": "Enter the settlement",
+        "req": ["evening"]
+      },
+      {
+        "to": "Ant Hill3",
+        "text": "Enter the settlement",
+        "req": ["nighttime"]
+      }
+    ]
+  },
+  "Ant Hill1": {
+    "title": "Ant Hill",
+    "text": "You are at Ant Hill. Hunters are setting up their shops along the streets leading to the hill.%time",
+    "opt": [
+      {
+        "to": "Ant Hill1",
+        "text": "Loiter around",
+        "req": ["early morning"]
+      },
+      {
+        "to": "Ant Hill2",
+        "text": "Loiter around",
+        "req": ["morning"]
+      },
+      {
+        "to": "Ant Hill2",
+        "text": "Loiter around",
+        "req": ["evening"]
+      },
+      {
+        "to": "Ant Hill3",
+        "text": "Loiter around",
+        "req": ["nighttime"]
+      },
+      {
+        "to": ":combat:Start2:ant",
+        "text": "Fight",
+        "req": []
+      }
+    ]
+  },
+  "Ant Hill2": {
+    "title": "Ant Hill",
+    "text": "You are at Ant Hill. The streets are filled with people walking around trying to buy from the hunters selling their meat on display.%time",
+    "opt": [
+      {
+        "to": "Ant Hill1",
+        "text": "Loiter around",
+        "req": ["early morning"]
+      },
+      {
+        "to": "Ant Hill2",
+        "text": "Loiter around",
+        "req": ["morning"]
+      },
+      {
+        "to": "Ant Hill2",
+        "text": "Loiter around",
+        "req": ["evening"]
+      },
+      {
+        "to": "Ant Hill3",
+        "text": "Loiter around",
+        "req": ["nighttime"]
+      },
+      {
+        "to": ":combat:Start2:ant",
+        "text": "Fight",
+        "req": []
+      }
+    ]
+  },
+  "Ant Hill3": {
+    "title": "Ant Hill",
+    "text": "You are at Ant Hill.%timeIt is dark, and there are no human presence on the streets.",
+    "opt": [
+      {
+        "to": "Ant Hill1",
+        "text": "Loiter around",
+        "req": ["early morning"]
+      },
+      {
+        "to": "Ant Hill2",
+        "text": "Loiter around",
+        "req": ["morning"]
+      },
+      {
+        "to": "Ant Hill2",
+        "text": "Loiter around",
+        "req": ["evening"]
+      },
+      {
+        "to": "Ant Hill3",
+        "text": "Loiter around",
+        "req": ["nighttime"]
+      },
+      {
+        "to": ":combat:Start2:ant",
+        "text": "Fight"
+      }
+    ]
   }
 }
