@@ -18,7 +18,7 @@ data class PlayerModel(val name: String, var page: String, var prev : String, va
             parcel.readArrayList(String.javaClass.classLoader) as ArrayList<String>,
         parcel.readString() ?: "",
         parcel.readSerializable() as UnitModel
-    ) {}
+    )
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeString(name)
@@ -53,17 +53,14 @@ data class PlayerModel(val name: String, var page: String, var prev : String, va
         return hour in 6..19
     }
 
-    fun equipItem(items: HashMap<String, ItemModel>, itemName: String){
-        val item: ItemModel = items[itemName] ?: return
+    fun equipItem(items: HashMap<String, ItemModel>, itemName: String): String?{
+        var unequipped: String? = null
+        val item: ItemModel = items[itemName] ?: return unequipped
         for (i in equip){
-            val equippedItem = items[i] ?: return
+            val equippedItem = items[i] ?: return unequipped
             if (equippedItem.type == item.type){
-                items.remove(i)
-                if (equippedItem.moves != null) {
-                    for (move in equippedItem.moves) {
-                        unit.moves.remove(move)
-                    }
-                }
+                unequipped = i
+                unequipItem(items, i)
                 break
             }
         }
@@ -73,6 +70,17 @@ data class PlayerModel(val name: String, var page: String, var prev : String, va
             }
         }
         equip.add(itemName)
+        return unequipped
+    }
+
+    fun unequipItem(items: HashMap<String, ItemModel>, itemName: String){
+        val item: ItemModel = items[itemName] ?: return
+        if (item.moves != null) {
+            for (move in item.moves) {
+                unit.moves.remove(move)
+            }
+        }
+        equip.remove(itemName)
     }
 
     fun getEquipment(items: HashMap<String, ItemModel>, part: String, fail: String = ""): String{
@@ -93,7 +101,7 @@ data class PlayerModel(val name: String, var page: String, var prev : String, va
             }
         }
         if (item.isNotEmpty()){
-            result += "You are carrying ${Grammar.getArticle(item)}}"
+            result += "You are carrying ${Grammar.getArticle(item)}.\n"
         }
         result += "You have $${money}.\n"
         return result
@@ -129,6 +137,9 @@ class Player(private val fileManager: FileManager) {
     }
 
     fun save(){
+        model.unit.deck = null
+        model.unit.target = null
+        model.unit.status.clear()
         val json = Gson().toJson(model)
         fileManager.write("save", json)
     }

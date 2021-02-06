@@ -50,29 +50,45 @@
   "silk robe": {
     "type": "robe",
     "value": 0,
-    "desc": "made from a combination of spiderweb and some kind of fur. It allows you to approach enemies without them noticing. Grants you the 'Sneak' skill.",
+    "desc": "a silk robe made from a combination of spiderweb and some kind of fur. It allows you to approach enemies without them noticing. Grants you the 'Sneak' skill.",
     "moves": ["sneak"]
   },
   "silk pants": {
     "type": "pants",
     "value": 0,
-    "desc": "made from a combination of spiderweb and some kind of fur. Very common."
+    "desc": "a silk pants made from a combination of spiderweb and some kind of fur. Very common."
+  },
+  "grass robe": {
+    "type": "robe",
+    "value": 0,
+    "desc": "a grass robe made from woven grass fibers. Provides very little warmth."
   },
 
 
+  "homebound scroll": {
+    "type": "item",
+    "value": 5,
+    "desc": "a scroll of teleportation bound to Ant Hill. Use to instantly teleport there.",
+    "page": "To Ant Hill"
+  },
   "human corpse": {
-    "type": "ingredient",
+    "type": "item",
     "value": 0,
     "desc": "a human corpse. Could be edible, I guess."
   },
   "ant meat": {
-    "type": "ingredient",
+    "type": "item",
     "value": 1,
     "desc": "an ant meat. It has become the main source of protein for humans."
   },
-  "blood drop": {
-    "type": "food",
+  "cooked ant meat": {
+    "type": "item",
     "value": 1,
-    "desc": "a drop of blood. It sticks to you, making it convenient to carry around."
+    "desc": "a cooked ant meat. Comes with a chitin plate, fully ready to serve. Doesn't really smell like anything."
+  },
+  "blood drop": {
+    "type": "item",
+    "value": 1,
+    "desc": "a drop of blood. It sticks to you, making it convenient to carry around. Has an unpleasant taste. Very fulfilling."
   }
 }

@@ -5,15 +5,16 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
 
-data class UnitModel(val speed: Int, val desc: String, val moves: MutableList<String>, val status: ArrayList<String>,
-                     val health: List<String>, val loot: List<String>): Serializable{
+data class UnitModel(val name: String, val speed: Int, val moves: MutableList<String>,
+                     val status: ArrayList<String>, val health: List<String>): Serializable{
+    lateinit var foes: ArrayList<UnitModel>
     var points = speed
     var target: UnitModel? = null
-    lateinit var deck: Deck
+    var deck: Deck? = null
 
     fun initialize(moves: ArrayList<MoveModel>, handSize: Int){
         deck = Deck(this, moves, handSize)
-        deck.shuffle()
+        deck?.shuffle()
     }
 
     fun recharge(){
@@ -21,7 +22,15 @@ data class UnitModel(val speed: Int, val desc: String, val moves: MutableList<St
     }
 
     fun copy(): UnitModel{
-        return UnitModel(speed, desc, moves.toMutableList(), ArrayList(status), health.toMutableList(), loot.toMutableList())
+        return UnitModel(name, speed, moves.toMutableList(), ArrayList(status), health.toMutableList())
+    }
+
+    fun processStatus() {
+        status.removeAll(listOf("dodge"))
+    }
+
+    fun isDead(): Boolean{
+        return status.count{ it == "wounded" } == health.size
     }
 
     fun getHealth(): String{
@@ -29,36 +38,69 @@ data class UnitModel(val speed: Int, val desc: String, val moves: MutableList<St
         return if (wounds < health.size) {
             health[wounds]
         } else {
-            "dead"
+            health.last()
+        }
+    }
+
+    private fun getFoesWithStatus(effect: String, has: Boolean = true): ArrayList<UnitModel>{
+        val valids = ArrayList<UnitModel>()
+        for (foe in foes){
+            if (effect in foe.status == has){
+                valids.add(foe)
+            }
+        }
+        return valids
+    }
+
+    fun getTargetables(target: Int, effect: String): List<UnitModel>{
+        return when (target) {
+            1 -> {
+                if (status.contains(effect)){
+                    foes
+                } else {
+                    emptyList()
+                }
+            }
+            2 -> {
+                getFoesWithStatus(effect)
+            }
+            3 -> {
+                if (status.contains(effect)){
+                    getFoesWithStatus(effect)
+                } else {
+                    emptyList()
+                }
+            }
+            -1 -> {
+                if (!status.contains(effect)){
+                    foes
+                } else {
+                    emptyList()
+                }
+            }
+            -2 -> {
+                getFoesWithStatus(effect, false)
+            }
+            -3 -> {
+                if (!status.contains(effect)){
+                    getFoesWithStatus(effect, false)
+                } else {
+                    emptyList()
+                }
+            }
+            else -> {
+                emptyList()
+            }
         }
     }
 
     fun isReqMet(reqs: List<Status>): String{
         for (req in reqs){
-            val reqMet = when (req.target) {
-                1 -> {
-                    status.contains(req.effect)
-                }
-                2 -> {
-                    target?.status?.contains(req.effect) ?: false
-                }
-                3 -> {
-                    status.contains(req.effect) && (target?.status?.contains(req.effect) ?: false)
-                }
-                -1 -> {
-                    !status.contains(req.effect)
-                }
-                -2 -> {
-                    !(target?.status?.contains(req.effect) ?: false)
-                }
-                -3 -> {
-                    !(status.contains(req.effect) && (target?.status?.contains(req.effect) ?: false))
-                }
-                else -> {
-                    true
-                }
+            if (req.effect == "50"){
+                return listOf(req.text, "").shuffled()[0]!!
             }
-            if (!reqMet){
+            val reqMet = getTargetables(req.target, req.effect)
+            if (reqMet.isEmpty()){
                 return req.text ?: "!"
             }
         }

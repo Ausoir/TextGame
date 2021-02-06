@@ -21,7 +21,7 @@ class Deck(var me: UnitModel, val moves: ArrayList<MoveModel>, handSize: Int) {
             hand[place] == moves.size -> {
                 MoveModel.shuffle
             }
-            me.isReqMet(moves[hand[place]].req).isEmpty() -> {
+            me.isReqMet(moves[hand[place]].reqs).isEmpty() -> {
                 moves[hand[place]]
             }
             else -> {

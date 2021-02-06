@@ -4,7 +4,7 @@
     "text": "Dialog missing.",
     "opt": [
       {
-        "to": "back",
+        "to": ":back",
         "text": "Go back"
       }
     ]
@@ -58,15 +58,15 @@
     "text": "You carry around a ranged weapon in case there is something weak that you can hunt from outside danger's reach.\n\nYour ranged weapon of choice was...",
     "opt": [
       {
-        "to": ":item:To Ant Hill:greenwood bow",
+        "to": ":item:greenwood bow:To Ant Hill",
         "text": "A greenwood bow"
       },
       {
-        "to": ":item:To Ant Hill:pine needle javelin",
+        "to": ":item:pine needle javelin:To Ant Hill",
         "text": "A pine needle javelin"
       },
       {
-        "to": ":item:To Ant Hill:slingshot",
+        "to": ":item:slingshot:To Ant Hill",
         "text": "A chitin slingshot"
       }
     ]
@@ -76,42 +76,42 @@
     "text": "You carry around a melee weapon to prepare for the worst case scenario of being ambushed by one of the many dangerous predators near the hill.\n\nYour melee weapon of choice was...",
     "opt": [
       {
-        "to": ":item:To Ant Hill:splinter spear",
+        "to": ":item:splinter spear:To Ant Hill",
         "text": "A splinter spear"
       },
       {
-        "to": ":item:To Ant Hill:chitin spiked mace",
+        "to": ":item:chitin spiked mace:To Ant Hill",
         "text": "A chitin spiked mace"
       },
       {
-        "to": ":item:To Ant Hill:chitin blade",
+        "to": ":item:chitin blade:To Ant Hill",
         "text": "A chitin blade"
       }
     ]
   },
   "To Ant Hill": {
     "title": "Ant Hill",
-    "text": "%timeYou walk for about 15 minutes.\nYou finally reach the end of the forest of grass to an open view of the outskirts of Ant Hill. The outskirts pretty desolate and are littered with chitin, furs, and pieces of leaves.\n\nYou see the main hill and the market street in the distance.",
+    "text": "%timeYou reach the outskirts of Ant Hill. The outskirts are pretty desolate and littered with trash.\n\nYou see the main hill laced with vendor tents in the distance.",
     "opt": [
       {
         "to": "Ant Hill1",
         "text": "Enter the settlement",
-        "req": ["early morning"]
+        "reqs": ["early morning"]
       },
       {
         "to": "Ant Hill2",
         "text": "Enter the settlement",
-        "req": ["morning"]
+        "reqs": ["morning"]
       },
       {
         "to": "Ant Hill2",
         "text": "Enter the settlement",
-        "req": ["evening"]
+        "reqs": ["evening"]
       },
       {
         "to": "Ant Hill3",
         "text": "Enter the settlement",
-        "req": ["nighttime"]
+        "reqs": ["nighttime"]
       }
     ]
   },
@@ -122,27 +122,27 @@
       {
         "to": "Ant Hill1",
         "text": "Loiter around",
-        "req": ["early morning"]
+        "reqs": ["early morning"]
       },
       {
         "to": "Ant Hill2",
         "text": "Loiter around",
-        "req": ["morning"]
+        "reqs": ["morning"]
       },
       {
         "to": "Ant Hill2",
         "text": "Loiter around",
-        "req": ["evening"]
+        "reqs": ["evening"]
       },
       {
         "to": "Ant Hill3",
         "text": "Loiter around",
-        "req": ["nighttime"]
+        "reqs": ["nighttime"]
       },
       {
-        "to": ":combat:Start2:ant",
+        "to": ":combat:lonely ant:Start2",
         "text": "Fight",
-        "req": []
+        "reqs": []
       }
     ]
   },
@@ -153,56 +153,56 @@
       {
         "to": "Ant Hill1",
         "text": "Loiter around",
-        "req": ["early morning"]
+        "reqs": ["early morning"]
       },
       {
         "to": "Ant Hill2",
         "text": "Loiter around",
-        "req": ["morning"]
+        "reqs": ["morning"]
       },
       {
         "to": "Ant Hill2",
         "text": "Loiter around",
-        "req": ["evening"]
+        "reqs": ["evening"]
       },
       {
         "to": "Ant Hill3",
         "text": "Loiter around",
-        "req": ["nighttime"]
+        "reqs": ["nighttime"]
       },
       {
-        "to": ":combat:Start2:ant",
+        "to": ":combat:lonely ant:Start2",
         "text": "Fight",
-        "req": []
+        "reqs": []
       }
     ]
   },
   "Ant Hill3": {
     "title": "Ant Hill",
-    "text": "You are at Ant Hill.%timeIt is dark, and there are no human presence on the streets.",
+    "text": "You are at Ant Hill. %timeIt is dark, and there are no human presence on the streets.",
     "opt": [
       {
         "to": "Ant Hill1",
         "text": "Loiter around",
-        "req": ["early morning"]
+        "reqs": ["early morning"]
       },
       {
         "to": "Ant Hill2",
         "text": "Loiter around",
-        "req": ["morning"]
+        "reqs": ["morning"]
       },
       {
         "to": "Ant Hill2",
         "text": "Loiter around",
-        "req": ["evening"]
+        "reqs": ["evening"]
       },
       {
         "to": "Ant Hill3",
         "text": "Loiter around",
-        "req": ["nighttime"]
+        "reqs": ["nighttime"]
       },
       {
-        "to": ":combat:Start2:ant",
+        "to": ":combat:ragequito flock:Start2",
         "text": "Fight"
       }
     ]

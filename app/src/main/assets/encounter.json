@@ -1,0 +1,17 @@
+{
+  "invalid": {
+    "desc": "INVALID ENCOUNTER",
+    "units": ["invalid"],
+    "loots": []
+  },
+  "lonely ant": {
+    "desc": "It's an ant almost as tall as your knees. It constantly wiggles both of its long antennae on its head. Ants are usually not too aggressive, but this one seems to be startled by your presence.",
+    "units": ["ant", "ant"],
+    "loots": ["ant meat", "ant leg", ""]
+  },
+  "ragequito flock": {
+    "desc": "Three flying insect monsters bigger than your head are flying toward you. Their giant blood red eyes are staring at you with malice. Their thin wings covered with black veins flap slowly at their sides. Six lanky legs stick forward, shivering with excitement for blood. They can and will drink you dry!",
+    "units": ["ragequito", "ragequito", "ragequito"],
+    "loots": ["blood droplet"]
+  }
+}

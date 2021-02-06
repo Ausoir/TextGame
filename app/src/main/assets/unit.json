@@ -1,26 +1,23 @@
 {
-  "human": {
-    "speed": 1,
-    "desc": "It is a weak flimsy human. Makes a nice treat for all kinds of monsters.",
-    "moves": ["run away", "move away"],
+  "invalid": {
+    "name": "invalid",
+    "speed": 0,
+    "moves": ["shuffle"],
     "status": [],
-    "health": ["limping", "almost dead", "drops dead"],
-    "loot": ["human corpse"]
+    "health": []
   },
   "ant": {
+    "name": "ant",
     "speed": 1,
-    "desc": "It's an ant almost as tall as your knees. They are not aggressive, but will retaliate with their sharp mandibles when attacked. It constantly wiggles both of its long antennae on its head.",
-    "moves": ["ant bite", "wiggle", "grab", "engage"],
+    "moves": ["mandible bite", "wiggle", "grab", "engage"],
     "status": [],
-    "health": ["seems panicked", "is having trouble coordinating", "is limping its legs"],
-    "loot": ["ant meat", "ant leg"]
+    "health": ["is dented", "is limping its legs", "rolls belly up and curls inward."]
   },
   "ragequito": {
+    "name": "ragequito",
     "speed": 1,
-    "desc": "It's a flying insect monster bigger than your head, staring at you with giant blood red eyes. Its thin wings covered with black veins flap slowly at its sides. Its six long thin legs stick forward, shivering with excitement for blood. It can and will drink you dry!",
     "moves": ["grab"],
     "status": [],
-    "health": ["flaps its wings furiously", "curls its legs inward and shivers"],
-    "loot": ["blood droplet"]
+    "health": ["flaps its wings furiously", "falls"]
   }
 }

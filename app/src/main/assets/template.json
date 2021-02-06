@@ -6,13 +6,12 @@
   "money": 0,
   "location": "Ant Hill",
   "equip": ["silk robe"],
-  "item": "",
+  "item": "grass robe",
   "unit": {
+    "name": "Player",
     "speed": 2,
-    "desc": "It is a human.",
-    "moves": ["hesitate", "stun", "engage", "grab", "disengage", "panic", "dodge", "gouge"],
+    "moves": ["hesitate", "engage", "grab", "disengage", "panic", "dodge", "gouge", "run away"],
     "status": [],
-    "health": ["are wounded", "are badly wounded", "fall unconscious"],
-    "loot": ["human corpse"]
+    "health": ["are wounded", "are badly wounded", "fall unconscious"]
   }
 }

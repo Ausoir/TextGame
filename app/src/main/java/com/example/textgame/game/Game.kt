@@ -10,12 +10,13 @@ class Game(context: Context){
     val item: ItemController = ItemController(fileManager)
     val moves: MoveController = MoveController(fileManager)
     val units: UnitController = UnitController(fileManager)
+    val encounters: EncounterController = EncounterController(fileManager)
 
     fun getValidDialog(): DialogModel{
         val currentPage = dialog.model[player.model.page] ?: dialog.model["invalid"]!!
         val validOptions = arrayListOf<DialogOptionModel>()
         for (option in currentPage.opt){
-            if (Requirement.checkList(player.model, option.req)){
+            if (Requirement.checkList(player.model, option.reqs)){
                 validOptions.add(option)
             }
         }

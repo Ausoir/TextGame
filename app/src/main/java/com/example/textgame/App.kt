@@ -78,51 +78,90 @@ class App : AppCompatActivity() {
         transition(frag)
     }
 
-    private fun viewCombat(page: String, enemy: String, ambush: Boolean){
+    private fun viewCombat(encounter: String, page: String, ambush: Boolean){
         menu?.getItem(0)?.isEnabled = false
         val frag = CombatFragment()
         val bundle = Bundle()
-        val enemyModel = game.units.model[enemy]?.copy() ?: game.units.model["invalid"]!!.copy()
+        val encounterModel = game.encounters.model[encounter] ?: game.encounters.model["invalid"]!!
+        val enemyModels = encounterModel.getEnemies(game.units.model)
+        for (enemyModel in enemyModels){
+            enemyModel.initialize(game.moves.getMoves(enemyModel.moves), 1)
+        }
         if (ambush){
             game.player.model.unit.points = 0
         } else {
             game.player.model.unit.recharge()
         }
         game.player.model.unit.initialize(game.moves.getMoves(game.player.model.unit.moves), 3)
-        enemyModel.initialize(game.moves.getMoves(enemyModel.moves), 1)
         bundle.putParcelable("player", game.player.model)
         bundle.putSerializable("items", game.item.model)
-        bundle.putSerializable("enemy name", enemy)
-        bundle.putSerializable("enemy", enemyModel)
+        bundle.putSerializable("enemies", enemyModels)
+        bundle.putStringArrayList("loots", encounterModel.loots)
+        bundle.putString("desc", encounterModel.desc)
         bundle.putString("page", page)
         frag.arguments = bundle
-        title = getString(R.string.combat_title, enemy.capitalize())
+        title = getString(R.string.combat_title, encounter.capitalize())
         transition(frag)
     }
 
     fun openDialog(to: String){
         if (to.startsWith(":")) {
-            val split = to.split(":")
-            when (split[1]) {
+            val next = to.substring(1)
+            val typeIndex = next.indexOf(":") + 1
+            when (next.substringBefore(":")) {
                 "back" -> {
                     viewPage(game.player.model.prev)
                     viewHome()
                 }
                 "defeat" -> {
+                    val page = next.substringAfter(":")
                     game.player.reset()
-                    viewPage(to)
+                    viewPage(page)
                     viewHome()
                 }
                 "combat" -> {
-                    viewCombat(split[2], split[3], false)
+                    val div = next.substring(typeIndex)
+                    val param = div.substringBefore(":")
+                    val page = div.substringAfter(":")
+                    viewCombat(param, page, false)
                 }
                 "ambush" -> {
-                    viewCombat(split[2], split[3], true)
+                    val div = next.substring(typeIndex)
+                    val param = div.substringBefore(":")
+                    val page = div.substringAfter(":")
+                    viewCombat(param, page, true)
                 }
                 "item" -> {
-                    game.player.model.equipItem(game.item.model, split[3])
-                    viewPage(split[2])
+                    val div = next.substring(typeIndex)
+                    val param = div.substringBefore(":")
+                    val page = div.substringAfter(":")
+                    game.player.model.equipItem(game.item.model, param)
+                    viewPage(page)
                     viewHome()
+                }
+                "useitem" -> {
+                    val itemName = game.player.model.item
+                    game.player.model.item = ""
+                    if (itemName in game.item.model){
+                        val item = game.item.model[itemName]
+                        if (item != null) {
+                            if (item.type == "item") {
+                                if (item.page != null) {
+                                    viewPage(item.page)
+                                    viewHome()
+                                    return
+                                }
+                            } else {
+                                val unequipped = game.player.model.equipItem(game.item.model, itemName)
+                                if (unequipped != null){
+                                    game.player.model.item = unequipped
+                                }
+                            }
+                            val page = next.substringAfter(":")
+                            viewPage(page)
+                            viewHome()
+                        }
+                    }
                 }
             }
         } else {

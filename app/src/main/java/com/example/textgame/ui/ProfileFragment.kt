@@ -40,7 +40,7 @@ class ProfileFragment : Fragment() {
         for (i in moveset.indices){
             val datum = HashMap<String, String>(2)
             datum["Name"] = player.unit.moves[i].capitalize()
-            datum["Description"] = moveset[i].desc
+            datum["Description"] = moveset[i].desc.capitalize()
             items.add(datum)
         }
         listView.adapter = SimpleAdapter(activity as Context, items, android.R.layout.two_line_list_item, arrayOf("Name", "Description"), intArrayOf(android.R.id.text1, android.R.id.text2))

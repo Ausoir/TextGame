@@ -6,7 +6,7 @@ import com.example.textgame.tools.FileManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-data class DialogOptionModel(val to: String, var text: String, var req: Array<String>?): Parcelable{
+data class DialogOptionModel(val to: String, var text: String, var reqs: Array<String>?): Parcelable{
     constructor(parcel: Parcel) : this(
             parcel.readString() ?: "",
             parcel.readString() ?: "",
@@ -16,7 +16,7 @@ data class DialogOptionModel(val to: String, var text: String, var req: Array<St
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(to)
         parcel.writeString(text)
-        parcel.writeSerializable(req)
+        parcel.writeSerializable(reqs)
     }
 
     override fun describeContents(): Int {

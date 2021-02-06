@@ -4,8 +4,11 @@ import com.example.textgame.tools.FileManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
-data class Status(val effect: String, val target: Int, val text: String?, val req: List<Status>?): Serializable{
+data class Status(val effect: String, val target: Int, val text: String?, val reqs: List<Status>?): Serializable{
     fun perform(target: UnitModel){
         when (effect) {
             "stunned" -> {
@@ -15,13 +18,13 @@ data class Status(val effect: String, val target: Int, val text: String?, val re
                 target.points -= 1
             }
             "shuffle" -> {
-                target.deck.shuffle()
+                target.deck?.shuffle()
             }
         }
     }
 }
 
-data class MoveModel(val effects: List<Status>, val req: List<Status>, val speed: Int, val desc: String, val text: String): Serializable{
+data class MoveModel(val effects: List<Status>, val reqs: List<Status>, val speed: Int, val desc: String, val text: String): Serializable{
     companion object {
         lateinit var shuffle: MoveModel
         fun getWait(text: String): MoveModel{
@@ -29,34 +32,49 @@ data class MoveModel(val effects: List<Status>, val req: List<Status>, val speed
         }
     }
 
-    fun perform(me: UnitModel): String{
+    fun getValidTargets(me: UnitModel): ArrayList<UnitModel>{
+        val validList = ArrayList<UnitModel>(me.foes)
+        for (req in reqs){
+            val targets = me.getTargetables(req.target, req.effect)
+            if (targets.isNotEmpty()){
+                for (i in validList.indices.reversed()){
+                    if (validList[i] !in targets){
+                        validList.removeAt(i)
+                    }
+                }
+            }
+        }
+        return validList
+    }
+
+    fun perform(me: UnitModel, everyone: ArrayList<UnitModel>): String{
         var damage = false
         val results = arrayListOf<String>()
         for (status in effects) {
-            val reqText = if (status.req != null) {
-                me.isReqMet(status.req)
+            val reqText = if (status.reqs != null) {
+                me.isReqMet(status.reqs)
             } else {
                 ""
             }
             if (reqText.isEmpty()){
+                if (status.effect == "wounded"){
+                    damage = true
+                }
                 when (status.target) {
                     1 -> {
                         me.status.add(status.effect)
                         status.perform(me)
+                        if (status.effect == "run"){
+                            return "run"
+                        }
                     }
                     2 -> {
-                        if (status.effect == "wounded"){
-                            damage = true
-                        }
                         if (me.target != null) {
                             me.target!!.status.add(status.effect)
                             status.perform(me.target!!)
                         }
                     }
                     3 -> {
-                        if (status.effect == "wounded"){
-                            damage = true
-                        }
                         me.status.add(status.effect)
                         status.perform(me)
                         if (me.target != null) {
@@ -64,15 +82,52 @@ data class MoveModel(val effects: List<Status>, val req: List<Status>, val speed
                             status.perform(me.target!!)
                         }
                     }
+                    4 -> { //allies
+                        for (someone in everyone) {
+                            if (someone !in me.foes) {
+                                someone.status.add(status.effect)
+                                status.perform(someone)
+                            }
+                        }
+                    }
+                    5 -> { //foes
+                        for (someone in me.foes) {
+                            someone.status.add(status.effect)
+                            status.perform(someone)
+                        }
+                    }
+                    6 -> { //all
+                        for (someone in everyone) {
+                            someone.status.add(status.effect)
+                            status.perform(someone)
+                        }
+                    }
                     -1 -> {
-                        me.status.remove(status.effect)
+                        me.status.removeAll(Collections.singleton(status.effect))
                     }
                     -2 -> {
-                        me.target?.status?.remove(status.effect)
+                        me.target?.status?.removeAll(Collections.singleton(status.effect))
                     }
                     -3 -> {
-                        me.status.remove(status.effect)
-                        me.target?.status?.remove(status.effect)
+                        me.status.removeAll(Collections.singleton(status.effect))
+                        me.target?.status?.removeAll(Collections.singleton(status.effect))
+                    }
+                    -4 -> { //allies
+                        for (someone in everyone) {
+                            if (someone !in me.foes) {
+                                someone.status.removeAll(Collections.singleton(status.effect))
+                            }
+                        }
+                    }
+                    -5 -> { //foes
+                        for (enemy in me.foes) {
+                            enemy.status.removeAll(Collections.singleton(status.effect))
+                        }
+                    }
+                    -6 -> { //all
+                        for (someone in everyone) {
+                            someone.status.removeAll(Collections.singleton(status.effect))
+                        }
                     }
                 }
                 if (!status.text.isNullOrEmpty()) {
@@ -92,12 +147,9 @@ data class MoveModel(val effects: List<Status>, val req: List<Status>, val speed
                 it
             }
         }
+        result = "$result.\n"
         if (damage){
-            val health = me.target!!.getHealth()
-            if (health == "dead"){
-                return health
-            }
-            result += ".\n%f ${health}."
+            result += "%f ${me.target!!.getHealth()}.\n"
         }
         return result
     }
