@@ -8,9 +8,19 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-data class Status(val effect: String, val target: Int, val text: String?, val reqs: List<Status>?): Serializable{
-    fun perform(target: UnitModel){
+data class Status(val effect: String, val target: Int, val value: Int?, val text: String?, val reqs: List<Status>?): Serializable{
+    fun perform(target: UnitModel): String{
+        var result = ""
+        var textValue = 0
         when (effect) {
+            "wounded" -> {
+                textValue = value ?: 1
+                target.chealth -= textValue
+                val healthDesc = target.getHealthDescription()
+                if (healthDesc.isNotEmpty()) {
+                    result += "$healthDesc\n"
+                }
+            }
             "stunned" -> {
                 target.points = 0
             }
@@ -21,6 +31,21 @@ data class Status(val effect: String, val target: Int, val text: String?, val re
                 target.deck?.shuffle()
             }
         }
+        if (text != null){
+            result += if (textValue > 0){
+                "${text.replace("%v", "$textValue")}\n"
+            } else {
+                "$text\n"
+            }
+        }
+        return result
+    }
+
+    fun unperform(target: UnitModel, effect: String): String{
+        if (effect in target.status && text != null){
+            return "$text\n"
+        }
+        return ""
     }
 }
 
@@ -48,8 +73,7 @@ data class MoveModel(val effects: List<Status>, val reqs: List<Status>, val spee
     }
 
     fun perform(me: UnitModel, everyone: ArrayList<UnitModel>): String{
-        var damage = false
-        val results = arrayListOf<String>()
+        var result = ""
         for (status in effects) {
             val reqText = if (status.reqs != null) {
                 me.isReqMet(status.reqs)
@@ -57,13 +81,10 @@ data class MoveModel(val effects: List<Status>, val reqs: List<Status>, val spee
                 ""
             }
             if (reqText.isEmpty()){
-                if (status.effect == "wounded"){
-                    damage = true
-                }
                 when (status.target) {
                     1 -> {
                         me.status.add(status.effect)
-                        status.perform(me)
+                        result += status.perform(me)
                         if (status.effect == "run"){
                             return "run"
                         }
@@ -71,85 +92,82 @@ data class MoveModel(val effects: List<Status>, val reqs: List<Status>, val spee
                     2 -> {
                         if (me.target != null) {
                             me.target!!.status.add(status.effect)
-                            status.perform(me.target!!)
+                            result += status.perform(me.target!!)
                         }
                     }
                     3 -> {
                         me.status.add(status.effect)
-                        status.perform(me)
+                        result += status.perform(me)
                         if (me.target != null) {
                             me.target!!.status.add(status.effect)
-                            status.perform(me.target!!)
+                            result += status.perform(me.target!!)
                         }
                     }
                     4 -> { //allies
                         for (someone in everyone) {
                             if (someone !in me.foes) {
                                 someone.status.add(status.effect)
-                                status.perform(someone)
+                                result += status.perform(someone)
                             }
                         }
                     }
                     5 -> { //foes
                         for (someone in me.foes) {
                             someone.status.add(status.effect)
-                            status.perform(someone)
+                            result += status.perform(someone)
                         }
                     }
                     6 -> { //all
                         for (someone in everyone) {
                             someone.status.add(status.effect)
-                            status.perform(someone)
+                            result += status.perform(someone)
                         }
                     }
                     -1 -> {
+                        result += status.unperform(me, status.effect)
                         me.status.removeAll(Collections.singleton(status.effect))
                     }
                     -2 -> {
-                        me.target?.status?.removeAll(Collections.singleton(status.effect))
+                        if (me.target != null) {
+                            result += status.unperform(me.target!!, status.effect)
+                            me.target!!.status.removeAll(Collections.singleton(status.effect))
+                        }
                     }
                     -3 -> {
+                        result += status.unperform(me, status.effect)
                         me.status.removeAll(Collections.singleton(status.effect))
-                        me.target?.status?.removeAll(Collections.singleton(status.effect))
+                        if (me.target != null) {
+                            result += status.unperform(me.target!!, status.effect)
+                            me.target?.status?.removeAll(Collections.singleton(status.effect))
+                        }
                     }
                     -4 -> { //allies
                         for (someone in everyone) {
                             if (someone !in me.foes) {
+                                result += status.unperform(someone, status.effect)
                                 someone.status.removeAll(Collections.singleton(status.effect))
                             }
                         }
                     }
                     -5 -> { //foes
                         for (enemy in me.foes) {
+                            result += status.unperform(enemy, status.effect)
                             enemy.status.removeAll(Collections.singleton(status.effect))
                         }
                     }
                     -6 -> { //all
                         for (someone in everyone) {
+                            result += status.unperform(someone, status.effect)
                             someone.status.removeAll(Collections.singleton(status.effect))
                         }
                     }
                 }
-                if (!status.text.isNullOrEmpty()) {
-                    results.add(status.text)
-                }
             } else {
-                results.add(reqText)
+                result += reqText
             }
         }
-        if (results.isEmpty()){
-            return ""
-        }
-        var result = results.joinToString {
-            if (results.size > 1 && it == results.last()) {
-                "and $it"
-            } else {
-                it
-            }
-        }
-        result = "$result.\n"
-        if (damage){
-            result += "%f ${me.target!!.getHealth()}.\n"
+        if (result.isNotEmpty()) {
+            result = "$result"
         }
         return result
     }

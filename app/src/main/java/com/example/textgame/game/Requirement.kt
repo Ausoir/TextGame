@@ -13,15 +13,40 @@ object Requirement{
     }
 
     private fun check(model: PlayerModel, req: String): Boolean{
-        return when (req) {
-            model.getTime() -> {
+        return when {
+            req == model.getTime() -> {
                 true
             }
-            "daytime" -> {
+            req == "daytime" -> {
                 model.getTime() in listOf("early morning", "morning", "evening")
             }
-            "nighttime" -> {
+            req == "nighttime" -> {
                 model.getTime() in listOf("night", "late night")
+            }
+            req == "item" -> {
+                model.item.isNotEmpty()
+            }
+            req == "!item" -> {
+                model.item.isEmpty()
+            }
+            req.startsWith("var:") -> {
+                val split = req.split(":")
+                model.vars[split[1]] == split[2]
+            }
+            req.startsWith("seed%") -> {
+                model.seed % req.substringAfter("seed%").toInt() == 0
+            }
+            req.startsWith("money>=") -> {
+                model.money >= req.substringAfter("money>=").toInt()
+            }
+            req.startsWith("money<=") -> {
+                model.money <= req.substringAfter("money<=").toInt()
+            }
+            req.startsWith("money<") -> {
+                model.money < req.substringAfter("money<").toInt()
+            }
+            req.startsWith("money>") -> {
+                model.money > req.substringAfter("money>").toInt()
             }
             else -> {
                 false

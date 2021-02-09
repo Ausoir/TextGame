@@ -5,10 +5,11 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
 
-data class UnitModel(val name: String, val speed: Int, val moves: MutableList<String>,
-                     val status: ArrayList<String>, val health: List<String>): Serializable{
+data class UnitModel(val name: String, val speed: Int, val health: Int, val moves: MutableList<String>,
+                     val status: ArrayList<String>, val flavors: HashMap<String, String>): Serializable{
     lateinit var foes: ArrayList<UnitModel>
     var points = speed
+    var chealth = 1
     var target: UnitModel? = null
     var deck: Deck? = null
 
@@ -22,7 +23,7 @@ data class UnitModel(val name: String, val speed: Int, val moves: MutableList<St
     }
 
     fun copy(): UnitModel{
-        return UnitModel(name, speed, moves.toMutableList(), ArrayList(status), health.toMutableList())
+        return UnitModel(name, speed, health, moves.toMutableList(), ArrayList(status), HashMap(flavors))
     }
 
     fun processStatus() {
@@ -30,15 +31,31 @@ data class UnitModel(val name: String, val speed: Int, val moves: MutableList<St
     }
 
     fun isDead(): Boolean{
-        return status.count{ it == "wounded" } == health.size
+        return chealth <= 0
     }
 
-    fun getHealth(): String{
-        val wounds = status.count{ it == "wounded" } - 1
-        return if (wounds < health.size) {
-            health[wounds]
-        } else {
-            health.last()
+    fun getHealthPercentage(): Int{
+        return ((chealth / health.toDouble()) * 100).toInt()
+    }
+
+    fun getHealthDescription(): String{
+        val percentage = getHealthPercentage()
+        return when {
+            percentage <= 0 -> {
+                flavors["death"] ?: "It collapses."
+            }
+            percentage <= 25 -> {
+                flavors["dying"] ?: "It is almost dead."
+            }
+            percentage <= 50 -> {
+                flavors["hurt"] ?: "It is wounded."
+            }
+            percentage <= 75 -> {
+                flavors["grazed"] ?: "It is lightly wounded."
+            }
+            else -> {
+                ""
+            }
         }
     }
 

@@ -3,22 +3,23 @@ package com.example.textgame.game
 class Deck(var me: UnitModel, val moves: ArrayList<MoveModel>, handSize: Int) {
     private val discard = arrayListOf<Int>()
     private var hand = IntArray(handSize)
+    private var queue = arrayListOf<Int>()
 
     fun incHand(place: Int){
         discard.add(hand[place])
-        var resultIndex = hand[place] + 1
-        while (resultIndex in hand || resultIndex in discard){
-            resultIndex += 1
+        if (queue.isNotEmpty()){
+            hand[place] = queue.removeAt(0)
+        } else {
+            hand[place] = -1
         }
-        hand[place] = resultIndex
     }
 
     fun getCard(place: Int): MoveModel{
         return when {
-            hand[place] > moves.size -> {
+            hand[place] == -1 -> {
                 MoveModel.getWait("")
             }
-            hand[place] == moves.size -> {
+            hand[place] == -2 -> {
                 MoveModel.shuffle
             }
             me.isReqMet(moves[hand[place]].reqs).isEmpty() -> {
@@ -37,10 +38,15 @@ class Deck(var me: UnitModel, val moves: ArrayList<MoveModel>, handSize: Int) {
     }
 
     fun shuffle(){
+        queue.clear()
         discard.clear()
-        moves.shuffle()
+        for (i in moves.indices){
+            queue.add(i)
+        }
+        queue.shuffle()
+        queue.add(-2)
         for (i in hand.indices){
-            hand[i] = i
+            hand[i] = queue.removeAt(0)
         }
     }
 

@@ -47,7 +47,7 @@ class EquipmentFragment : Fragment() {
             }
             addButton(buttonDesc).setOnClickListener {
                 val app: App = activity as App
-                app.openDialog(":useitem:back:")
+                app.openDialog(":useitem::back")
             }
         }
         textView.text = description

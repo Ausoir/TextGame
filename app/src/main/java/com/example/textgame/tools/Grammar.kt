@@ -51,4 +51,13 @@ object Grammar {
             }
         }
     }
+    fun ordinalIndexOf(str: String, substr: String?, nth: Int): Int {
+        var i = nth
+        var pos = str.indexOf(substr!!)
+        while (--i > 0 && pos != -1) pos = str.indexOf(substr, pos + 1)
+        return pos
+    }
+    fun substringAfter(str: String, substr: String?, nth: Int): String{
+        return str.substring(ordinalIndexOf(str, substr, nth) + 1)
+    }
 }

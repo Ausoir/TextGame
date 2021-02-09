@@ -28,12 +28,7 @@ class HomeFragment : Fragment() {
         layout = root.findViewById(R.id.home_button_container) as LinearLayout
         val currentPage = arguments?.getParcelable<DialogModel>("page")
         if (currentPage != null) {
-            val time = arguments?.getString("time")
-            if (time != null) {
-                textView.text = currentPage.text.replace("%time", "\nIt is now $time.\n")
-            } else {
-                textView.text = currentPage.text.replace("%time", "")
-            }
+            textView.text = currentPage.text
             val options = currentPage.opt
             options.forEach { option ->
                 addButton(option.text).setOnClickListener {

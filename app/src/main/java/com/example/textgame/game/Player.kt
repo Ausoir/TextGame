@@ -6,10 +6,11 @@ import com.example.textgame.tools.FileManager
 import com.example.textgame.tools.Grammar
 import com.google.gson.Gson
 
-data class PlayerModel(val name: String, var page: String, var prev : String, var time: Int, var money: Int,
-                       var equip: ArrayList<String>, var item: String, var unit: UnitModel) : Parcelable {
+data class PlayerModel(var seed: Int, val name: String, var page: String, var prev : String, var time: Int, var money: Int,
+                       var equip: ArrayList<String>, var item: String, val vars: HashMap<String, String>, var unit: UnitModel) : Parcelable {
     @Suppress("JAVA_CLASS_ON_COMPANION")
     constructor(parcel: Parcel) : this(
+        parcel.readInt(),
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
@@ -17,10 +18,19 @@ data class PlayerModel(val name: String, var page: String, var prev : String, va
         parcel.readInt(),
             parcel.readArrayList(String.javaClass.classLoader) as ArrayList<String>,
         parcel.readString() ?: "",
+            parcel.readSerializable() as HashMap<String, String>,
         parcel.readSerializable() as UnitModel
     )
 
+    fun gameStart(){
+        if (seed == -1){
+            seed = (0..9999).random()
+        }
+        unit.chealth = unit.health
+    }
+
     override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeInt(seed)
         dest.writeString(name)
         dest.writeString(page)
         dest.writeString(prev)
@@ -28,6 +38,7 @@ data class PlayerModel(val name: String, var page: String, var prev : String, va
         dest.writeInt(money)
         dest.writeList(equip)
         dest.writeString(item)
+        dest.writeSerializable(vars)
         dest.writeSerializable(unit)
     }
 
@@ -51,6 +62,12 @@ data class PlayerModel(val name: String, var page: String, var prev : String, va
     fun isDay(): Boolean{
         val hour = time % 24
         return hour in 6..19
+    }
+
+    fun sell(items: HashMap<String, ItemModel>){
+        val itemModel: ItemModel = items[item] ?: return
+        item = ""
+        money += itemModel.value
     }
 
     fun equipItem(items: HashMap<String, ItemModel>, itemName: String): String?{
@@ -104,6 +121,10 @@ data class PlayerModel(val name: String, var page: String, var prev : String, va
             result += "You are carrying ${Grammar.getArticle(item)}.\n"
         }
         result += "You have $${money}.\n"
+        if ("wounded" in unit.status){
+            val percentage = unit.getHealthPercentage().toString()
+            result += "You are wounded ($percentage%)\n"
+        }
         return result
     }
 
@@ -124,8 +145,14 @@ class Player(private val fileManager: FileManager) {
 
     private fun make(data: String?): PlayerModel {
         val gson = Gson()
-        val finalData: String = data ?: fileManager.readAsset("template.json") !!
-        return gson.fromJson(finalData, PlayerModel::class.java)
+        return if (data == null){
+            val finalData: String = fileManager.readAsset("template.json") !!
+            val player = gson.fromJson(finalData, PlayerModel::class.java)
+            player.gameStart()
+            player
+        } else {
+            gson.fromJson(data, PlayerModel::class.java)
+        }
     }
 
     fun timePass(time: Int){

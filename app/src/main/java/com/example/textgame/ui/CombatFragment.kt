@@ -26,6 +26,7 @@ class CombatFragment : Fragment() {
     private lateinit var scrollView: ScrollView
     private lateinit var loots: ArrayList<String>
     private lateinit var page: String
+    private lateinit var defeat: String
     private lateinit var player: PlayerModel
     private lateinit var items: HashMap<String, ItemModel>
     private lateinit var textView: TextView
@@ -60,6 +61,7 @@ class CombatFragment : Fragment() {
         combatants.add(player.unit)
         combatants.addAll(player.unit.foes)
         page = arguments?.getString("page") ?: "back"
+        defeat = arguments?.getString("defeat") ?: "defeat"
         textView.text = arguments?.getString("desc") ?: ""
         textView.append("\n\n")
         if ("sneak" in player.unit.moves && player.unit.points > 0){
@@ -83,10 +85,6 @@ class CombatFragment : Fragment() {
         }
         val feedback = move.perform(me, combatants)
         when {
-            feedback == "run" -> {
-                turn = -1
-                me.points = 0
-            }
             feedback.isNotEmpty() -> {
                 text += feedback
                 textView.append(replaceNouns(text, me))
@@ -125,16 +123,21 @@ class CombatFragment : Fragment() {
                 val hand = player.unit.deck!!.getCard(i)
                 val foe = hand.getValidTargets(player.unit).shuffled()[0]
                 player.unit.target = foe
-                button[2 - i].text = replaceNouns(hand.text, player.unit)
-                button[2 - i].setOnClickListener {
-                    player.unit.target = foe
-                    turnAction(hand, player.unit)
-                    if (hand != MoveModel.shuffle) {
-                        player.unit.deck!!.draw(i)
-                    }
-                    player.unit.deck!!.validate()
-                    if (!checkBattleEnd()) {
-                        playerTurn()
+                if (hand.text.isEmpty()){
+                    button[2 - i].text = ""
+                    button[2 - i].setOnClickListener {}
+                } else {
+                    button[2 - i].text = replaceNouns(hand.text, player.unit)
+                    button[2 - i].setOnClickListener {
+                        player.unit.target = foe
+                        turnAction(hand, player.unit)
+                        if (hand != MoveModel.shuffle) {
+                            player.unit.deck!!.draw(i)
+                        }
+                        player.unit.deck!!.validate()
+                        if (!checkBattleEnd()) {
+                            playerTurn()
+                        }
                     }
                 }
             }
@@ -153,9 +156,6 @@ class CombatFragment : Fragment() {
     }
 
     private fun nextTurn(){
-        if (turn == -1){
-            escape()
-        }
         turn += 1
         if (turn >= combatants.size) {
             turn = 0
@@ -259,11 +259,11 @@ class CombatFragment : Fragment() {
         }
         textView.append(resources.getString(R.string.victory))
         val proceed = button[2]
-        val pickup = button[1]
         layout.removeAllViews()
         if (loots.isNotEmpty()) {
             val loot = loots.shuffled()[0]
             if (loot.isNotEmpty() && loot != player.item) {
+                val pickup = button[1]
                 pickup.text = if (player.item.isEmpty()) {
                     "Pick up $loot"
                 } else {
@@ -274,6 +274,7 @@ class CombatFragment : Fragment() {
                     val app: App = activity as App
                     app.openDialog(page)
                 }
+                layout.addView(pickup)
             }
         }
         proceed.text = resources.getString(R.string.proceed)
@@ -282,7 +283,6 @@ class CombatFragment : Fragment() {
             app.openDialog(page)
         }
         layout.addView(proceed)
-        layout.addView(pickup)
         scrollView.scrollToBottom()
     }
 
@@ -293,20 +293,7 @@ class CombatFragment : Fragment() {
         proceed.text = resources.getString(R.string.proceed)
         proceed.setOnClickListener {
             val app: App = activity as App
-            app.openDialog("defeat")
-        }
-        layout.addView(proceed)
-        scrollView.scrollToBottom()
-    }
-
-    private fun escape(){
-        textView.append(resources.getString(R.string.escape))
-        val proceed = button[2]
-        layout.removeAllViews()
-        proceed.text = resources.getString(R.string.proceed)
-        proceed.setOnClickListener {
-            val app: App = activity as App
-            app.openDialog(page)
+            app.openDialog(defeat)
         }
         layout.addView(proceed)
         scrollView.scrollToBottom()

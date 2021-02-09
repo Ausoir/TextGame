@@ -11,23 +11,25 @@ class Game(context: Context){
     val moves: MoveController = MoveController(fileManager)
     val units: UnitController = UnitController(fileManager)
     val encounters: EncounterController = EncounterController(fileManager)
+    val variables: VariableController = VariableController(fileManager)
+    private var varMap = hashMapOf("%time" to player.model.getTime(),
+            "%itemValue" to "${item.model[player.model.item]?.value}", "%item" to player.model.item
+    )
 
-    fun getValidDialog(): DialogModel{
-        val currentPage = dialog.model[player.model.page] ?: dialog.model["invalid"]!!
-        val validOptions = arrayListOf<DialogOptionModel>()
-        for (option in currentPage.opt){
-            if (Requirement.checkList(player.model, option.reqs)){
-                validOptions.add(option)
-            }
-        }
-        return DialogModel(currentPage.title, currentPage.text, validOptions)
+    init {
+        val shopItem = variables.getRandom("Ant Hill Shop", player.model.seed + player.model.time)
+        varMap["%AntHillShopItem"] = shopItem
+        varMap["%AntHillShopValue"] = "${item.model[shopItem]?.value}"
     }
 
-//    fun getCustomDialog(text: String, options: ArrayList<String>): DialogModel{
-//        val optionModels = ArrayList<DialogOptionModel>(options.size)
-//        for (i in options.indices){
-//            optionModels[i] = DialogOptionModel(to, text, req)
-//        }
-//        return DialogModel("", text, validOptions)
-//    }
+    fun getVarMap(vars: List<String>?): ArrayList<String?>{
+        if (vars == null){
+            return ArrayList()
+        }
+        val result = ArrayList<String?>()
+        for (v in vars){
+            result.add(varMap[v])
+        }
+        return result
+    }
 }

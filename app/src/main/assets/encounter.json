@@ -4,6 +4,11 @@
     "units": ["invalid"],
     "loots": []
   },
+  "wolf spiders": {
+    "desc": "Two large spiders covered in gray hair stares at you with 6 evil red eyes. They are as big as you are and their mandibles are thicker than your arm. You are having a hard time just standing still. Your brain is telling you to run, but it is too late. You can't run from those.",
+    "units": ["wolf spider", "wolf spider"],
+    "loots": []
+  },
   "lonely ant": {
     "desc": "It's an ant almost as tall as your knees. It constantly wiggles both of its long antennae on its head. Ants are usually not too aggressive, but this one seems to be startled by your presence.",
     "units": ["ant", "ant"],

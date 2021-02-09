@@ -23,35 +23,6 @@
     "desc": "the trademarked action for the undisciplined.",
     "text": "hesitate%s"
   },
-  "run away": {
-    "effects": [
-      {
-        "effect": "run",
-        "target": 1,
-        "reqs": [{
-          "effect": "50",
-          "target": 0,
-          "text": "%u fail%s to run away!"
-        }]
-      },
-      {
-        "effect": "stunned",
-        "target": 1
-      }
-    ],
-    "reqs": [
-      {
-        "effect": "range",
-        "target": 1
-      },
-      {
-        "effect": "injury",
-        "target": -1
-      }
-    ],
-    "desc": "run away from battle.",
-    "text": "run%s away"
-  },
   "engage": {
     "effects": [
       {
@@ -79,16 +50,25 @@
   "grab": {
     "effects": [
       {
+        "effect": "dodge",
+        "target": -1,
+        "text": "%u stop trying to dodge."
+      },
+      {
         "effect": "wrestle",
         "target": 2,
-        "text": "%fr grabbed",
+        "text": "%fr grabbed.",
         "reqs": [
           {
             "effect": "dodge",
             "target": -2,
-            "text": "%f dodge%!s the grab"
+            "text": "%f dodge%!s the grab."
           }
         ]
+      },
+      {
+        "effect": "wrestle",
+        "target": 1
       }
     ],
     "reqs": [
@@ -136,7 +116,7 @@
     "reqs": [
       {
         "effect": "wrestle",
-        "target": -1
+        "target": -3
       },
       {
         "effect": "dodge",
@@ -167,7 +147,7 @@
         {
           "effect": "dodge",
           "target": -2,
-          "text": "%f dodge%!s the stun"
+          "text": "%f dodge%!s the stun."
         }
       ]
     }],
@@ -182,7 +162,8 @@
     "effects": [{
       "effect": "wounded",
       "target": 2,
-      "text": "%fr gouged by the grab attack"
+      "value": 1,
+      "text": "%fr gouged by the grab attack!"
     }],
     "reqs": [{
       "effect": "wrestle",
@@ -215,12 +196,12 @@
     "effects": [{
       "effect": "wounded",
       "target": 2,
-      "text": "%fr hit by the projectile",
+      "text": "%fr hit by the projectile!",
       "reqs": [
         {
           "effect": "dodge",
           "target": -2,
-          "text": "%f dodge%!s"
+          "text": "%f dodge%!s."
         }
       ]
     }],
@@ -235,12 +216,12 @@
     "effects": [{
       "effect": "wounded",
       "target": 2,
-      "text": "%fr hit by the projectile",
+      "text": "%fr hit by the projectile!",
       "reqs": [
         {
           "effect": "dodge",
           "target": -2,
-          "text": "%f dodge%!s"
+          "text": "%f dodge%!s."
         }
       ]
     }],
@@ -255,12 +236,12 @@
     "effects": [{
       "effect": "wounded",
       "target": 2,
-      "text": "%fr impaled by the %w",
+      "text": "%fr impaled by the %w!",
       "reqs": [
         {
           "effect": "dodge",
           "target": -2,
-          "text": "%f dodge%!s"
+          "text": "%f dodge%!s."
         }
       ]
     }],
@@ -275,12 +256,12 @@
     "effects": [{
       "effect": "wounded",
       "target": 2,
-      "text": "%fr hit by the %w",
+      "text": "%fr hit by the %w!",
       "reqs": [
         {
           "effect": "dodge",
           "target": -2,
-          "text": "%f dodge%!s the %w"
+          "text": "%f dodge%!s the %w."
         }
       ]
     }],
@@ -295,12 +276,12 @@
     "effects": [{
       "effect": "injury",
       "target": 2,
-      "text": "%fr entangled by the blood drop",
+      "text": "%fr entangled by the blood drop.",
       "reqs": [
         {
           "effect": "dodge",
           "target": -2,
-          "text": "%f dodge%!s the incoming blood drop"
+          "text": "%f dodge%!s the incoming blood drop."
         }
       ]
     }],
@@ -324,12 +305,12 @@
     "effects": [{
       "effect": "wounded",
       "target": 2,
-      "text": "%u bite%s %f with %us mandibles",
+      "text": "%u bite%s %f with %us mandibles!",
       "reqs": [
         {
           "effect": "dodge",
           "target": -2,
-          "text": "%f dodge%!s the bite"
+          "text": "%f dodge%!s the bite."
         }
       ]
     }],
@@ -344,7 +325,7 @@
     "effects": [{
       "effect": "dazed",
       "target": 2,
-      "text": "%f lose a turn by the faint"
+      "text": "%f lose a turn by the faint."
     }],
     "reqs": [],
     "desc": "",

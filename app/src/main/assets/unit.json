@@ -2,22 +2,44 @@
   "invalid": {
     "name": "invalid",
     "speed": 0,
+    "health": 0,
     "moves": ["shuffle"],
     "status": [],
-    "health": []
+    "flavors": {}
+  },
+  "wolf spider": {
+    "name": "wolf spider",
+    "speed": 2,
+    "health": 8,
+    "moves": ["mandible bite", "grab", "engage", "stun"],
+    "status": [],
+    "flavors": {
+      "grazed": "it is dented.",
+      "hurt": "it is limping its legs.",
+      "death": "it rolls belly up and curls inward."
+    }
   },
   "ant": {
     "name": "ant",
     "speed": 1,
+    "health": 2,
     "moves": ["mandible bite", "wiggle", "grab", "engage"],
     "status": [],
-    "health": ["is dented", "is limping its legs", "rolls belly up and curls inward."]
+    "flavors": {
+      "grazed": "it is dented.",
+      "hurt": "it is limping its legs.",
+      "death": "it rolls belly up and curls inward."
+    }
   },
   "ragequito": {
     "name": "ragequito",
     "speed": 1,
+    "health": 3,
     "moves": ["grab"],
     "status": [],
-    "health": ["flaps its wings furiously", "falls"]
+    "flavors": {
+      "hurt": "it flaps its wings furiously.",
+      "death": "it falls."
+    }
   }
 }
