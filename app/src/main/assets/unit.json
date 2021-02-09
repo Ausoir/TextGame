@@ -14,9 +14,9 @@
     "moves": ["mandible bite", "grab", "engage", "stun"],
     "status": [],
     "flavors": {
-      "grazed": "it is dented.",
+      "grazed": "it looks furious.",
       "hurt": "it is limping its legs.",
-      "death": "it rolls belly up and curls inward."
+      "death": "it rolls belly up and skitters its legs, and slowly stops moving."
     }
   },
   "ant": {

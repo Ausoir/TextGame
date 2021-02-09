@@ -142,7 +142,7 @@
     "effects": [{
       "effect": "stunned",
       "target": 2,
-      "text": "%fr stunned",
+      "text": "%fr stunned.",
       "reqs": [
         {
           "effect": "dodge",
@@ -163,7 +163,7 @@
       "effect": "wounded",
       "target": 2,
       "value": 1,
-      "text": "%fr gouged by the grab attack!"
+      "text": "%fr gouged by the grab attack for %v damage!"
     }],
     "reqs": [{
       "effect": "wrestle",
@@ -196,7 +196,7 @@
     "effects": [{
       "effect": "wounded",
       "target": 2,
-      "text": "%fr hit by the projectile!",
+      "text": "%fr hit by the projectile for %v damage!",
       "reqs": [
         {
           "effect": "dodge",
@@ -216,7 +216,7 @@
     "effects": [{
       "effect": "wounded",
       "target": 2,
-      "text": "%fr hit by the projectile!",
+      "text": "%fr hit by the projectile for %v damage!",
       "reqs": [
         {
           "effect": "dodge",
@@ -236,7 +236,7 @@
     "effects": [{
       "effect": "wounded",
       "target": 2,
-      "text": "%fr impaled by the %w!",
+      "text": "%fr impaled by the %w for %v damage!",
       "reqs": [
         {
           "effect": "dodge",
@@ -256,7 +256,7 @@
     "effects": [{
       "effect": "wounded",
       "target": 2,
-      "text": "%fr hit by the %w!",
+      "text": "%fr hit by the %w for %v damage!",
       "reqs": [
         {
           "effect": "dodge",
@@ -271,6 +271,26 @@
     }],
     "desc": "swing your weapon at the enemy.",
     "text": "swing%s %us %w at %f"
+  },
+  "bola throw": {
+    "effects": [{
+      "effect": "injury",
+      "target": 2,
+      "text": "%fr entangled by the bolas!",
+      "value": 3,
+      "reqs": [
+        {
+          "effect": "dodge",
+          "target": -2
+        }
+      ]
+    }],
+    "reqs": [{
+      "effect": "range",
+      "target": 1
+    }],
+    "desc": "throw a bola at the enemy.",
+    "text": "throw%s %us %w at %f"
   },
   "use blood drop": {
     "effects": [{

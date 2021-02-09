@@ -1,14 +1,15 @@
 {
   "seed": -1,
-  "name": "You",
-  "page": "Start1",
-  "prev": "Start1",
   "time": 10,
   "money": 0,
-  "location": "Ant Hill",
+  "damaged": 0,
   "equip": ["silk robe"],
   "item": "",
   "vars": {
+    "name": "You",
+    "page": "Start",
+    "prev": "Start",
+    "chapter": "1",
     "quest": "0"
   },
   "unit": {
@@ -18,8 +19,10 @@
     "moves": ["hesitate", "dodge","engage", "grab", "disengage", "panic", "gouge", "run away"],
     "status": [],
     "flavors": {
+      "grazed": "you are lightly wounded.",
       "hurt": "you are wounded.",
-      "dead": "you fall unconscious."
+      "dying": "you are seriously wounded.",
+      "death": "you fall unconscious."
     }
   }
 }

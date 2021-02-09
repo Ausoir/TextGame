@@ -2,7 +2,6 @@ package com.example.textgame.game
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.textgame.App
 import com.example.textgame.tools.FileManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -106,8 +105,8 @@ data class DialogModel(val title: String, val text: String, val filler: List<Str
     }
 }
 
-class DialogController(fileManager: FileManager) {
-    val model = makeDialog(fileManager.readAsset("dialog.json") !!)
+class DialogController(fileManager: FileManager, chapter: String) {
+    val model = makeDialog(fileManager.readAsset("chapters/$chapter.json") !!)
 
     fun makeDialog(data: String): HashMap<String, DialogModel> {
         val listType = object : TypeToken<HashMap<String, DialogModel>?>() {}.type

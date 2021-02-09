@@ -47,6 +47,18 @@
     "desc": "a rose spike.",
     "moves": ["stab"]
   },
+  "web bolas": {
+    "type": "weapon",
+    "value": 2,
+    "desc": "a bola made with spiderwebs. Can be thrown to entangle and swung to damage.",
+    "moves": ["bola throw", "swing"]
+  },
+  "sharp stick": {
+    "type": "weapon",
+    "value": 2,
+    "desc": "a rose spike.",
+    "moves": ["stab"]
+  },
   "silk robe": {
     "type": "robe",
     "value": 0,

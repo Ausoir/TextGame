@@ -37,12 +37,12 @@ class App : AppCompatActivity() {
         menu?.getItem(0)?.isEnabled = true
         val frag = HomeFragment()
         val bundle = Bundle()
-        val currentPage = game.dialog.model[game.player.model.page] ?: game.dialog.model["invalid"]!!
+        val currentPage = game.dialog.model[game.player.model.vars["page"]!!] ?: game.dialog.model["invalid"]!!
         val args = game.getVarMap(currentPage.filler)
         val dialog = currentPage.fillVariables(args).validate(game.player.model)
         bundle.putParcelable("page", dialog)
         frag.arguments = bundle
-        title = game.dialog.model[game.player.model.page]?.title ?: ""
+        title = game.dialog.model[game.player.model.vars["page"]!!]?.title ?: ""
         transition(frag)
     }
 
@@ -79,6 +79,7 @@ class App : AppCompatActivity() {
             enemyModel.initialize(game.moves.getMoves(enemyModel.moves), 1)
             enemyModel.chealth = enemyModel.health
         }
+        game.player.model.unit.chealth = game.player.model.unit.health - game.player.model.damaged
         if (ambush){
             game.player.model.unit.points = 0
         } else {
@@ -109,12 +110,15 @@ class App : AppCompatActivity() {
                     openDialog(game.player.model.vars[split[2]] ?: "invalid")
                 }
                 "back" -> {
-                    viewPage(game.player.model.prev)
+                    viewPage(game.player.model.vars["prev"]!!)
                     viewHome()
                 }
                 "defeat" -> {
                     game.player.reset()
                     openDialog(Grammar.substringAfter(to, ":", 2))
+                }
+                "encounter" -> {
+                    viewCombat(split[2], split[3], Grammar.substringAfter(to, ":", 4), false)
                 }
                 "combat" -> {
                     val encounter = game.variables.getRandom(split[2])
@@ -161,6 +165,10 @@ class App : AppCompatActivity() {
                         }
                     }
                 }
+                "refreshChapter" -> {
+                    game.refreshChapter()
+                    openDialog(Grammar.substringAfter(to, ":", 2))
+                }
             }
         } else {
             viewPage(to)
@@ -169,8 +177,8 @@ class App : AppCompatActivity() {
     }
 
     private fun viewPage(newPage: String){
-        game.player.model.prev = game.player.model.page
-        game.player.model.page = newPage
+        game.player.model.vars["prev"] = game.player.model.vars["page"]!!
+        game.player.model.vars["page"] = newPage
         game.player.save()
         title = getString(R.string.page_title, game.player.model.getTime().capitalize(), game.dialog.model[newPage]?.title ?: "")
         if (game.player.model.isDay()) {
@@ -184,7 +192,7 @@ class App : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         game = Game(this)
-        viewPage(game.player.model.page)
+        viewPage(game.player.model.vars["page"]!!)
         viewHome()
     }
 

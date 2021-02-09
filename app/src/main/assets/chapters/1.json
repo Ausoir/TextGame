@@ -1,0 +1,65 @@
+{
+  "invalid": {
+    "title": "",
+    "text": "Dialog missing.",
+    "opt": [
+      {
+        "to": ":back",
+        "text": "Go back"
+      }
+    ]
+  },
+  "defeat": {
+    "title": "Game Over",
+    "text": "It is GAME OVER!",
+    "opt": [
+      {
+        "to": "Start",
+        "text": "Start Over"
+      }
+    ]
+  },
+  "Start": {
+    "title": "Chapter 1",
+    "text": "",
+    "opt": [
+      {
+        "to": "Start2",
+        "text": "Begin"
+      }
+    ]
+  },
+  "Start2": {
+    "title": "",
+    "text": "Scobby: [Wake up, you lazy shit, it's time to spar. You're gonna die out there if you don't learn how to fight properly.]\n\nYou wake up from your sleeping bag and look around. You see Lucid writing his journal on a tree, and Scobby poking you with a sparring stick.",
+    "opt": [{
+      "to": "Sparring Prepare",
+      "text": "Time for some sparring, I guess."
+    },{
+      "to": "Skip",
+      "text": "I already know all the basics of fighting."
+    }]
+  },
+  "Sparring Prepare": {
+    "title": "",
+    "text": "Scobby: [Now, the basics.]\n\nScobby: [First, let's learn about the skill 'Disengage'. When you disengage, you are staying outside the enemy's attack range, and they will have to spend a turn to engage before attacking you.]\n\nScobby: [However, when you are disengaged, you may still be attacked by ranged attacks. This goes for you, too. If you want to use a bow or any ranged attacks, you are going to have to be disengaged first. Let's begin.]",
+    "opt": [{
+      "to": ":combat:Scobby:Sparring:Sparring",
+      "text": "Let's begin."
+    },{
+      "to": "Skip",
+      "text": "I already know all the basics of fighting."
+    }]
+  },
+  "Sparring": {
+    "title": "",
+    "text": "Scobby: [No offense, but you are pretty weak...]",
+    "opt": [{
+      "to": "Sparring",
+      "text": "Time for some sparring!"
+    },{
+      "to": "Skip",
+      "text": "I already know all the basics of fighting."
+    }]
+  }
+}

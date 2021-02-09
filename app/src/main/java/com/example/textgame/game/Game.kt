@@ -6,7 +6,7 @@ import com.example.textgame.tools.FileManager
 class Game(context: Context){
     private val fileManager: FileManager = FileManager(context)
     val player: Player = Player(fileManager)
-    val dialog: DialogController = DialogController(fileManager)
+    var dialog: DialogController = DialogController(fileManager, player.model.vars["chapter"]!!)
     val item: ItemController = ItemController(fileManager)
     val moves: MoveController = MoveController(fileManager)
     val units: UnitController = UnitController(fileManager)
@@ -20,6 +20,10 @@ class Game(context: Context){
         val shopItem = variables.getRandom("Ant Hill Shop", player.model.seed + player.model.time)
         varMap["%AntHillShopItem"] = shopItem
         varMap["%AntHillShopValue"] = "${item.model[shopItem]?.value}"
+    }
+
+    fun refreshChapter(){
+        dialog = DialogController(fileManager, player.model.vars["chapter"]!!)
     }
 
     fun getVarMap(vars: List<String>?): ArrayList<String?>{

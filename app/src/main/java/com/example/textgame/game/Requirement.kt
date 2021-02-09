@@ -33,6 +33,18 @@ object Requirement{
                 val split = req.split(":")
                 model.vars[split[1]] == split[2]
             }
+            req.startsWith("time<") -> {
+                model.time < req.substringAfter("time<").toInt()
+            }
+            req.startsWith("time>") -> {
+                model.time > req.substringAfter("time>").toInt()
+            }
+            req.startsWith("time<=") -> {
+                model.time <= req.substringAfter("time<=").toInt()
+            }
+            req.startsWith("time>=") -> {
+                model.time >= req.substringAfter("time>=").toInt()
+            }
             req.startsWith("seed%") -> {
                 model.seed % req.substringAfter("seed%").toInt() == 0
             }

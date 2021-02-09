@@ -11,6 +11,7 @@ import kotlin.collections.HashMap
 data class Status(val effect: String, val target: Int, val value: Int?, val text: String?, val reqs: List<Status>?): Serializable{
     fun perform(target: UnitModel): String{
         var result = ""
+        var health = ""
         var textValue = 0
         when (effect) {
             "wounded" -> {
@@ -18,7 +19,7 @@ data class Status(val effect: String, val target: Int, val value: Int?, val text
                 target.chealth -= textValue
                 val healthDesc = target.getHealthDescription()
                 if (healthDesc.isNotEmpty()) {
-                    result += "$healthDesc\n"
+                    health = "$healthDesc\n"
                 }
             }
             "stunned" -> {
@@ -38,6 +39,7 @@ data class Status(val effect: String, val target: Int, val value: Int?, val text
                 "$text\n"
             }
         }
+        result += health
         return result
     }
 
@@ -165,9 +167,6 @@ data class MoveModel(val effects: List<Status>, val reqs: List<Status>, val spee
             } else {
                 result += reqText
             }
-        }
-        if (result.isNotEmpty()) {
-            result = "$result"
         }
         return result
     }

@@ -55,7 +55,7 @@ class CombatFragment : Fragment() {
         player.unit.target = player.unit.foes[0]
         for (enemy in player.unit.foes){
             enemy.target = player.unit
-            enemy.foes = ArrayList()
+            enemy.foes = arrayListOf()
             enemy.foes.add(player.unit)
         }
         combatants.add(player.unit)
@@ -254,9 +254,7 @@ class CombatFragment : Fragment() {
     }
 
     private fun victory(){
-        player.unit.status.removeAll {
-            it !in listOf("wounded")
-        }
+        player.damaged = player.unit.health - player.unit.chealth
         textView.append(resources.getString(R.string.victory))
         val proceed = button[2]
         layout.removeAllViews()
@@ -287,6 +285,13 @@ class CombatFragment : Fragment() {
     }
 
     private fun defeat(){
+        player.damaged = player.unit.health - player.unit.chealth
+        for (equipment in ArrayList(player.equip)){
+            if ((0..1).random() == 0) {
+                player.unequipItem(items, equipment)
+            }
+        }
+        player.item = ""
         textView.append(resources.getString(R.string.defeat))
         val proceed = button[2]
         layout.removeAllViews()

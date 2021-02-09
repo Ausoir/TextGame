@@ -6,14 +6,12 @@ import com.example.textgame.tools.FileManager
 import com.example.textgame.tools.Grammar
 import com.google.gson.Gson
 
-data class PlayerModel(var seed: Int, val name: String, var page: String, var prev : String, var time: Int, var money: Int,
+data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged: Int,
                        var equip: ArrayList<String>, var item: String, val vars: HashMap<String, String>, var unit: UnitModel) : Parcelable {
     @Suppress("JAVA_CLASS_ON_COMPANION")
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
-        parcel.readString() ?: "",
-        parcel.readString() ?: "",
-        parcel.readString() ?: "",
+        parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
             parcel.readArrayList(String.javaClass.classLoader) as ArrayList<String>,
@@ -26,16 +24,13 @@ data class PlayerModel(var seed: Int, val name: String, var page: String, var pr
         if (seed == -1){
             seed = (0..9999).random()
         }
-        unit.chealth = unit.health
     }
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeInt(seed)
-        dest.writeString(name)
-        dest.writeString(page)
-        dest.writeString(prev)
         dest.writeInt(time)
         dest.writeInt(money)
+        dest.writeInt(damaged)
         dest.writeList(equip)
         dest.writeString(item)
         dest.writeSerializable(vars)
@@ -167,6 +162,7 @@ class Player(private val fileManager: FileManager) {
         model.unit.deck = null
         model.unit.target = null
         model.unit.status.clear()
+        model.unit.foes = arrayListOf()
         val json = Gson().toJson(model)
         fileManager.write("save", json)
     }

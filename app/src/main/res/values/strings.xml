@@ -10,7 +10,7 @@
     <string name="in_combat">You are in combat!</string>
     <string name="whatis_ability">This is an ability.</string>
     <string name="victory">\n\nIt collapses. You are victorious!</string>
-    <string name="defeat">\n\nYou die…</string>
+    <string name="defeat">\n\n…</string>
     <string name="escape">\n\nYou escape from battle successfully.</string>
     <string name="combat_turn">%1$s\n\nYou %2$s.\n%3$s\n%4$s.</string>
 </resources>

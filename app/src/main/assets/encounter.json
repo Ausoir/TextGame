@@ -9,6 +9,11 @@
     "units": ["wolf spider", "wolf spider"],
     "loots": []
   },
+  "feral human": {
+    "desc": "A feral human wearing rags engages you. It observes you carefully, as if hunting an animal.",
+    "units": ["feral human"],
+    "loots": ["web bolas", "sharp stick", "splinter spear"]
+  },
   "lonely ant": {
     "desc": "It's an ant almost as tall as your knees. It constantly wiggles both of its long antennae on its head. Ants are usually not too aggressive, but this one seems to be startled by your presence.",
     "units": ["ant", "ant"],
