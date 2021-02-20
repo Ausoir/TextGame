@@ -1,10 +1,10 @@
 {
   "invalid": {
     "title": "",
-    "text": "Dialog missing.",
+    "text": "Dialog page is missing...",
     "opt": [
       {
-        "to": ":back",
+        "to": "defeat",
         "text": "Go back"
       }
     ]
@@ -14,52 +14,237 @@
     "text": "It is GAME OVER!",
     "opt": [
       {
-        "to": "Start",
+        "to": ">heal>start",
         "text": "Start Over"
       }
     ]
   },
-  "Start": {
+  "start": {
     "title": "Chapter 1",
     "text": "",
     "opt": [
       {
-        "to": "Start2",
+        "to": ">timeset>8>start2",
         "text": "Begin"
       }
     ]
   },
-  "Start2": {
-    "title": "",
-    "text": "Scobby: [Wake up, you lazy shit, it's time to spar. You're gonna die out there if you don't learn how to fight properly.]\n\nYou wake up from your sleeping bag and look around. You see Lucid writing his journal on a tree, and Scobby poking you with a sparring stick.",
+  "start2": {
+    "title": "Field",
+    "text": "Scobby: [Wake up, you lazy shit, it's time to spar. You're gonna die out there if you don't learn how to fight properly.]\n\nYou get up from your sleeping bag and look around.\nYou see Cheese writing on his journal on a tree nearby, and Scobby poking you with a sparring stick.",
     "opt": [{
-      "to": "Sparring Prepare",
-      "text": "Time for some sparring, I guess."
+      "to": "sparring",
+      "text": "Time for some sparring, I guess"
     },{
-      "to": "Skip",
-      "text": "I already know all the basics of fighting."
+      "to": "sparring skip",
+      "text": "I already know about fighting properly"
     }]
   },
-  "Sparring Prepare": {
-    "title": "",
-    "text": "Scobby: [Now, the basics.]\n\nScobby: [First, let's learn about the skill 'Disengage'. When you disengage, you are staying outside the enemy's attack range, and they will have to spend a turn to engage before attacking you.]\n\nScobby: [However, when you are disengaged, you may still be attacked by ranged attacks. This goes for you, too. If you want to use a bow or any ranged attacks, you are going to have to be disengaged first. Let's begin.]",
+  "sparring": {
+    "title": "Field",
+    "text": "Scobby: [Let's learn about the basics of combat.]\n\nScobby: [You have a set of moves which can be viewed from your profile screen that you can access through the button on the top right. These are the moves that you are able to perform in combat.]\n\nScobby: [Combat goes back and forth. Unless ambushed, you will usually have the first turn. Currently your speed is 2, which means you will get to perform 2 actions before passing turn to the enemy.]\n\nScobby: [Since you are not very skilled in fighting yet, you will have trouble dealing damage. Let me teach you an offensive move.\n\nYou learn <Tackle>!\n\nUse your new skill to try to deal damage to me. Let's spar!]",
     "opt": [{
-      "to": ":combat:Scobby:Sparring:Sparring",
-      "text": "Let's begin."
-    },{
-      "to": "Skip",
-      "text": "I already know all the basics of fighting."
+      "to": ">learn>tackle>>encounter>Sparring Scobby>sparring2>sparring2",
+      "text": "Go easy please"
     }]
   },
-  "Sparring": {
-    "title": "",
-    "text": "Scobby: [No offense, but you are pretty weak...]",
+  "sparring2": {
+    "title": "Field",
+    "text": "Scobby: [No offense, but you are almost as weak as Cheese... anyways, let's go over the moves you used.]\n\nScobby: [As you experienced, you have 3 random skills chosen from your knowledge pool each turn. When you use up all of the skills from the pool, you had the option to 'Gather yourself' and re-stock all of the skills. Also, you may have noticed that only the skill that is currently usable is shown to you. For example, you don't have the option to grab me when I'm disengaged.]\n\nScobby: [Let me go in depth about the skill 'Disengage'. When you disengage, you are staying outside the enemy's attack range, and they will have to spend a turn to engage before attacking you.]\n\nScobby: [However, when you are disengaged, you may still be attacked by ranged attacks. This goes for you, too: If you want to use a bow or any ranged attacks, you are going to have to be disengaged first.]\n\nScobby: [Now, let me teach you some discipline. It's not good to panic in combat.]",
     "opt": [{
-      "to": "Sparring",
-      "text": "Time for some sparring!"
+      "to": ">time>4>>forget>panic>sparring3",
+      "text": "Train discipline"
+    }]
+  },
+  "sparring3": {
+    "title": "Field",
+    "text": "You forget skill <Panic>!\n\nHours pass. It is now %time.\n\nScobby: [Phew, now you're a little more of a hunter. Would you like a round of sparring before we end this session?]",
+    "filler": ["%time"],
+    "opt": [{
+      "to": ">encounter>Sparring Scobby>sparring end>sparring end",
+      "text": "Sure"
     },{
-      "to": "Skip",
-      "text": "I already know all the basics of fighting."
+      "to": "sparring end",
+      "text": "Enough already."
+    }]
+  },
+  "sparring skip": {
+    "title": "Field",
+    "text": "Scobby: [...Are you sure? Fine. Let me at least teach you a combat skill.\nWind up buffs up your next attack to deal double damage.\nCripple deals 1 damage and make them unable to move for 3 turns.\nCharge allows you to engage and deal 1 damage when disengaged.]",
+    "opt": [{
+      "to": ">learn>parry>sparring end",
+      "text": "Learn <Wind Up>"
+    },{
+      "to": ">learn>cripple>sparring end",
+      "text": "Learn <Cripple>."
+    },{
+      "to": ">learn>charge>sparring end",
+      "text": "Learn <Charge>."
+    }]
+  },
+  "sparring end": {
+    "title": "River side",
+    "text": "You, Cheese, and Scobby travel North through the forests for a day until you see a body of water blocking the way.\n\nScobby: [This is the river that separates our land from foreign lands. All the scouts that had gone to the other side of this river in the past 5 years never made it back...]\n\nYou should set up a camp here so you can start building a raft to cross the river.",
+    "opt": [{
+      "to": "river camp",
+      "text": "Build a camp"
+    }]
+  },
+  "river camp": {
+    "title": "River side",
+    "text": "You are at camp. Scobby is busy building a raft.\n\nScobby: [Please get me some sturdy woods while you are out scouting.]",
+    "opt": [{
+      "to": "river scout",
+      "text": "Go scouting",
+      "reqs": ["!ally>Cheese"]
+    },{
+      "to": "river scout2",
+      "text": "Go scouting",
+      "reqs": ["ally>Cheese"]
+    },{
+      "to": ">trash>river quest",
+      "text": "Provide sturdy wood",
+      "reqs": ["item>sturdy wood"]
+    },{
+      "to": ">drop>Cheese>River camp",
+      "text": "Drop off Cheese",
+      "reqs": ["ally>Cheese"]
+    },{
+      "to": ">heal>River camp",
+      "text": "Use herbal remedy",
+      "reqs": ["skill>herbal remedy", "hurt>0"]
+    }]
+  },
+  "River camp help": {
+    "title": "River side",
+    "text": "Scobby: [It doesn't look like the wildlife here are any more dangerous than the ones near Ant Hill. If you can bring me a chitin piece, I may be able to finish building this a lot quicker.]",
+    "opt": [{
+      "to": "River hunting",
+      "text": "Proceed"
+    },{
+      "to": ">join>Scobby>River camp help2",
+      "text": "Ask Scobby to join the hunt"
+    }]
+  },
+  "River camp help2": {
+    "title": "River side",
+    "text": "Scobby: [You're right. It's better to move together. Let's go!]\n\nScobby joins you.",
+    "opt": [{
+      "to": "Other side hunt",
+      "text": "Proceed"
+    }]
+  },
+  "river scout": {
+    "title": "River side",
+    "text": "Just as you leave camp to scout, Cheese comes running towards you.\n\nCheese: [Can I come with? I want some adventure too!]",
+    "opt": [{
+      "to": ">join>Cheese>>if>spider>1>river scout1-1>river scout1-2",
+      "text": "Take Cheese"
+    },{
+      "to": "river scout2-1",
+      "text": "Scout alone"
+    }]
+  },
+  "river scout1-1": {
+    "title": "River side",
+    "text": "Cheese joins you.\n\nYou start scouting around the camp.\n\nCheese: [I heard you tried to fight a wolf spider. How did that go?]\n\nYou tell him about your story.\n\nCheese: [Wow, you are pretty weak!]\n\nYou hear a sound.",
+    "opt": [{
+      "to": ">combat>River Encounter>defeat>River Travel",
+      "text": "Prepare for a fight"
+    },{
+      "to": "River camp",
+      "text": "Run back to camp"
+    }]
+  },
+  "river scout1-2": {
+    "title": "River side",
+    "text": "Cheese joins you.\n\nYou and Cheese scout around for a while.\nYou don't see anything out of the ordinary.\n\nCheese: [I hope we run into something dangerous. I always wanted to be a hunter, but my father is a lame-ass priest.]\n\nYou hear something.",
+    "opt": [{
+      "to": ">combat>River Encounter>defeat>river scout3",
+      "text": "Prepare for a fight"
+    },{
+      "to": "river camp",
+      "text": "Run back to camp"
+    }]
+  },
+  "river scout2-1": {
+    "title": "River side",
+    "text": "You scout the woods along the river. This area is humid and abundant with fruits, which means there are dangerous predators nearby... Actually, you hear one coming your way right now. Hopefully the sparring practice helps.",
+    "opt": [{
+      "to": ">combat>River Encounter>defeat>river scout3",
+      "text": "Prepare for a fight"
+    },{
+      "to": "river camp",
+      "text": "Run back to camp"
+    }]
+  },
+  "river scout3": {
+    "title": "River side",
+    "text": "You are still out in the woods.\nIt is %time.",
+    "filler": ["%time"],
+    "opt": [{
+      "to": "river camp",
+      "text": "Return to camp"
+    },{
+      "to": "river scout4",
+      "text": "Poke around a bit more"
+    }]
+  },
+  "river scout4": {
+    "title": "River side",
+    "text": "You are walking around in the woods again. You hear something.",
+    "filler": ["%time"],
+    "opt": [{
+      "to": "river camp",
+      "text": "Run back to camp"
+    },{
+      "to": ">combat>River Encounter>defeat>river scout3",
+      "text": "Fight"
+    }]
+  },
+  "river quest": {
+    "title": "River",
+    "text": "You provide the sturdy wood.\nIt is %time.\n\nScobby: [The raft is done... Let's get rowing.]%temp\n\n---\n\nYou row your way across the river.\n\nScobby: [So, according to the map, this river will take about 2 hours to cross. Cheese, please stop touching the water. We don't want to attract fish.]\n\nScobby: [Let's take this time to talk about our mission. Do you have any questions for me?]",
+    "filler": ["%time", "%temp"],
+    "opt": [{
+      "to": "ask mission",
+      "text": "Ask about the mission"
+    },{
+      "to": "ask hunting",
+      "text": "Ask about hunting"
+    },{
+      "to": "other side",
+      "text": "No questions"
+    }]
+  },
+  "ask mission": {
+    "title": "River",
+    "text": "Scobby: [5 years ago, Ant Hill used to trade food and crafts with the neighboring settlements. Then the roads started becoming very dangerous.\nWolf spiders abducting people in broad daylight is like a monthly event now...\n\nEvery year, the priest and the leaders of Ant Hill gather and choose 2 people to leave and find contact with the outside, so we may import things like crossbows and destructive spells to defend ourselves...]",
+    "opt": [{
+      "to": "ask hunting",
+      "text": "Ask about hunting"
+    },{
+      "to": "other side",
+      "text": "No more questions"
+    }]
+  },
+  "ask hunting": {
+    "title": "River",
+    "text": "Scobby: [As you know, the main source of food in Ant Hill is meat from hunted bugs. Ant Hill has always been thriving ever since we had conquered the hill from fire ants, although recently our population has been stagnant due to people constantly being ambushed and kidnapped. That's all thanks to us hunters who provide plenty of meat to the market in Ant Hill.\n\nMost of the men in Ant Hill are hunters like me, and you should sooner or later learn how to hunt.\nMaybe if we get to hunt a beetle, I will make you a real weapon. Good weapons give you many offensive skills and are essential for hunting.]",
+    "opt": [{
+      "to": "ask mission",
+      "text": "Ask about the mission"
+    },{
+      "to": "other side",
+      "text": "No more questions"
+    }]
+  },
+  "other side": {
+    "title": "River side",
+    "text": "The three of you arrive on the other side of the river.\nNothing looks too different. Trees, green landscape, nothing out of the ordinary.\nWhat could be out here that completely destroyed the connection with the outside world for the past 5 years? What is going on out there?\n\nScobby: [The last scout sent out before us was a hunter named Arly. She was a pretty good hunter, very skilled at hunting with axes. She was once a scout like you, but she learned how to fight and had become a hunter.]\n\nScobby gives you one of those looks.",
+    "opt": [{
+      "to": "Other side",
+      "text": "Scout alone"
     }]
   }
 }

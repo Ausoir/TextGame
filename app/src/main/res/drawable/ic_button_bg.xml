@@ -10,7 +10,7 @@
                 android:right="10dp"
                 android:bottom="10dp" />
             <gradient android:angle="270"
-                android:centerColor="@color/silver"
+                android:centerColor="@color/dark"
                 android:endColor="@color/transparent"
                 android:startColor="@color/transparent" />
         </shape>

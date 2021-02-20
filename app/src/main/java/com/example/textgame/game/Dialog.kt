@@ -113,4 +113,8 @@ class DialogController(fileManager: FileManager, chapter: String) {
         val result: HashMap<String, DialogModel> = Gson().fromJson(data, listType)
         return result
     }
+
+    fun getCustom(text: String, next: String, nextDesc: String): DialogModel{
+        return DialogModel("", text, emptyList(), listOf(DialogOptionModel(next, nextDesc, null)))
+    }
 }

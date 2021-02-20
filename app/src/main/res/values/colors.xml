@@ -10,5 +10,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="silver">#FF666666</color>
     <color name="light">#FF999999</color>
+    <color name="dark">#FF555555</color>
     <color name="gray">#FF313131</color>
 </resources>

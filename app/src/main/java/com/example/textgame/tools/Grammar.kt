@@ -51,6 +51,40 @@ object Grammar {
             }
         }
     }
+    fun getOrderNumber(number: Int): String{
+        return when (number) {
+            1 -> {
+                "first"
+            }
+            2 -> {
+                "second"
+            }
+            3 -> {
+                "third"
+            }
+            4 -> {
+                "fourth"
+            }
+            5 -> {
+                "fifth"
+            }
+            6 -> {
+                "sixth"
+            }
+            7 -> {
+                "seventh"
+            }
+            8 -> {
+                "eighth"
+            }
+            9 -> {
+                "nineth"
+            }
+            else -> {
+                "other"
+            }
+        }
+    }
     fun ordinalIndexOf(str: String, substr: String?, nth: Int): Int {
         var i = nth
         var pos = str.indexOf(substr!!)

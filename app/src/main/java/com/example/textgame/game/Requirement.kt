@@ -13,56 +13,73 @@ object Requirement{
     }
 
     private fun check(model: PlayerModel, req: String): Boolean{
-        return when {
-            req == model.getTime() -> {
+        var reverse = false
+        val split = if (req.startsWith("!")){
+            reverse = true
+            req.substring(1).split(">")
+        } else {
+            req.split(">")
+        }
+        val result = when {
+            split[0] == model.getTime() -> {
                 true
             }
-            req == "daytime" -> {
+            split[0] == "seed" -> {
+                model.seed % split[1].toInt() == 0
+            }
+            split[0] == "daytime" -> {
                 model.getTime() in listOf("early morning", "morning", "evening")
             }
-            req == "nighttime" -> {
+            split[0] == "nighttime" -> {
                 model.getTime() in listOf("night", "late night")
             }
-            req == "item" -> {
-                model.item.isNotEmpty()
+            split[0] == "skill>" -> {
+                split[1] in model.unit.skills
             }
-            req == "!item" -> {
-                model.item.isEmpty()
+            split[0] == "item" -> {
+                split[1] in model.equip
             }
-            req.startsWith("var:") -> {
-                val split = req.split(":")
+            split[0] == "ally" -> {
+                split[1] in model.companion
+            }
+            split[0] == "var" -> {
                 model.vars[split[1]] == split[2]
             }
-            req.startsWith("time<") -> {
-                model.time < req.substringAfter("time<").toInt()
+            split[0] == "hurt" -> {
+                model.damaged > split[1].toInt()
             }
-            req.startsWith("time>") -> {
-                model.time > req.substringAfter("time>").toInt()
+            split[0] == "time" -> {
+                model.time < split[1].toInt()
             }
-            req.startsWith("time<=") -> {
-                model.time <= req.substringAfter("time<=").toInt()
+            split[0] == "time" -> {
+                model.time > split[1].toInt()
             }
-            req.startsWith("time>=") -> {
-                model.time >= req.substringAfter("time>=").toInt()
+            split[0] == "time" -> {
+                model.time <= split[1].toInt()
             }
-            req.startsWith("seed%") -> {
-                model.seed % req.substringAfter("seed%").toInt() == 0
+            split[0] == "time" -> {
+                model.time >= split[1].toInt()
             }
-            req.startsWith("money>=") -> {
-                model.money >= req.substringAfter("money>=").toInt()
+            split[0] == "money" -> {
+                model.money >= split[1].toInt()
             }
-            req.startsWith("money<=") -> {
-                model.money <= req.substringAfter("money<=").toInt()
+            split[0] == "money" -> {
+                model.money <= split[1].toInt()
             }
-            req.startsWith("money<") -> {
-                model.money < req.substringAfter("money<").toInt()
+            split[0] == "money" -> {
+                model.money < split[1].toInt()
             }
-            req.startsWith("money>") -> {
-                model.money > req.substringAfter("money>").toInt()
+            split[0] == "money" -> {
+                model.money > split[1].toInt()
             }
             else -> {
                 false
             }
+        }
+        return if (reverse){
+            !result
+        } else {
+            result
         }
     }
 }

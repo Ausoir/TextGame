@@ -10,18 +10,22 @@
       "effect": "breath",
       "target": -1
     },{
-      "effect": "stunned",
+      "effect": "stun",
+      "duration": 1,
       "target": 1
     }],
-    "reqs": [],
     "desc": "refresh all abilities.",
     "text": "gather%s %uf"
   },
   "hesitate": {
     "effects": [],
-    "reqs": [],
-    "desc": "the trademarked action for the undisciplined.",
+    "desc": "the go-to action for the undisciplined.",
     "text": "hesitate%s"
+  },
+  "panic": {
+    "effects": [],
+    "desc": "panic like a fool.",
+    "text": "panic%s"
   },
   "engage": {
     "effects": [
@@ -32,12 +36,32 @@
     ],
     "reqs": [
       {
-        "effect": "wrestle",
+        "effect": "range",
+        "target": 12
+      },
+      {
+        "effect": "injury",
         "target": -1
       },
       {
+        "effect": "fly",
+        "target": -2
+      }
+    ],
+    "desc": "move closer for melee.",
+    "text": "engage%s %F"
+  },
+  "fly engage": {
+    "effects": [
+      {
         "effect": "range",
-        "target": 1
+        "target": -3
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "range",
+        "target": 12
       },
       {
         "effect": "injury",
@@ -45,81 +69,97 @@
       }
     ],
     "desc": "move closer for melee.",
-    "text": "engage%s"
-  },
-  "grab": {
-    "effects": [
-      {
-        "effect": "dodge",
-        "target": -1,
-        "text": "%u stop trying to dodge."
-      },
-      {
-        "effect": "wrestle",
-        "target": 2,
-        "text": "%fr grabbed.",
-        "reqs": [
-          {
-            "effect": "dodge",
-            "target": -2,
-            "text": "%f dodge%!s the grab."
-          }
-        ]
-      },
-      {
-        "effect": "wrestle",
-        "target": 1
-      }
-    ],
-    "reqs": [
-      {
-        "effect": "range",
-        "target": -1
-      },
-      {
-        "effect": "wrestle",
-        "target": -3
-      }
-    ],
-    "desc": "grab an enemy, making it unable to dodge.",
-    "text": "attempt%s to grab %f"
+    "text": "engage%s %F"
   },
   "disengage": {
     "effects": [
       {
         "effect": "range",
-        "target": 6
+        "target": 3,
+        "duration": -1
       },
       {
-        "effect": "wrestle",
-        "target": -6
+        "effect": "strangle",
+        "target": -1
       }
     ],
     "reqs": [
       {
         "effect": "range",
-        "target": -1
+        "target": -12
       },
       {
         "effect": "injury",
         "target": -1
       }
     ],
-    "desc": "move away from melee range and break free from grabs.",
+    "desc": "move away from melee range.",
     "text": "disengage%s"
   },
-  "dodge": {
+
+  "adrenaline": {
     "effects": [{
-      "effect": "dodge",
+      "effect": "speed",
+      "value": 2,
       "target": 1
     }],
     "reqs": [
       {
-        "effect": "wrestle",
-        "target": -3
+        "effect": "injury",
+        "target": -1
+      }
+    ],
+    "desc": "get an extra turn.",
+    "text": "pump%s up the adrenaline"
+  },
+  "berserk": {
+    "effects": [{
+      "effect": "speed",
+      "duration": 2,
+      "value": 1,
+      "target": 1
+    },{
+      "effect": "shuffle",
+      "duration": 2,
+      "target": 1
+    },{
+      "effect": "vulnerable",
+      "duration": 2,
+      "target": 1
+    },{
+      "effect": "damage",
+      "target": 1,
+      "value": 1
+    },{
+      "effect": "maim",
+      "target": 1
+    }],
+    "reqs": [
+      {
+        "effect": "injury",
+        "target": -1
       },
       {
+        "effect": "range",
+        "target": -1
+      }
+    ],
+    "desc": "Disable 1 random move. Gain 1 extra turn, refresh abilities, and become vulnerable for 3 turns.",
+    "text": "berserk%s"
+  },
+  "dodge": {
+    "effects": [{
+      "effect": "dodge",
+      "duration": 1,
+      "target": 1
+    }],
+    "reqs": [
+      {
         "effect": "dodge",
+        "target": -1
+      },
+      {
+        "effect": "injury",
         "target": -1
       }
     ],
@@ -130,235 +170,434 @@
     "effects": [{
       "effect": "injury",
       "target": -1
+    },{
+      "effect": "vulnerable",
+      "target": -1
     }],
     "reqs": [{
       "effect": "injury",
       "target": 1
     }],
-    "desc": "recover from injury.",
+    "desc": "recover from injury and vulnerability.",
     "text": "recover%s from injury"
   },
   "stun": {
+    "effects": [
+      {
+        "effect": "stun",
+        "target": 2,
+        "duration": 1,
+        "text": "%Ur stunned.",
+        "end_text": "%U break%s out of the stun."
+      }
+    ],
+    "reqs": [{
+      "effect": "range",
+      "target": -3
+    }],
+    "desc": "stun an enemy for 1 turn.",
+    "text": "stun%s %F"
+  },
+  "kick": {
     "effects": [{
-      "effect": "stunned",
+      "effect": "damage",
       "target": 2,
-      "text": "%fr stunned.",
-      "reqs": [
-        {
-          "effect": "dodge",
-          "target": -2,
-          "text": "%f dodge%!s the stun."
-        }
-      ]
+      "value": 1,
+      "start_text": "%Ur kicked for %v health!"
     }],
     "reqs": [{
       "effect": "range",
-      "target": -1
+      "target": -3
     }],
-    "desc": "stun an enemy.",
-    "text": "stun%s %f"
+    "desc": "kick the enemy for 1 damage.",
+    "text": "kick%s %F"
   },
-  "gouge": {
+  "charge": {
     "effects": [{
-      "effect": "wounded",
+      "effect": "damage",
       "target": 2,
       "value": 1,
-      "text": "%fr gouged by the grab attack for %v damage!"
+      "start_text": "%Ur slammed for %v health!"
+    },{
+      "effect": "range",
+      "target": -3
     }],
     "reqs": [{
-      "effect": "wrestle",
+      "effect": "range",
+      "target": 1
+    }],
+    "desc": "charge at the enemy from afar for 1 damage.",
+    "text": "charge%s %F"
+  },
+  "tackle": {
+    "effects": [{
+      "effect": "damage",
+      "target": 2,
+      "value": 2,
+      "start_text": "%Ur slammed with %F for %v health!"
+    },{
+      "effect": "range",
+      "target": -3
+    },{
+      "effect": "stun",
+      "target": 3,
+      "duration": 1
+    }],
+    "reqs": [{
+      "effect": "range",
+      "target": 1
+    }],
+    "desc": "tackle the enemy, dealing 2 damage and stunning you both.",
+    "text": "tackle%s %F down"
+  },
+  "cripple": {
+    "effects": [{
+      "effect": "injury",
+      "target": 2,
+      "text": "%Ur maimed and having trouble moving!",
+      "duration": 3
+    },{
+      "effect": "damage",
+      "target": 2,
+      "start_text": "%Ur maimed for %v damage!",
+      "value": 1
+    }],
+    "reqs": [{
+      "effect": "range",
+      "target": -3
+    }],
+    "desc": "cripple the enemy, making it unable to move.",
+    "text": "cripple%s %F"
+  },
+  "maim": {
+    "effects": [{
+      "effect": "maim",
+      "target": 2,
+      "text": "%Ur maimed!"
+    }],
+    "reqs": [{
+      "effect": "range",
+      "target": -3
+    }],
+    "desc": "maim the enemy, removing one of their moves for the duration of the battle.",
+    "text": "maim%s %F"
+  },
+  "wind up": {
+    "effects": [{
+      "effect": "windup",
+      "target": 1,
+      "text": "%Ur winding up!"
+    }],
+    "reqs": [{
+      "effect": "injury",
+      "target": -1
+    }],
+    "desc": "wind up your next attack for double damage.",
+    "text": "wind%s up for a hard hit"
+  },
+  "weak guard": {
+    "effects": [{
+      "effect": "harden",
+      "target": 1,
+      "duration": 1,
+      "value": 1
+    }],
+    "desc": "defend against the next 1 damage.",
+    "text": "guard%s"
+  },
+  "guard": {
+    "effects": [{
+      "effect": "harden",
+      "target": 1,
+      "value": 2,
+      "duration": 1
+    }],
+    "desc": "defend against the next 2 damage.",
+    "text": "guard%s"
+  },
+  "weak heal": {
+    "effects": [{
+      "effect": "heal",
+      "target": 1,
+      "value": 1
+    },{
+      "effect": "vulnerable",
+      "target": 1
+    }],
+    "desc": "heal 1 damage, but become vulnerable for 1 turn.",
+    "text": "heal%s %uf"
+  },
+  "heal": {
+    "effects": [{
+      "effect": "heal",
+      "target": 1,
+      "value": 1
+    }],
+    "desc": "heal 1 damage.",
+    "text": "heal%s %uf"
+  },
+  "taunt": {
+    "effects": [{
+      "effect": "taunt",
       "target": 2
     }],
-    "desc": "gouge grabbed enemy.",
-    "text": "gouge%s %f"
+    "reqs": [{
+      "effect": "range",
+      "target": 1
+    }],
+    "desc": "make the enemy engage more often.",
+    "text": "taunt%s"
   },
-  "counter": {
+  "clarity": {
     "effects": [{
-      "effect": "countering",
+      "effect": "shuffle",
       "target": 1
     }],
     "reqs": [{
       "effect": "range",
-      "target": -1
+      "target": 1
     }],
-    "desc": "counter the next attack, nullifying it and stunning the enemy.",
-    "text": "prepare%s to counter attack"
+    "desc": "refresh moveset. Must be disengaged.",
+    "text": "gather%s clarity"
   },
-  "panic": {
-    "effects": [],
-    "reqs": [],
-    "desc": "panic like a fool.",
-    "text": "panic%s"
+  "confuse": {
+    "effects": [{
+      "effect": "confuse",
+      "target": 2
+    }],
+    "desc": "confuse the enemy.",
+    "text": "confuse%s %F"
   },
-
+  "backstep": {
+    "effects": [
+      {
+        "effect": "range",
+        "target": 1,
+        "duration": -1
+      },
+      {
+        "effect": "speed",
+        "target": 1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "range",
+        "target": -1
+      },
+      {
+        "effect": "injury",
+        "target": -1
+      }
+    ],
+    "desc": "disengage at no cost.",
+    "text": "backstep%s away"
+  },
+  "parry": {
+    "effects": [
+      {
+        "effect": "parry",
+        "target": 1,
+        "duration": 1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "range",
+        "target": -1
+      }
+    ],
+    "desc": "parry the next attack, stunning the enemy if successful.",
+    "text": "prepare%s to parry"
+  },
 
   "throw": {
-    "effects": [{
-      "effect": "wounded",
-      "target": 2,
-      "text": "%fr hit by the projectile for %v damage!",
-      "reqs": [
-        {
-          "effect": "dodge",
-          "target": -2,
-          "text": "%f dodge%!s."
-        }
-      ]
-    }],
+    "effects": [
+      {
+        "effect": "damage",
+        "target": 2,
+        "start_text": "%Ur hit by the projectile for %v health!",
+        "value": 1
+      }
+    ],
     "reqs": [{
       "effect": "range",
       "target": 1
     }],
     "desc": "throw something at the enemy.",
-    "text": "throw%s %us %w at %f"
+    "text": "throw%s %us %w at %F"
   },
   "shoot": {
-    "effects": [{
-      "effect": "wounded",
-      "target": 2,
-      "text": "%fr hit by the projectile for %v damage!",
-      "reqs": [
-        {
-          "effect": "dodge",
-          "target": -2,
-          "text": "%f dodge%!s."
-        }
-      ]
-    }],
+    "effects": [
+      {
+        "effect": "damage",
+        "target": 2,
+        "start_text": "%Ur hit by the projectile for %v health!",
+        "value": 1
+      }
+    ],
     "reqs": [{
       "effect": "range",
       "target": 1
     }],
-    "desc": "shoot your weapon at the enemy.",
-    "text": "shoot%s %us %w at %f"
+    "desc": "shoot your %w at the enemy.",
+    "text": "shoot%s the %w at %F"
   },
   "thrust": {
-    "effects": [{
-      "effect": "wounded",
-      "target": 2,
-      "text": "%fr impaled by the %w for %v damage!",
-      "reqs": [
-        {
-          "effect": "dodge",
-          "target": -2,
-          "text": "%f dodge%!s."
-        }
-      ]
-    }],
+    "effects": [
+      {
+        "effect": "damage",
+        "target": 2,
+        "start_text": "%Ur impaled for %v health!",
+        "value": 1
+      }
+    ],
     "reqs": [{
       "effect": "range",
-      "target": -1
+      "target": -3
     }],
-    "desc": "impale the enemy with your weapon.",
-    "text": "thrust%s %us %w at %f"
+    "desc": "impale the enemy with your %w.",
+    "text": "thrust%s at %F with the %w"
   },
   "swing": {
-    "effects": [{
-      "effect": "wounded",
-      "target": 2,
-      "text": "%fr hit by the %w for %v damage!",
-      "reqs": [
-        {
-          "effect": "dodge",
-          "target": -2,
-          "text": "%f dodge%!s the %w."
-        }
-      ]
-    }],
+    "effects": [
+      {
+        "effect": "damage",
+        "target": 2,
+        "start_text": "%Ur hit for %v health!",
+        "value": 1
+      }
+    ],
     "reqs": [{
       "effect": "range",
-      "target": -1
+      "target": -3
     }],
-    "desc": "swing your weapon at the enemy.",
-    "text": "swing%s %us %w at %f"
+    "desc": "swing your %w at the enemy.",
+    "text": "swing%s at %F"
   },
   "bola throw": {
-    "effects": [{
-      "effect": "injury",
-      "target": 2,
-      "text": "%fr entangled by the bolas!",
-      "value": 3,
-      "reqs": [
-        {
-          "effect": "dodge",
-          "target": -2
-        }
-      ]
-    }],
+    "effects": [
+      {
+        "effect": "injury",
+        "target": 2,
+        "start_text": "%Ur entangled by the bolas!",
+        "end_text": "%U break%s free of the bolas.",
+        "duration": 3
+      }
+    ],
     "reqs": [{
       "effect": "range",
       "target": 1
     }],
     "desc": "throw a bola at the enemy.",
-    "text": "throw%s %us %w at %f"
+    "text": "throw%s bola at %F"
   },
-  "use blood drop": {
-    "effects": [{
-      "effect": "injury",
-      "target": 2,
-      "text": "%fr entangled by the blood drop.",
-      "reqs": [
-        {
-          "effect": "dodge",
-          "target": -2,
-          "text": "%f dodge%!s the incoming blood drop."
-        }
-      ]
-    }],
+  "cleave": {
+    "effects": [
+      {
+        "effect": "damage",
+        "target": 5,
+        "start_text": "%Ur hit for %v health!",
+        "value": 1
+      }
+    ],
     "reqs": [{
       "effect": "range",
-      "target": 1
+      "target": -3
     }],
-    "desc": "rub blood drop at the enemy.",
-    "text": "rub%s %us blood drop at %f"
+    "desc": "swing your %w at the enemy.",
+    "text": "swing%s at %F"
   },
 
-
+  "distract": {
+    "effects": [{
+      "effect": "speed",
+      "target": 4,
+      "duration": 1,
+      "value": -1,
+      "start_text": "%Ur distracted."
+    }],
+    "desc": "do something distracting.",
+    "text": "shout%s"
+  },
 
   "wiggle": {
     "effects": [],
-    "reqs": [],
     "desc": "",
     "text": "wiggle%s %us antennae"
   },
   "mandible bite": {
     "effects": [{
-      "effect": "wounded",
+      "effect": "damage",
       "target": 2,
-      "text": "%u bite%s %f with %us mandibles!",
-      "reqs": [
-        {
-          "effect": "dodge",
-          "target": -2,
-          "text": "%f dodge%!s the bite."
-        }
-      ]
-    }],
-    "reqs": [{
-      "effect": "wrestle",
-      "target": 2
+      "start_text": "%Ur bitten for %v health!",
+      "value": 1
     }],
     "desc": "",
-    "text": "thrust%s %us head forward"
+    "text": "bite%s %F"
   },
-  "faint": {
+  "curl": {
     "effects": [{
-      "effect": "dazed",
-      "target": 2,
-      "text": "%f lose a turn by the faint."
+      "effect": "harden",
+      "target": 1,
+      "duration": 1
     }],
-    "reqs": [],
     "desc": "",
-    "text": "faint%s %us attack"
+    "text": "rolls into a ball and hardens"
   },
-
-  "sneak": {
-    "effects": [],
-    "reqs": [{
-      "effect": "invalid",
-      "target": 1
+  "suck": {
+    "effects": [{
+      "effect": "damage",
+      "target": 2,
+      "start_text": "%Ur drained for %v health!",
+      "value": 1
+    },{
+      "effect": "heal",
+      "target": 1,
+      "start_text": "%Ur healed for %v health!",
+      "value": 1
     }],
-    "desc": "Passive: Gives you 2 extra action at the beginning of combat, unless ambushed.",
-    "text": ""
+    "desc": "",
+    "text": "suck%s the blood from %F"
+  },
+  "peck": {
+    "effects": [{
+      "effect": "damage",
+      "target": 2,
+      "start_text": "%Ur pecked for %v health!",
+      "value": 1
+    }],
+    "reqs": [{
+      "effect": "range",
+      "target": -1
+    }],
+    "desc": "",
+    "text": "peck%s %F"
+  },
+  "strangle": {
+    "effects": [{
+      "effect": "damage",
+      "target": 2,
+      "start_text": "%Ur being strangled! %U take%s 1 damage!",
+      "text": "%Ur being strangled! %U take%s 1 damage!",
+      "duration": 2,
+      "value": 1
+    }],
+    "reqs": [{
+      "effect": "range",
+      "target": -1
+    }],
+    "desc": "strangle an enemy for 3 damage over 3 turns.",
+    "text": "strangle%s %F"
+  },
+  "poison": {
+    "effects": [{
+      "effect": "damage",
+      "target": 2,
+      "duration": 2,
+      "value": 1
+    }],
+    "desc": "poison an enemy for 1 damage every turn for 2 turns.",
+    "text": "poison%s %F"
   }
 }

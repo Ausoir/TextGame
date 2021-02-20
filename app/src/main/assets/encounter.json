@@ -5,7 +5,7 @@
     "loots": []
   },
   "wolf spiders": {
-    "desc": "Two large spiders covered in gray hair stares at you with 6 evil red eyes. They are as big as you are and their mandibles are thicker than your arm. You are having a hard time just standing still. Your brain is telling you to run, but it is too late. You can't run from those.",
+    "desc": "Two large spiders covered in gray hair stares at you with 6 evil red eyes. They are as big as you are and their mandibles are thicker than your arm. You are having a hard time just standing still.\nYour brain is telling you to run, but it is too late. You can't run from those.",
     "units": ["wolf spider", "wolf spider"],
     "loots": []
   },
@@ -14,14 +14,54 @@
     "units": ["feral human"],
     "loots": ["web bolas", "sharp stick", "splinter spear"]
   },
-  "lonely ant": {
-    "desc": "It's an ant almost as tall as your knees. It constantly wiggles both of its long antennae on its head. Ants are usually not too aggressive, but this one seems to be startled by your presence.",
-    "units": ["ant", "ant"],
-    "loots": ["ant meat", "ant leg", ""]
+  "Sparring Scobby": {
+    "desc": "He is wielding a sparring stick. He is way more bulkier than you and will destroy you if you make him mad.",
+    "units": ["Sparring Scobby"],
+    "loots": []
   },
-  "ragequito flock": {
-    "desc": "Three flying insect monsters bigger than your head are flying toward you. Their giant blood red eyes are staring at you with malice. Their thin wings covered with black veins flap slowly at their sides. Six lanky legs stick forward, shivering with excitement for blood. They can and will drink you dry!",
-    "units": ["ragequito", "ragequito", "ragequito"],
+  "three ants": {
+    "desc": "They are just ants the size of a toddler. They constantly wiggle their long antennae on their heads. Ants are usually not too aggressive, but these seem to be startled by your presence.",
+    "units": ["ant", "ant", "ant"],
+    "loots": ["ant meat", "ant leg", "grass robe", "", ""]
+  },
+  "millipede": {
+    "desc": "A worm-like monster with countless legs slithers its way towards you.",
+    "units": ["millipede"],
+    "loots": ["chitin blade", "long chitin jacket", "", ""]
+  },
+  "pill bug": {
+    "desc": "An armored bug shaped like an uncurled ball crawls towards you.",
+    "units": ["pill bug"],
+    "loots": ["chitin breastplate", "", "", ""]
+  },
+  "caterpillar": {
+    "desc": "A fat worm with fabulous hair crawls toward you. You probably don't want to touch that.",
+    "units": ["caterpillar"],
+    "loots": []
+  },
+  "bloodquito flock": {
+    "desc": "Two flying insect monsters bigger than your head are flying toward you. Their giant blood red eyes are staring at you with malice. Their thin wings covered with black veins flap slowly at their sides. Six lanky legs stick forward, shivering with excitement for blood. These are the infamous Bloodquitos - they can and will drink you dry!",
+    "units": ["bloodquito", "bloodquito"],
     "loots": ["blood droplet"]
+  },
+  "bloodquito": {
+    "desc": "A bloodquito is flying toward you, its giant blood red eyes fixed on you with malice. Its thin wings covered with black veins flap slowly at its sides. Its lanky legs shiver with excitement for blood. It can and will drink you dry!",
+    "units": ["bloodquito"],
+    "loots": ["blood droplet", "bloodquito proboscis"]
+  },
+  "centipede": {
+    "desc": "A monster with numerous segments of bodies and legs charges at you. Its huge mandibles will make sure you won't get out of here in one piece.",
+    "units": ["centipede"],
+    "loots": []
+  },
+  "three ticks": {
+    "desc": "Three tiny blood red ticks crawl toward you. They are slow to move, but will suck your blood dry if you let them too close. They are filled with blood and will explode in your face on death.",
+    "units": ["tick", "tick", "tick"],
+    "loots": []
+  },
+  "moth": {
+    "desc": "A giant winged beast slowly flaps its wings toward you. Every time it flaps its huge wings, green particles scatter out from its wing hair.",
+    "units": ["moth"],
+    "loots": []
   }
 }

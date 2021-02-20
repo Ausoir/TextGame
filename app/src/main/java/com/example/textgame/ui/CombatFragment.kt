@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -19,17 +18,20 @@ import com.example.textgame.game.ItemModel
 import com.example.textgame.game.MoveModel
 import com.example.textgame.game.PlayerModel
 import com.example.textgame.game.UnitModel
+import com.example.textgame.tools.Grammar
 
 @SuppressLint("DefaultLocale")
 class CombatFragment : Fragment() {
-    private lateinit var layout: LinearLayout
     private lateinit var scrollView: ScrollView
     private lateinit var loots: ArrayList<String>
     private lateinit var page: String
     private lateinit var defeat: String
     private lateinit var player: PlayerModel
+    private lateinit var special: MoveModel
+    private lateinit var allies: ArrayList<UnitModel>
     private lateinit var items: HashMap<String, ItemModel>
     private lateinit var textView: TextView
+    private var levelUp = false
     private var button: ArrayList<Button> = ArrayList()
     private var turn = 0
     private var combatants: ArrayList<UnitModel> = ArrayList()
@@ -41,33 +43,61 @@ class CombatFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_combat, container, false)
-        button.add(root.findViewById(R.id.combat_action_1))
-        button.add(root.findViewById(R.id.combat_action_2))
         button.add(root.findViewById(R.id.combat_action_3))
+        button.add(root.findViewById(R.id.combat_action_2))
+        button.add(root.findViewById(R.id.combat_action_1))
         scrollView = root.findViewById(R.id.scroll_combat)
         textView = root.findViewById(R.id.text_combat)
         textView.movementMethod = ScrollingMovementMethod()
-        layout = root.findViewById(R.id.combat_button_container) as LinearLayout
         player = arguments?.getParcelable("player") ?: return root
+        special = arguments?.getSerializable("special") as MoveModel
         items = arguments?.getSerializable("items") as HashMap<String, ItemModel>
         player.unit.foes = arguments?.getSerializable("enemies") as ArrayList<UnitModel>
+        allies = arguments?.getSerializable("allies") as ArrayList<UnitModel>
         loots = arguments?.getStringArrayList("loots") as ArrayList<String>
         player.unit.target = player.unit.foes[0]
+        var idCount = 1
+        var nthEnemy = 0
         for (enemy in player.unit.foes){
-            enemy.target = player.unit
-            enemy.foes = arrayListOf()
-            enemy.foes.add(player.unit)
+            enemy.id = idCount++
+            var count = 0
+            for (foe in player.unit.foes) {
+                if (foe.name == enemy.name) {
+                    count += 1
+                }
+            }
+            if (count > 1){
+                nthEnemy += 1
+                enemy.flavors["callname"] = Grammar.getOrderNumber(nthEnemy) + " ${enemy.name}"
+            }
+            val targetables = ArrayList<UnitModel>()
+            targetables.addAll(allies)
+            targetables.add(player.unit)
+            enemy.target = targetables.shuffled()[0]
+            enemy.foes = targetables
+            if (enemy.level > player.unit.level){
+                levelUp = true
+            }
+        }
+        for (ally in allies){
+            ally.id = idCount++
+            ally.flavors["ally"] = "true"
+            ally.target = player.unit.target
+            ally.foes = player.unit.foes
         }
         combatants.add(player.unit)
+        combatants.addAll(allies)
         combatants.addAll(player.unit.foes)
+        for (combatant in combatants) {
+            if ("sneak" in combatant.skills) {
+                combatant.points += 2
+            }
+        }
         page = arguments?.getString("page") ?: "back"
         defeat = arguments?.getString("defeat") ?: "defeat"
         textView.text = arguments?.getString("desc") ?: ""
         textView.append("\n\n")
-        if ("sneak" in player.unit.moves && player.unit.points > 0){
-            player.unit.points += 2
-        }
-        playerTurn()
+        playerTurn(true)
         return root
     }
 
@@ -79,79 +109,100 @@ class CombatFragment : Fragment() {
 
     private fun turnAction(move: MoveModel, me: UnitModel){
         me.points -= 1
-        var text = ""
-        if (move.text.isNotEmpty()) {
-            text = "%u ${move.text}.\n"
-        }
         val feedback = move.perform(me, combatants)
-        when {
-            feedback.isNotEmpty() -> {
-                text += feedback
-                textView.append(replaceNouns(text, me))
-            }
-            else -> {
-                textView.append(replaceNouns(text, me))
-            }
+        if (feedback.isNotEmpty()) {
+            textView.append(me.replaceNouns(feedback))
         }
     }
 
     private fun enemyTurn(enemy: UnitModel){
-        val hand = enemy.deck!!.getCard(0)
-        turnAction(hand, enemy)
-        if (hand != MoveModel.shuffle) {
-            enemy.deck!!.draw(0)
+        if (!checkBattleEnd()) {
+            if (enemy.points > 0) {
+                val hand = enemy.deck!!.getCard(0)
+                turnAction(hand, enemy)
+                if (hand != MoveModel.shuffle) {
+                    enemy.deck!!.draw(0)
+                }
+                Handler(Looper.getMainLooper()).postDelayed(
+                    {
+                        enemyTurn(enemy)
+                    }, 200
+                )
+            } else {
+                scrollView.scrollToBottom()
+                enemy.recharge()
+                nextTurn()
+            }
         }
-        Handler(Looper.getMainLooper()).postDelayed(
-                {
-                    if (!checkBattleEnd()) {
-                        if (enemy.points > 0) {
-                            enemyTurn(enemy)
-                        } else {
-                            scrollView.scrollToBottom()
-                            enemy.recharge()
-                            nextTurn()
-                        }
-                    }
-                }, 100
-        )
     }
 
-    private fun playerTurn(){
+    private fun playerTurn(choosing: Boolean){
         scrollView.scrollToBottom()
-        if (player.unit.points > 0){
-            for (i in 0..2) {
-                val hand = player.unit.deck!!.getCard(i)
-                val foe = hand.getValidTargets(player.unit).shuffled()[0]
-                player.unit.target = foe
-                if (hand.text.isEmpty()){
-                    button[2 - i].text = ""
-                    button[2 - i].setOnClickListener {}
-                } else {
-                    button[2 - i].text = replaceNouns(hand.text, player.unit)
-                    button[2 - i].setOnClickListener {
-                        player.unit.target = foe
-                        turnAction(hand, player.unit)
-                        if (hand != MoveModel.shuffle) {
-                            player.unit.deck!!.draw(i)
-                        }
-                        player.unit.deck!!.validate()
-                        if (!checkBattleEnd()) {
-                            playerTurn()
-                        }
-                    }
-                }
-            }
-        } else {
-            player.unit.recharge()
+        if (!checkBattleEnd()) {
             for (i in 0..2) {
                 button[i].text = ""
                 button[i].setOnClickListener {}
             }
-            Handler(Looper.getMainLooper()).postDelayed(
+            if (player.unit.points > 0) {
+                if (choosing){
+                    button[0].text = player.unit.replaceNouns("Combat")
+                    button[0].setOnClickListener {
+                        playerTurn(false)
+                    }
+                    button[1].text = player.unit.replaceNouns("Choose target")
+                    button[1].setOnClickListener {
+                        for (i in 0..2){
+                            if (i < player.unit.foes.size) {
+                                val foeName = player.unit.foes[i].flavors["callname"]
+                                    ?: player.unit.foes[i].name
+                                val foeHealth = player.unit.foes[i].getHealthPercentage()
+                                button[i].text = player.unit.replaceNouns("Target $foeName ($foeHealth%)")
+                                button[i].setOnClickListener {
+                                    player.unit.target = player.unit.foes[i]
+                                    playerTurn(true)
+                                }
+                            } else {
+                                button[i].text = ""
+                                button[i].setOnClickListener {}
+                            }
+                        }
+                    }
+                    if (!player.unit.hasStatus("breath")) {
+                        button[2].text = player.unit.replaceNouns(special.text)
+                        button[2].setOnClickListener {
+                            player.unit.addStatus("breath", -1)
+                            player.unit.points = 0
+                            turnAction(special, player.unit)
+                            playerTurn(true)
+                        }
+                    }
+                } else {
+                    for (i in 0..2) {
+                        val hand = player.unit.deck!!.getCard(i)
+                        if (hand.text.isEmpty()) {
+                            button[i].text = ""
+                            button[i].setOnClickListener {}
+                        } else {
+                            button[i].text = player.unit.replaceNouns(hand.text)
+                            button[i].setOnClickListener {
+                                turnAction(hand, player.unit)
+                                if (hand != MoveModel.shuffle) {
+                                    player.unit.deck!!.draw(i)
+                                }
+                                player.unit.deck!!.validate()
+                                playerTurn(false)
+                            }
+                        }
+                    }
+                }
+            } else {
+                player.unit.recharge()
+                Handler(Looper.getMainLooper()).postDelayed(
                     {
                         nextTurn()
-                    }, 400
-            )
+                    }, 200
+                )
+            }
         }
     }
 
@@ -162,10 +213,10 @@ class CombatFragment : Fragment() {
         }
         if (combatants[turn] == player.unit){
             textView.append("\n")
-            player.unit.processStatus()
-            playerTurn()
+            textView.append(player.unit.replaceNouns(player.unit.processStatus()))
+            playerTurn(true)
         } else {
-            combatants[turn].processStatus()
+            textView.append(combatants[turn].replaceNouns(combatants[turn].processStatus()))
             enemyTurn(combatants[turn])
         }
     }
@@ -177,130 +228,114 @@ class CombatFragment : Fragment() {
                     defeat()
                     return true
                 } else {
-                    player.unit.foes.remove(combatants[i])
-                    combatants.removeAt(i)
+                    for (combatant in combatants){
+                        combatant.foes.remove(combatants[i])
+                    }
                     if (player.unit.foes.isEmpty()){
                         victory()
                         return true
                     }
+                }
+                for (combatant in combatants){
+                    if (combatant.target == combatants[i]){
+                        combatant.target = combatant.foes[0]
+                    }
+                }
+                if ("self destruct" in combatants[i].skills){
+                    textView.append("The ${combatants[i].name} explodes!\n")
+                    combatants.removeAt(i)
+                    for (combatant in combatants){
+                        if (!combatant.hasStatus("range")) {
+                            combatant.inflict(-1)
+                        }
+                    }
+                    checkBattleEnd()
+                } else {
+                    combatants.removeAt(i)
                 }
             }
         }
         return false
     }
 
-    private fun getEnemyPronoun(subject: UnitModel?): String{
-        var finalSubject = subject
-        if (finalSubject == player.unit){
-            finalSubject = player.unit.target
-        }
-        if (finalSubject == null){
-            return "nothing"
-        }
-        var count = 0
-        for (enemy in player.unit.foes){
-            if (enemy.name == finalSubject.name){
-                count += 1
-            }
-        }
-        if (count > 1){
-            when {
-                finalSubject == player.unit.foes.first() -> {
-                    return "${finalSubject.name} on the left"
-                }
-                finalSubject == player.unit.foes.last() -> {
-                    return "${finalSubject.name} on the right"
-                }
-                count == 3 -> {
-                    return "${finalSubject.name} in the middle"
-                }
-                count > 3 -> {
-                    return "one of the ${finalSubject.name}"
-                }
-            }
-        }
-        return finalSubject.name
-    }
-
-    private fun replaceNouns(text: String, subject: UnitModel): String{
-        var result = text.replace("%?", "none")
-        result = result.replace("%w", player.getEquipment(items, "weapon", "fist"))
-        val enemyName = getEnemyPronoun(subject)
-        val playerPronouns = listOf("s", "you are", "your", "yourself", "you", "you")
-        val enemyPronouns = listOf("", "it is", "its", "itself", "the $enemyName", "it")
-        val pronoun = ArrayList<String>()
-        if (subject == player.unit){
-            pronoun.addAll(playerPronouns)
-            pronoun.addAll(enemyPronouns)
-        } else {
-            pronoun.addAll(enemyPronouns)
-            pronoun.addAll(playerPronouns)
-        }
-        result = result.replace("%!s", pronoun[0])
-        result = result.replace("%ur", pronoun[1])
-        result = result.replace("%us", pronoun[2])
-        result = result.replace("%uf", pronoun[3])
-        result = result.replaceFirst("%u", pronoun[4])
-        result = result.replace("%u", pronoun[5])
-        result = result.replace("%s", pronoun[6])
-        result = result.replace("%fr", pronoun[7])
-        result = result.replace("%fs", pronoun[8])
-        result = result.replace("%ff", pronoun[9])
-        result = result.replaceFirst("%f", pronoun[10])
-        result = result.replace("%f", pronoun[11])
-        return result.lines().joinToString (separator = "\n") {
-            it.capitalize()
+    private fun endBattle(){
+        player.damaged = player.unit.health - player.unit.healthPt
+        player.unit.deck = null
+        player.unit.target = null
+        player.unit.status.clear()
+        player.unit.foes.clear()
+        for (i in 0..2) {
+            button[i].text = ""
+            button[i].setOnClickListener {}
         }
     }
 
     private fun victory(){
-        player.damaged = player.unit.health - player.unit.chealth
+        endBattle()
         textView.append(resources.getString(R.string.victory))
-        val proceed = button[2]
-        layout.removeAllViews()
+        if ("herbal remedy" in player.unit.skills && player.damaged > 0){
+            player.damaged -= 1
+        }
         if (loots.isNotEmpty()) {
             val loot = loots.shuffled()[0]
-            if (loot.isNotEmpty() && loot != player.item) {
-                val pickup = button[1]
-                pickup.text = if (player.item.isEmpty()) {
+            if (loot.isNotEmpty()) {
+                textView.append("You find ${Grammar.getArticle(loot)}:\n${items[loot]?.desc ?: "No item description found."}")
+                val piece = player.getSamePart(items, loot)
+                button[1].text = if (piece == null) {
                     "Pick up $loot"
                 } else {
-                    "Throw away ${player.item} and pick up $loot."
+                    "Throw away $piece and pick up $loot."
                 }
-                pickup.setOnClickListener {
-                    player.item = loot
-                    val app: App = activity as App
-                    app.openDialog(page)
+                button[1].setOnClickListener {
+                    player.equipItem(items, loot)
+                    victoryProceed()
                 }
-                layout.addView(pickup)
             }
         }
-        proceed.text = resources.getString(R.string.proceed)
-        proceed.setOnClickListener {
-            val app: App = activity as App
-            app.openDialog(page)
+        button[0].text = resources.getString(R.string.proceed)
+        button[0].setOnClickListener {
+            victoryProceed()
         }
-        layout.addView(proceed)
         scrollView.scrollToBottom()
     }
 
+    private fun victoryProceed(){
+        if (levelUp) {
+            player.unit.level += 1
+            textView.text = ""
+            levelUp = false
+            textView.append("\n\nYou improve your abilities!")
+            button[0].text = resources.getString(R.string.level_move)
+            button[0].setOnClickListener {
+                val app: App = activity as App
+                app.openDialog(">view learn>$page")
+            }
+            button[1].text = resources.getString(R.string.level_forget)
+            button[1].setOnClickListener {
+                val app: App = activity as App
+                app.openDialog(">view forget>$page")
+            }
+        } else {
+            player.unit.level -= 1
+            val app: App = activity as App
+            app.openDialog(page)
+        }
+    }
+
     private fun defeat(){
-        player.damaged = player.unit.health - player.unit.chealth
+        player.damaged = player.unit.health - 1
+        endBattle()
         for (equipment in ArrayList(player.equip)){
             if ((0..1).random() == 0) {
                 player.unequipItem(items, equipment)
             }
         }
-        player.item = ""
         textView.append(resources.getString(R.string.defeat))
-        val proceed = button[2]
-        layout.removeAllViews()
-        proceed.text = resources.getString(R.string.proceed)
-        proceed.setOnClickListener {
+        button[0].text = resources.getString(R.string.proceed)
+        button[0].setOnClickListener {
             val app: App = activity as App
             app.openDialog(defeat)
         }
-        layout.addView(proceed)
         scrollView.scrollToBottom()
     }
 }

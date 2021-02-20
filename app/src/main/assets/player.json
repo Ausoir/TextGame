@@ -1,28 +1,31 @@
 {
   "seed": -1,
   "time": 10,
-  "money": 0,
+  "money": 10,
   "damaged": 0,
   "equip": ["silk robe"],
-  "item": "",
   "vars": {
     "name": "You",
-    "page": "Start",
-    "prev": "Start",
-    "chapter": "1",
+    "page": "start",
+    "prev": "start",
+    "chapter": "0",
     "quest": "0"
   },
   "unit": {
-    "name": "Player",
+    "name": "You",
+    "level": 1,
     "speed": 2,
     "health": 3,
-    "moves": ["hesitate", "dodge","engage", "grab", "disengage", "panic", "gouge", "run away"],
-    "status": [],
+    "moves": ["hesitate", "weak guard", "engage", "disengage", "panic", "kick"],
+    "skills": [],
     "flavors": {
+      "pronoun": "you",
       "grazed": "you are lightly wounded.",
       "hurt": "you are wounded.",
       "dying": "you are seriously wounded.",
       "death": "you fall unconscious."
     }
-  }
+  },
+  "companion": [],
+  "specialization": "novice scout"
 }

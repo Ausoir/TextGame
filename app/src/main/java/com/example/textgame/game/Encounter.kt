@@ -6,7 +6,7 @@ import com.google.gson.reflect.TypeToken
 import java.io.Serializable
 
 data class EncounterModel(val desc: String, val units: ArrayList<String>, val loots: ArrayList<String>): Serializable{
-    fun getEnemies(unitDict: HashMap<String, UnitModel>): ArrayList<UnitModel>{
+    fun getUnits(unitDict: HashMap<String, UnitModel>): ArrayList<UnitModel>{
         val enemies = ArrayList<UnitModel>()
         for (unit in units){
             val unitData = unitDict[unit] ?: unitDict["invalid"]!!

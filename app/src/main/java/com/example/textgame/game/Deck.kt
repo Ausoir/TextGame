@@ -1,6 +1,7 @@
 package com.example.textgame.game
 
-class Deck(var me: UnitModel, val moves: ArrayList<MoveModel>, handSize: Int) {
+class Deck(var me: UnitModel, val moves: MutableList<MoveModel>, handSize: Int) {
+    var moveset = HashMap<String, MoveModel>()
     private val discard = arrayListOf<Int>()
     private var hand = IntArray(handSize)
     private var queue = arrayListOf<Int>()
@@ -26,8 +27,7 @@ class Deck(var me: UnitModel, val moves: ArrayList<MoveModel>, handSize: Int) {
                 moves[hand[place]]
             }
             else -> {
-                incHand(place)
-                getCard(place)
+                draw(place)
             }
         }
     }
@@ -53,6 +53,19 @@ class Deck(var me: UnitModel, val moves: ArrayList<MoveModel>, handSize: Int) {
     fun validate(){
         for (i in hand.indices){
             getCard(i)
+        }
+    }
+
+    fun maim(){
+        val move = moves.shuffled()[0]
+        moves.remove(move)
+    }
+
+    fun addNextMove(moveName: String){
+        val move = moveset[moveName]
+        if (move != null) {
+            moves.add(move)
+            queue.add(0, moves.size - 1)
         }
     }
 }

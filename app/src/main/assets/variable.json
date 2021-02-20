@@ -1,3 +1,16 @@
 {
-  "Ant Hill Shop": ["rose spike", "ant leg", "silk robe"]
+  "Chapters": [],
+  "Ant Hill Shop": ["rose spike", "ant leg", "silk robe"],
+  "River Encounter": ["three ants", "millipede", "pill bug", "caterpillar", "bloodquito"],
+  "River Night Encounter": ["bloodquito flock", "centipede", "moth", "three ticks", "bloodquito"],
+  "basic deck": ["disengage", "engage", "weak guard", "kick", "tackle"],
+  "scout deck": ["disengage", "engage", "guard", "kick", "tackle"],
+  "rogue deck": ["disengage", "engage", "dodge", "kick", "disengage", "tackle", "recover", "stun", "adrenaline", "cripple", "maim"],
+  "fighter deck": ["engage", "kick", "charge", "engage", "tackle", "cripple", "wind up", "taunt"],
+  "nature deck": ["disengage", "engage", "weak heal", "kick", "disengage", "recover", "poison", "clarity", "confuse"],
+  "brawler deck": ["engage", "guard", "engage", "tackle", "cripple", "taunt", "strangle"],
+  "warrior deck": ["engage", "guard", "kick", "charge", "engage", "tackle", "cripple", "wind up", "berserk"],
+  "ranger deck": ["disengage", "weak guard", "wind up", "confuse", "poison", "recover"],
+  "shaman deck": ["disengage", "engage", "clarity", "premonition", "poison", "confuse", "recover", "heal"],
+  "spell deck": ["disengage", "weak heal", "heal", "disengage", "engage", "poison", "clarity", "confuse"]
 }

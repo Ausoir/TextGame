@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
 
-data class ItemModel(val type: String, val value: Int, val desc: String, val moves: List<String>?, val page: String?): Serializable
+data class ItemModel(val type: String, val value: Int, val desc: String, val rating: Int?, val moves: List<String>?, val page: String?): Serializable
 
 class ItemController(fileManager: FileManager) {
     val model = makeItem(fileManager.readAsset("item.json") !!)

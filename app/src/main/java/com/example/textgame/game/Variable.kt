@@ -26,4 +26,10 @@ class VariableController(fileManager: FileManager) {
             "invalid"
         }
     }
+
+    fun getRandomList(index: String): MutableList<String>{
+        val variables = model[index] ?: return arrayListOf()
+        val result = variables.shuffled()
+        return result.subList(0, (1 until result.size).random()).toMutableList()
+    }
 }

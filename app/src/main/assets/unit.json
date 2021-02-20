@@ -1,45 +1,178 @@
 {
   "invalid": {
     "name": "invalid",
+    "level": 0,
     "speed": 0,
     "health": 0,
     "moves": ["shuffle"],
+    "skills": [],
     "status": [],
     "flavors": {}
   },
   "wolf spider": {
     "name": "wolf spider",
+    "level": 5,
     "speed": 2,
     "health": 8,
     "moves": ["mandible bite", "grab", "engage", "stun"],
+    "skills": ["sneak"],
     "status": [],
     "flavors": {
-      "grazed": "it looks furious.",
-      "hurt": "it is limping its legs.",
-      "death": "it rolls belly up and skitters its legs, and slowly stops moving."
+      "grazed": "The wolf spider looks furious.",
+      "hurt": "The wolf spider is limping its legs.",
+      "death": "The wolf spider rolls belly up and skitters its legs, and slowly stops moving."
+    }
+  },
+  "feral human": {
+    "name": "feral human",
+    "level": 2,
+    "speed": 1,
+    "health": 2,
+    "moves": ["bola throw", "disengage", "engage", "swing"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "she"
+    }
+  },
+  "Sparring Scobby": {
+    "name": "Scobby",
+    "level": 1,
+    "speed": 1,
+    "health": 1,
+    "moves": ["disengage", "engage", "hesitate", "hesitate"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "he",
+      "death": "Scobby stops the fight."
     }
   },
   "ant": {
     "name": "ant",
+    "level": 1,
     "speed": 1,
-    "health": 2,
-    "moves": ["mandible bite", "wiggle", "grab", "engage"],
+    "health": 1,
+    "moves": ["mandible bite", "wiggle", "engage"],
+    "skills": [],
     "status": [],
     "flavors": {
-      "grazed": "it is dented.",
-      "hurt": "it is limping its legs.",
-      "death": "it rolls belly up and curls inward."
+      "death": "The ant rolls belly up and curls inward."
     }
   },
-  "ragequito": {
-    "name": "ragequito",
+  "Cheese": {
+    "name": "Cheese",
+    "level": 1,
     "speed": 1,
-    "health": 3,
-    "moves": ["grab"],
+    "health": 1,
+    "moves": ["distract", "engage", "disengage", "kick", "panic"],
+    "skills": [],
     "status": [],
     "flavors": {
-      "hurt": "it flaps its wings furiously.",
-      "death": "it falls."
+      "pronoun": "he",
+      "death": "Cheese runs away."
+    }
+  },
+  "pill bug": {
+    "name": "pill bug",
+    "level": 2,
+    "speed": 1,
+    "health": 2,
+    "moves": ["disengage", "curl", "charge"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "death": "The pill bug rolls into a ball."
+    }
+  },
+  "millipede": {
+    "name": "millipede",
+    "level": 2,
+    "speed": 1,
+    "health": 3,
+    "moves": ["engage", "strangle", "panic"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "death": "The millipede squirms and dies."
+    }
+  },
+  "caterpillar": {
+    "name": "caterpillar",
+    "level": 3,
+    "speed": 1,
+    "health": 5,
+    "moves": ["curl", "engage", "grab"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "hurt": "The caterpillar squirms.",
+      "death": "The caterpillar squirms and dies."
+    }
+  },
+  "tick": {
+    "name": "tick",
+    "level": 2,
+    "speed": 1,
+    "health": 2,
+    "moves": ["engage", "suck", "grab"],
+    "skills": ["self destruct"],
+    "status": [],
+    "flavors": {
+      "death": "The tick explodes into blood."
+    }
+  },
+  "centipede": {
+    "name": "centipede",
+    "level": 5,
+    "speed": 2,
+    "health": 3,
+    "moves": ["engage", "grab", "gouge", "strangle"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "death": "The centipede flutters each and every one of its legs and dies."
+    }
+  },
+  "bloodquito": {
+    "name": "bloodquito",
+    "level": 5,
+    "speed": 2,
+    "health": 4,
+    "moves": ["grab", "fly engage", "suck", "disengage"],
+    "skills": ["fly"],
+    "status": [],
+    "flavors": {
+      "hurt": "%U flaps its wings furiously.",
+      "death": "%U falls."
+    }
+  },
+  "moth": {
+    "name": "moth",
+    "level": 6,
+    "speed": 1,
+    "health": 5,
+    "moves": ["poison", "disengage", "disengage", "hesitate", "dodge"],
+    "skills": ["fly"],
+    "status": [],
+    "flavors": {
+      "hurt": "%U flaps its wings furiously.",
+      "dying": "%U looks severely injured.",
+      "death": "%U drops dead."
+    }
+  },
+  "Scobby": {
+    "name": "Scobby",
+    "level": 10,
+    "speed": 3,
+    "health": 10,
+    "moves": ["engage", "swing", "swing", "stun", "dodge"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "weapon": "Red Flint Greataxe",
+      "pronoun": "he",
+      "death": "Scobby stops the fight."
     }
   }
 }

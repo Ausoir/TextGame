@@ -44,6 +44,7 @@
   "rose spike": {
     "type": "weapon",
     "value": 2,
+    "rating": 2,
     "desc": "a rose spike.",
     "moves": ["stab"]
   },
@@ -61,19 +62,54 @@
   },
   "silk robe": {
     "type": "robe",
-    "value": 0,
-    "desc": "a silk robe made from a combination of spiderweb and some kind of fur. It allows you to approach enemies without them noticing. Grants you the 'Sneak' skill.",
-    "moves": ["sneak"]
+    "value": 1,
+    "desc": "a silk robe made from silkworm threads."
   },
   "silk pants": {
     "type": "pants",
-    "value": 0,
-    "desc": "a silk pants made from a combination of spiderweb and some kind of fur. Very common."
+    "value": 1,
+    "desc": "a silk pants made from silkworm threads. Very common."
   },
   "grass robe": {
     "type": "robe",
-    "value": 0,
+    "value": 1,
     "desc": "a grass robe made from woven grass fibers. Provides very little warmth."
+  },
+  "long chitin jacket": {
+    "type": "robe",
+    "value": 1,
+    "rating": 1,
+    "desc": "a long jacket crafted from the chitin of a long bodied bug. +1 Health."
+  },
+  "chitin breastplate": {
+    "type": "armor",
+    "value": 2,
+    "desc": "a plate breastplate crafted from pill bug chitin.",
+    "rating": 2
+  },
+  "spine spear": {
+    "type": "weapon",
+    "value": 2,
+    "desc": "a short spear made of hardened bug spine. Can be thrown.",
+    "moves": ["throw", "thrust"]
+  },
+  "hair ball": {
+    "type": "weapon",
+    "value": 2,
+    "desc": "a poisonous hair ball. Can be hurled at melee or ranged distance to poison enemies.",
+    "moves": ["poison"]
+  },
+  "needle claw": {
+    "type": "weapon",
+    "value": 2,
+    "desc": "a claw weapon made from the legs of a millipede.",
+    "moves": ["thrust", "thrust"]
+  },
+  "bloodquito proboscis": {
+    "type": "weapon",
+    "value": 2,
+    "desc": "the proboscis of the dreaded bloodquito. Grants you lifesteal attacks.",
+    "moves": ["suck", "thrust"]
   },
 
 
@@ -85,22 +121,24 @@
   },
   "human corpse": {
     "type": "item",
-    "value": 0,
+    "value": 1,
     "desc": "a human corpse. Could be edible, I guess."
   },
-  "ant meat": {
+  "bug meat": {
     "type": "item",
     "value": 1,
-    "desc": "an ant meat. It has become the main source of protein for humans."
+    "desc": "a bug meat, which is the main source of food for people. You can boil, roast, grill, stir fry, or cook it over fire on a stick! Eat to regenerate health.",
+    "page": ">heal>>back"
   },
-  "cooked ant meat": {
+  "blood droplet": {
     "type": "item",
-    "value": 1,
-    "desc": "a cooked ant meat. Comes with a chitin plate, fully ready to serve. Doesn't really smell like anything."
+    "value": 2,
+    "desc": "a drop of blood. It sticks to you, making it convenient to carry around. Leaves an unpleasant taste in your mouth, but is very fulfilling.",
+    "page": ">heal>>back"
   },
-  "blood drop": {
+  "sturdy wood": {
     "type": "item",
     "value": 1,
-    "desc": "a drop of blood. It sticks to you, making it convenient to carry around. Has an unpleasant taste. Very fulfilling."
+    "desc": "a sturdy wood suitable for construction."
   }
 }

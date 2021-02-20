@@ -7,7 +7,8 @@ import com.example.textgame.tools.Grammar
 import com.google.gson.Gson
 
 data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged: Int,
-                       var equip: ArrayList<String>, var item: String, val vars: HashMap<String, String>, var unit: UnitModel) : Parcelable {
+                       var equip: ArrayList<String>, val vars: HashMap<String, String>,
+                       var unit: UnitModel, var companion: ArrayList<String>, var specialization: String) : Parcelable {
     @Suppress("JAVA_CLASS_ON_COMPANION")
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
@@ -15,9 +16,10 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
         parcel.readInt(),
         parcel.readInt(),
             parcel.readArrayList(String.javaClass.classLoader) as ArrayList<String>,
-        parcel.readString() ?: "",
             parcel.readSerializable() as HashMap<String, String>,
-        parcel.readSerializable() as UnitModel
+        parcel.readSerializable() as UnitModel,
+        parcel.readArrayList(String.javaClass.classLoader) as ArrayList<String>,
+        parcel.readString() ?: ""
     )
 
     fun gameStart(){
@@ -32,9 +34,10 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
         dest.writeInt(money)
         dest.writeInt(damaged)
         dest.writeList(equip)
-        dest.writeString(item)
         dest.writeSerializable(vars)
         dest.writeSerializable(unit)
+        dest.writeList(companion)
+        dest.writeString(specialization)
     }
 
     override fun describeContents(): Int {
@@ -59,20 +62,28 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
         return hour in 6..19
     }
 
-    fun sell(items: HashMap<String, ItemModel>){
+    fun sell(items: HashMap<String, ItemModel>, part: String){
+        val item = unequipItem(items, unequipPart(items, part) ?: "")
         val itemModel: ItemModel = items[item] ?: return
-        item = ""
         money += itemModel.value
+    }
+
+    fun getAllies(unitDict: HashMap<String, UnitModel>): ArrayList<UnitModel>{
+        val enemies = ArrayList<UnitModel>()
+        for (unit in companion){
+            val unitData = unitDict[unit] ?: unitDict["invalid"]!!
+            enemies.add(unitData.copy())
+        }
+        return enemies
     }
 
     fun equipItem(items: HashMap<String, ItemModel>, itemName: String): String?{
         var unequipped: String? = null
-        val item: ItemModel = items[itemName] ?: return unequipped
+        val item: ItemModel = items[itemName] ?: return null
         for (i in equip){
-            val equippedItem = items[i] ?: return unequipped
+            val equippedItem = items[i] ?: return null
             if (equippedItem.type == item.type){
-                unequipped = i
-                unequipItem(items, i)
+                unequipped = unequipItem(items, i)
                 break
             }
         }
@@ -82,43 +93,57 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
             }
         }
         equip.add(itemName)
+        if (item.rating != null){
+            unit.health += item.rating
+        }
+        if (item.type == "weapon"){
+            unit.flavors["weapon"] = itemName
+        }
         return unequipped
     }
 
-    fun unequipItem(items: HashMap<String, ItemModel>, itemName: String){
-        val item: ItemModel = items[itemName] ?: return
+    fun unequipPart(items: HashMap<String, ItemModel>, part: String): String?{
+        for (equipped in equip){
+            val item: ItemModel = items[equipped] ?: return null
+            if (item.type == part){
+                return unequipItem(items, equipped)
+            }
+        }
+        return null
+    }
+
+    fun unequipItem(items: HashMap<String, ItemModel>, itemName: String): String?{
+        val item: ItemModel = items[itemName] ?: return null
         if (item.moves != null) {
             for (move in item.moves) {
                 unit.moves.remove(move)
             }
         }
+        if (item.rating != null){
+            unit.health -= item.rating
+        }
         equip.remove(itemName)
+        return itemName
     }
 
-    fun getEquipment(items: HashMap<String, ItemModel>, part: String, fail: String = ""): String{
-        for (i in equip){
-            val equippedItem = items[i] ?: return fail
-            if (equippedItem.type == part){
-                return i
+    fun getSamePart(items: HashMap<String, ItemModel>, itemName: String): String?{
+        val incoming = items[itemName] ?: return null
+        for (equipped in equip){
+            val item: ItemModel = items[equipped] ?: return null
+            if (item.type == incoming.type){
+                return equipped
             }
         }
-        return fail
+        return null
     }
 
     fun getDescription(): String{
-        var result = ""
-        if (equip.isNotEmpty()){
-            for (equipped in equip){
-                result += "You have ${Grammar.getArticle(equipped)} equipped.\n"
-            }
-        }
-        if (item.isNotEmpty()){
-            result += "You are carrying ${Grammar.getArticle(item)}.\n"
-        }
+        var result = "You are a $specialization.\n"
         result += "You have $${money}.\n"
-        if ("wounded" in unit.status){
-            val percentage = unit.getHealthPercentage().toString()
-            result += "You are wounded ($percentage%)\n"
+        if (unit.healthPt < unit.health){
+            result += "You are wounded (${unit.healthPt}/${unit.health})\n"
+        } else {
+            result = "You are healthy (${unit.healthPt}/${unit.health})"
         }
         return result
     }
@@ -136,12 +161,12 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
 
 class Player(private val fileManager: FileManager) {
 //    val model: Model = make(fileManager.read("save"))
-    var model: PlayerModel = make(fileManager.readAsset("template.json"))
+    var model: PlayerModel = make(fileManager.readAsset("player.json"))
 
     private fun make(data: String?): PlayerModel {
         val gson = Gson()
         return if (data == null){
-            val finalData: String = fileManager.readAsset("template.json") !!
+            val finalData: String = fileManager.readAsset("player.json") !!
             val player = gson.fromJson(finalData, PlayerModel::class.java)
             player.gameStart()
             player
@@ -154,15 +179,16 @@ class Player(private val fileManager: FileManager) {
         model.time += time
     }
 
+    fun timeSet(time: Int){
+        val diff = model.time % 24 - time
+        model.time += diff
+    }
+
     fun reset(){
-        model = make(fileManager.readAsset("template.json"))
+        model = make(fileManager.readAsset("player.json"))
     }
 
     fun save(){
-        model.unit.deck = null
-        model.unit.target = null
-        model.unit.status.clear()
-        model.unit.foes = arrayListOf()
         val json = Gson().toJson(model)
         fileManager.write("save", json)
     }
