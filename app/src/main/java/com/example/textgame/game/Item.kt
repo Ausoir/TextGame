@@ -10,9 +10,8 @@ data class ItemModel(val type: String, val value: Int, val desc: String, val rat
 class ItemController(fileManager: FileManager) {
     val model = makeItem(fileManager.readAsset("item.json") !!)
 
-    fun makeItem(data: String): HashMap<String, ItemModel> {
+    private fun makeItem(data: String): HashMap<String, ItemModel> {
         val listType = object : TypeToken<HashMap<String, ItemModel>?>() {}.type
-        val result: HashMap<String, ItemModel> = Gson().fromJson(data, listType)
-        return result
+        return Gson().fromJson(data, listType) as HashMap<String, ItemModel>
     }
 }

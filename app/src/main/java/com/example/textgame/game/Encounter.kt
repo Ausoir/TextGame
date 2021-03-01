@@ -19,9 +19,8 @@ data class EncounterModel(val desc: String, val units: ArrayList<String>, val lo
 class EncounterController(fileManager: FileManager) {
     val model = makeEncounter(fileManager.readAsset("encounter.json") !!)
 
-    fun makeEncounter(data: String): HashMap<String, EncounterModel> {
+    private fun makeEncounter(data: String): HashMap<String, EncounterModel> {
         val listType = object : TypeToken<HashMap<String, EncounterModel>?>() {}.type
-        val result: HashMap<String, EncounterModel> = Gson().fromJson(data, listType)
-        return result
+        return Gson().fromJson(data, listType) as HashMap<String, EncounterModel>
     }
 }

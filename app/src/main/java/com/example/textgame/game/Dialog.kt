@@ -34,9 +34,9 @@ data class DialogOptionModel(var to: String, var text: String, var reqs: Array<S
     }
 }
 
-data class DialogModel(val title: String, val text: String, val filler: List<String>?, val opt: List<DialogOptionModel>): Parcelable {
+data class DialogModel(val title: String?, val text: String, val filler: List<String>?, val opt: List<DialogOptionModel>): Parcelable {
     constructor(parcel: Parcel) : this(
-            parcel.readString() ?: "",
+            parcel.readString(),
             parcel.readString() ?: "",
             parcel.readStringList(emptyList()) as List<String>?,
             parcel.readTypedList(emptyList(), DialogOptionModel.CREATOR) as List<DialogOptionModel>
@@ -53,8 +53,8 @@ data class DialogModel(val title: String, val text: String, val filler: List<Str
         return 0
     }
 
-    private fun replaceText(args: List<String?>, text: String): String{
-        var result = text
+    private fun replaceText(args: List<String?>, text: String?): String{
+        var result = text ?: ""
         if (filler != null) {
             for (i in args.indices) {
                 result = result.replace(filler[i], args[i] ?: filler[i])
@@ -81,7 +81,11 @@ data class DialogModel(val title: String, val text: String, val filler: List<Str
         return DialogModel(replaceText(args, title), replaceText(args, text), filler, newOptions)
     }
 
-    fun validate(player: PlayerModel): DialogModel{
+    fun validate(player: PlayerModel): DialogModel?{
+        if (text.startsWith(">redirect>")){
+            player.vars["page"] = text.substringAfter(">redirect>")
+            return null
+        }
         val validOptions = arrayListOf<DialogOptionModel>()
         for (option in opt){
             if (Requirement.checkList(player, option.reqs)){
@@ -108,10 +112,9 @@ data class DialogModel(val title: String, val text: String, val filler: List<Str
 class DialogController(fileManager: FileManager, chapter: String) {
     val model = makeDialog(fileManager.readAsset("chapters/$chapter.json") !!)
 
-    fun makeDialog(data: String): HashMap<String, DialogModel> {
+    private fun makeDialog(data: String): HashMap<String, DialogModel> {
         val listType = object : TypeToken<HashMap<String, DialogModel>?>() {}.type
-        val result: HashMap<String, DialogModel> = Gson().fromJson(data, listType)
-        return result
+        return Gson().fromJson(data, listType) as HashMap<String, DialogModel>
     }
 
     fun getCustom(text: String, next: String, nextDesc: String): DialogModel{

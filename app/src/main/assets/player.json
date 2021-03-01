@@ -3,12 +3,12 @@
   "time": 10,
   "money": 10,
   "damaged": 0,
-  "equip": ["silk robe"],
+  "equip": ["grass robe", "blood droplet"],
   "vars": {
     "name": "You",
-    "page": "start",
+    "page": ">specialize>fighter>>join>Scobby>>join>Cheese>>item>horn mace>>learn>charge>day 4",
     "prev": "start",
-    "chapter": "0",
+    "chapter": "1",
     "quest": "0"
   },
   "unit": {
@@ -20,10 +20,7 @@
     "skills": [],
     "flavors": {
       "pronoun": "you",
-      "grazed": "you are lightly wounded.",
-      "hurt": "you are wounded.",
-      "dying": "you are seriously wounded.",
-      "death": "you fall unconscious."
+      "weapon": "fist"
     }
   },
   "companion": [],

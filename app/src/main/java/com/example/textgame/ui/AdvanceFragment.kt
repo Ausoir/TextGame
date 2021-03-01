@@ -13,6 +13,7 @@ import com.example.textgame.App
 import com.example.textgame.R
 import com.example.textgame.game.DialogModel
 import com.example.textgame.game.SpecialModel
+import com.example.textgame.tools.Grammar
 
 
 class AdvanceFragment : Fragment() {
@@ -30,27 +31,21 @@ class AdvanceFragment : Fragment() {
         val page = arguments?.getString("page") ?: "invalid"
         val specMap = arguments?.getSerializable("specMap") as HashMap<String, SpecialModel>
         val specString = arguments?.getString("spec") ?: "basic"
+        val branch = arguments?.getStringArray("branch") as Array<String>
         val spec = specMap[specString]!!
-        if (spec.branch.isNullOrEmpty()){
-            textView.append("You have reached the end of your specialization. Learn a new move instead.\n\n")
-            addButton(resources.getString(R.string.proceed)).setOnClickListener {
+        textView.append("Choose your specialization.\nYour current class:\n\n${spec.getDescription(specString)}\n\nAvailable specializations:\n\n")
+        addButton("Stay as $specString").setOnClickListener {
+            val app: App = activity as App
+            app.openDialog(page)
+        }
+        for (adv in branch) {
+            val advSpec = specMap[adv]
+            val text = advSpec?.getDescription(adv) ?: "INVALID"
+            val flavor = advSpec?.flavor ?: "INVALID"
+            textView.append("$text\n\n")
+            addButton("Become ${Grammar.getArticle(adv)}").setOnClickListener {
                 val app: App = activity as App
-                app.openDialog(">moveset>$page")
-            }
-        } else {
-            textView.append("Choose your specialization.\nYour current class: ${spec.text}\n\nNext specializations:\n\n")
-            addButton("Improve as $specString").setOnClickListener {
-                val app: App = activity as App
-                app.openDialog(">moveset>$page")
-            }
-            for (branch in spec.branch) {
-                val text = specMap[branch]?.text ?: "INVALID"
-                val flavor = specMap[branch]?.flavor ?: "INVALID"
-                textView.append("$text\n\n")
-                addButton("Become a $branch").setOnClickListener {
-                    val app: App = activity as App
-                    app.openDialog(">custom>$flavor>>specialize>$branch>$page")
-                }
+                app.openDialog(">custom>$flavor>>specialize>$adv>$page")
             }
         }
         return root

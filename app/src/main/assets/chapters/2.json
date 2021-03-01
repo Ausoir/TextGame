@@ -1,0 +1,34 @@
+{
+  "invalid": {
+    "title": "",
+    "text": "Dialog page is missing...",
+    "opt": [{
+      "to": "defeat",
+      "text": "Go back"
+    }]
+  },
+  "defeat": {
+    "title": "Game Over",
+    "text": "It is GAME OVER!",
+    "opt": [{
+      "to": ">heal>8>start",
+      "text": "Start Over"
+    }]
+  },
+  "start": {
+    "title": "Chapter 2",
+    "text": "",
+    "opt": [{
+      "to": ">timeset>8>start2",
+      "text": "Begin"
+    }]
+  },
+  "start2": {
+    "title": "Chapter 2",
+    "text": "",
+    "opt": [{
+      "to": ">timeset>8>start2",
+      "text": "Begin"
+    }]
+  }
+}

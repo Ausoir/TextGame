@@ -14,7 +14,7 @@
     "level": 5,
     "speed": 2,
     "health": 8,
-    "moves": ["mandible bite", "grab", "engage", "stun"],
+    "moves": ["weak bite", "engage", "stun"],
     "skills": ["sneak"],
     "status": [],
     "flavors": {
@@ -23,12 +23,37 @@
       "death": "The wolf spider rolls belly up and skitters its legs, and slowly stops moving."
     }
   },
+  "Lucid": {
+    "name": "Lucid",
+    "level": 15,
+    "speed": 3,
+    "health": 3,
+    "moves": ["disengage", "engage", "gather mana", "charge mana", "redirect", "explode", "phase"],
+    "skills": ["manacharge"],
+    "status": [],
+    "flavors": {
+      "pronoun": "he",
+      "death": "Lucid collapses.\n\nLucid: [Ugh..]\n"
+    }
+  },
+  "Abductee": {
+    "name": "abductee",
+    "level": 5,
+    "speed": 2,
+    "health": 3,
+    "moves": ["hesitate", "engage", "tackle", "panic", "kick"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "he"
+    }
+  },
   "feral human": {
     "name": "feral human",
     "level": 2,
-    "speed": 1,
-    "health": 2,
-    "moves": ["bola throw", "disengage", "engage", "swing"],
+    "speed": 2,
+    "health": 3,
+    "moves": ["bola throw", "disengage", "engage", "swing", "adjust"],
     "skills": [],
     "status": [],
     "flavors": {
@@ -53,7 +78,7 @@
     "level": 1,
     "speed": 1,
     "health": 1,
-    "moves": ["mandible bite", "wiggle", "engage"],
+    "moves": ["weak bite", "wiggle", "engage"],
     "skills": [],
     "status": [],
     "flavors": {
@@ -102,7 +127,7 @@
     "level": 3,
     "speed": 1,
     "health": 5,
-    "moves": ["curl", "engage", "grab"],
+    "moves": ["curl", "curl", "hesitate", "hesitate", "panic", "poison"],
     "skills": [],
     "status": [],
     "flavors": {
@@ -115,11 +140,11 @@
     "level": 2,
     "speed": 1,
     "health": 2,
-    "moves": ["engage", "suck", "grab"],
+    "moves": ["engage", "suck"],
     "skills": ["self destruct"],
     "status": [],
     "flavors": {
-      "death": "The tick explodes into blood."
+      "death": "The tick goes belly up, its blood red body slowly expanding..."
     }
   },
   "centipede": {
@@ -127,7 +152,7 @@
     "level": 5,
     "speed": 2,
     "health": 3,
-    "moves": ["engage", "grab", "gouge", "strangle"],
+    "moves": ["engage", "gouge", "strangle"],
     "skills": [],
     "status": [],
     "flavors": {
@@ -139,7 +164,7 @@
     "level": 5,
     "speed": 2,
     "health": 4,
-    "moves": ["grab", "fly engage", "suck", "disengage"],
+    "moves": ["engage", "suck", "disengage"],
     "skills": ["fly"],
     "status": [],
     "flavors": {
@@ -155,24 +180,72 @@
     "moves": ["poison", "disengage", "disengage", "hesitate", "dodge"],
     "skills": ["fly"],
     "status": [],
-    "flavors": {
-      "hurt": "%U flaps its wings furiously.",
-      "dying": "%U looks severely injured.",
-      "death": "%U drops dead."
-    }
+    "flavors": {}
+  },
+  "mouse": {
+    "name": "mouse",
+    "level": 6,
+    "speed": 2,
+    "health": 8,
+    "moves": ["dodge", "disengage", "dodge", "panic", "weak bite"],
+    "skills": [],
+    "status": [],
+    "flavors": {}
   },
   "Scobby": {
     "name": "Scobby",
     "level": 10,
     "speed": 3,
     "health": 10,
-    "moves": ["engage", "swing", "swing", "stun", "dodge"],
+    "moves": ["charge", "swing", "guard dash", "stun", "dodge", "taunt", "backstep", "parry"],
     "skills": [],
     "status": [],
     "flavors": {
       "weapon": "Red Flint Greataxe",
       "pronoun": "he",
       "death": "Scobby stops the fight."
+    }
+  },
+  "yellow ant": {
+    "name": "yellow ant",
+    "level": 5,
+    "speed": 1,
+    "health": 2,
+    "moves": ["engage", "bite"],
+    "skills": [],
+    "status": [],
+    "flavors": {}
+  },
+  "yellow butterfly": {
+    "name": "yellow butterfly",
+    "level": 5,
+    "speed": 1,
+    "health": 5,
+    "moves": ["engage", "suck", "pierce", "peck", "disengage"],
+    "skills": [],
+    "status": [],
+    "flavors": {}
+  },
+  "bee": {
+    "name": "bumble bee",
+    "level": 5,
+    "speed": 1,
+    "health": 4,
+    "moves": ["slack", "slack", "tackle"],
+    "skills": [],
+    "status": [],
+    "flavors": {}
+  },
+  "beetle": {
+    "name": "beetle",
+    "level": 10,
+    "speed": 1,
+    "health": 8,
+    "moves": ["charge", "slack", "tackle", "engage", "curl"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "death": "The beetle collapses with a thud."
     }
   }
 }

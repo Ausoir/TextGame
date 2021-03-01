@@ -49,23 +49,9 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
         return Grammar.getTime(hours)
     }
 
-    fun isTransitionTime(): Boolean{
-        return listOf(5, 9, 12, 18, 20).contains(time % 24)
-    }
-
-    fun getDay(): Int{
-        return 1 + (time / 24)
-    }
-
     fun isDay(): Boolean{
         val hour = time % 24
         return hour in 6..19
-    }
-
-    fun sell(items: HashMap<String, ItemModel>, part: String){
-        val item = unequipItem(items, unequipPart(items, part) ?: "")
-        val itemModel: ItemModel = items[item] ?: return
-        money += itemModel.value
     }
 
     fun getAllies(unitDict: HashMap<String, UnitModel>): ArrayList<UnitModel>{
@@ -85,11 +71,6 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
             if (equippedItem.type == item.type){
                 unequipped = unequipItem(items, i)
                 break
-            }
-        }
-        if (item.moves != null) {
-            for (move in item.moves) {
-                unit.moves.add(move)
             }
         }
         equip.add(itemName)
@@ -114,11 +95,6 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
 
     fun unequipItem(items: HashMap<String, ItemModel>, itemName: String): String?{
         val item: ItemModel = items[itemName] ?: return null
-        if (item.moves != null) {
-            for (move in item.moves) {
-                unit.moves.remove(move)
-            }
-        }
         if (item.rating != null){
             unit.health -= item.rating
         }
@@ -135,6 +111,17 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
             }
         }
         return null
+    }
+
+    fun getItemMoves(items: HashMap<String, ItemModel>): ArrayList<String>{
+        val result = arrayListOf<String>()
+        for (equipped in equip){
+            val item: ItemModel = items[equipped] ?: items["invalid"]!!
+            if (item.moves != null) {
+                result.addAll(item.moves)
+            }
+        }
+        return result
     }
 
     fun getDescription(): String{
@@ -180,8 +167,9 @@ class Player(private val fileManager: FileManager) {
     }
 
     fun timeSet(time: Int){
-        val diff = model.time % 24 - time
-        model.time += diff
+//        val diff = model.time % 24 - time
+//        model.time += diff
+        model.time = time
     }
 
     fun reset(){

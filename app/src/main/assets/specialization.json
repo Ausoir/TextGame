@@ -1,70 +1,49 @@
 {
+  "invalid": {
+    "deck": "common deck"
+  },
   "novice scout": {
-    "text": "The novice scout. Learn from basic moveset. Can disengage at will.",
-    "move": "disengage",
-    "deck": "basic deck",
-    "branch": ["fighter", "scout", "forester"]
+    "deck": "common deck"
   },
   "scout": {
-    "text": "The scout. Learn from the scout moveset when you level up. Get 1 more max health. Can disengage at will.",
     "flavor": "You use your new knowledge to improve yourself as a scout. You are now something like a real scout!",
-    "move": "disengage",
     "deck": "scout deck",
-    "health": 1,
-    "branch": ["ranger", "rogue"]
+    "health": 1
   },
   "rogue": {
-    "text": "The rogue. Learn from the scout moveset and get 1 more max health. Rogues can dodge attacks for a turn. Also gain the <Sneak> skill, which gives you 2 extra turn points at the beginning of combat.",
+    "text": "Start with 2 extra turns at the beginning of combat.",
     "flavor": "You realized that no matter how strong you get, there are always stronger foes. Instead, you learn to use your quick wits to take the upper hand in combat. You are now a rogue!",
-    "move": "dodge",
     "skill": "sneak",
     "deck": "scout deck",
     "health": 1
   },
   "ranger": {
-    "text": "The ranger. Learn from the ranger moveset and get 1 more max health. Rangers can disengage at will. Also gain the <Sneak> skill, which gives you 2 extra turn points at the beginning of combat.",
-    "flavor": "You realized that no matter how strong you get, there are always stronger foes. Instead, you learn to use your quick wits to take the upper hand in combat. You are now a rogue!",
-    "move": "disengage",
-    "skill": "sneak",
+    "text": "Disengage when you gather yourself.",
+    "flavor": "You learn to embrace your inner cowardice and triumph over your enemies from distance. You are now a ranger!",
+    "skill": "tactical retreat",
     "deck": "scout deck",
     "health": 1
   },
 
   "fighter": {
-    "text": "The fighter class. Get 2 more max health and learn from the fighter moveset when you level up. Can charge in for melee damage when disengaged.",
     "flavor": "You focus your mind on the intricate movements and strategies of combat. You are now a fighter!",
-    "move": "charge",
     "deck": "fighter deck",
-    "health": 2,
-    "branch": ["brawler"]
-  },
-  "brawler": {
-    "text": "The brawler class. Get 2 more max health and learn from the brawler moveset when you level up. Can grab at will.",
-    "flavor": "You focus your mind on the intricate movements and strategies of combat. You are now a fighter!",
-    "move": "grab",
-    "deck": "brawler deck",
     "health": 2
   },
   "warrior": {
-    "text": "The warrior class. Get 1 more max health and learn from the warrior moveset when you level up. Can grab at will.",
-    "flavor": "You focus your mind on the intricate movements and strategies of combat. You are now a fighter!",
-    "move": "grab",
-    "deck": "brawler deck",
-    "health": 2
+    "flavor": "You train yourself to ignore pain and focus on taking down the enemy. You are now a warrior!",
+    "deck": "fighter deck",
+    "health": 4
   },
 
   "forester": {
-    "text": "The forester. Learn from the nature moveset when you level up. Can recover yourself from injury. Also gain the <Herbal Remedy> skill, which allows you to heal back 1 damage after each fight.",
+    "text": "Heal 1 health after every victory.",
     "flavor": "Your new knowledge allows you to improve your perception of the surroundings. You are now a forester!",
-    "move": "recover",
     "skill": "herbal remedy",
     "deck": "nature deck"
   },
-
   "apprentice": {
-    "text": "The apprentice. Learn from the spellcasting moveset when you level up. Can gather yourself at will.",
-    "flavor": "You have learned the secrets of spellcasting. You are able to practice the gathering and focusing of mana to manipulate the physical world.",
-    "move": "shuffle",
+    "flavor": "You have learned the secrets of spellcasting. You are able to practice the gathering and focusing of mana to manipulate the physical world. You are now an apprentice!",
     "deck": "spell deck"
   }
 }

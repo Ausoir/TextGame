@@ -5,14 +5,17 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
 
-data class UnitModel(val name: String, var level: Int, val speed: Int, var health: Int, val moves: MutableList<String>, val skills: MutableList<String>,
-                     val flavors: HashMap<String, String>): Serializable{
+data class UnitModel(val name: String, var level: Int, val speed: Int, var health: Int,
+                     val moves: MutableList<String>, val skills: MutableList<String>, val flavors: HashMap<String, String>): Serializable{
     lateinit var foes: ArrayList<UnitModel>
     lateinit var status: ArrayList<Status>
+    lateinit var statusDuration: ArrayList<Int>
     var id = 0
     var points = speed
     var healthPt = 1
-    var barrier = 0
+    var block = 0
+    var position = 0
+    var mana = 0
     var target: UnitModel? = null
     var deck: Deck? = null
 
@@ -20,6 +23,7 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
         deck = Deck(this, moves, handSize)
         deck?.shuffle()
         status = arrayListOf()
+        statusDuration = arrayListOf()
         foes = arrayListOf()
     }
 
@@ -31,50 +35,113 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
         return UnitModel(name, level, speed, health, moves.toMutableList(), skills.toMutableList(), HashMap(flavors))
     }
 
-    fun inflict(damage: Int){
-        barrier += damage
-        if (barrier < 0){
-            healthPt += barrier
-            barrier = 0
-        }
+    fun inflict(healthChange: Int): String{
+        return replaceNouns(when {
+            healthChange < 0 -> {
+                var result = ""
+                block += healthChange
+                if (block < 0) {
+                    healthPt += block
+                    if (healthChange != block) {
+                        result = "%U block%s ${-(healthChange - block)} damage.\n"
+                    }
+                    result += "%U take%s ${-block} damage!\n${getHealthDescription()}\n"
+                    block = 0
+                } else {
+                    result = "%U block%s ${-healthChange} damage.\n${getHealthDescription()}\n"
+                }
+                result
+            }
+            healthChange > 0 -> {
+                healthPt += healthChange
+                if (healthPt > health) {
+                    healthPt = health
+                }
+                "%U receive%s $healthChange healing!\n${getHealthDescription()}\n"
+            }
+            else -> {
+                ""
+            }
+        })
     }
 
-    fun hasStatus(p: String): Boolean{
+    fun getStatus(p: String): Status?{
         for (stat in status){
             if (stat.effect == p){
-                return true
+                return stat
             }
         }
-        return false
+        return null
     }
 
-    fun addStatus(effect: String, duration: Int = 0, value: Int = 1){
-        if (duration != 0) {
-            val status = Status(effect, 1, duration, value, null, null, null, null)
-            this.status.add(status)
+    fun removeStatus(id: String?, effect: String?): String{
+        var result = ""
+        when {
+            id != null -> {
+                do {
+                    val feedback = removeStatusById(id)
+                    if (feedback != null) {
+                        result += "$feedback\n"
+                    }
+                } while (feedback != null)
+            }
+            effect != null -> {
+                do {
+                    val feedback = removeStatusByEffect(effect)
+                    if (feedback != null) {
+                        result += "$feedback\n"
+                    }
+                } while (feedback != null)
+            }
         }
+        return result
     }
 
-    fun removeStatus(p: String): String{
+    fun removeStatusById(id: String?): String?{
+        if (id != null) {
+            for (i in status.indices.reversed()) {
+                if (status[i].id == id) {
+                    val result = status[i].onRemove(this)
+                    status.removeAt(i)
+                    statusDuration.removeAt(i)
+                    return result
+                }
+            }
+        }
+        return null
+    }
+
+    fun removeStatusByEffect(p: String): String?{
         for (i in status.indices.reversed()){
             if (status[i].effect == p){
                 val result = status[i].onRemove(this)
                 status.removeAt(i)
+                statusDuration.removeAt(i)
                 return result
             }
         }
-        return ""
+        return null
+    }
+
+    fun addStatus(effect: Status, duration: Int){
+        status.add(effect)
+        statusDuration.add(duration)
     }
 
     fun processStatus(): String {
         var result = ""
         for (i in status.indices.reversed()){
             result += status[i].process(this, status[i].text)
-            if (status[i].checkEnd()){
+            if (statusDuration[i] > 0) {
+                statusDuration[i] -= 1
+            }
+            if (statusDuration[i] == 0){
                 result += status[i].onRemove(this)
                 status.removeAt(i)
+                statusDuration.removeAt(i)
             }
         }
+        block = 0
         return result
     }
 
@@ -90,7 +157,7 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
         val percentage = getHealthPercentage()
         val result = when {
             percentage <= 0 -> {
-                "%U collapse%s."
+                flavors["death"] ?: "%U collapse%s."
             }
             percentage <= 25 -> {
                 "%Ur seriously wounded."
@@ -111,41 +178,56 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
     fun isReqMet(reqs: List<Status>?): String{
         if (reqs != null) {
             for (req in reqs) {
-                val reqMet = if (req.effect == "50") {
+                if (req.effect == "50") {
                     return listOf(req.text, "").shuffled()[0]!!
+                } else if (target == null) {
+                    return "INVALID TARGET"
+                } else if (req.effect == "melee") {
+                    return if ((position == target?.position) == (req.target == 1)){
+                        ""
+                    } else {
+                        "!"
+                    }
+                } else if (req.effect == "mana") {
+                    return if (mana >= req.value){
+                        mana -= req.value
+                        ""
+                    } else {
+                        "!"
+                    }
                 } else {
-                    when (req.target) {
+                    val reqMet = when (req.target) {
                         1 -> {
-                            hasStatus(req.effect)
+                            getStatus(req.effect) != null
                         }
                         2 -> {
-                            target?.hasStatus(req.effect) ?: false
+                            target?.getStatus(req.effect) != null
                         }
                         3 -> {
-                            hasStatus(req.effect) && (target?.hasStatus(req.effect) ?: false)
+                            getStatus(req.effect) != null && (target?.getStatus(req.effect) != null)
                         }
                         12 -> {
-                            hasStatus(req.effect) || (target?.hasStatus(req.effect) ?: false)
+                            getStatus(req.effect) != null || (target?.getStatus(req.effect) != null)
                         }
                         -1 -> {
-                            !hasStatus(req.effect)
+                            getStatus(req.effect) == null
                         }
                         -2 -> {
-                            !(target?.hasStatus(req.effect) ?: false)
+                            target?.getStatus(req.effect) == null
                         }
                         -3 -> {
-                            !(hasStatus(req.effect) && (target?.hasStatus(req.effect) ?: false))
+                            getStatus(req.effect) == null && (target?.getStatus(req.effect) == null)
                         }
                         -12 -> {
-                            !hasStatus(req.effect) || !(target?.hasStatus(req.effect) ?: false)
+                            getStatus(req.effect) == null || (target?.getStatus(req.effect) == null)
                         }
                         else -> {
                             true
                         }
                     }
-                }
-                if (!reqMet) {
-                    return req.text ?: "!"
+                    if (!reqMet) {
+                        return req.text ?: "!"
+                    }
                 }
             }
         }
@@ -186,6 +268,16 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
         return listOf("", "s", "it is", "its", "itself", "$thenoun is", "$thenoun's", thenoun, "it")
     }
 
+    fun getFoeInRange(): ArrayList<UnitModel>{
+        val result = arrayListOf<UnitModel>()
+        for (foe in foes){
+            if (foe.position == position){
+                result.add(foe)
+            }
+        }
+        return result
+    }
+
     fun replaceNouns(text: String): String{
         var result = text.replace("%?", "none")
         if (result.contains("%w")){
@@ -200,6 +292,11 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
         pronoun.addAll(getPronouns(this))
         pronoun.addAll(getPronouns(target ?: this))
 
+        result = if (pronoun[1] == "s") {
+            result.replace("%ies", "ies")
+        } else {
+            result.replace("%ies", "y")
+        }
         result = result.replace("%ur", pronoun[2])
         result = result.replace("%us", pronoun[3])
         result = result.replace("%uf", pronoun[4])

@@ -21,7 +21,6 @@ class ProfileFragment : Fragment() {
     private lateinit var textView: TextView
     private lateinit var player: PlayerModel
     private lateinit var moveset: ArrayList<MoveModel>
-    private lateinit var description: HashMap<String, String>
     private lateinit var itemMap: HashMap<String, ItemModel>
 
     override fun onCreateView(
@@ -39,9 +38,6 @@ class ProfileFragment : Fragment() {
         addButton(resources.getString(R.string.profile_button_moveset)).setOnClickListener{
             showMoveset()
         }
-        addButton(resources.getString(R.string.profile_button_skill)).setOnClickListener{
-            showSkill()
-        }
         addButton(resources.getString(R.string.profile_button_companion)).setOnClickListener{
             showCompanion()
         }
@@ -50,7 +46,6 @@ class ProfileFragment : Fragment() {
         }
         val serial = arguments?.getSerializable("moveset") ?: return root
         player = arguments?.getParcelable("player") ?: return root
-        description = arguments?.getSerializable("description") as HashMap<String, String>
         itemMap = arguments?.getSerializable("item map") as HashMap<String, ItemModel>
         moveset = serial as ArrayList<MoveModel>
         textView.text = player.getDescription()
@@ -80,6 +75,9 @@ class ProfileFragment : Fragment() {
             val item = HashMap<String, String>(2)
             item["Name"] = i.capitalize() + " (${itemMap[i]?.type ?: "Other"})"
             item["Description"] = itemMap[i]?.desc?.capitalize() ?: ""
+            if (itemMap[i] != null && itemMap[i]!!.moves != null){
+                item["Description"] += " Moves: " + itemMap[i]!!.moves.joinToString { it }
+            }
             items.add(item)
         }
         listView.adapter = SimpleAdapter(activity as Context, items, android.R.layout.two_line_list_item, arrayOf("Name", "Description"), intArrayOf(android.R.id.text1, android.R.id.text2))
@@ -103,20 +101,8 @@ class ProfileFragment : Fragment() {
         val items = ArrayList<Map<String, String>>()
         for (i in moveset.indices){
             val item = HashMap<String, String>(2)
-            item["Name"] = player.unit.moves[i].capitalize()
+            item["Name"] = moveset[i].name.capitalize()
             item["Description"] = player.unit.replaceNouns(moveset[i].desc).capitalize()
-            items.add(item)
-        }
-        listView.adapter = SimpleAdapter(activity as Context, items, android.R.layout.two_line_list_item, arrayOf("Name", "Description"), intArrayOf(android.R.id.text1, android.R.id.text2))
-    }
-
-    private fun showSkill(){
-        reset()
-        val items = ArrayList<Map<String, String>>()
-        for (i in player.unit.skills){
-            val item = HashMap<String, String>(2)
-            item["Name"] = i.capitalize()
-            item["Description"] = description[i]?: ""
             items.add(item)
         }
         listView.adapter = SimpleAdapter(activity as Context, items, android.R.layout.two_line_list_item, arrayOf("Name", "Description"), intArrayOf(android.R.id.text1, android.R.id.text2))
@@ -128,7 +114,6 @@ class ProfileFragment : Fragment() {
         for (i in player.companion){
             val item = HashMap<String, String>(2)
             item["Name"] = i.capitalize()
-            item["Description"] = description[i]?: ""
             items.add(item)
         }
         listView.adapter = SimpleAdapter(activity as Context, items, android.R.layout.simple_list_item_1, arrayOf("Name"), intArrayOf(android.R.id.text1))

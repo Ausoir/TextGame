@@ -42,6 +42,9 @@ object Requirement{
             split[0] == "ally" -> {
                 split[1] in model.companion
             }
+            split[0] == "class" -> {
+                model.specialization == split[1]
+            }
             split[0] == "var" -> {
                 model.vars[split[1]] == split[2]
             }

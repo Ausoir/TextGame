@@ -13,21 +13,6 @@
         android:orientation="vertical"
         android:paddingBottom="4dp"
         android:layout_alignParentBottom="true">
-
-        <Button
-            android:id="@+id/combat_action_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/combat_action_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/combat_action_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <ScrollView

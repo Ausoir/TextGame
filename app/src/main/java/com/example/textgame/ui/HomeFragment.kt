@@ -30,10 +30,15 @@ class HomeFragment : Fragment() {
         if (currentPage != null) {
             textView.text = currentPage.text
             val options = currentPage.opt
-            options.forEach { option ->
-                addButton(option.text).setOnClickListener {
-                    val app: App = activity as App
-                    app.openDialog(option.to)
+            if (currentPage.text == "redirect"){
+                val app: App = activity as App
+                app.openDialog(options[0].to)
+            } else {
+                options.forEach { option ->
+                    addButton(option.text).setOnClickListener {
+                        val app: App = activity as App
+                        app.openDialog(option.to)
+                    }
                 }
             }
         } else {

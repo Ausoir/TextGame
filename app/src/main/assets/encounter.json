@@ -5,13 +5,13 @@
     "loots": []
   },
   "wolf spiders": {
-    "desc": "Two large spiders covered in gray hair stares at you with 6 evil red eyes. They are as big as you are and their mandibles are thicker than your arm. You are having a hard time just standing still.\nYour brain is telling you to run, but it is too late. You can't run from those.",
+    "desc": "Two large spiders covered in gray hair stares at you with 6 evil red eyes. They are as big as you are and their mandibles are thicker than your arms. You are having a hard time just standing still.\nYour brain is telling you to run, but it is too late. You can't run from these.",
     "units": ["wolf spider", "wolf spider"],
     "loots": []
   },
-  "feral human": {
+  "two feral humans": {
     "desc": "A feral human wearing rags engages you. It observes you carefully, as if hunting an animal.",
-    "units": ["feral human"],
+    "units": ["feral human", "feral human"],
     "loots": ["web bolas", "sharp stick", "splinter spear"]
   },
   "Sparring Scobby": {
@@ -19,29 +19,39 @@
     "units": ["Sparring Scobby"],
     "loots": []
   },
+  "Teaching Scobby": {
+    "desc": "Scobby: [Alright. Let me teach you about targeting. Tap on this text area to access the targeting options.]\n\nScobby: [You'll see the option to target me, followed by my health status. When you are facing more than one enemies, you will have a better use for this mode.\nAnyways, let's continue.]",
+    "units": ["Sparring Scobby"],
+    "loots": ["sharp stick"]
+  },
   "three ants": {
-    "desc": "They are just ants the size of a toddler. They constantly wiggle their long antennae on their heads. Ants are usually not too aggressive, but these seem to be startled by your presence.",
+    "desc": "Ants with the size of a toddler crawl towards you. They constantly wiggle their long antennae on their heads. Ants are usually not too aggressive, but these seem to be startled by your presence.",
     "units": ["ant", "ant", "ant"],
-    "loots": ["ant meat", "ant leg", "grass robe", "", ""]
+    "loots": ["bug meat", "ant leg", "grass robe", "", ""]
   },
   "millipede": {
     "desc": "A worm-like monster with countless legs slithers its way towards you.",
     "units": ["millipede"],
-    "loots": ["chitin blade", "long chitin jacket", "", ""]
+    "loots": ["chitin blade", "long chitin jacket", "needle claws", ""]
   },
   "pill bug": {
     "desc": "An armored bug shaped like an uncurled ball crawls towards you.",
     "units": ["pill bug"],
-    "loots": ["chitin breastplate", "", "", ""]
+    "loots": ["chitin breastplate", "", "", "sturdy wood"]
   },
   "caterpillar": {
     "desc": "A fat worm with fabulous hair crawls toward you. You probably don't want to touch that.",
     "units": ["caterpillar"],
     "loots": []
   },
-  "bloodquito flock": {
+  "two bloodquitos": {
     "desc": "Two flying insect monsters bigger than your head are flying toward you. Their giant blood red eyes are staring at you with malice. Their thin wings covered with black veins flap slowly at their sides. Six lanky legs stick forward, shivering with excitement for blood. These are the infamous Bloodquitos - they can and will drink you dry!",
     "units": ["bloodquito", "bloodquito"],
+    "loots": ["blood droplet"]
+  },
+  "three bloodquitos": {
+    "desc": "Three flying insect monsters bigger than your head are flying toward you. Their giant blood red eyes are staring at you with malice. Their thin wings covered with black veins flap slowly at their sides. Six lanky legs stick forward, shivering with excitement for blood. These are the infamous Bloodquitos - they can and will drink you dry!",
+    "units": ["bloodquito", "bloodquito", "bloodquito"],
     "loots": ["blood droplet"]
   },
   "bloodquito": {
@@ -52,16 +62,56 @@
   "centipede": {
     "desc": "A monster with numerous segments of bodies and legs charges at you. Its huge mandibles will make sure you won't get out of here in one piece.",
     "units": ["centipede"],
-    "loots": []
+    "loots": ["chitin blade", "long chitin jacket", "chitin claws", ""]
   },
-  "three ticks": {
-    "desc": "Three tiny blood red ticks crawl toward you. They are slow to move, but will suck your blood dry if you let them too close. They are filled with blood and will explode in your face on death.",
-    "units": ["tick", "tick", "tick"],
-    "loots": []
+  "two ticks": {
+    "desc": "Two tiny blood red ticks crawl toward you. They are slow to move, but will suck your blood dry if you let them too close. They are filled with blood and will explode in your face on death.",
+    "units": ["tick", "tick"],
+    "loots": ["blood droplet"]
   },
   "moth": {
     "desc": "A giant winged beast slowly flaps its wings toward you. Every time it flaps its huge wings, green particles scatter out from its wing hair.",
     "units": ["moth"],
+    "loots": ["hair ball"]
+  },
+  "mouse": {
+    "desc": "A cute looking beast almost as big as you. Not very aggressive, but still pretty hard to kill.",
+    "units": ["mouse"],
+    "loots": ["spine spear"]
+  },
+  "yellow butterfly": {
+    "desc": "A giant monster with wings bigger than you slowly flaps its wings as it descends. Its extremely long proboscis looks pretty sharp.",
+    "units": ["yellow butterfly"],
+    "loots": ["long proboscis", "pollen ball"]
+  },
+  "three yellow ants": {
+    "desc": "Three yellow ants with the size of a toddler crawl towards you. These yellow ants look much more aggressive compared to normal ants.",
+    "units": ["yellow ant", "yellow ant", "yellow ant"],
+    "loots": ["pollen ball", "bug meat", "ant leg"]
+  },
+  "bee": {
+    "desc": "A yellow bumble bee flies toward you. It's cute looking.",
+    "units": ["bee"],
+    "loots": ["pollen ball"]
+  },
+  "bee and bloodquito": {
+    "desc": "A cute yellow bumble bee flies toward you. It's brought a friend.",
+    "units": ["bee", "bloodquito"],
+    "loots": ["pollen ball", "blood droplet"]
+  },
+  "beetle": {
+    "desc": "A giant blue beetle with beautiful large horn is grazing on the field. It looks uninterested in you, but you insist on fighting it. It sighs and confronts you.",
+    "units": ["beetle"],
+    "loots": ["horn axe", "horn mace", "horn bow"]
+  },
+  "feral hunters": {
+    "desc": "A group of feral humans wielding chitin spears approach you with malicious intent. They do not seem to understand you.",
+    "units": ["feral human", "feral human", "feral human", "feral human"],
+    "loots": ["web bolas", "sharp stick", "splinter spear"]
+  },
+  "wolf spider": {
+    "desc": "A large spider covered in gray hair crawls toward you. It is as big as you are and its mandibles are thicker than your arms. You are having a hard time just standing still.\nYour brain is telling you to run, but it is too late. You can't run from these.",
+    "units": ["wolf spider"],
     "loots": []
   }
 }

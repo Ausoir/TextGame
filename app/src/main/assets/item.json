@@ -8,7 +8,7 @@
   "greenwood bow": {
     "type": "weapon",
     "value": 1,
-    "desc": "a greenwood bow with raw silk bowstring. Fires arrows made of sapped wood splinters.",
+    "desc": "a bow made from a sapling. Not very powerful, but still can be lethal.",
     "moves": ["shoot"]
   },
   "slingshot": {
@@ -41,13 +41,6 @@
     "desc": "a limb broken off from a dead ant. It is pretty strong and could be used to swing around.",
     "moves": ["swing"]
   },
-  "rose spike": {
-    "type": "weapon",
-    "value": 2,
-    "rating": 2,
-    "desc": "a rose spike.",
-    "moves": ["stab"]
-  },
   "web bolas": {
     "type": "weapon",
     "value": 2,
@@ -56,8 +49,8 @@
   },
   "sharp stick": {
     "type": "weapon",
-    "value": 2,
-    "desc": "a rose spike.",
+    "value": 1,
+    "desc": "a sharp stick ideal for poking.",
     "moves": ["stab"]
   },
   "silk robe": {
@@ -90,7 +83,7 @@
   "spine spear": {
     "type": "weapon",
     "value": 2,
-    "desc": "a short spear made of hardened bug spine. Can be thrown.",
+    "desc": "a short spear made of spine. Can be thrown.",
     "moves": ["throw", "thrust"]
   },
   "hair ball": {
@@ -99,17 +92,54 @@
     "desc": "a poisonous hair ball. Can be hurled at melee or ranged distance to poison enemies.",
     "moves": ["poison"]
   },
-  "needle claw": {
+  "needle claws": {
     "type": "weapon",
     "value": 2,
     "desc": "a claw weapon made from the legs of a millipede.",
     "moves": ["thrust", "thrust"]
   },
+  "chitin claws": {
+    "type": "weapon",
+    "value": 2,
+    "desc": "a claw weapon made from the legs of a centipede.",
+    "moves": ["thrust", "thrust", "stab"]
+  },
   "bloodquito proboscis": {
     "type": "weapon",
     "value": 2,
-    "desc": "the proboscis of the dreaded bloodquito. Grants you lifesteal attacks.",
-    "moves": ["suck", "thrust"]
+    "desc": "the proboscis of the dreaded bloodquito. Grants you a lifesteal attack, but is a bit unwieldy.",
+    "moves": ["suck", "adjust"]
+  },
+  "long proboscis": {
+    "type": "weapon",
+    "value": 2,
+    "desc": "the proboscis of a flying creature. Tough enough to be used as a weapon and long enough to attack from far away.",
+    "moves": ["long thrust", "thrust", "adjust"]
+  },
+  "rose spike": {
+    "type": "weapon",
+    "value": 2,
+    "rating": 2,
+    "desc": "a rose spike. Allows you to injure the enemy.",
+    "moves": ["stab", "injure", "stab"]
+  },
+  "horn axe": {
+    "type": "weapon",
+    "value": 8,
+    "desc": "an axe carved from the horn of the blue beetle. It's very sought after, and incredibly effective in combat. Grants you 2 area of effect attacks.",
+    "moves": ["cleave", "cleave"]
+  },
+  "horn mace": {
+    "type": "weapon",
+    "value": 8,
+    "desc": "a mace carved from the horn of the blue beetle. It's very sought after, and incredibly effective in combat. Grants you a very powerful attack.",
+    "moves": ["grand slam"]
+  },
+  "horn bow": {
+    "type": "weapon",
+    "value": 8,
+    "desc": "a bow carved from the horn of the blue beetle.",
+    "moves": ["shoot", "shoot", "shoot"]
   },
 
 
@@ -128,17 +158,36 @@
     "type": "item",
     "value": 1,
     "desc": "a bug meat, which is the main source of food for people. You can boil, roast, grill, stir fry, or cook it over fire on a stick! Eat to regenerate health.",
-    "page": ">heal>>back"
+    "page": ">heal>8>>now"
   },
   "blood droplet": {
     "type": "item",
     "value": 2,
-    "desc": "a drop of blood. It sticks to you, making it convenient to carry around. Leaves an unpleasant taste in your mouth, but is very fulfilling.",
-    "page": ">heal>>back"
+    "desc": "a drop of blood. Leaves an unpleasant taste in your mouth, but is very fulfilling.",
+    "text": "You eat the blood droplet. Mmmm, chewy!",
+    "page": ">heal>8>>now"
+  },
+  "pollen ball": {
+    "type": "item",
+    "value": 2,
+    "desc": "a ball of pollen. Makes a tasty treat!",
+    "page": ">heal>8>>now"
   },
   "sturdy wood": {
     "type": "item",
     "value": 1,
     "desc": "a sturdy wood suitable for construction."
+  },
+  "spellcasting manual": {
+    "type": "item",
+    "value": 3,
+    "desc": "a manual that can teach you to be an apprentice spellcaster.",
+    "page": ">view advance>apprentice>>trash>item>>now"
+  },
+  "ranger manual": {
+    "type": "item",
+    "value": 3,
+    "desc": "a manual that can teach you to be a ranger.",
+    "page": ">view advance>ranger>>trash>item>>now"
   }
 }

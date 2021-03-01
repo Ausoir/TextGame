@@ -12,7 +12,7 @@ import androidx.fragment.app.commit
 import com.example.textgame.game.Game
 import com.example.textgame.tools.Grammar
 import com.example.textgame.ui.*
-import java.util.ArrayList
+import java.util.*
 
 
 class App : AppCompatActivity() {
@@ -46,20 +46,21 @@ class App : AppCompatActivity() {
         transition(frag)
     }
 
-    fun viewProfile(){
+    private fun viewProfile(){
         menu?.getItem(0)?.isVisible = true
         val frag = ProfileFragment()
         val bundle = Bundle()
         bundle.putParcelable("player", game.player.model)
-        bundle.putSerializable("moveset", game.moves.getMoves(game.player.model.unit.moves))
-        bundle.putSerializable("description", game.descriptions.model)
+        val totalMoves = game.moves.getMoves(game.player.model.getItemMoves(game.item.model))
+        totalMoves.addAll(game.moves.getMoves(game.player.model.unit.moves))
+        bundle.putSerializable("moveset", totalMoves)
         bundle.putSerializable("item map", game.item.model)
         frag.arguments = bundle
-        title = getString(R.string.profile_title, game.player.model.getDay())
+        title = getString(R.string.profile_title)
         transition(frag)
     }
 
-    fun viewShop(stock: String, page: String){
+    private fun viewShop(stock: String, page: String){
         menu?.getItem(0)?.isVisible = false
         val frag = ShopFragment()
         val bundle = Bundle()
@@ -72,7 +73,7 @@ class App : AppCompatActivity() {
         transition(frag)
     }
 
-    fun viewLearn(page: String, forget: Boolean){
+    private fun viewLearn(page: String, forget: Boolean){
         menu?.getItem(0)?.isVisible = false
         val frag = LearnFragment()
         val bundle = Bundle()
@@ -89,19 +90,20 @@ class App : AppCompatActivity() {
         transition(frag)
     }
 
-    fun viewAdvance(page: String){
+    private fun viewAdvance(branch: Array<String>, page: String){
         menu?.getItem(0)?.isVisible = false
         val frag = AdvanceFragment()
         val bundle = Bundle()
         bundle.putString("page", page)
         bundle.putSerializable("specMap", game.special.model)
         bundle.putSerializable("spec", game.player.model.specialization)
+        bundle.putStringArray("branch", branch)
         frag.arguments = bundle
         title = getString(R.string.advance_title)
         transition(frag)
     }
 
-    fun viewCustom(text: String, page: String){
+    private fun viewCustom(text: String, page: String){
         menu?.getItem(0)?.isVisible = false
         val frag = HomeFragment()
         val bundle = Bundle()
@@ -119,7 +121,6 @@ class App : AppCompatActivity() {
         val enemyModels = encounterModel.getUnits(game.units.model)
         for (enemyModel in enemyModels){
             enemyModel.initialize(game.moves.getMoves(enemyModel.moves), 1)
-            enemyModel.deck?.moveset = game.moves.model
             enemyModel.healthPt = enemyModel.health
         }
         game.player.model.unit.healthPt = game.player.model.unit.health - game.player.model.damaged
@@ -127,14 +128,13 @@ class App : AppCompatActivity() {
         val companionModels = game.player.model.getAllies(game.units.model)
         for (ally in companionModels){
             ally.initialize(game.moves.getMoves(ally.moves), 1)
-            ally.deck?.moveset = game.moves.model
             ally.recharge()
             ally.healthPt = ally.health
         }
-        game.player.model.unit.initialize(game.moves.getMoves(game.player.model.unit.moves), 3)
-        game.player.model.unit.deck?.moveset = game.moves.model
+        val totalMoves = game.moves.getMoves(game.player.model.getItemMoves(game.item.model))
+        totalMoves.addAll(game.moves.getMoves(game.player.model.unit.moves))
+        game.player.model.unit.initialize(totalMoves, 3)
         bundle.putParcelable("player", game.player.model)
-        bundle.putSerializable("special", game.getSpecialMove())
         bundle.putSerializable("items", game.item.model)
         bundle.putSerializable("allies", companionModels)
         bundle.putSerializable("enemies", enemyModels)
@@ -147,7 +147,7 @@ class App : AppCompatActivity() {
         transition(frag)
     }
 
-    fun adjustTheme(){
+    private fun adjustTheme(){
         if (game.player.model.isDay()) {
             setTheme(R.style.TextGame)
         } else {
@@ -156,7 +156,7 @@ class App : AppCompatActivity() {
     }
 
     fun openDialog(to: String){
-        if (to.isNullOrEmpty()){
+        if (to.isEmpty()){
             return
         }
         if ("mute" !in game.player.model.vars) {
@@ -181,6 +181,10 @@ class App : AppCompatActivity() {
                     } else {
                         openDialog(Grammar.substringAfter(to, ">", 5))
                     }
+                }
+                "now" -> {
+                    viewPage(game.player.model.vars["page"]!!)
+                    viewHome()
                 }
                 "back" -> {
                     viewPage(game.player.model.vars["prev"]!!)
@@ -208,7 +212,9 @@ class App : AppCompatActivity() {
                     viewCombat(encounter, split[3], Grammar.substringAfter(to, ">", 4))
                 }
                 "join" -> {
-                    game.player.model.companion.add(split[2])
+                    if (split[2] !in game.player.model.companion) {
+                        game.player.model.companion.add(split[2])
+                    }
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
                 "drop" -> {
@@ -237,11 +243,14 @@ class App : AppCompatActivity() {
                     viewLearn(Grammar.substringAfter(to, ">", 2), true)
                 }
                 "view advance" -> {
-                    viewAdvance(Grammar.substringAfter(to, ">", 2))
+                    viewAdvance(split[2].split(":").toTypedArray(), Grammar.substringAfter(to, ">", 3))
                 }
                 "heal" -> {
-                    game.player.model.unit.healthPt = game.player.model.unit.health
-                    openDialog(Grammar.substringAfter(to, ">", 2))
+                    game.player.model.unit.healthPt += split[2].toInt()
+                    if (game.player.model.unit.healthPt > game.player.model.unit.health){
+                        game.player.model.unit.healthPt = game.player.model.unit.health
+                    }
+                    openDialog(Grammar.substringAfter(to, ">", 3))
                 }
                 "item" -> {
                     game.player.model.equipItem(game.item.model, split[2])

@@ -5,11 +5,23 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
 
-data class SpecialModel(val text: String, val flavor: String, val move: String, val skill: String?,
+data class SpecialModel(val text: String?, val flavor: String, val skill: String?,
                         val deck: String, val health: Int?, val branch: List<String>): Serializable{
+    fun getDescription(name: String): String{
+        var result = "The $name. Learn from the $deck."
+        if (text != null){
+            result += " $text"
+        }
+        if (health != null){
+            result += " Bonus health: $health"
+        }
+        return result
+    }
+
     fun apply(player: PlayerModel){
         if (health != null){
             player.unit.health += health
+            player.unit.healthPt += health
         }
         if (skill != null){
             if (skill !in player.unit.skills){
@@ -21,6 +33,7 @@ data class SpecialModel(val text: String, val flavor: String, val move: String, 
     fun unapply(player: PlayerModel){
         if (health != null){
             player.unit.health -= health
+            player.unit.healthPt -= health
         }
         if (skill != null){
             if (skill in player.unit.skills){

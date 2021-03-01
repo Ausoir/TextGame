@@ -2,22 +2,18 @@
   "invalid": {
     "title": "",
     "text": "Dialog page is missing...",
-    "opt": [
-      {
-        "to": "defeat",
-        "text": "Go back"
-      }
-    ]
+    "opt": [{
+      "to": "defeat",
+      "text": "Go back"
+    }]
   },
   "defeat": {
     "title": "Game Over",
     "text": "It is GAME OVER!",
-    "opt": [
-      {
-        "to": ">reset>start",
-        "text": "Start Over"
-      }
-    ]
+    "opt": [{
+      "to": ">heal>8>start",
+      "text": "Start Over"
+    }]
   },
   "start": {
     "title": "Prologue",
@@ -212,7 +208,7 @@
     "title": "Kidnapped",
     "text": "You wait with the others for a few minutes until outside is clear, then make a run for it.",
     "opt": [{
-      "to": "save>spellcaster>1>ant hill outskirt",
+      "to": ">save>spellcaster>1>ant hill outskirt",
       "text": "Proceed"
     }]
   },
@@ -220,7 +216,7 @@
     "title": "Kidnapped",
     "text": "You follow the abductee outside.\n\nAbductee: [Hey, over here!]\n\nThe people in rags start throwing stuff at him.\n\nAbductee: [Oh, shit!]",
     "opt": [{
-      "to": ">encounter>feral human>defeat>runaway2-2-1",
+      "to": ">encounter>two feral humans>defeat>runaway2-2-1",
       "text": "Fight"
     }]
   },
@@ -228,7 +224,7 @@
     "title": "Kidnapped",
     "text": "You and the abductees peek outside and see the spellcaster being attacked by several people in rags. They point at your group and shout.",
     "opt": [{
-      "to": ">encounter>feral human>defeat>runaway2-2-1",
+      "to": ">join>Lucid>>encounter>two feral humans>defeat>>drop>Lucid>runaway2-2-1",
       "text": "Fight"
     }]
   },
@@ -270,19 +266,17 @@
     "text": "You find the spellcaster in the underground temple talking to the priest.\n\nSpellcaster: [Ah, it's you. I forgot to thank you for your help back in the woods. My name is Lucid. Are you doing ok?]",
     "opt": [{
       "to": ">time>160>>timeset>8>ant hill next week",
-      "text": "Go rest",
-      "reqs": ["late night"]
+      "text": "Go rest"
     },{
       "to": "ant hill spellcaster2",
-      "text": "Ask to learn spellcasting",
-      "reqs": ["late night"]
+      "text": "Ask to learn spellcasting"
     }]
   },
   "ant hill spellcaster2": {
     "title": "Return to Ant Hill",
-    "text": "Spellcaster: [Ah, of course. I was just talking to the priest here about teaching Ant Hill some spellcasting. You are welcome to join the session!]\n\nPriest: [I heard what you did out there. It wasn't the brightest decision to try to fight the spiders, but you seem to have brought good luck in the end. I need some time with Lucid right now, why don't you come back another time?]",
+    "text": "Spellcaster: [Ah, of course. I was just talking to the priest here about teaching the people of Ant Hill some spellcasting. You are welcome to join the session!]\n\nPriest: [I heard what you did out there. It wasn't the brightest decision to try to fight the spiders, but you seem to have brought good luck in the end. I need some time with Lucid right now, why don't you come back another time?]",
     "opt": [{
-      "to": ">time>160>>timeset>8>>specialize>apprentice>ant hill next week",
+      "to": ">time>160>>timeset>8>>view advance>apprentice>ant hill next week",
       "text": "Go rest"
     }]
   },
@@ -296,7 +290,7 @@
   },
   "ant hill temple": {
     "title": "Ant Hill Temple",
-    "text": "You walk into the Ant Hill Temple, which is a rather large room among the many rooms in the dirt maze. There is an altar made of strange light blue stone in the center and two fireflies by the altar shines the room.\nAt the corner of the room you spot Scobby, a veteran hunter of Ant Hill, and Cheese, son of the priest, who nods at you.%temp\nThe priest dressed in white robe comes out from the back to greet you.\n\nPriest: [Welcome, Every year we select a hunter and a scout for a mission to re-establish connections with our old neighbors. You and Scobby had been selected for that job this year, but...]",
+    "text": "You walk into the Gaia's Temple, which is a rather large room among the many rooms in the dirt maze. There is an altar made of strange light blue stone in the center and two fireflies by the altar shines the room.\nOn the bench at the corner of the room you spot Scobby, a veteran hunter of Ant Hill, and Cheese, son of the priest.%temp\nThe priest dressed in white robe comes out from the back to greet you.\n\nPriest: [Welcome. As you may have guessed, you and Scobby have been selected for this month's Full Moon's Journey.]",
     "filler": ["%temp"],
     "opt": [
       {
@@ -312,7 +306,7 @@
   },
   "ant hill temple1": {
     "title": "Ant Hill Temple",
-    "text": "Priest: [As you may well know, we have not been successful in communicating with the outside world for 5 years.]\n\nPriest: [That has changed. A foreign visitor named Lucid hailing from the city of Jericho is among us right now. He drew us a map leading all the way to Jericho.]\n\nLucid: [Hello.]\n\nThe priest hands you a copy of the map drawn on a scroll.\n\nPriest: [Like I said earlier, we had selected Scobby here for the mission to the outside, and you as his assistant. Instead of traveling toward our old neighbors, we are sending you to Jericho.]\n\nPriest: [This city lies across the river. We may finally re-establish our connections with the outside world and regain access to advanced knowledge and crafts to help defend ourselves.]\n\nPriest: [And... Cheese decided to accompany you as our liaison should you reach the city. I know I may be burdening you with this, but please try your best. Don't prioritize taking care of him. Reaching the city comes first, always.]\n\nCheese: [Don't worry, father. You think I sit around home doing nothing all day but I actually learned how to cook.]\n\nPriest: [... Anyways, say your good byes to your folks tomorrow. Know that you are carrying out one of the most honorable deeds for Ant Hill.]\n\nYou see Lucid lost in thought with a strange, worried look on his face.",
+    "text": "Priest: [As you may well know, we have not been successful in communicating with the outside world for the past 5 years.]\n\nPriest: [That has changed. A foreign visitor named Lucid hailing from the city of Jericho is among us right now. He drew us a map leading all the way to Jericho.]\n\nLucid: [Hello.]\n\nThe priest hands you a copy of the map drawn on a scroll.\n\nPriest: [Like I said earlier, we had selected Scobby here for the mission to the outside, and you as his assistant. This time, we are sending you to Jericho. Lucid wrote us a letter that might get us help from the city.]\n\nPriest: [This city lies across the river, close to the Stone Henge, our old neighbor. No one sent there has come back so far, but if you can somehow get to Jericho, you won't have to worry about your way back.]\n\nPriest: [And... my son will accompany you as our liaison to Jericho. I know I may be burdening you with this, but please try your best. Don't prioritize taking care of him. Reaching the city comes first, always.]\n\nCheese: [What are you saying, father? Why do you always make me look bad?]\n\nPriest: [...Anyways, we will hold a great feast tomorrow to celebrate Lucid's arrival and your departure.]\n\nYou see Lucid lost in thought with a strange, worried look on his face.",
     "opt": [
       {
         "to": ">save>chapter>1>>refresh chapter>start",
@@ -322,7 +316,7 @@
   },
   "ant hill temple2": {
     "title": "Ant Hill Temple",
-    "text": "Priest: [As you may well know, we have not been successful in communicating with the outside world for 5 years.]\n\nPriest: [That has changed. We have found out that there was a foreign visitor who was here in Ant Hill from the outside world.\nUnfortunately, as you may know, he was one of the abductees who were kidnapped by the wolf spiders. He is likely dead now, but we have gotten a hold of his map.]\n\nThe priest hands you a copy of the map drawn on a scroll.\n\nPriest: [Like I said earlier, we had selected Scobby here for the mission to the outside, and you as his assistant. But the journey to our old neighbors will likely not succeed. So, we will send you toward this settlement marked on this map instead.]\n\nPriest: [This unknown foreign settlement lies beyond the river. From the looks of it, it seems that the settlement is a large city and there are many different settlements nearby. Maybe, this time, we may finally re-establish our connections with the outside world and regain access to advanced knowledge and crafts to help defend ourselves.]\n\nPriest: [And... Cheese decided to accompany you as our liaison should you reach the city. I know I may be burdening you with this, but please try your best. Don't prioritize taking care of him. Reaching the city comes first, always.]\n\nCheese: [Don't worry, father. You think I sit around home doing nothing all day but I actually learned how to cook.]\n\nPriest: [... Anyways, say your good byes to your folks tomorrow. Know that you are carrying out one of the most honorable deeds for Ant Hill.]",
+    "text": "Priest: [As you may well know, we have not been successful in communicating with the outside world for the past 5 years.]\n\nPriest: [I believe that some day, we will find the ones who will finally complete the Full Moon's Journey and prove themselves a hero of Ant Hill.]\n\nPriest: [Also... my son will accompany you on the trip. I know I may be burdening you with this, but please try your best. Don't prioritize taking care of him. Reaching the city comes first, always.]\n\nCheese: [What are you saying, father? Why do you always make me look bad?]\n\nPriest: [... Anyways, we will hold a feast for your departure tomorrow so you can say your good byes to your folks. Always remember that you are carrying out one of the most honorable deeds for Ant Hill.]",
     "opt": [
       {
         "to": ">save>chapter>1>>refresh chapter>start",
