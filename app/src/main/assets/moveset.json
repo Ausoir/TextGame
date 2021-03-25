@@ -16,7 +16,7 @@
       "effect": "breath",
       "target": -1
     }],
-    "desc": "refresh all abilities.",
+    "desc": "refresh all abilities. Ends turn.",
     "text": "gather%s %uf"
   },
   "hesitate": {
@@ -34,6 +34,11 @@
     "desc": "do nothing.",
     "text": "mind%s %us own business"
   },
+  "rest": {
+    "effects": [],
+    "desc": "do nothing.",
+    "text": "rest%s"
+  },
   "adjust": {
     "effects": [],
     "desc": "adjust the balance of your unwieldy weapon.",
@@ -46,16 +51,16 @@
         "target": 1
       }
     ],
-    "reqs": [
-      {
-        "effect": "melee",
-        "target": -1
-      },
-      {
-        "effect": "cripple",
-        "target": -1
-      }
-    ],
+    "reqs": [{
+      "effect": "melee",
+      "target": -1
+    },{
+      "effect": "away",
+      "target": -1
+    },{
+      "effect": "cripple",
+      "target": -1
+    }],
     "desc": "move closer for melee.",
     "text": "engage%s %F"
   },
@@ -63,19 +68,18 @@
     "effects": [
       {
         "effect": "disengage",
-        "target": 1
-      },
-      {
-        "id": "strangle",
-        "target": -1
+        "target": 1,
+        "reqs": [{
+          "effect": "closed",
+          "target": -1
+        }]
       }
     ],
     "reqs": [
       {
         "effect": "melee",
         "target": 1
-      },
-      {
+      },{
         "effect": "cripple",
         "target": -1
       }
@@ -92,6 +96,26 @@
     ],
     "desc": "observe the enemy, gaining insight about their next moves.",
     "text": "observe%s"
+  },
+  "learn": {
+    "effects": [{
+      "effect": "learning",
+      "duration": 1,
+      "target": 1
+    },{
+      "effect": "stun",
+      "target": 1
+    },{
+      "effect": "learned",
+      "target": 1,
+      "duration": -1
+    }],
+    "reqs": [{
+      "effect": "learned",
+      "target": -1
+    }],
+    "desc": "learn the next move you observe. Only usable once per combat. Ends turn.",
+    "text": "observe%s the enemy carefully"
   },
   "adrenaline": {
     "effects": [{
@@ -112,8 +136,32 @@
         "target": -1
       }
     ],
-    "desc": "get +2 actions immediately. Cannot be used when crippled. Uses gather.",
+    "desc": "get +2 actions immediately. Cannot be used when crippled. Uses breath.",
     "text": "pump%s up the adrenaline"
+  },
+  "sprint": {
+    "effects": [{
+      "effect": "retarget",
+      "target": 4
+    },{
+      "effect": "disengage",
+      "target": 1,
+      "reqs": [{
+        "effect": "closed",
+        "target": -1
+      }]
+    }],
+    "reqs": [
+      {
+        "effect": "cripple",
+        "target": -1
+      },{
+        "effect": "breath",
+        "target": -1
+      }
+    ],
+    "desc": "Disengage, forcing everyone nearby to change their target.",
+    "text": "sprint%s"
   },
 
   "quick attack": {
@@ -130,13 +178,14 @@
       "target": 1,
       "duration": -1
     }],
-    "reqs": [
-      {
-        "effect": "breath",
-        "target": -1
-      }
-    ],
-    "desc": "attack for 1 damage without spending a turn. Uses gather.",
+    "reqs": [{
+      "effect": "breath",
+      "target": -1
+    },{
+      "effect": "melee",
+      "target": 1
+    }],
+    "desc": "attack for 1 damage without spending a turn. Uses breath.",
     "text": "quick attack%s"
   },
   "berserk": {
@@ -150,17 +199,22 @@
       "duration": 2,
       "target": 1
     },{
-      "effect": "vulnerable",
-      "duration": 2,
+      "effect": "health",
+      "target": 1,
+      "value": -1
+    },{
+      "effect": "breath",
+      "target": 1,
+      "duration": -1
+    },{
+      "effect": "stun",
       "target": 1
     }],
-    "reqs": [
-      {
-        "effect": "injury",
-        "target": -1
-      }
-    ],
-    "desc": "Gain +1 action, refresh abilities, and become vulnerable for 3 turns.",
+    "reqs": [{
+      "effect": "breath",
+      "target": -1
+    }],
+    "desc": "Gain +1 action and refresh abilities for 2 turns, at the cost of 1 health. Uses breath. Ends turn.",
     "text": "berserk%s"
   },
   "dodge": {
@@ -182,7 +236,7 @@
         "target": -1
       }
     ],
-    "desc": "dodge the next attack. Cannot be used when crippled.",
+    "desc": "dodge the next attack. Cannot be used when crippled. Ends turn.",
     "text": "prepare%s to dodge"
   },
   "stun": {
@@ -219,6 +273,19 @@
     "desc": "kick the enemy for 1 damage.",
     "text": "kick%s %F"
   },
+  "punch": {
+    "effects": [{
+      "effect": "health",
+      "target": 2,
+      "value": -1
+    }],
+    "reqs": [{
+      "effect": "melee",
+      "target": 1
+    }],
+    "desc": "punch the enemy for 1 damage.",
+    "text": "punch%s %F"
+  },
   "charge": {
     "effects": [{
       "effect": "health",
@@ -230,6 +297,12 @@
     }],
     "reqs": [{
       "effect": "melee",
+      "target": -1
+    },{
+      "effect": "away",
+      "target": -1
+    },{
+      "effect": "cripple",
       "target": -1
     }],
     "desc": "charge at the enemy from afar for 1 damage.",
@@ -255,7 +328,11 @@
     },{
       "effect": "disengage",
       "target": 1,
-      "start_text": "%Fr kicked away."
+      "start_text": "%Fr kicked away.",
+      "reqs": [{
+        "effect": "closed",
+        "target": -1
+      }]
     }],
     "reqs": [{
       "effect": "melee",
@@ -302,9 +379,6 @@
       "target": 2,
       "value": -2
     },{
-      "effect": "engage",
-      "target": 1
-    },{
       "effect": "stun",
       "target": 1
     },{
@@ -323,8 +397,13 @@
   "grand slam": {
     "effects": [{
       "effect": "health",
-      "target": 4,
-      "value": -2
+      "target": 2,
+      "value": -3
+    },{
+      "effect": "speed",
+      "target": 1,
+      "duration": 1,
+      "value": -1
     },{
       "effect": "stun",
       "target": 1
@@ -333,8 +412,8 @@
       "effect": "melee",
       "target": 1
     }],
-    "desc": "deal 3 damage to everyone at your position.",
-    "text": "perform grand slam%s"
+    "desc": "deal 3 damage and reduce target actions by 1. Ends turn.",
+    "text": "perform%s grand slam"
   },
   "injure": {
     "effects": [{
@@ -367,13 +446,35 @@
   "taunt": {
     "effects": [{
       "effect": "taunt",
-      "target": 6
+      "target": 5
     },{
       "effect": "defend",
       "target": 1
     }],
     "desc": "force all foes to engage you and gain block equal to enemies engaged.",
     "text": "taunt%s"
+  },
+  "cleaving charge": {
+    "effects": [{
+      "effect": "engage",
+      "target": 1
+    },{
+      "effect": "health",
+      "target": 4,
+      "value": -1
+    }],
+    "reqs": [{
+      "effect": "melee",
+      "target": -1
+    },{
+      "effect": "away",
+      "target": -1
+    },{
+      "effect": "cripple",
+      "target": -1
+    }],
+    "desc": "charge toward a unit and deal 1 damage to everyone in melee range.",
+    "text": "perform%s a cleaving charge"
   },
 
   "guard break": {
@@ -394,7 +495,7 @@
       "effect": "injury",
       "target": -1
     }],
-    "desc": "remove target's block and apply injury for 2 turns. Cannot be used when injured.",
+    "desc": "remove target's block and apply injury for 2 turns. Cannot be used when injured. Ends turn.",
     "text": "guard break%s"
   },
   "weak guard": {
@@ -427,6 +528,16 @@
       "effect": "engage",
       "target": 1
     }],
+    "reqs": [{
+      "effect": "melee",
+      "target": -1
+    },{
+      "effect": "away",
+      "target": -1
+    },{
+      "effect": "cripple",
+      "target": -1
+    }],
     "desc": "gain 1 block and engage.",
     "text": "move%s forward while guarding"
   },
@@ -434,9 +545,12 @@
     "effects": [
       {
         "effect": "disengage",
-        "target": 1
-      },
-      {
+        "target": 1,
+        "reqs": [{
+          "effect": "closed",
+          "target": -1
+        }]
+      },{
         "effect": "shuffle",
         "target": 1
       }
@@ -455,25 +569,35 @@
     "text": "backstep%s away"
   },
   "parry": {
-    "effects": [
-      {
-        "effect": "parry",
-        "target": 1,
-        "duration": 1
-      },
-      {
-        "effect": "stun",
-        "target": 1
-      }
-    ],
+    "effects": [{
+      "effect": "parry",
+      "target": 1,
+      "duration": 1
+    },{
+      "effect": "stun",
+      "target": 1
+    }],
     "reqs": [
       {
         "effect": "melee",
         "target": 1
       }
     ],
-    "desc": "parry the next attack, stunning the enemy if successful.",
+    "desc": "parry the next attack, stunning the enemy if successful. Ends turn.",
     "text": "prepare%s to parry"
+  },
+  "stop charge": {
+    "effects": [{
+      "effect": "stop",
+      "target": 1,
+      "duration": 2
+    }],
+    "reqs": [{
+      "effect": "injury",
+      "target": -1
+    }],
+    "desc": "whenever an enemy engages you, prevent it and stun then. Lasts 2 turns.",
+    "text": "guard%s against engagement"
   },
 
   "heal": {
@@ -485,10 +609,24 @@
     "reqs": [{
       "effect": "mana",
       "target": 1,
-      "value": 2
+      "value": 1
     }],
     "desc": "heal 1 damage using 1 mana.",
     "text": "heal%s %uf"
+  },
+  "heal allies": {
+    "effects": [{
+      "effect": "health",
+      "target": 101,
+      "value": 1
+    }],
+    "reqs": [{
+      "effect": "mana",
+      "target": 1,
+      "value": 1
+    }],
+    "desc": "heal 1 damage of the most wounded ally using 1 mana.",
+    "text": "cast%s heal"
   },
   "recover": {
     "effects": [{
@@ -564,27 +702,50 @@
       "effect": "mana",
       "target": 1,
       "value": 1
+    },{
+      "effect": "vulnerable",
+      "target": 1,
+      "duration": 1
+    },{
+      "effect": "stun",
+      "target": 1
     }],
-    "desc": "gain 1 mana.",
+    "desc": "gain 1 mana and become vulnerable for 1 turn. Ends turn.",
     "text": "gather%s mana"
   },
   "charge mana": {
     "effects": [{
       "effect": "mana",
       "target": 1,
-      "value": 2
+      "value": 1
     },{
-      "effect": "vulnerable",
+      "effect": "health",
       "target": 1,
-      "duration": 1
+      "value": -1
+    },{
+      "effect": "stun",
+      "target": 1
     }],
-    "desc": "gain 2 mana, but become vulnerable for a turn.",
+    "desc": "gain 2 mana at the cost of 1 health. Ends turn.",
     "text": "charge%s mana"
   },
-  "explode": {
+  "attract mana": {
+    "effects": [{
+      "effect": "mana",
+      "target": 1,
+      "duration": 3,
+      "value": 1
+    },{
+      "effect": "stun",
+      "target": 1
+    }],
+    "desc": "gain 1 mana per turn for 3 turns. Ends turn.",
+    "text": "start%s to attract mana"
+  },
+  "lightning": {
     "effects": [{
       "effect": "health",
-      "target": 4,
+      "target": 5,
       "value": -2
     }],
     "reqs": [{
@@ -592,12 +753,132 @@
       "target": 1,
       "value": 2
     }],
-    "desc": "use 2 mana to deal 2 damage to the enemy and everyone nearby.",
-    "text": "gather%s mana"
+    "desc": "use 2 mana to deal 2 damage to all foes.",
+    "text": "cast%s lightning"
+  },
+  "torrent": {
+    "effects": [{
+      "effect": "health",
+      "target": 2,
+      "value": -1
+    },{
+      "effect": "disengage",
+      "target": 1,
+      "start_text": "%Fr pushed away by the torrent.",
+      "reqs": [{
+        "effect": "closed",
+        "target": -1
+      }]
+    }],
+    "reqs": [{
+      "effect": "mana",
+      "target": 1,
+      "value": 1
+    }],
+    "desc": "use 1 mana to deal 2 damage and push back a foe.",
+    "text": "cast%s torrent"
   },
   "phase": {
     "effects": [{
       "effect": "invulnerable",
+      "target": 1,
+      "duration": 2
+    }],
+    "reqs": [{
+      "effect": "mana",
+      "target": 1,
+      "value": 1
+    }],
+    "desc": "use 1 mana to become invulnerable for 2 turns.",
+    "text": "phase%s"
+  },
+  "redirect": {
+    "effects": [{
+      "effect": "redirect",
+      "target": 1,
+      "duration": 2
+    }],
+    "reqs": [{
+      "effect": "mana",
+      "target": 1,
+      "value": 1
+    }],
+    "desc": "redirect incoming attack towards your target using 1 mana. Lasts 2 turns.",
+    "text": "prepare%s to redirect"
+  },
+  "insight": {
+    "effects": [
+      {
+        "effect": "observe",
+        "target": 2
+      }
+    ],
+    "desc": "observe the enemy, gaining insight about their next moves.",
+    "text": "provide%s insight"
+  },
+  "rot": {
+    "effects": [{
+      "effect": "rot",
+      "target": 2
+    }],
+    "reqs": [{
+      "effect": "mana",
+      "target": 1,
+      "value": 2
+    }],
+    "desc": "deal damage equal to target's missing health using 2 mana.",
+    "text": "provide%s insight"
+  },
+  "mouse form": {
+    "effects": [{
+      "effect": "invulnerable",
+      "target": 1,
+      "duration": 2
+    },{
+      "effect": "stun",
+      "target": 1,
+      "duration": 2,
+      "text": "%U skitter around.",
+      "end_text": "%Ur no long a mouse."
+    }],
+    "desc": "turn yourself into a tiny mouse, becoming invulnerable but unable to do anything.",
+    "text": "turn%s into a mouse"
+  },
+  "teleport": {
+    "effects": [{
+      "effect": "engage",
+      "target": 1
+    },{
+      "effect": "vulnerable",
+      "target": 1,
+      "duration": 1
+    },{
+      "effect": "disengage",
+      "target": 1,
+      "duration": 1,
+      "reqs": [{
+        "effect": "closed",
+        "target": -1
+      }]
+    }],
+    "reqs": [{
+      "effect": "mana",
+      "target": 1,
+      "value": 1
+    }],
+    "desc": "engage and apply vulnerability to target using 1 mana. Automatically disengage next turn.",
+    "text": "teleport%s"
+  },
+  "blink": {
+    "effects": [{
+      "effect": "disengage",
+      "target": 1,
+      "reqs": [{
+        "effect": "closed",
+        "target": -1
+      }]
+    },{
+      "effect": "away",
       "target": 1,
       "duration": 1
     }],
@@ -606,23 +887,37 @@
       "target": 1,
       "value": 1
     }],
-    "desc": "use 1 mana to become invulnerable for 1 turn.",
-    "text": "gather%s mana"
+    "desc": "Disengage far enough from the enemy that they can't engage next turn. Uses 1 mana.",
+    "text": "blink%s"
   },
-  "redirect": {
-    "effects": [{
-      "effect": "redirect",
-      "target": 1,
-      "duration": 1,
-      "value": 1
-    }],
+  "fireball": {
+    "effects": [
+      {
+        "effect": "engage",
+        "target": 1
+      },{
+        "effect": "health",
+        "target": 4,
+        "value": -2
+      },{
+        "effect": "disengage",
+        "target": 1,
+        "reqs": [{
+          "effect": "closed",
+          "target": -1
+        }]
+      }
+    ],
     "reqs": [{
+      "effect": "melee",
+      "target": -1
+    },{
       "effect": "mana",
       "target": 1,
       "value": 1
     }],
-    "desc": "redirect the next incoming attack towards your target using 1 mana.",
-    "text": "prepare%s to redirect"
+    "desc": "deal 2 damage to a target and nearby units using 1 mana.",
+    "text": "cast%s fireball"
   },
 
   "long thrust": {
@@ -664,6 +959,73 @@
       "target": -1
     }],
     "desc": "shoot your %w at the enemy.",
+    "text": "shoot%s the %w at %F"
+  },
+  "double shot": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 2,
+        "value": -1
+      },
+      {
+        "effect": "health",
+        "target": 2,
+        "value": -1
+      }
+    ],
+    "reqs": [{
+      "effect": "melee",
+      "target": -1
+    }],
+    "desc": "shoot your %w at the enemy, dealing 1 damage twice.",
+    "text": "rapidly shoot%s the %w twice at %F"
+  },
+  "blinding shot": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 2,
+        "value": -1
+      },{
+        "effect": "retarget",
+        "target": 2,
+        "text": "%Ur blinded!"
+      }
+    ],
+    "reqs": [{
+      "effect": "melee",
+      "target": -1
+    }],
+    "desc": "shoot your %w at the enemy's eyes, blinding and forcing them to change their target.",
+    "text": "shoot%s the %w at %F"
+  },
+  "penetrating shot": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 2,
+        "value": -2
+      },{
+        "effect": "injury",
+        "target": 2,
+        "text": "%Ur injured!",
+        "duration": 1
+      },{
+        "effect": "retarget",
+        "target": 1
+      },{
+        "effect": "health",
+        "target": 2,
+        "value": -2
+      },{
+        "effect": "injury",
+        "target": 2,
+        "text": "%Ur injured!",
+        "duration": 1
+      }
+    ],
+    "desc": "shoot a strong penetrating shot at an emey, hitting one other enemy behind it. Hit enemies are injured. Can be shot in melee.",
     "text": "shoot%s the %w at %F"
   },
   "thrust": {
@@ -709,7 +1071,7 @@
       "target": 1
     }],
     "desc": "strike with your %w.",
-    "text": "strike%s the %F"
+    "text": "strike%s %F"
   },
   "bola throw": {
     "effects": [
@@ -728,6 +1090,44 @@
     "desc": "throw a bola at the enemy.",
     "text": "throw%s bola at %F"
   },
+  "cleansing strike": {
+    "effects": [{
+      "effect": "health",
+      "target": 2,
+      "value": -2
+    },{
+      "id": "burn",
+      "effect": "health",
+      "target": 2,
+      "duration": -1,
+      "value": -1,
+      "text": "%Ur burning!",
+      "reqs": [{
+        "effect": "supernatural",
+        "target": 2
+      }]
+    }],
+    "reqs": [{
+      "effect": "melee",
+      "target": 1
+    }],
+    "desc": "strike with your %w, burning them if supernatural.",
+    "text": "sear%s %F with sacred silver"
+  },
+  "blinding flash": {
+    "effects": [{
+      "effect": "stun",
+      "target": 2,
+      "duration": 1,
+      "end_text": "%U break%s out of the stun."
+    }],
+    "reqs": [{
+      "effect": "melee",
+      "target": 1
+    }],
+    "desc": "stun an enemy for 1 turn.",
+    "text": "emit%s blinding flash at %F"
+  },
 
   "distract": {
     "effects": [{
@@ -743,8 +1143,13 @@
 
   "wiggle": {
     "effects": [],
-    "desc": "",
+    "desc": "wiggle.",
     "text": "wiggle%s %us antennae"
+  },
+  "squirm": {
+    "effects": [],
+    "desc": "squirm.",
+    "text": "squirm%s"
   },
   "weak bite": {
     "effects": [{
@@ -758,6 +1163,40 @@
     }],
     "desc": "",
     "text": "bite%s %F"
+  },
+  "bite": {
+    "effects": [{
+      "effect": "health",
+      "target": 2,
+      "value": -2
+    }],
+    "reqs": [{
+      "effect": "melee",
+      "target": 1
+    }],
+    "desc": "",
+    "text": "furiously bite%s %F"
+  },
+  "venomous bite": {
+    "effects": [{
+      "effect": "health",
+      "target": 2,
+      "value": -1
+    },{
+      "id": "poison",
+      "effect": "health",
+      "target": 2,
+      "duration": 1,
+      "value": -1,
+      "start_text": "%Ur poisoned.",
+      "text": "%U take%s %-v damage from poison."
+    }],
+    "reqs": [{
+      "effect": "melee",
+      "target": 1
+    }],
+    "desc": "",
+    "text": "bite%s %F with venom"
   },
   "curl": {
     "effects": [{
@@ -798,6 +1237,22 @@
     "desc": "",
     "text": "peck%s %F"
   },
+  "weave web": {
+    "effects": [
+      {
+        "effect": "cripple",
+        "target": 4,
+        "start_text": "%Ur entangled by spider webs!",
+        "duration": 2
+      }
+    ],
+    "reqs": [{
+      "effect": "melee",
+      "target": 1
+    }],
+    "desc": "make nearby enemy unable to move.",
+    "text": "weave%s sticky webs"
+  },
   "pierce": {
     "effects": [{
       "effect": "health",
@@ -813,7 +1268,7 @@
       "effect": "health",
       "target": 2,
       "start_text": "%Ur being strangled.",
-      "text": "%Ur being strangled! %U take%s 1 damage!",
+      "text": "%Ur being strangled!",
       "duration": 2,
       "value": -1
     }],
@@ -826,11 +1281,11 @@
   },
   "poison": {
     "effects": [{
+      "id": "poison",
       "effect": "health",
       "target": 2,
       "duration": 2,
       "value": -1,
-      "type": "latent",
       "start_text": "%Ur poisoned.",
       "text": "%U take%s %-v damage from poison."
     }],
@@ -838,27 +1293,83 @@
     "text": "poison%s %F"
   },
   "paralyze": {
-    "effects": [
-      {
-        "id": "paralyze",
-        "effect": "stun",
-        "target": 2,
-        "duration": 1,
-        "text": "%Ur paralyzed.",
-        "end_text": "%U break%s out of the paralysis."
-      },
-      {
-        "id": "paralyze",
-        "effect": "vulnerable",
-        "target": 2,
-        "duration": 1
-      }
-    ],
+    "effects": [{
+      "id": "paralyze",
+      "effect": "stun",
+      "target": 2,
+      "duration": 1,
+      "text": "%Ur paralyzed.",
+      "end_text": "%U break%s out of the paralysis."
+    },{
+      "id": "paralyze",
+      "effect": "vulnerable",
+      "target": 2,
+      "duration": 1
+    },{
+      "effect": "stun",
+      "target": 1
+    }],
     "reqs": [{
       "effect": "melee",
       "target": 1
     }],
-    "desc": "stun and apply vulnerability to an enemy for 1 turn.",
+    "desc": "stun and apply vulnerability to an enemy for 1 turn. Ends turn.",
     "text": "paralyze%s %F"
+  },
+  "dive": {
+    "effects": [{
+      "effect": "invulnerable",
+      "target": 1,
+      "duration": 1
+    },{
+      "effect": "disengage",
+      "target": 1
+    },{
+      "effect": "away",
+      "target": 1,
+      "duration": 1
+    }],
+    "desc": "dive into water, becoming invulnerable and unapproachable.",
+    "text": "dive%s into water"
+  },
+  "burrow": {
+    "effects": [{
+      "effect": "invulnerable",
+      "target": 1,
+      "duration": 1
+    },{
+      "effect": "disengage",
+      "target": 1
+    },{
+      "effect": "away",
+      "target": 1,
+      "duration": 1
+    }],
+    "desc": "burrow into the ground, becoming invulnerable and unapproachable.",
+    "text": "burrow%s into the ground"
+  },
+  "summon ally": {
+    "effects": [
+      {
+        "effect": "summon",
+        "target": 1
+      },
+      {
+        "effect": "stun",
+        "target": 1
+      }
+    ],
+    "desc": "summon an ally to fight with you. Ends turn.",
+    "text": "summon%s allies"
+  },
+  "regenerate": {
+    "effects": [{
+      "effect": "health",
+      "target": 1,
+      "duration": 2,
+      "value": 1
+    }],
+    "desc": "heal 2 damage over 2 turns.",
+    "text": "regenerate%s"
   }
 }

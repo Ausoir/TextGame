@@ -1,5 +1,6 @@
 package com.example.textgame.ui
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -73,9 +74,10 @@ class ProfileFragment : Fragment() {
         val items = ArrayList<Map<String, String>>()
         for (i in player.equip){
             val item = HashMap<String, String>(2)
-            item["Name"] = i.capitalize() + " (${itemMap[i]?.type ?: "Other"})"
-            item["Description"] = itemMap[i]?.desc?.capitalize() ?: ""
-            if (itemMap[i] != null && itemMap[i]!!.moves != null){
+            val itemMapped = itemMap[i] ?: itemMap["invalid"]!!
+            item["Name"] = i.capitalize() + " (${itemMapped.type})"
+            item["Description"] = itemMapped.desc.capitalize()
+            if (itemMapped.moves != null){
                 item["Description"] += " Moves: " + itemMap[i]!!.moves.joinToString { it }
             }
             items.add(item)
@@ -85,11 +87,15 @@ class ProfileFragment : Fragment() {
             val itemName = (items[position]["Name"] ?: return@OnItemClickListener).toLowerCase().substringBefore(" (")
             val item = itemMap[itemName] ?: return@OnItemClickListener
             if (item.page != null) {
-                textView.text = resources.getString(R.string.use_confirm, itemName)
-                textView.setOnClickListener {
-                    val app: App = activity as App
-                    app.openDialog(item.page)
-                }
+                AlertDialog.Builder(activity)
+                    .setTitle(R.string.sell)
+                    .setMessage(resources.getString(R.string.use_confirm, itemName))
+                    .setPositiveButton(android.R.string.yes) { _, _ ->
+                        val app: App = activity as App
+                        app.openDialog(item.page)
+                    }
+                    .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                    .show()
             } else {
                 textView.text = resources.getString(R.string.use_unavailable, itemName)
             }
@@ -119,11 +125,15 @@ class ProfileFragment : Fragment() {
         listView.adapter = SimpleAdapter(activity as Context, items, android.R.layout.simple_list_item_1, arrayOf("Name"), intArrayOf(android.R.id.text1))
         listView.onItemClickListener = OnItemClickListener { _, _, position, _ ->
             val selected = items[position]["Name"]
-            textView.text = resources.getString(R.string.kick_confirm, selected)
-            textView.setOnClickListener {
-                val app: App = activity as App
-                app.openDialog(">drop>$selected>")
-            }
+            AlertDialog.Builder(activity)
+                .setTitle(R.string.sell)
+                .setMessage(resources.getString(R.string.kick_confirm, selected))
+                .setPositiveButton(android.R.string.yes) { _, _ ->
+                    val app: App = activity as App
+                    app.openDialog(">drop>$selected>")
+                }
+                .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                .show()
         }
     }
 
@@ -139,11 +149,16 @@ class ProfileFragment : Fragment() {
         listView.adapter = SimpleAdapter(activity as Context, items, android.R.layout.simple_list_item_1, arrayOf("Name"), intArrayOf(android.R.id.text1))
         listView.onItemClickListener = OnItemClickListener { _, _, position, _ ->
             val selected = items[position]["Name"]
-            textView.text = resources.getString(R.string.chapter_confirm, selected)
-            textView.setOnClickListener {
-                val app: App = activity as App
-                app.openDialog(">save>chapter>$position>>refresh chapter>start")
-            }
+            AlertDialog.Builder(activity)
+                .setTitle(R.string.sell)
+                .setMessage(resources.getString(R.string.chapter_confirm, selected))
+                .setPositiveButton(android.R.string.yes) { _, _ ->
+                    player.companion.clear()
+                    val app: App = activity as App
+                    app.openDialog(">save>chapter>$position>>refresh chapter>start")
+                }
+                .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                .show()
         }
     }
 }

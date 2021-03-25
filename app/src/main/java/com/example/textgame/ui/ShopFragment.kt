@@ -1,5 +1,6 @@
 package com.example.textgame.ui
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,7 +21,7 @@ class ShopFragment : Fragment() {
     private lateinit var textView: TextView
     private lateinit var player: PlayerModel
     private lateinit var itemMap: HashMap<String, ItemModel>
-    private lateinit var itemList: List<String>
+    private lateinit var itemList: MutableList<String>
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -77,14 +78,19 @@ class ShopFragment : Fragment() {
         listView.onItemClickListener = OnItemClickListener { _, _, position, _ ->
             val itemName = (items[position]["Name"] ?: return@OnItemClickListener).toLowerCase().substringBefore(" (")
             val item = itemMap[itemName] ?: return@OnItemClickListener
-            textView.text = resources.getString(R.string.buy_confirm, itemName, item.value)
-            textView.setOnClickListener {
-                player.money -= item.value
-                player.equipItem(itemMap, itemName)
-                showBuy()
-                textView.text = resources.getString(R.string.buy_done, itemName, item.value).capitalize()
-            }
-        }
+            AlertDialog.Builder(activity)
+                .setTitle(R.string.buy)
+                .setMessage(resources.getString(R.string.buy_confirm, itemName, item.value))
+                .setPositiveButton(android.R.string.yes) { _, _ ->
+                    player.money -= item.value
+                    player.equipItem(itemMap, itemName)
+                    showBuy()
+                    itemList.removeAt(position)
+                    textView.text = resources.getString(R.string.buy_done, itemName, item.value).capitalize()
+                }
+                .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                .show()
+         }
     }
 
     private fun showSell(){
@@ -93,21 +99,28 @@ class ShopFragment : Fragment() {
         val items = ArrayList<Map<String, String>>()
         for (i in player.equip){
             val item = HashMap<String, String>(2)
-            item["Name"] = i.capitalize() + " (${itemMap[i]?.type ?: "Other"})"
-            item["Description"] = itemMap[i]?.desc?.capitalize() ?: ""
-            items.add(item)
+            val itemMapped = itemMap[i] ?: itemMap["invalid"]!!
+            if (itemMapped.value < 1000) {
+                item["Name"] = i.capitalize() + " (${itemMapped.type})"
+                item["Description"] = itemMapped.desc.capitalize()
+                items.add(item)
+            }
         }
         listView.adapter = SimpleAdapter(activity as Context, items, android.R.layout.two_line_list_item, arrayOf("Name", "Description"), intArrayOf(android.R.id.text1, android.R.id.text2))
         listView.onItemClickListener = OnItemClickListener { _, _, position, _ ->
             val itemName = (items[position]["Name"] ?: return@OnItemClickListener).toLowerCase().substringBefore(" (")
             val item = itemMap[itemName] ?: return@OnItemClickListener
-            textView.text = resources.getString(R.string.sell_confirm, itemName, item.value)
-            textView.setOnClickListener {
-                val selling = itemMap[player.unequipItem(itemMap, itemName)] ?: return@setOnClickListener
-                player.money += selling.value
-                showSell()
-                textView.text = resources.getString(R.string.sell_done, itemName, item.value).capitalize()
-            }
+            AlertDialog.Builder(activity)
+                .setTitle(R.string.sell)
+                .setMessage(resources.getString(R.string.sell_confirm, itemName, item.value))
+                .setPositiveButton(android.R.string.yes) { _, _ ->
+                    val selling = itemMap[player.unequipItem(itemMap, itemName)] ?: return@setPositiveButton
+                    player.money += selling.value
+                    showSell()
+                    textView.text = resources.getString(R.string.sell_done, itemName, item.value).capitalize()
+                }
+                .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                .show()
         }
     }
 }

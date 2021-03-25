@@ -37,12 +37,13 @@ class App : AppCompatActivity() {
         menu?.getItem(0)?.isVisible = true
         val frag = HomeFragment()
         val bundle = Bundle()
-        val currentPage = game.dialog.model[game.player.model.vars["page"]!!] ?: game.dialog.model["invalid"]!!
+        val page = game.player.model.vars["page"]!!
+        val currentPage = game.dialog.model[page] ?: game.dialog.model2[page] ?: game.dialog.model2["invalid"]!!
         val args = game.getVarMap(currentPage.filler)
         val dialog = currentPage.fillVariables(args).validate(game.player.model)
         bundle.putParcelable("page", dialog)
         frag.arguments = bundle
-        title = game.dialog.model[game.player.model.vars["page"]!!]?.title ?: ""
+        title = currentPage.title ?: ""
         transition(frag)
     }
 
@@ -123,22 +124,25 @@ class App : AppCompatActivity() {
             enemyModel.initialize(game.moves.getMoves(enemyModel.moves), 1)
             enemyModel.healthPt = enemyModel.health
         }
-        game.player.model.unit.healthPt = game.player.model.unit.health - game.player.model.damaged
-        game.player.model.unit.recharge()
-        val companionModels = game.player.model.getAllies(game.units.model)
-        for (ally in companionModels){
-            ally.initialize(game.moves.getMoves(ally.moves), 1)
-            ally.recharge()
-            ally.healthPt = ally.health
+        val playerModel = game.player.model
+        playerModel.unit.healthPt = playerModel.unit.health - playerModel.damaged
+        playerModel.unit.points = 0
+        val companionModels = playerModel.getAllies(game.units.model)
+        for (i in companionModels.indices){
+            val allyMoves = game.moves.getMoves(companionModels[i].moves)
+            allyMoves.addAll(game.moves.getMoves(playerModel.companionMoves[playerModel.companion[i]]?: listOf()))
+            companionModels[i].initialize(game.moves.getMoves(companionModels[i].moves), 1)
+            companionModels[i].points = 0
+            companionModels[i].healthPt = companionModels[i].health
         }
-        val totalMoves = game.moves.getMoves(game.player.model.getItemMoves(game.item.model))
-        totalMoves.addAll(game.moves.getMoves(game.player.model.unit.moves))
-        game.player.model.unit.initialize(totalMoves, 3)
-        bundle.putParcelable("player", game.player.model)
-        bundle.putSerializable("items", game.item.model)
+        val totalMoves = game.moves.getMoves(playerModel.getItemMoves(game.item.model))
+        totalMoves.addAll(game.moves.getMoves(playerModel.unit.moves))
+        playerModel.unit.initialize(totalMoves, 3)
+        bundle.putParcelable("player", playerModel)
+        bundle.putSerializable("unitMap", game.units.model)
         bundle.putSerializable("allies", companionModels)
         bundle.putSerializable("enemies", enemyModels)
-        bundle.putStringArrayList("loots", encounterModel.loots)
+        bundle.putSerializable("loots", game.item.getItems(encounterModel.loots))
         bundle.putString("desc", encounterModel.desc)
         bundle.putString("page", page)
         bundle.putString("defeat", defeat)
@@ -172,6 +176,14 @@ class App : AppCompatActivity() {
                     game.player.model.vars[split[2]] = split[3]
                     openDialog(Grammar.substringAfter(to, ">", 4))
                 }
+                "add" -> {
+                    if (split[2] in game.player.model.vars){
+                        game.player.model.vars[split[2]] += split[3]
+                    } else {
+                        game.player.model.vars[split[2]] = split[3]
+                    }
+                    openDialog(Grammar.substringAfter(to, ">", 4))
+                }
                 "load" -> {
                     openDialog(game.player.model.vars[split[2]] ?: "invalid")
                 }
@@ -191,13 +203,13 @@ class App : AppCompatActivity() {
                     viewHome()
                 }
                 "time" -> {
-                    adjustTheme()
                     game.player.timePass(split[2].toInt())
+                    adjustTheme()
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
                 "timeset" -> {
-                    adjustTheme()
                     game.player.timeSet(split[2].toInt())
+                    adjustTheme()
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
                 "defeat" -> {
@@ -221,8 +233,31 @@ class App : AppCompatActivity() {
                     game.player.model.companion.remove(split[2])
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
+                "dropAll" -> {
+                    game.player.model.companion.clear()
+                    openDialog(Grammar.substringAfter(to, ">", 3))
+                }
+                "readdAll" -> {
+                    game.player.model.companion.clear()
+                    openDialog(Grammar.substringAfter(to, ">", 3))
+                }
                 "learn" -> {
                     game.player.model.unit.moves.add(split[2])
+                    openDialog(Grammar.substringAfter(to, ">", 3))
+                }
+                "allyLearn" -> {
+                    if (split[2] !in game.player.model.companionMoves){
+                        game.player.model.companionMoves[split[2]] = arrayListOf()
+                    }
+                    game.player.model.companionMoves[split[2]]!!.add(split[3])
+                    openDialog(Grammar.substringAfter(to, ">", 4))
+                }
+                "moneyAdd" -> {
+                    game.player.model.money += split[2].toInt()
+                    openDialog(Grammar.substringAfter(to, ">", 3))
+                }
+                "moneySet" -> {
+                    game.player.model.money = split[2].toInt()
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
                 "forget" -> {
@@ -232,6 +267,16 @@ class App : AppCompatActivity() {
                 "specialize" -> {
                     game.special.change(game.player.model, game.player.model.specialization, split[2])
                     openDialog(Grammar.substringAfter(to, ">", 3))
+                }
+                "view rest" -> {
+                    val foodName = game.player.model.unequipPart(game.item.model, "food")
+                    if (foodName == null){
+                        viewCustom("You have no food.\nYou can't rest hungry.", Grammar.substringAfter(to, ">", 2))
+                    } else {
+                        val food = game.item.model[foodName] ?: game.item.model["invalid"]!!
+                        viewCustom("You rest and heal ${food.rating} health.",
+                            ">time>8>>remove part>food>>heal>${food.rating}>" + Grammar.substringAfter(to, ">", 2))
+                    }
                 }
                 "view shop" -> {
                     viewShop(split[2], Grammar.substringAfter(to, ">", 3))
@@ -249,14 +294,34 @@ class App : AppCompatActivity() {
                     game.player.model.unit.healthPt += split[2].toInt()
                     if (game.player.model.unit.healthPt > game.player.model.unit.health){
                         game.player.model.unit.healthPt = game.player.model.unit.health
+                    } else if (game.player.model.unit.healthPt < 1){
+                        game.player.model.unit.healthPt = 1
                     }
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
                 "item" -> {
+                    val piece = game.player.model.getSamePart(game.item.model, split[3])
+                    game.player.model.vars["t1"] = split[2]
+                    game.player.model.vars["t2"] = ">force item>${split[3]}>${Grammar.substringAfter(to, ">", 4)}"
+                    if (piece == null){
+                        game.player.model.vars["t3"] = "Take ${split[3]}"
+                    } else {
+                        game.player.model.vars["t3"] = "Throw away $piece and take ${split[3]}"
+                    }
+                    game.player.model.vars["t4"] = Grammar.substringAfter(to, ">", 4)
+                    game.player.model.vars["t5"] = "Leave the item and continue"
+                    viewPage("custom2")
+                    viewHome()
+                }
+                "force item" -> {
                     game.player.model.equipItem(game.item.model, split[2])
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
-                "trash" -> {
+                "remove item" -> {
+                    game.player.model.unequipItem(game.item.model, split[2])
+                    openDialog(Grammar.substringAfter(to, ">", 3))
+                }
+                "remove part" -> {
                     game.player.model.unequipPart(game.item.model, split[2])
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
@@ -269,8 +334,8 @@ class App : AppCompatActivity() {
                     openDialog(Grammar.substringAfter(to, ">", 2))
                 }
             }
-        } else {
-            viewPage(to)
+        } else if (to.startsWith("@")) {
+            viewPage(to.substring(1))
             viewHome()
         }
     }

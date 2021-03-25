@@ -1,7 +1,6 @@
 {
   "invalid": {
     "name": "invalid",
-    "level": 0,
     "speed": 0,
     "health": 0,
     "moves": ["shuffle"],
@@ -11,11 +10,10 @@
   },
   "wolf spider": {
     "name": "wolf spider",
-    "level": 5,
-    "speed": 2,
+    "speed": 3,
     "health": 8,
-    "moves": ["weak bite", "engage", "stun"],
-    "skills": ["sneak"],
+    "moves": ["venomous bite", "engage", "quick attack", "dodge", "weave web", "weak bite"],
+    "skills": ["initiative"],
     "status": [],
     "flavors": {
       "grazed": "The wolf spider looks furious.",
@@ -25,10 +23,9 @@
   },
   "Lucid": {
     "name": "Lucid",
-    "level": 15,
-    "speed": 3,
+    "speed": 2,
     "health": 3,
-    "moves": ["disengage", "engage", "gather mana", "charge mana", "redirect", "explode", "phase"],
+    "moves": ["disengage", "gather mana", "charge mana", "redirect", "lightning", "phase"],
     "skills": ["manacharge"],
     "status": [],
     "flavors": {
@@ -38,7 +35,6 @@
   },
   "Abductee": {
     "name": "abductee",
-    "level": 5,
     "speed": 2,
     "health": 3,
     "moves": ["hesitate", "engage", "tackle", "panic", "kick"],
@@ -50,7 +46,6 @@
   },
   "feral human": {
     "name": "feral human",
-    "level": 2,
     "speed": 2,
     "health": 3,
     "moves": ["bola throw", "disengage", "engage", "swing", "adjust"],
@@ -62,7 +57,6 @@
   },
   "Sparring Scobby": {
     "name": "Scobby",
-    "level": 1,
     "speed": 1,
     "health": 1,
     "moves": ["disengage", "engage", "hesitate", "hesitate"],
@@ -75,7 +69,6 @@
   },
   "ant": {
     "name": "ant",
-    "level": 1,
     "speed": 1,
     "health": 1,
     "moves": ["weak bite", "wiggle", "engage"],
@@ -87,7 +80,6 @@
   },
   "Cheese": {
     "name": "Cheese",
-    "level": 1,
     "speed": 1,
     "health": 1,
     "moves": ["distract", "engage", "disengage", "kick", "panic"],
@@ -100,7 +92,6 @@
   },
   "pill bug": {
     "name": "pill bug",
-    "level": 2,
     "speed": 1,
     "health": 2,
     "moves": ["disengage", "curl", "charge"],
@@ -112,7 +103,6 @@
   },
   "millipede": {
     "name": "millipede",
-    "level": 2,
     "speed": 1,
     "health": 3,
     "moves": ["engage", "strangle", "panic"],
@@ -124,7 +114,6 @@
   },
   "caterpillar": {
     "name": "caterpillar",
-    "level": 3,
     "speed": 1,
     "health": 5,
     "moves": ["curl", "curl", "hesitate", "hesitate", "panic", "poison"],
@@ -137,7 +126,6 @@
   },
   "tick": {
     "name": "tick",
-    "level": 2,
     "speed": 1,
     "health": 2,
     "moves": ["engage", "suck"],
@@ -149,7 +137,6 @@
   },
   "centipede": {
     "name": "centipede",
-    "level": 5,
     "speed": 2,
     "health": 3,
     "moves": ["engage", "gouge", "strangle"],
@@ -161,7 +148,6 @@
   },
   "bloodquito": {
     "name": "bloodquito",
-    "level": 5,
     "speed": 2,
     "health": 4,
     "moves": ["engage", "suck", "disengage"],
@@ -174,7 +160,6 @@
   },
   "moth": {
     "name": "moth",
-    "level": 6,
     "speed": 1,
     "health": 5,
     "moves": ["poison", "disengage", "disengage", "hesitate", "dodge"],
@@ -182,11 +167,10 @@
     "status": [],
     "flavors": {}
   },
-  "mouse": {
-    "name": "mouse",
-    "level": 6,
+  "squirrel": {
+    "name": "squirrel",
     "speed": 2,
-    "health": 8,
+    "health": 7,
     "moves": ["dodge", "disengage", "dodge", "panic", "weak bite"],
     "skills": [],
     "status": [],
@@ -194,9 +178,8 @@
   },
   "Scobby": {
     "name": "Scobby",
-    "level": 10,
-    "speed": 3,
-    "health": 10,
+    "speed": 2,
+    "health": 8,
     "moves": ["charge", "swing", "guard dash", "stun", "dodge", "taunt", "backstep", "parry"],
     "skills": [],
     "status": [],
@@ -206,9 +189,19 @@
       "death": "Scobby stops the fight."
     }
   },
+  "Pemmi": {
+    "name": "Pemmi",
+    "speed": 2,
+    "health": 3,
+    "moves": ["disengage", "heal allies", "gather mana", "weaken", "confuse", "insight"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "she"
+    }
+  },
   "yellow ant": {
     "name": "yellow ant",
-    "level": 5,
     "speed": 1,
     "health": 2,
     "moves": ["engage", "bite"],
@@ -218,7 +211,6 @@
   },
   "yellow butterfly": {
     "name": "yellow butterfly",
-    "level": 5,
     "speed": 1,
     "health": 5,
     "moves": ["engage", "suck", "pierce", "peck", "disengage"],
@@ -228,7 +220,6 @@
   },
   "bee": {
     "name": "bumble bee",
-    "level": 5,
     "speed": 1,
     "health": 4,
     "moves": ["slack", "slack", "tackle"],
@@ -238,7 +229,6 @@
   },
   "beetle": {
     "name": "beetle",
-    "level": 10,
     "speed": 1,
     "health": 8,
     "moves": ["charge", "slack", "tackle", "engage", "curl"],
@@ -247,5 +237,184 @@
     "flavors": {
       "death": "The beetle collapses with a thud."
     }
+  },
+  "henge scout": {
+    "name": "stone henge scout",
+    "speed": 2,
+    "health": 3,
+    "moves": ["dodge", "disengage", "shoot", "shoot", "adjust"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "he",
+      "weapon": "bone bow"
+    }
+  },
+  "henge guard": {
+    "name": "stone henge guard",
+    "speed": 2,
+    "health": 5,
+    "moves": ["guard", "charge", "swing", "swing", "adjust"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "he",
+      "weapon": "bone mace"
+    }
+  },
+  "henge duelist": {
+    "name": "duelist",
+    "speed": 2,
+    "health": 8,
+    "moves": ["charge", "punch", "adjust", "guard dash", "parry", "tackle"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "he",
+      "weapon": "arena bone sword"
+    }
+  },
+  "rat": {
+    "name": "rat",
+    "speed": 2,
+    "health": 8,
+    "moves": ["dodge", "charge", "dodge", "bite", "quick attack"],
+    "skills": [],
+    "status": [],
+    "flavors": {}
+  },
+  "earthworm": {
+    "name": "giant worm",
+    "speed": 1,
+    "health": 3,
+    "moves": ["charge", "burrow", "strangle", "squirm"],
+    "skills": [],
+    "status": [],
+    "flavors": {}
+  },
+  "ant hill guard": {
+    "name": "ant hill priest's guard",
+    "speed": 2,
+    "health": 8,
+    "moves": ["long thrust", "throw", "backstep", "guard dash", "parry", "thrust"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "he",
+      "weapon": "bone spear"
+    }
+  },
+  "fish": {
+    "name": "River Fish",
+    "speed": 1,
+    "health": 10,
+    "moves": ["charge", "dive"],
+    "skills": [],
+    "status": [],
+    "flavors": {}
+  },
+  "Cheese2": {
+    "name": "Cheese",
+    "speed": 1,
+    "health": 3,
+    "moves": ["weaken", "blink", "fireball", "confuse"],
+    "skills": [],
+    "status": [{
+      "effect": "supernatural",
+      "target": 1,
+      "duration": -1
+    },{
+      "effect": "mana",
+      "target": 1,
+      "duration": -1,
+      "value": 1
+    },{
+      "effect": "vulnerable",
+      "target": 1,
+      "duration": 1
+    }],
+    "flavors": {
+      "pronoun": "he",
+      "death": "Cheese runs away."
+    }
+  },
+  "feral elite": {
+    "name": "feral human",
+    "speed": 2,
+    "health": 5,
+    "moves": ["bola throw", "engage", "guard break", "swing", "flurry"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "she",
+      "weapon": "bone spear"
+    }
+  },
+  "feral ambusher": {
+    "name": "feral human",
+    "speed": 2,
+    "health": 4,
+    "moves": ["bola throw", "disengage", "throw", "throw"],
+    "skills": ["initiative"],
+    "status": [],
+    "flavors": {
+      "pronoun": "she",
+      "weapon": "splinter spear"
+    }
+  },
+  "feral shaman": {
+    "name": "feral shaman",
+    "speed": 2,
+    "health": 4,
+    "moves": ["gather mana", "rot", "heal allies", "charge mana", "heal", "poison", "suck"],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "she",
+      "weapon": "glowing staff"
+    }
+  },
+  "zombie": {
+    "name": "zombie",
+    "speed": 1,
+    "health": 10,
+    "moves": ["engage", "venomous bite"],
+    "skills": [],
+    "status": [{
+      "effect": "supernatural",
+      "target": 1,
+      "duration": -1
+    }],
+    "flavors": {}
+  },
+  "closed zombie": {
+    "name": "zombie",
+    "speed": 1,
+    "health": 10,
+    "moves": ["engage", "venomous bite"],
+    "skills": [],
+    "status": [{
+      "effect": "supernatural",
+      "target": 1,
+      "duration": -1
+    },{
+      "effect": "closed",
+      "target": 1,
+      "duration": -1
+    }],
+    "flavors": {}
+  },
+  "amalgamation": {
+    "name": "amalgamation",
+    "speed": 1,
+    "health": 20,
+    "moves": ["engage", "grand slam", "cleave", "regenerate", "rest"],
+    "skills": [],
+    "status": [{
+      "effect": "supernatural",
+      "target": 1,
+      "duration": -1
+    }],
+    "flavors": {}
   }
 }

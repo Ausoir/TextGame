@@ -23,6 +23,8 @@ class Game(context: Context){
 
     fun refreshChapter(){
         dialog = DialogController(fileManager, player.model.vars["chapter"]!!)
+        player.model.unit.healthPt = player.model.unit.health
+        player.model.damaged = 0
     }
 
     fun getVarMap(vars: List<String>?): ArrayList<String>{
@@ -37,12 +39,19 @@ class Game(context: Context){
     }
 
     private fun getCurrentVar(variable: String): String{
+        if (variable.startsWith("%?")){
+            return player.model.vars[variable.substringAfter("%?")] ?: ""
+        }
         return when (variable) {
-            "%temp" -> {
-                player.model.vars["temp"] ?: ""
-            }
             "%time" -> {
                 player.model.getTime()
+            }
+            "%daynight" -> {
+                if (player.model.isDay()){
+                    "day"
+                } else {
+                    "night"
+                }
             }
             "%rand2" -> {
                 "" + (1..2).random()

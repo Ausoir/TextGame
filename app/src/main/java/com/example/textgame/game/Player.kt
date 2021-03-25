@@ -8,7 +8,8 @@ import com.google.gson.Gson
 
 data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged: Int,
                        var equip: ArrayList<String>, val vars: HashMap<String, String>,
-                       var unit: UnitModel, var companion: ArrayList<String>, var specialization: String) : Parcelable {
+                       var unit: UnitModel, var companion: ArrayList<String>, var companionMoves: HashMap<String, ArrayList<String>>,
+                       var specialization: String) : Parcelable {
     @Suppress("JAVA_CLASS_ON_COMPANION")
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
@@ -19,6 +20,7 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
             parcel.readSerializable() as HashMap<String, String>,
         parcel.readSerializable() as UnitModel,
         parcel.readArrayList(String.javaClass.classLoader) as ArrayList<String>,
+        parcel.readSerializable() as HashMap<String, ArrayList<String>>,
         parcel.readString() ?: ""
     )
 
@@ -37,6 +39,7 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
         dest.writeSerializable(vars)
         dest.writeSerializable(unit)
         dest.writeList(companion)
+        dest.writeSerializable(companionMoves)
         dest.writeString(specialization)
     }
 
@@ -58,7 +61,7 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
         val enemies = ArrayList<UnitModel>()
         for (unit in companion){
             val unitData = unitDict[unit] ?: unitDict["invalid"]!!
-            enemies.add(unitData.copy())
+            enemies.add(unitData.copyAll())
         }
         return enemies
     }
@@ -74,7 +77,7 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
             }
         }
         equip.add(itemName)
-        if (item.rating != null){
+        if (item.type != "item" && item.type != "food"){
             unit.health += item.rating
         }
         if (item.type == "weapon"){
@@ -95,7 +98,7 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
 
     fun unequipItem(items: HashMap<String, ItemModel>, itemName: String): String?{
         val item: ItemModel = items[itemName] ?: return null
-        if (item.rating != null){
+        if (item.type != "item" && item.type != "food"){
             unit.health -= item.rating
         }
         equip.remove(itemName)
@@ -152,7 +155,7 @@ class Player(private val fileManager: FileManager) {
 
     private fun make(data: String?): PlayerModel {
         val gson = Gson()
-        return if (data == null){
+        val result = if (data == null){
             val finalData: String = fileManager.readAsset("player.json") !!
             val player = gson.fromJson(finalData, PlayerModel::class.java)
             player.gameStart()
@@ -160,6 +163,8 @@ class Player(private val fileManager: FileManager) {
         } else {
             gson.fromJson(data, PlayerModel::class.java)
         }
+        result.unit = result.unit.copyAll()
+        return result
     }
 
     fun timePass(time: Int){

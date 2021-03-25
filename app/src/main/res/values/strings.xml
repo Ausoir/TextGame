@@ -29,10 +29,10 @@
     <string name="use_unavailable">%1$s is not usable.</string>
     <string name="equip_confirm">Click here to equip %1$s</string>
     <string name="kick_confirm">Click here to kick %1$s from party.</string>
-    <string name="chapter_confirm">Click here to lose all your progress and return to %1$s.</string>
-    <string name="buy_confirm">Click here to buy %1$s for %2$dg.</string>
+    <string name="chapter_confirm">Lose all your chapter progress and return to %1$s? Your character data will transfer.</string>
+    <string name="buy_confirm">Buy %1$s for %2$dg?</string>
     <string name="buy_done">%1$s is bought for %2$dg.</string>
-    <string name="sell_confirm">Click here to sell %1$s for %2$dg</string>
+    <string name="sell_confirm">Sell %1$s for %2$dg?</string>
     <string name="sell_done">%1$s is sold for %2$dg.</string>
     <string name="buy">Buy</string>
     <string name="sell">Sell</string>

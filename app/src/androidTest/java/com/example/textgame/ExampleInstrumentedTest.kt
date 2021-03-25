@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.textgame.game.Game
-import com.example.textgame.tools.Grammar
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,125 +15,65 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
-    private val logID = "console6"
+    private val logID = "log7"
+    private val knownTags = listOf("time", "timeset", "heal", "view rest", "dropAll", "refresh chapter")
+    private val chainTags = listOf("encounter", "join", "drop", "view advance", "view shop", "combat",
+        "add", "save", "remove part", "item", "force item", "learn", "if")
+    private val errors = arrayListOf<String>()
+    private val history = arrayListOf<String>()
     @Test
     fun validate_chapter() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         val game = Game(appContext)
         game.player.model.vars["chapter"] = "1"
         game.refreshChapter()
-        recurse_dialog(game, arrayListOf(), "start")
+        recurse_dialog(game, "start")
+        Log.d(logID, "---- VALIDATION COMPLETE. LISTING ERRORS ----")
+        for (error in errors){
+            Log.d(logID, error)
+        }
     }
 
-    private fun recurse_dialog(game: Game, history: MutableList<String>, page: String){
+    private fun recurse_dialog(game: Game, page: String){
         if (history.count{ it == page } > 1) {
-            Log.d(logID, "RETURNED TO PAGE: $page. ABORTING")
+//            Log.d(logID, "RETURNED TO PAGE: $page. ABORTING")
         } else {
             history.add(page)
             Log.d(logID, "PAGE: $page")
             assertEquals(false, page == "invalid")
             assertEquals(false, page.contains("%"))
-            if (page !in game.dialog.model){
-                Log.d(logID, "INVALID PAGE: $page. ABORTING")
+            val inChapter = page in game.dialog.model
+            val inCommon = page in game.dialog.model2
+            if (!inChapter && !inCommon){
+                Log.d(logID, "INVALID PAGE: $page")
+                errors.add("INVALID PAGE: $page")
             } else {
-                val currentPage = game.dialog.model[page]!!
+                val currentPage = if (inChapter) {
+                    game.dialog.model[page]!!
+                } else {
+                    game.dialog.model2[page]!!
+                }
                 val args = game.getVarMap(currentPage.filler)
-                val dialog = currentPage.fillVariables(args).validate(game.player.model)
+                val dialog = currentPage.fillVariables(args)
                 assertEquals(false, dialog.text.contains("%"))
                 for (opt in dialog.opt) {
-                    assertEquals(false, opt.text.contains("%"))
                     Log.d(logID, "OPT: ${opt.to}")
-                    recurse_dialog(game, history.toMutableList(), getDialogPage(opt.to))
+                    val tags = opt.to.split(">")
+                    for (i in tags.indices){
+                        if (tags[i].startsWith("@")) {
+                            recurse_dialog(game, tags[i].substring(1))
+                        } else if (tags[i].isNotEmpty() && tags[i] !in knownTags && tags[i] !in chainTags && tags[i].toIntOrNull() == null){
+                            if (i < 1){
+                                Log.d(logID, "UNKNOWN SINGLE TAG: ${tags[i]}")
+                                errors.add("UNKNOWN SINGLE TAG: ${tags[i]}")
+                            } else if (tags[i - 1] !in chainTags){
+                                Log.d(logID, "UNKNOWN TAG: ${tags[i]}")
+                                errors.add("UNKNOWN TAG: ${tags[i]}")
+                            }
+                        }
+                    }
                 }
             }
-        }
-    }
-
-    private fun getDialogPage(to: String): String{
-        if (to.startsWith(">")) {
-            val split = to.split(">")
-            val index = when (split[1]) {
-                "custom" -> {
-                    3
-                }
-                "save" -> {
-                    4
-                }
-                "load" -> {
-                    -1
-                }
-                "if" -> {
-                    5
-                }
-                "back" -> {
-                    -1
-                }
-                "time" -> {
-                    3
-                }
-                "timeset" -> {
-                    3
-                }
-                "defeat" -> {
-                    2
-                }
-                "encounter" -> {
-                    4
-                }
-                "combat" -> {
-                    4
-                }
-                "join" -> {
-                    3
-                }
-                "drop" -> {
-                    3
-                }
-                "learn" -> {
-                    3
-                }
-                "forget" -> {
-                    3
-                }
-                "specialize" -> {
-                    3
-                }
-                "view shop" -> {
-                    3
-                }
-                "view learn" -> {
-                    2
-                }
-                "view forget" -> {
-                    2
-                }
-                "view advance" -> {
-                    3
-                }
-                "heal" -> {
-                    2
-                }
-                "item" -> {
-                    3
-                }
-                "trash" -> {
-                    3
-                }
-                "refresh chapter" -> {
-                    2
-                }
-                "reset" -> {
-                    2
-                } else -> {
-                    -1
-                }
-            }
-            if (index == -1){
-                return "invalid"
-            }
-            return getDialogPage(Grammar.substringAfter(to, ">", index))
-        } else {
-            return to
         }
     }
 }

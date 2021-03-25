@@ -1,26 +1,10 @@
 {
-  "invalid": {
-    "title": "",
-    "text": "Dialog page is missing...",
-    "opt": [{
-      "to": "defeat",
-      "text": "Go back"
-    }]
-  },
-  "defeat": {
-    "title": "Game Over",
-    "text": "It is GAME OVER!",
-    "opt": [{
-      "to": ">heal>8>start",
-      "text": "Start Over"
-    }]
-  },
   "start": {
     "title": "Prologue",
     "text": "",
     "opt": [
       {
-        "to": "start2",
+        "to": "@start2",
         "text": "Begin"
       }
     ]
@@ -30,7 +14,7 @@
     "text": "You were born and raised in a settlement built around a conquered ant hill. Most residents here are hunters and craftsmen, and they feed themselves by hunting monsters, as farming techniques have long been lost here.\n\nYou, having neither the courage to hunt nor the skills to craft, have become a scout.",
     "opt": [
       {
-        "to": "start3",
+        "to": "@start3",
         "text": "Proceed"
       }
     ]
@@ -40,11 +24,11 @@
     "text": "Every day, you wake up early in the morning and patrol the nearby area to notify the settlement of any dangers or things to scavenge.\n\nThis is a dangerous job. Many scouts disappear without a trace every week. Like any scout, you must carry a weapon around at all times, even if you don't have the courage to fight. Your weapon of choice was...",
     "opt": [
       {
-        "to": "startrange",
+        "to": "@startrange",
         "text": "A ranged weapon"
       },
       {
-        "to": "startmelee",
+        "to": "@startmelee",
         "text": "A melee weapon"
       }
     ]
@@ -54,15 +38,15 @@
     "text": "You carry around a ranged weapon in case there is something weak that you can hunt from outside danger's reach.\n\nYour ranged weapon of choice was...",
     "opt": [
       {
-        "to": ">item>greenwood bow>>time>8>ant hill",
+        "to": ">item>greenwood bow>>time>8>@ant hill",
         "text": "A greenwood bow"
       },
       {
-        "to": ">item>pine needle javelin>>time>8>ant hill",
+        "to": ">item>pine needle javelin>>time>8>@ant hill",
         "text": "A pine needle javelin"
       },
       {
-        "to": ">item>slingshot>>time>8>ant hill",
+        "to": ">item>slingshot>>time>8>@ant hill",
         "text": "A chitin slingshot"
       }
     ]
@@ -72,15 +56,15 @@
     "text": "You carry around a melee weapon to prepare for the worst case scenario of being ambushed by one of the many dangerous predators near the hill.\n\nYour melee weapon of choice was...",
     "opt": [
       {
-        "to": ">item>splinter spear>>time>8>ant hill",
+        "to": ">item>splinter spear>>time>8>@ant hill",
         "text": "A splinter spear"
       },
       {
-        "to": ">item>chitin spiked mace>>time>8>ant hill",
+        "to": ">item>chitin spiked mace>>time>8>@ant hill",
         "text": "A chitin spiked mace"
       },
       {
-        "to": ">item>chitin blade>>time>8>ant hill",
+        "to": ">item>chitin blade>>time>8>@ant hill",
         "text": "A chitin blade"
       }
     ]
@@ -91,10 +75,10 @@
     "filler": ["%time"],
     "opt": [
       {
-        "to": "ant hill underground",
+        "to": "@ant hill underground",
         "text": "Go underground"
       },{
-        "to": ">view shop>Ant Hill Shop>ant hill",
+        "to": ">view shop>Ant Hill Shop>@ant hill",
         "text": "Shop around"
       }
     ]
@@ -104,14 +88,14 @@
     "text": "You open the barred gate and enter the underground section of the settlement.\n\nIt is mostly dark, and the only light sources here are from domesticated fireflies that people herd around. You wander through the familiar dirt maze.",
     "opt": [
       {
-        "to": "ant hill temple",
+        "to": "@ant hill temple",
         "text": "Visit the temple",
         "reqs": ["var>quest>2"]
       },{
-        "to": ">save>quest>1>ant hill home",
+        "to": ">save>quest>1>@ant hill home",
         "text": "Go home"
       },{
-        "to": "ant hill",
+        "to": "@ant hill",
         "text": "Go back to the surface"
       }
     ]
@@ -120,10 +104,10 @@
     "title": "Home",
     "text": "You arrive at your dormitory. Your roommates greet you.\n\nYou sit on your hammock talking to your roommates about hunting ants when you hear people shouting and running in the halls. It sounds like there is something going on on the surface...",
     "opt": [{
-      "to": "ant hill ambushed",
+      "to": "@ant hill ambushed",
       "text": "Go outside to the surface"
     },{
-      "to": "ant hill ambushed skip",
+      "to": "@ant hill ambushed skip",
       "text": "Just stay and rest"
     }]
   },
@@ -131,10 +115,10 @@
     "title": "Ant Hill",
     "text": "You run outside to see the streets raided by the infamous Wolf spiders.\nYou see people getting kidnapped and dragged away.\n\nYour cowardly roommates run back inside. There are hunters with weapons beside you, but they just guard the entrance, not daring to go out to the streets to help the people.\n\nYou see a girl getting dragged off by a wolf spider, screaming.",
     "opt": [{
-      "to": ">encounter>wolf spiders>ant hill kidnapped>>save>spider>1>>save>temp>\n\nScobby: [I heard what you went through. I don't know what you were thinking... but it's not common to see people come back from the spider forest, so there must be something in you.]\n\n>ant hill aftermath",
+      "to": ">encounter>wolf spiders>@ant hill kidnapped>>save>spider>1>>save>temp>\n\nScobby: [I heard what you went through. I don't know what you were thinking... but it's not common to see people come back from the spider forest, so there must be something in you.]\n\n>@ant hill aftermath",
       "text": "Try to be a hero"
     },{
-      "to": ">time>5>ant hill aftermath",
+      "to": ">time>5>@ant hill aftermath",
       "text": "Run back inside. The spiders are as big as you are."
     }]
   },
@@ -142,7 +126,7 @@
     "title": "Home",
     "text": "It's probably nothing... Even if it was, you'll hear it from someone else later. You lay down on your hammock and rest while all your roommates leave to find out what's going on. You fall asleep like a champion.",
     "opt": [{
-      "to": ">time>8>ant hill aftermath",
+      "to": ">time>8>@ant hill aftermath",
       "text": "Proceed"
     }]
   },
@@ -151,7 +135,7 @@
     "text": "It's %time.\n\nThe bustling movements and tension in the air fades.\nYou hear that about 7 people were kidnapped away by the spiders today. All services are closed.",
     "filler": ["%time"],
     "opt": [{
-      "to": "ant hill next week",
+      "to": "@ant hill next week",
       "text": "Proceed"
     }]
   },
@@ -159,10 +143,10 @@
     "title": "Kidnapped",
     "text": "You hear a stranger's voice.\n\nStranger: [Hey, wake up!]\n\nYou open your eyes but don't see anything. It is pitch black.\n\nStranger: [You've been sleeping like a baby. What's wrong with you?]\n\nSuddenly, a light appears from nowhere and you instinctively turn your head to protect your eye.\nIt is a faint light cast with magic! You look at the stranger with envy.\n\nSpellcaster: [We've been kidnapped by the wolf spiders a few hours ago. There are 8 of us and we're going to make a run for it, before they eat us one by one.]",
     "opt": [{
-      "to": ">time>4>runaway",
+      "to": ">time>4>@runaway",
       "text": "Ok"
     },{
-      "to": "spider death",
+      "to": "@spider death",
       "text": "I actually like it here!"
     }]
   },
@@ -170,7 +154,7 @@
     "title": "...",
     "text": "You fall back asleep while the 7 of the abductees make a run for it. Hours passed, and one of the hungry spiders kill and eat you while you are asleep.",
     "opt": [{
-      "to": "defeat",
+      "to": "@defeat",
       "text": "I made the wrong choice, I guess..."
     }]
   },
@@ -178,10 +162,10 @@
     "title": "Kidnapped",
     "text": "You start making a run through the maze like tunnels. The underground tunnel you are in looks similar to the underground Ant Hill, except the tunnels are larger and there are spiderweb cocoons on the walls.\n\nYou and the abductees keep running until you reach the exit blocked by leaves and spiderwebs. There are lights coming in from outside and the spellcaster stops his magic.\n\nSpellcaster: [That's the way out. This underground tunnel seems like their storage area where they keep the food fresh, which means there is a good chance that some of the spiders are nearby.\n\nYou are a scout, right? Why don't you go outside and take a look for us?]",
     "opt": [{
-      "to": "runaway1-1",
+      "to": "@runaway1-1",
       "text": "No! why me!"
     },{
-      "to": "runaway2",
+      "to": "@runaway2",
       "text": "Okay"
     }]
   },
@@ -189,7 +173,7 @@
     "title": "Kidnapped",
     "text": "Spellcaster: [Are you serious? fine, I guess I'll have to do this myself.]\n\nThe spellcaster takes out his knife. He slashes through the spiderwebs and crawls outside.\nYou hear one of the other abductees behind you call you a coward.\n\nA minute passed, and you hear the spellcaster scream from outside.",
     "opt": [{
-      "to": "runaway1-2",
+      "to": "@runaway1-2",
       "text": "Proceed"
     }]
   },
@@ -197,10 +181,10 @@
     "title": "Kidnapped",
     "text": "You crawl outside and see people in rags wielding weapons. You don't recognize any of them.\nYou crawl back inside and tell everyone.\n\nSpellcaster: [They must be ferals. We should wait for them to pass then sneak out.]\n\nAbductee: [Ferals? There's no such thing here! They must be others kidnapped here from Ant Hill!]",
     "opt": [{
-      "to": "runaway2-1",
+      "to": "@runaway2-1",
       "text": "Listen to the Spellcaster"
     },{
-      "to": "runaway2-2",
+      "to": "@runaway2-2",
       "text": "Listen to the Abductee"
     }]
   },
@@ -208,7 +192,7 @@
     "title": "Kidnapped",
     "text": "You wait with the others for a few minutes until outside is clear, then make a run for it.",
     "opt": [{
-      "to": ">save>spellcaster>1>ant hill outskirt",
+      "to": ">save>spellcaster>1>@ant hill outskirt",
       "text": "Proceed"
     }]
   },
@@ -216,7 +200,7 @@
     "title": "Kidnapped",
     "text": "You follow the abductee outside.\n\nAbductee: [Hey, over here!]\n\nThe people in rags start throwing stuff at him.\n\nAbductee: [Oh, shit!]",
     "opt": [{
-      "to": ">encounter>two feral humans>defeat>runaway2-2-1",
+      "to": ">encounter>two feral humans>@defeat>@runaway2-2-1",
       "text": "Fight"
     }]
   },
@@ -224,7 +208,7 @@
     "title": "Kidnapped",
     "text": "You and the abductees peek outside and see the spellcaster being attacked by several people in rags. They point at your group and shout.",
     "opt": [{
-      "to": ">join>Lucid>>encounter>two feral humans>defeat>>drop>Lucid>runaway2-2-1",
+      "to": ">join>Lucid>>encounter>two feral humans>@defeat>>drop>Lucid>@runaway2-2-1",
       "text": "Fight"
     }]
   },
@@ -232,7 +216,7 @@
     "title": "Kidnapped",
     "text": "You take down the feral human and look around. It looks like all of the ferals have gone down, but 4 people are dead as a result, one of them being the spellcaster.\nYou dig through his belongings and find a map.\n\nYou look down at one of the feral humans and notice that they don't look particularly starved. They are wearing rags, but in rather clean condition.\n\nOne of the critically wounded feral woman opens her eyes slowly looks up. She stares at you with pleasing eyes and whimpers.\nYou try to communicate with her but she does not seem to understand you.\nThe other abductees decide to just abandon her and leave the spider forest before the wolf spiders return. You follow.",
     "opt": [{
-      "to": ">time>1>ant hill outskirt",
+      "to": ">time>1>@ant hill outskirt",
       "text": "Huh."
     }]
   },
@@ -240,23 +224,23 @@
     "title": "Return to Ant Hill",
     "text": "Your group finally arrive at the Ant Hill after about an hour of walk.\n\nPeople come out to meet and greet. Families of the lost ones grieve. Some thank you for getting out there to try to fight the beasts.\n\nYou return to your roommates and share your fascinating stories...",
     "opt": [{
-      "to": ">time>160>>timeset>8>ant hill next week",
+      "to": ">time>160>>timeset>8>@ant hill next week",
       "text": "Go to sleep",
       "reqs": ["late night"]
     },{
-      "to": ">time>160>>timeset>8>ant hill next week",
+      "to": ">time>160>>timeset>8>@ant hill next week",
       "text": "Rest",
       "reqs": ["early morning"]
     },{
-      "to": "ant hill spellcaster",
+      "to": "@ant hill spellcaster",
       "text": "Meet with the spellcaster",
       "reqs": ["var>spellcaster>1"]
     },{
-      "to": ">time>160>ant hill next week",
+      "to": ">time>160>@ant hill next week",
       "text": "Proceed",
       "reqs": ["morning"]
     },{
-      "to": ">time>160>ant hill next week",
+      "to": ">time>160>@ant hill next week",
       "text": "Proceed",
       "reqs": ["evening"]
     }]
@@ -265,10 +249,10 @@
     "title": "Return to Ant Hill",
     "text": "You find the spellcaster in the underground temple talking to the priest.\n\nSpellcaster: [Ah, it's you. I forgot to thank you for your help back in the woods. My name is Lucid. Are you doing ok?]",
     "opt": [{
-      "to": ">time>160>>timeset>8>ant hill next week",
+      "to": ">time>160>>timeset>8>@ant hill next week",
       "text": "Go rest"
     },{
-      "to": "ant hill spellcaster2",
+      "to": "@ant hill spellcaster2",
       "text": "Ask to learn spellcasting"
     }]
   },
@@ -276,7 +260,7 @@
     "title": "Return to Ant Hill",
     "text": "Spellcaster: [Ah, of course. I was just talking to the priest here about teaching the people of Ant Hill some spellcasting. You are welcome to join the session!]\n\nPriest: [I heard what you did out there. It wasn't the brightest decision to try to fight the spiders, but you seem to have brought good luck in the end. I need some time with Lucid right now, why don't you come back another time?]",
     "opt": [{
-      "to": ">time>160>>timeset>8>>view advance>apprentice>ant hill next week",
+      "to": ">time>160>>timeset>8>>view advance>apprentice>@ant hill next week",
       "text": "Go rest"
     }]
   },
@@ -284,21 +268,21 @@
     "title": "Home",
     "text": "It's been a week since the kidnapping incident. People went back to their normal lives, as death and disappearances aren't uncommon in Ant Hill.\n\nOne of the hunters let you know that the high priest is looking for you.",
     "opt": [{
-      "to": "ant hill temple",
+      "to": "@ant hill temple",
       "text": "Visit the temple"
     }]
   },
   "ant hill temple": {
     "title": "Ant Hill Temple",
-    "text": "You walk into the Gaia's Temple, which is a rather large room among the many rooms in the dirt maze. There is an altar made of strange light blue stone in the center and two fireflies by the altar shines the room.\nOn the bench at the corner of the room you spot Scobby, a veteran hunter of Ant Hill, and Cheese, son of the priest.%temp\nThe priest dressed in white robe comes out from the back to greet you.\n\nPriest: [Welcome. As you may have guessed, you and Scobby have been selected for this month's Full Moon's Journey.]",
-    "filler": ["%temp"],
+    "text": "You walk into the Gaia's Temple, which is a rather large room among the many rooms in the dirt maze. There is an altar made of strange light blue stone in the center and two fireflies by the altar shines the room.\nOn the bench at the corner of the room you spot Scobby, a veteran hunter of Ant Hill, and Cheese, son of the priest.%?t1\nThe priest dressed in white robe comes out from the back to greet you.\n\nPriest: [Welcome. As you may have guessed, you and Scobby have been selected for Full Moon's Journey.]",
+    "filler": ["%?t1"],
     "opt": [
       {
-        "to": "ant hill temple1",
+        "to": "@ant hill temple1",
         "text": "Continue",
         "reqs": ["var>spellcaster>1"]
       },{
-        "to": "ant hill temple2",
+        "to": "@ant hill temple2",
         "text": "Continue",
         "reqs": ["!var>spellcaster>1"]
       }
@@ -309,7 +293,7 @@
     "text": "Priest: [As you may well know, we have not been successful in communicating with the outside world for the past 5 years.]\n\nPriest: [That has changed. A foreign visitor named Lucid hailing from the city of Jericho is among us right now. He drew us a map leading all the way to Jericho.]\n\nLucid: [Hello.]\n\nThe priest hands you a copy of the map drawn on a scroll.\n\nPriest: [Like I said earlier, we had selected Scobby here for the mission to the outside, and you as his assistant. This time, we are sending you to Jericho. Lucid wrote us a letter that might get us help from the city.]\n\nPriest: [This city lies across the river, close to the Stone Henge, our old neighbor. No one sent there has come back so far, but if you can somehow get to Jericho, you won't have to worry about your way back.]\n\nPriest: [And... my son will accompany you as our liaison to Jericho. I know I may be burdening you with this, but please try your best. Don't prioritize taking care of him. Reaching the city comes first, always.]\n\nCheese: [What are you saying, father? Why do you always make me look bad?]\n\nPriest: [...Anyways, we will hold a great feast tomorrow to celebrate Lucid's arrival and your departure.]\n\nYou see Lucid lost in thought with a strange, worried look on his face.",
     "opt": [
       {
-        "to": ">save>chapter>1>>refresh chapter>start",
+        "to": ">save>chapter>1>>refresh chapter>@start",
         "text": "Continue..."
       }
     ]
@@ -319,7 +303,7 @@
     "text": "Priest: [As you may well know, we have not been successful in communicating with the outside world for the past 5 years.]\n\nPriest: [I believe that some day, we will find the ones who will finally complete the Full Moon's Journey and prove themselves a hero of Ant Hill.]\n\nPriest: [Also... my son will accompany you on the trip. I know I may be burdening you with this, but please try your best. Don't prioritize taking care of him. Reaching the city comes first, always.]\n\nCheese: [What are you saying, father? Why do you always make me look bad?]\n\nPriest: [... Anyways, we will hold a feast for your departure tomorrow so you can say your good byes to your folks. Always remember that you are carrying out one of the most honorable deeds for Ant Hill.]",
     "opt": [
       {
-        "to": ">save>chapter>1>>refresh chapter>start",
+        "to": ">save>chapter>1>>refresh chapter>@start",
         "text": "Continue..."
       }
     ]

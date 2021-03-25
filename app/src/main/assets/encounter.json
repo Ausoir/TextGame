@@ -12,7 +12,7 @@
   "two feral humans": {
     "desc": "A feral human wearing rags engages you. It observes you carefully, as if hunting an animal.",
     "units": ["feral human", "feral human"],
-    "loots": ["web bolas", "sharp stick", "splinter spear"]
+    "loots": ["web bolas", "sharp stick", "splinter spear", "mushroom pemmican"]
   },
   "Sparring Scobby": {
     "desc": "He is wielding a sparring stick. He is way more bulkier than you and will destroy you if you make him mad.",
@@ -37,7 +37,7 @@
   "pill bug": {
     "desc": "An armored bug shaped like an uncurled ball crawls towards you.",
     "units": ["pill bug"],
-    "loots": ["chitin breastplate", "", "", "sturdy wood"]
+    "loots": ["chitin breastplate", "sturdy wood", "sturdy wood"]
   },
   "caterpillar": {
     "desc": "A fat worm with fabulous hair crawls toward you. You probably don't want to touch that.",
@@ -74,9 +74,9 @@
     "units": ["moth"],
     "loots": ["hair ball"]
   },
-  "mouse": {
-    "desc": "A cute looking beast almost as big as you. Not very aggressive, but still pretty hard to kill.",
-    "units": ["mouse"],
+  "squirrel": {
+    "desc": "A mean looking beast with a tail taller than you. Not very aggressive, but still pretty hard to kill.",
+    "units": ["squirrel"],
     "loots": ["spine spear"]
   },
   "yellow butterfly": {
@@ -107,11 +107,91 @@
   "feral hunters": {
     "desc": "A group of feral humans wielding chitin spears approach you with malicious intent. They do not seem to understand you.",
     "units": ["feral human", "feral human", "feral human", "feral human"],
-    "loots": ["web bolas", "sharp stick", "splinter spear"]
+    "loots": ["mushroom pemmican"]
   },
   "wolf spider": {
     "desc": "A large spider covered in gray hair crawls toward you. It is as big as you are and its mandibles are thicker than your arms. You are having a hard time just standing still.\nYour brain is telling you to run, but it is too late. You can't run from these.",
     "units": ["wolf spider"],
+    "loots": []
+  },
+  "henge guards": {
+    "desc": "A Stone Henge guard in full chitin armor equipped with a chitin shield and chitin mace blocks your way. Behind him are two Stone Henge scouts with bows ready to shoot you down.\nThey look pretty disciplined.",
+    "units": ["henge scout", "henge guard", "henge scout"],
+    "loots": ["chitin spiked mace", "chitin breastplate", "chitin greave", "chitin gauntlets", "chitin shield"]
+  },
+  "henge wizard": {
+    "desc": "A Stone Henge guard wearing a strange robe blocks your way. He is wielding a glowing staff.",
+    "units": ["henge wizard", "henge guard", "henge scout"],
+    "loots": ["spellcasting manual", "moonglow staff", "silk robe"]
+  },
+  "rat": {
+    "desc": "A ferocious beast bigger than you with huge front teeth approach you.\nRats are dangerous predators that can charge and shred you in seconds. Beware!",
+    "units": ["rat"],
+    "loots": ["beast meat"]
+  },
+  "rotting pile": {
+    "desc": "You find a rotting pile of who-knows-what in a small concave dirt area behind a boulder.\nThe rotting pile is infested with pill bugs and worms.",
+    "units": ["pill bug", "pill bug", "worm"],
+    "loots": ["chitin breastplate", "sturdy wood"]
+  },
+  "ant swarm": {
+    "desc": "A swarm of ants are running for you right now.\nThey must've run out of things to feed their queen.",
+    "units": ["ant", "ant", "ant", "ant", "ant"],
+    "loots": ["bug meat"]
+  },
+  "stone henge arena": {
+    "desc": "You are at the training grounds.\n\nThere are many Stone Henge guards and hunters sparring in the arena.\nOne of the participants approach you for a fight.",
+    "units": ["henge duelist"],
+    "loots": []
+  },
+  "ant hill priest guards": {
+    "desc": "You are fighting Ant Hill guards in full chitin armor.\nThese familiar guards that you've seen around your whole life have never looked so threatening before...",
+    "units": ["ant hill guard", "ant hill guard"],
+    "loots": ["spine spear"]
+  },
+  "fish": {
+    "desc": "A giant dark shadow under the surface approach you.\nIt will leap out of the water at any time you swallow you whole.",
+    "units": ["fish"],
+    "loots": ["fishbone spear", "fishbone bow"]
+  },
+  "elite feral hunters": {
+    "desc": "A group of feral humans wielding chitin halberds approach you fiercely. They are wearing some fancy pink leather over their shoulders that seem to represent their elite status.",
+    "units": ["feral elite", "feral elite", "feral elite"],
+    "loots": ["web bolas", "sharp stick", "splinter spear", "mushroom pemmican"]
+  },
+  "feral ambushers": {
+    "desc": "A group of feral humans ambush you from the darkness. They probably didn't like you trying to steal their food.",
+    "units": ["feral ambusher", "feral ambusher", "feral ambusher"],
+    "loots": ["mushroom pemmican"]
+  },
+  "feral ambushers 2": {
+    "desc": "A group of feral humans ambush you from the darkness. They probably didn't like you trying to steal their food.",
+    "units": ["feral shaman", "feral ambusher"],
+    "loots": ["mushroom pemmican"]
+  },
+  "feral ambushers 3": {
+    "desc": "A group of feral humans and their domesticated red ticks ambush you from the darkness. They probably didn't like you trying to steal their food.",
+    "units": ["feral shaman", "feral ambusher", "tick", "tick"],
+    "loots": ["mushroom pemmican"]
+  },
+  "zombies": {
+    "desc": "A group of bloated, burnt corpses are somehow standing on its own... It looks like they have sensed you somehow and approach you.",
+    "units": ["zombie", "zombie", "zombie"],
+    "loots": []
+  },
+  "zombie": {
+    "desc": "A bloated, burnt corpse somehow standing on its own... It has sensed you and wants to eat you alive.",
+    "units": ["zombie"],
+    "loots": []
+  },
+  "Cheese the hoarder": {
+    "desc": "Cheese transforms into a purple shade.\nHe will not give up the staff that he found, and you know that you must use force to take it from him.",
+    "units": ["Cheese2"],
+    "loots": ["moonglow staff"]
+  },
+  "amalgamation": {
+    "desc": "A mound of limbs and flesh forming one organism.\nIt is covered in algae at the top and glowing mushrooms everywhere else.\n\nThe monstrosity covers long distances when moving, and you realize that running away is not an option when you're this close.",
+    "units": ["amalgamation"],
     "loots": []
   }
 }

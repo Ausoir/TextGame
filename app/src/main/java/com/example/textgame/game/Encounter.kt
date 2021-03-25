@@ -10,7 +10,7 @@ data class EncounterModel(val desc: String, val units: ArrayList<String>, val lo
         val enemies = ArrayList<UnitModel>()
         for (unit in units){
             val unitData = unitDict[unit] ?: unitDict["invalid"]!!
-            enemies.add(unitData.copy())
+            enemies.add(unitData.copyAll())
         }
         return enemies
     }

@@ -111,6 +111,7 @@ data class DialogModel(val title: String?, val text: String, val filler: List<St
 
 class DialogController(fileManager: FileManager, chapter: String) {
     val model = makeDialog(fileManager.readAsset("chapters/$chapter.json") !!)
+    val model2 = makeDialog(fileManager.readAsset("chapters/common.json") !!)
 
     private fun makeDialog(data: String): HashMap<String, DialogModel> {
         val listType = object : TypeToken<HashMap<String, DialogModel>?>() {}.type

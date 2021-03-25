@@ -1,13 +1,16 @@
 {
+  "common deck": ["disengage", "engage", "kick", "tackle", "observe", "weak guard", "recover", "learn"],
+  "scout deck": ["dodge", "adrenaline", "cripple", "backstep", "injure", "parry", "stun", "guard dash", "quick attack"],
+  "fighter deck": ["charge", "cripple", "guard break", "bash", "roundhouse kick", "berserk", "strangle", "parry", "guard dash", "cleave", "taunt", "flurry"],
+  "nature deck": ["dodge", "clarity", "confuse", "poison", "paralyze", "weaken", "stop charge"],
+  "spell deck": ["clarity", "premonition", "confuse", "heal", "redirect", "gather mana", "omniscience", "phase", "rot", "lightning"],
   "Ant Hill Shop": ["silk robe", "spine spear", "chitin claws", "hair ball", "blood droplet", "sturdy wood"],
   "Stone Henge Shop": ["horn bow", "web bolas", "rose spike", "hair ball", "chitin claws", "pollen ball", "silk robe", "spellcasting manual", "ranger manual"],
-  "River Encounter": ["three ants", "millipede", "pill bug", "caterpillar", "bloodquito"],
-  "River Night Encounter": ["two bloodquitos", "three bloodquitos", "centipede", "moth", "two ticks", "mouse"],
-  "Field Encounter": ["three ants", "millipede", "pill bug", "caterpillar", "bloodquito"],
-  "Field Night Encounter": ["three ants", "millipede", "pill bug", "caterpillar", "bloodquito"],
-  "common deck": ["disengage", "engage", "kick", "tackle", "observe", "weak guard", "recover"],
-  "scout deck": ["dodge", "adrenaline", "cripple", "backstep", "injure", "parry", "weaken", "stun", "guard dash", "quick attack"],
-  "fighter deck": ["charge", "cripple", "guard break", "bash", "roundhouse kick", "berserk", "strangle", "parry", "guard dash", "cleave", "taunt", "flurry"],
-  "nature deck": ["dodge", "clarity", "confuse", "poison", "paralyze", "weaken"],
-  "spell deck": ["clarity", "premonition", "confuse", "heal", "redirect", "gather mana", "omniscience", "phase"]
+  "Feral Cave Shop": ["web bolas", "furry foot wrap", "glowing mushroom bundle", "mushroom pemmican", "shrapnel"],
+  "river encounter": ["three ants", "millipede", "pill bug", "caterpillar", "bloodquito"],
+  "river night encounter": ["two bloodquitos", "centipede", "moth", "two ticks", "mouse"],
+  "field day encounter": ["henge guards", "henge wizard", "beetle"],
+  "field night encounter": ["three bloodquitos", "centipede", "moth", "rat", "bloodquito"],
+  "return river encounter": ["centipede", "ant swarm", "rotting pile", "two bloodquitos"],
+  "feral cave encounter": ["feral ambushers", "feral ambushers 2", "feral ambushers 3"]
 }

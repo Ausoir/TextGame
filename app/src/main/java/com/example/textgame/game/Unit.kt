@@ -5,13 +5,13 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
 
-data class UnitModel(val name: String, var level: Int, val speed: Int, var health: Int,
-                     val moves: MutableList<String>, val skills: MutableList<String>, val flavors: HashMap<String, String>): Serializable{
+data class UnitModel(val name: String, val speed: Int, var health: Int,
+                     val moves: MutableList<String>, val skills: MutableList<String>, val status: MutableList<Status>,
+                     val flavors: HashMap<String, String>): Serializable{
     lateinit var foes: ArrayList<UnitModel>
-    lateinit var status: ArrayList<Status>
-    lateinit var statusDuration: ArrayList<Int>
+    var statusDuration: ArrayList<Int> = arrayListOf()
     var id = 0
-    var points = speed
+    var points = 0
     var healthPt = 1
     var block = 0
     var position = 0
@@ -19,20 +19,29 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
     var target: UnitModel? = null
     var deck: Deck? = null
 
+    fun copyAll(): UnitModel{
+        val result = UnitModel(name, speed, health, moves.toMutableList(), skills.toMutableList(),
+            mutableListOf(), flavors.toMutableMap() as HashMap<String, String>)
+        for (i in status.indices){
+            result.statusDuration.add(result.status[i].duration)
+            result.status.add(result.status[i].copy())
+        }
+        result.points = points
+        result.block = block
+        result.position = position
+        result.mana = mana
+        result.healthPt = healthPt
+        return result
+    }
+
     fun initialize(moves: MutableList<MoveModel>, handSize: Int){
         deck = Deck(this, moves, handSize)
         deck?.shuffle()
-        status = arrayListOf()
-        statusDuration = arrayListOf()
         foes = arrayListOf()
     }
 
     fun recharge(){
         points = speed
-    }
-
-    fun copy(): UnitModel{
-        return UnitModel(name, level, speed, health, moves.toMutableList(), skills.toMutableList(), HashMap(flavors))
     }
 
     fun inflict(healthChange: Int): String{
@@ -43,12 +52,12 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
                 if (block < 0) {
                     healthPt += block
                     if (healthChange != block) {
-                        result = "%U block%s ${-(healthChange - block)} damage.\n"
+                        result = "<color:#444411>%U block%s ${-(healthChange - block)} damage.\n"
                     }
-                    result += "%U take%s ${-block} damage!\n${getHealthDescription()}\n"
+                    result += "<color:#992222>%U take%s ${-block} damage!\n${getHealthDescription()}\n"
                     block = 0
                 } else {
-                    result = "%U block%s ${-healthChange} damage.\n${getHealthDescription()}\n"
+                    result = "<color:#444411>%U block%s ${-healthChange} damage.\n${getHealthDescription()}\n"
                 }
                 result
             }
@@ -57,7 +66,7 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
                 if (healthPt > health) {
                     healthPt = health
                 }
-                "%U receive%s $healthChange healing!\n${getHealthDescription()}\n"
+                "<color:#229922>%U receive%s $healthChange healing!\n${getHealthDescription()}\n"
             }
             else -> {
                 ""
@@ -157,16 +166,16 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
         val percentage = getHealthPercentage()
         val result = when {
             percentage <= 0 -> {
-                flavors["death"] ?: "%U collapse%s."
+                flavors["death"] ?: "<color:#220000>%U collapse%s."
             }
             percentage <= 25 -> {
-                "%Ur seriously wounded."
+                "<color:#553030>%Ur seriously wounded."
             }
             percentage <= 50 -> {
-                "%Ur wounded."
+                "<color:#553636>%Ur wounded."
             }
             percentage <= 75 -> {
-                "%Ur lightly wounded."
+                "<color:#554040>%Ur lightly wounded."
             }
             else -> {
                 "%Ur healthy."
@@ -186,14 +195,14 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
                     return if ((position == target?.position) == (req.target == 1)){
                         ""
                     } else {
-                        "!"
+                        " "
                     }
                 } else if (req.effect == "mana") {
                     return if (mana >= req.value){
                         mana -= req.value
                         ""
                     } else {
-                        "!"
+                        " "
                     }
                 } else {
                     val reqMet = when (req.target) {
@@ -226,7 +235,7 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
                         }
                     }
                     if (!reqMet) {
-                        return req.text ?: "!"
+                        return req.text ?: " "
                     }
                 }
             }
@@ -282,17 +291,17 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
         var result = text.replace("%?", "none")
         if (result.contains("%w")){
             val weapon = flavors["weapon"]
-            if (weapon != null) {
-                result = result.replace("%w", weapon)
+            result = if (weapon != null) {
+                result.replace("%w", weapon)
             } else {
-                result = result.replace("%w", "weapon")
+                result.replace("%w", "weapon")
             }
         }
         val pronoun = ArrayList<String>()
         pronoun.addAll(getPronouns(this))
         pronoun.addAll(getPronouns(target ?: this))
 
-        result = if (pronoun[1] == "s") {
+        result = if (pronoun[0] == "s") {
             result.replace("%ies", "ies")
         } else {
             result.replace("%ies", "y")
@@ -317,7 +326,12 @@ data class UnitModel(val name: String, var level: Int, val speed: Int, var healt
         result = result.replace("%s", pronoun[1])
 
         return result.lines().joinToString (separator = "\n") {
-            it.capitalize()
+            if (it.startsWith("<")){
+                val split = it.split(">")
+                split[0] + ">" + (split[1].capitalize())
+            } else {
+                it.capitalize()
+            }
         }
     }
 

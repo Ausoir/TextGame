@@ -1,0 +1,30 @@
+{
+  "invalid": {
+    "title": "",
+    "text": "Dialog page is missing...",
+    "opt": [{
+      "to": "@defeat",
+      "text": "Go back"
+    }]
+  },
+  "defeat": {
+    "title": "Game Over",
+    "text": "It is GAME OVER!",
+    "opt": [{
+      "to": ">heal>8>@start",
+      "text": "Start Over"
+    }]
+  },
+  "custom2": {
+    "title": "",
+    "text": "%?t1",
+    "filler": ["%?t1", "%?t2", "%?t3", "%?t4", "%?t5"],
+    "opt": [{
+      "to": "@%?t2",
+      "text": "%?t3"
+    },{
+      "to": "@%?t4",
+      "text": "%?t5"
+    }]
+  }
+}

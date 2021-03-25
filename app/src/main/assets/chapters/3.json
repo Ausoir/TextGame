@@ -1,0 +1,12 @@
+{
+  "start": {
+    "title": "Chapter 3",
+    "text": "",
+    "opt": [
+      {
+        "to": ">join>Scobby>@woods 1",
+        "text": "Begin"
+      }
+    ]
+  }
+}

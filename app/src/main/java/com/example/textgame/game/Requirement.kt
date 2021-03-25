@@ -51,29 +51,17 @@ object Requirement{
             split[0] == "hurt" -> {
                 model.damaged > split[1].toInt()
             }
-            split[0] == "time" -> {
-                model.time < split[1].toInt()
-            }
-            split[0] == "time" -> {
-                model.time > split[1].toInt()
-            }
-            split[0] == "time" -> {
+            split[0] == "timeL" -> {
                 model.time <= split[1].toInt()
             }
-            split[0] == "time" -> {
+            split[0] == "timeG" -> {
                 model.time >= split[1].toInt()
             }
-            split[0] == "money" -> {
+            split[0] == "moneyG" -> {
                 model.money >= split[1].toInt()
             }
-            split[0] == "money" -> {
+            split[0] == "moneyL" -> {
                 model.money <= split[1].toInt()
-            }
-            split[0] == "money" -> {
-                model.money < split[1].toInt()
-            }
-            split[0] == "money" -> {
-                model.money > split[1].toInt()
             }
             else -> {
                 false

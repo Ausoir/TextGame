@@ -13,7 +13,7 @@ data class SpecialModel(val text: String?, val flavor: String, val skill: String
             result += " $text"
         }
         if (health != null){
-            result += " Bonus health: $health"
+            result += " Health: $health"
         }
         return result
     }

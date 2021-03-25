@@ -77,8 +77,8 @@
   "chitin breastplate": {
     "type": "armor",
     "value": 2,
-    "desc": "a plate breastplate crafted from pill bug chitin.",
-    "rating": 2
+    "desc": "a plate breastplate crafted from pill bug chitin. +1 Health.",
+    "rating": 1
   },
   "spine spear": {
     "type": "weapon",
@@ -126,8 +126,8 @@
   "horn axe": {
     "type": "weapon",
     "value": 8,
-    "desc": "an axe carved from the horn of the blue beetle. It's very sought after, and incredibly effective in combat. Grants you 2 area of effect attacks.",
-    "moves": ["cleave", "cleave"]
+    "desc": "an axe carved from the horn of the blue beetle. It's very sought after, and incredibly effective in combat.",
+    "moves": ["cleave", "cleave", "cleave"]
   },
   "horn mace": {
     "type": "weapon",
@@ -139,7 +139,108 @@
     "type": "weapon",
     "value": 8,
     "desc": "a bow carved from the horn of the blue beetle.",
-    "moves": ["shoot", "shoot", "shoot"]
+    "moves": ["double shot", "double shot"]
+  },
+  "chitin greave": {
+    "type": "armor",
+    "value": 2,
+    "desc": "a greave crafted from pill bug chitin. +1 Health.",
+    "rating": 1
+  },
+  "chitin gauntlets": {
+    "type": "legging",
+    "value": 2,
+    "desc": "a pair of gauntlets crafted from baby pill bug chitin. Allows you to punch.",
+    "moves": ["punch"]
+  },
+  "chitin shield": {
+    "type": "shield",
+    "value": 2,
+    "desc": "a shield crafted from pill bug chitin. Allows you to block.",
+    "moves": ["guard"]
+  },
+  "moonglow staff": {
+    "type": "weapon",
+    "value": 10,
+    "desc": "a staff faintly glowing with strange blue light. Allows you to gather large amounts of mana.",
+    "moves": ["charge mana", "charge mana"]
+  },
+  "fishbone spear": {
+    "type": "weapon",
+    "value": 10,
+    "desc": "a spear carved from fish bones.",
+    "moves": ["long thrust", "long thrust", "long thrust"]
+  },
+  "fishbone bow": {
+    "type": "weapon",
+    "value": 10,
+    "desc": "a bow carved from fish bones.",
+    "moves": ["double shot", "double shot", "backstep"]
+  },
+  "priest's ring": {
+    "type": "thumb ring",
+    "value": 1000,
+    "desc": "a marble ring tied with human leather. It is enchanted to let you see in the dark.",
+    "moves": ["observe"]
+  },
+  "Lucid's necklace": {
+    "type": "necklace",
+    "value": 1000,
+    "desc": "a powerful magical necklace that lets you turn yourself or a volunteer into a small mouse. It is Lucid's personally valuable item. Makes you really wonder who he is.",
+    "moves": ["mouse form"]
+  },
+  "furry foot wrap": {
+    "type": "boots",
+    "value": 1,
+    "desc": "a leather foot wrapping covered with oily hair, tough enough to replace boots. Helps you free yourself from entanglement.",
+    "moves": ["recover"]
+  },
+  "silver sword": {
+    "type": "weapon",
+    "value": 10,
+    "desc": "a silver sword that belonged to an unknown user. This rusted weapon must have been very valuable at one point.",
+    "moves": ["strike", "parry", "cleaving charge", "cleansing strike"]
+  },
+  "silver spear": {
+    "type": "weapon",
+    "value": 8,
+    "desc": "a wooden spear with a silver tip. How the ferals came to have access to forged silver is unknown.",
+    "moves": ["strike", "cleansing strike"]
+  },
+  "glowing mushroom bundle": {
+    "type": "offhand",
+    "value": 1,
+    "desc": "a glowing mushroom bundle. It's a nice souvenir from the feral caves."
+  },
+  "crystal necklace": {
+    "type": "necklace",
+    "value": 1000,
+    "desc": "You think you can briefly stun an enemy using this artifact.",
+    "moves": ["blinding flash"]
+  },
+  "kidney staff": {
+    "type": "weapon",
+    "value": 15,
+    "desc": "a wooden stick with a kidney pierced at the tip. Somehow, the kidney is still fresh.",
+    "moves": ["charge mana", "torrent", "heal"]
+  },
+  "silver necklace": {
+    "type": "necklace",
+    "value": 1000,
+    "desc": "You think you can briefly stun an enemy using this artifact.",
+    "moves": ["blinding flash"]
+  },
+  "crossbow": {
+    "type": "weapon",
+    "value": 15,
+    "desc": "a mechanical bow capable of firing a strong, piercing shot. Crossbows do not need to be drawn before shooting, allowing you to shoot in melee.",
+    "moves": ["penetrating shot"]
+  },
+  "shrapnel": {
+    "type": "offhand",
+    "value": 5,
+    "desc": "a collection of sharp metals that stand with the sharp edges upward, damaging and stunning anyone walking across it.",
+    "moves": ["stop charge"]
   },
 
 
@@ -150,28 +251,42 @@
     "page": "To Ant Hill2"
   },
   "human corpse": {
-    "type": "item",
+    "type": "food",
     "value": 1,
-    "desc": "a human corpse. Could be edible, I guess."
+    "rating": 1,
+    "desc": "a human corpse. Could be edible, if you are desperate enough."
   },
   "bug meat": {
-    "type": "item",
+    "type": "food",
     "value": 1,
-    "desc": "a bug meat, which is the main source of food for people. You can boil, roast, grill, stir fry, or cook it over fire on a stick! Eat to regenerate health.",
-    "page": ">heal>8>>now"
+    "rating": 3,
+    "desc": "a bug meat, which is the main source of food for people. You can boil, roast, grill, stir fry, or cook it over fire on a stick! Heals 3 health on rest."
+  },
+  "bug jerky": {
+    "type": "food",
+    "value": 1,
+    "rating": 3,
+    "desc": "a bug jerky, the go-to ration for every hunter in Ant Hill. Heals 3 health on rest."
   },
   "blood droplet": {
-    "type": "item",
+    "type": "food",
     "value": 2,
-    "desc": "a drop of blood. Leaves an unpleasant taste in your mouth, but is very fulfilling.",
+    "rating": 3,
+    "desc": "a drop of blood. Leaves an unpleasant taste in your mouth, but is very fulfilling. Heals 3 health on rest. Can be used outside combat to heal 2 health instantly.",
     "text": "You eat the blood droplet. Mmmm, chewy!",
-    "page": ">heal>8>>now"
+    "page": ">heal>2>>now"
   },
   "pollen ball": {
-    "type": "item",
+    "type": "food",
     "value": 2,
-    "desc": "a ball of pollen. Makes a tasty treat!",
-    "page": ">heal>8>>now"
+    "rating": 2,
+    "desc": "a ball of pollen. Makes a tasty treat! Heals 2 health on rest."
+  },
+  "beast meat": {
+    "type": "food",
+    "value": 1,
+    "rating": 4,
+    "desc": "a meat of a beast. Makes a high quality treat. Heals 4 health on rest."
   },
   "sturdy wood": {
     "type": "item",
@@ -182,12 +297,30 @@
     "type": "item",
     "value": 3,
     "desc": "a manual that can teach you to be an apprentice spellcaster.",
-    "page": ">view advance>apprentice>>trash>item>>now"
+    "page": ">view advance>apprentice>>remove part>item>>now"
   },
   "ranger manual": {
     "type": "item",
     "value": 3,
     "desc": "a manual that can teach you to be a ranger.",
-    "page": ">view advance>ranger>>trash>item>>now"
+    "page": ">view advance>ranger>>remove part>item>>now"
+  },
+  "mushroom pemmican": {
+    "type": "food",
+    "value": 1,
+    "rating": 4,
+    "desc": "a dough of pulped glowing mushroom and ground human meat. Surprisingly good! Heals 4 health on rest."
+  },
+  "healing salve": {
+    "type": "item",
+    "value": 1,
+    "desc": "a healing salve. Apply outside combat to heal 1 health immediately.",
+    "page": ">heal>1>>now"
+  },
+  "warrior manual": {
+    "type": "item",
+    "value": 3,
+    "desc": "a manual that can teach you to be a warrior.",
+    "page": ">view advance>warrior>>remove part>item>>now"
   }
 }

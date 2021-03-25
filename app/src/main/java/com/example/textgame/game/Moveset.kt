@@ -5,14 +5,8 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.Serializable
 
-data class Status(val id: String?, val effect: String, val target: Int, val duration: Int, val value: Int, val type: String?,
+data class Status(val id: String?, val effect: String, val target: Int, val duration: Int, val value: Int,
                   val start_text: String?, val text: String?, val end_text: String?, val reqs: List<Status>?): Serializable{
-    companion object {
-        fun make(effect: String, duration: Int, value: Int = 1, type: String? = null, id: String? = null): Status{
-            return Status(id, effect, 1, duration, value, type, null, null, null, null)
-        }
-    }
-
     fun onRemove(target: UnitModel): String{
         when (effect){
             "test" -> {
@@ -50,11 +44,7 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
         }
         return if (duration != 0) {
             target.addStatus(this, duration)
-            if (type == "buff"){
-                process(target, start_text, imposer=imposer)
-            } else {
-                getStatusDescription(target, start_text)
-            }
+            getStatusDescription(target, start_text)
         } else {
             process(target, start_text, imposer=imposer)
         }
@@ -72,9 +62,6 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
     }
 
     fun process(target: UnitModel, add_text: String?, imposer: UnitModel? = null): String{
-        if (imposer == null && type == "buff"){
-            return ""
-        }
         var result = ""
         var healthChange = 0
         when (effect) {
@@ -90,13 +77,20 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
                 target.deck?.shuffle()
             }
             "engage" -> {
-                target.position = target.target!!.position
+                val stop = target.target!!.getStatus("stop")
+                if (stop != null){
+                    target.points = 0
+                    result += getStatusDescription(target, "%Us advance was stopped by %F.")
+                } else {
+                    target.position = target.target!!.position
+                }
             }
             "disengage" -> {
                 target.position = 0
                 while (target.getFoeInRange().isNotEmpty()){
                     target.position += 1
                 }
+                target.removeStatusById("strangle")
             }
             "break" -> {
                 target.block = 0
@@ -110,11 +104,19 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
             "health", "blood" -> {
                 healthChange = value
             }
+            "rot" -> {
+                healthChange = -(target.health - target.healthPt)
+            }
             "bash" -> {
-                healthChange = imposer?.block ?: 0
+                healthChange = -(imposer?.block ?: 0)
             }
             "mana" -> {
                 target.mana += value
+            }
+            "retarget" -> {
+                for (foe in target.foes.shuffled()){
+                    if (foe != target.target) target.target = foe
+                }
             }
             "block" -> {
                 if (target.getStatus("injury") == null) {
@@ -123,12 +125,10 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
             }
             "observe" -> {
                 val moveNames = target.deck!!.getQueues()
-                result += "${target.replaceNouns("%U")} may use: ${moveNames.joinToString { it }}\n"
+                result += "<i>${target.replaceNouns("%U")} may use: ${moveNames.joinToString { it }}</i>\n"
             }
             "taunt" -> {
-                for (foe in target.foes){
-                    foe.position = target.position
-                }
+                target.position = imposer?.position ?: target.position
             }
             "defend" -> {
                 target.block += target.foes.size
@@ -161,8 +161,11 @@ data class MoveModel(val effects: List<Status>, val reqs: List<Status>?, val spe
     lateinit var name: String
 
     fun perform(me: UnitModel, everyone: ArrayList<UnitModel>): String{
-        if (me.getStatus("confuse") != null){
-            me.target = me
+        for (someone in everyone){
+            if (someone.getStatus("learning") != null){
+                someone.removeStatusByEffect("learning")
+                someone.moves.add(name)
+            }
         }
         var result = "%U ${text}.\n"
         for (status in effects) {
@@ -173,12 +176,34 @@ data class MoveModel(val effects: List<Status>, val reqs: List<Status>?, val spe
             }
             if (reqText.isEmpty()){
                 when (status.target) {
+                    100 -> { //player
+                        for (someone in everyone) {
+                            if (someone.name == "You"){
+                                result += status.add(someone, me)
+                            }
+                        }
+                    }
+                    101 -> { //hurt ally
+                        var hurt = me
+                        for (someone in everyone) {
+                            if (someone !in me.foes){
+                                if (someone.getHealthPercentage() < hurt.getHealthPercentage()){
+                                    hurt = someone
+                                }
+                            }
+                        }
+                        result += status.add(hurt, me)
+                    }
                     1 -> {
                         result += status.add(me, me)
                     }
                     2 -> {
                         if (me.target != null) {
-                            result += status.add(me.target!!, me)
+                            if (me.getStatus("confuse") != null){
+                                result += status.add(me, me)
+                            } else {
+                                result += status.add(me.target!!, me)
+                            }
                         }
                     }
                     3 -> {
@@ -240,7 +265,7 @@ data class MoveModel(val effects: List<Status>, val reqs: List<Status>?, val spe
                 result += "$reqText\n"
             }
         }
-        return result
+        return me.replaceNouns(result)
     }
 }
 
