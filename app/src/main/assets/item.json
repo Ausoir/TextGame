@@ -9,13 +9,13 @@
     "type": "weapon",
     "value": 1,
     "desc": "a bow made from a sapling. Not very powerful, but still can be lethal.",
-    "moves": ["shoot"]
+    "moves": ["shoot", "shoot"]
   },
   "slingshot": {
     "type": "weapon",
     "value": 1,
     "desc": "a wooden slingshot that uses the elasticity of spider silk to shoot sharp rocks.",
-    "moves": ["shoot"]
+    "moves": ["shoot", "shoot"]
   },
   "chitin blade": {
     "type": "weapon",
@@ -63,6 +63,12 @@
     "value": 1,
     "desc": "a silk pants made from silkworm threads. Very common."
   },
+  "leather pants": {
+    "type": "pants",
+    "value": 8,
+    "desc": "a slick leather pants. Looks pretty good! +1 Health.",
+    "rating": 1
+  },
   "grass robe": {
     "type": "robe",
     "value": 1,
@@ -78,6 +84,12 @@
     "type": "armor",
     "value": 2,
     "desc": "a plate breastplate crafted from pill bug chitin. +1 Health.",
+    "rating": 1
+  },
+  "chitin gauntlet": {
+    "type": "hands",
+    "value": 5,
+    "desc": "a plated gauntlet crafted from chitin. +1 Health.",
     "rating": 1
   },
   "spine spear": {
@@ -115,6 +127,12 @@
     "value": 2,
     "desc": "the proboscis of a flying creature. Tough enough to be used as a weapon and long enough to attack from far away.",
     "moves": ["long thrust", "thrust", "adjust"]
+  },
+  "ancientquito proboscis": {
+    "type": "weapon",
+    "value": 8,
+    "desc": "the proboscis of an ancient variant of the dreaded bloodquito. Grants you a deadly lifesteal attack.",
+    "moves": ["blood drain", "guarded thrust", "suck"]
   },
   "rose spike": {
     "type": "weapon",
@@ -175,7 +193,7 @@
     "type": "weapon",
     "value": 10,
     "desc": "a bow carved from fish bones.",
-    "moves": ["double shot", "double shot", "backstep"]
+    "moves": ["double shot", "double shot", "double shot"]
   },
   "priest's ring": {
     "type": "thumb ring",
@@ -183,7 +201,7 @@
     "desc": "a marble ring tied with human leather. It is enchanted to let you see in the dark.",
     "moves": ["observe"]
   },
-  "Lucid's necklace": {
+  "Lucid's amulet": {
     "type": "necklace",
     "value": 1000,
     "desc": "a powerful magical necklace that lets you turn yourself or a volunteer into a small mouse. It is Lucid's personally valuable item. Makes you really wonder who he is.",
@@ -199,41 +217,41 @@
     "type": "weapon",
     "value": 10,
     "desc": "a silver sword that belonged to an unknown user. This rusted weapon must have been very valuable at one point.",
-    "moves": ["strike", "parry", "cleaving charge", "cleansing strike"]
+    "moves": ["slash", "parry", "cleansing strike"]
   },
   "silver spear": {
     "type": "weapon",
     "value": 8,
     "desc": "a wooden spear with a silver tip. How the ferals came to have access to forged silver is unknown.",
-    "moves": ["strike", "cleansing strike"]
+    "moves": ["guard", "strike", "cleansing strike"]
   },
-  "glowing mushroom bundle": {
+  "glowshroom bundle": {
     "type": "offhand",
     "value": 1,
-    "desc": "a glowing mushroom bundle. It's a nice souvenir from the feral caves."
+    "desc": "a glowshroom bundle. It's a nice souvenir from the feral caves."
   },
   "crystal necklace": {
     "type": "necklace",
-    "value": 1000,
-    "desc": "You think you can briefly stun an enemy using this artifact.",
+    "value": 10,
+    "desc": "It shimmers when you press it. You think you can briefly stun an enemy using this artifact.",
     "moves": ["blinding flash"]
   },
   "kidney staff": {
     "type": "weapon",
     "value": 15,
-    "desc": "a wooden stick with a kidney pierced at the tip. Somehow, the kidney is still fresh.",
-    "moves": ["charge mana", "torrent", "heal"]
+    "desc": "a wooden stick with a kidney pierced at the tip. Somehow, the kidney is still fresh. Requires mana knowledge to use.",
+    "moves": ["guard", "torrent", "heal"]
   },
-  "silver necklace": {
+  "glass necklace": {
     "type": "necklace",
-    "value": 1000,
+    "value": 10,
     "desc": "You think you can briefly stun an enemy using this artifact.",
-    "moves": ["blinding flash"]
+    "moves": ["glass form"]
   },
-  "crossbow": {
+  "hand crossbow": {
     "type": "weapon",
     "value": 15,
-    "desc": "a mechanical bow capable of firing a strong, piercing shot. Crossbows do not need to be drawn before shooting, allowing you to shoot in melee.",
+    "desc": "a handheld mechanical bow capable of firing a strong, piercing shot. Crossbows can be used in melee.",
     "moves": ["penetrating shot"]
   },
   "shrapnel": {
@@ -242,14 +260,90 @@
     "desc": "a collection of sharp metals that stand with the sharp edges upward, damaging and stunning anyone walking across it.",
     "moves": ["stop charge"]
   },
-
-
-  "homebound scroll": {
-    "type": "item",
-    "value": 5,
-    "desc": "a scroll of teleportation bound to Ant Hill. Use to instantly teleport there.",
-    "page": "To Ant Hill2"
+  "metal saw": {
+    "type": "weapon",
+    "value": 7,
+    "desc": "a circular metal saw covered in rust. Makes both a good ranged and melee weapon.",
+    "moves": ["guard", "whirring slash", "rip", "whirring throw", "ricochet throw"]
   },
+  "raptor fang": {
+    "type": "weapon",
+    "value": 8,
+    "desc": "a fang from a raptor. Incredibly sturdy and sharp.",
+    "moves": ["stab", "stab"]
+  },
+  "wood axe": {
+    "type": "weapon",
+    "value": 4,
+    "desc": "a sturdy wood axe for chopping wood. Surprisingly light.",
+    "moves": ["guard", "chop", "chop"]
+  },
+  "great axe": {
+    "type": "weapon",
+    "value": 12,
+    "desc": "a huge axe for... chopping wood? This is a pretty great axe.",
+    "moves": ["guard", "chop", "chop", "grand cleave"]
+  },
+  "fur jacket": {
+    "type": "armor",
+    "value": 10,
+    "desc": "a fur jacket. +1 Health.",
+    "rating": 1
+  },
+  "fur boots": {
+    "type": "boots",
+    "value": 10,
+    "desc": "sturdy fur boots. +1 Health.",
+    "rating": 1
+  },
+  "fabric robe": {
+    "type": "pants",
+    "value": 3,
+    "desc": "a rough fabric robe to hide your belongings."
+  },
+  "brass sword": {
+    "type": "weapon",
+    "value": 15,
+    "desc": "a brass sword with steel edge. Light and sharp but fragile.",
+    "moves": ["slash", "parry", "guard", "slash"]
+  },
+  "brass mace": {
+    "type": "weapon",
+    "value": 10,
+    "desc": "a brass mace used by the authority in Jericho.",
+    "moves": ["strike", "guard", "grand slam", "slam"]
+  },
+  "prison clothes": {
+    "type": "armor",
+    "value": 10,
+    "desc": "a fur jacket. +1 Health.",
+    "rating": 1
+  },
+  "prison pants": {
+    "type": "pants",
+    "value": 10,
+    "desc": "a fur jacket. +1 Health.",
+    "rating": 1
+  },
+  "pickaxe": {
+    "type": "weapon",
+    "value": 10,
+    "desc": "a pickaxe for mining.",
+    "moves": ["stab"]
+  },
+  "steel sword": {
+    "type": "weapon",
+    "value": 25,
+    "desc": "a steel sword with steel edge. A powerful military grade weapon.",
+    "moves": ["slash", "slash", "slash", "greater parry"]
+  },
+  "steel mace": {
+    "type": "weapon",
+    "value": 25,
+    "desc": "a heavy steel mace. A powerful military grade weapon.",
+    "moves": ["heavy guard", "stun", "slam", "slam"]
+  },
+
   "human corpse": {
     "type": "food",
     "value": 1,
@@ -274,7 +368,7 @@
     "rating": 3,
     "desc": "a drop of blood. Leaves an unpleasant taste in your mouth, but is very fulfilling. Heals 3 health on rest. Can be used outside combat to heal 2 health instantly.",
     "text": "You eat the blood droplet. Mmmm, chewy!",
-    "page": ">heal>2>>now"
+    "page": ">remove part>item>>heal>2>>now"
   },
   "pollen ball": {
     "type": "food",
@@ -286,7 +380,7 @@
     "type": "food",
     "value": 1,
     "rating": 4,
-    "desc": "a meat of a beast. Makes a high quality treat. Heals 4 health on rest."
+    "desc": "a bloody meat from endoskeletal beasts. So full of meat and so delicious."
   },
   "sturdy wood": {
     "type": "item",
@@ -295,32 +389,102 @@
   },
   "spellcasting manual": {
     "type": "item",
-    "value": 3,
+    "value": 8,
     "desc": "a manual that can teach you to be an apprentice spellcaster.",
-    "page": ">view advance>apprentice>>remove part>item>>now"
+    "page": ">view specialize>apprentice>>remove part>item>>now"
   },
   "ranger manual": {
     "type": "item",
-    "value": 3,
+    "value": 10,
     "desc": "a manual that can teach you to be a ranger.",
-    "page": ">view advance>ranger>>remove part>item>>now"
+    "page": ">view specialize>ranger>>remove part>item>>now"
   },
   "mushroom pemmican": {
     "type": "food",
     "value": 1,
     "rating": 4,
-    "desc": "a dough of pulped glowing mushroom and ground human meat. Surprisingly good! Heals 4 health on rest."
+    "desc": "a dough of pulped glowshroom and ground human meat. Surprisingly good! Heals 4 health on rest."
   },
   "healing salve": {
     "type": "item",
     "value": 1,
     "desc": "a healing salve. Apply outside combat to heal 1 health immediately.",
-    "page": ">heal>1>>now"
+    "page": ">remove part>item>>heal>1>>now"
   },
   "warrior manual": {
     "type": "item",
-    "value": 3,
+    "value": 10,
     "desc": "a manual that can teach you to be a warrior.",
-    "page": ">view advance>warrior>>remove part>item>>now"
+    "page": ">view specialize>warrior>>remove part>item>>now"
+  },
+  "potion of experience": {
+    "type": "item",
+    "value": 30,
+    "desc": "an incredibly valuable and mystical potion that grants you experiences that you've never had.",
+    "page": ">remove part>item>>view advance>now"
+  },
+  "mysterious amulet": {
+    "type": "necklace",
+    "value": 1000,
+    "desc": "a mysterious amulet that you don't remember having at all. Strange...",
+    "page": ">if>saved>1>loadpage>>savepage>now"
+  },
+  "shaman manual": {
+    "type": "item",
+    "value": 20,
+    "desc": "a manual that can teach you to be a shaman.",
+    "page": ">view specialize>shaman>>remove part>item>>now"
+  },
+  "cutthroat manual": {
+    "type": "item",
+    "value": 20,
+    "desc": "a manual that can teach you to be a cutthroat.",
+    "page": ">view specialize>cutthroat>>remove part>item>>now"
+  },
+  "coin purse": {
+    "type": "item",
+    "value": 10,
+    "desc": "a purse full of coin. Use to obtain 10g.",
+    "page": ">remove part>item>>moneyAdd>10>now"
+  },
+  "cog system": {
+    "type": "item",
+    "value": 10,
+    "desc": "a glass box of intricate arrangement of cogwheels and other machine parts. Could be sold for money."
+  },
+  "lottery ticket": {
+    "type": "item",
+    "value": 2,
+    "desc": "a lottery ticket. One in a million chance to win 1 million gold!",
+    "page": ">remove part>item>>moneyAdd>0>now"
+  },
+  "healing potion": {
+    "type": "item",
+    "value": 4,
+    "desc": "a healing potion. Apply outside combat to heal 8 health immediately.",
+    "page": ">remove part>item>>heal>8>>now"
+  },
+  "training manual": {
+    "type": "item",
+    "value": 5,
+    "desc": "a manual that teaches you a set of moves.",
+    "page": ">view learn>now"
+  },
+  "coin bag": {
+    "type": "item",
+    "value": 20,
+    "desc": "a bag full of coin. Use to obtain 20g.",
+    "page": ">remove part>item>>moneyAdd>20>now"
+  },
+  "jewel": {
+    "type": "item",
+    "value": 100,
+    "desc": "a jewel worth 100g."
+  },
+  "golden ticket": {
+    "type": "item",
+    "value": 4653,
+    "desc": "a golden ticket. Use to obtain 4000g or sell for 4653g.",
+    "page": ">remove part>item>>moneyAdd>4000>now"
   }
 }

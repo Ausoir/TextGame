@@ -6,11 +6,11 @@
   "equip": ["grass robe", "blood droplet"],
   "vars": {
     "name": "You",
-    "page": ">specialize>cutthroat>>force item>silver sword>>learn>charge>>learn>stop charge>>learn>berserk>>learn>quick attack>>force item>mushroom pemmican>@deep spider den 4",
+    "page": ">specialize>warrior>>force item>silver sword>>learn>learn>>learn>stop charge>>learn>mimic>>learn>spider form>>force item>mushroom pemmican>@jericho guild register",
     "prev": "start",
-    "chapter": "2",
+    "chapter": "4",
     "quest": "0"
-  },
+    },
   "unit": {
     "name": "You",
     "speed": 2,
@@ -25,5 +25,6 @@
   },
   "companion": [],
   "companionMoves": {},
-  "specialization": "novice scout"
+  "specialization": "novice scout",
+  "quests": []
 }

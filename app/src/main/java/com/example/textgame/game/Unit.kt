@@ -9,6 +9,7 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
                      val moves: MutableList<String>, val skills: MutableList<String>, val status: MutableList<Status>,
                      val flavors: HashMap<String, String>): Serializable{
     lateinit var foes: ArrayList<UnitModel>
+    lateinit var allies: ArrayList<UnitModel>
     var statusDuration: ArrayList<Int> = arrayListOf()
     var id = 0
     var points = 0
@@ -81,6 +82,18 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
             }
         }
         return null
+    }
+
+    fun removeAllStatus(){
+        var result = ""
+        for (i in status.indices){
+            val feedback = status[i].onRemove(this)
+            status.removeAt(i)
+            statusDuration.removeAt(i)
+            if (feedback.isNotEmpty()) {
+                result += "$feedback\n"
+            }
+        }
     }
 
     fun removeStatus(id: String?, effect: String?): String{
@@ -191,6 +204,13 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
                     return listOf(req.text, "").shuffled()[0]!!
                 } else if (target == null) {
                     return "INVALID TARGET"
+                } else if (req.effect == "away") {
+                    for (foe in foes){
+                        if (foe.position == position){
+                            return " "
+                        }
+                    }
+                    return ""
                 } else if (req.effect == "melee") {
                     return if ((position == target?.position) == (req.target == 1)){
                         ""
@@ -303,8 +323,10 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
 
         result = if (pronoun[0] == "s") {
             result.replace("%ies", "ies")
+            result.replace("%es", "es")
         } else {
             result.replace("%ies", "y")
+            result.replace("%es", "")
         }
         result = result.replace("%ur", pronoun[2])
         result = result.replace("%us", pronoun[3])
@@ -347,6 +369,7 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
         result = 31 * result + moves.hashCode()
         result = 31 * result + flavors.hashCode()
         result = 31 * result + foes.hashCode()
+        result = 31 * result + allies.hashCode()
         result = 31 * result + status.hashCode()
         result = 31 * result + points
         result = 31 * result + healthPt

@@ -1,23 +1,16 @@
 package com.example.textgame.ui
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.text.method.ScrollingMovementMethod
-import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ScrollView
-import android.widget.TextView
-import androidx.fragment.app.Fragment
 import com.example.textgame.App
 import com.example.textgame.R
 import com.example.textgame.game.ItemModel
@@ -27,17 +20,13 @@ import com.example.textgame.game.UnitModel
 import com.example.textgame.tools.Grammar
 
 @SuppressLint("DefaultLocale")
-class CombatFragment : Fragment() {
-    private lateinit var layout: LinearLayout
+class CombatFragment : CustomFragment() {
     private lateinit var scrollView: ScrollView
     private lateinit var loots: ArrayList<ItemModel?>
     private lateinit var page: String
     private lateinit var defeat: String
     private lateinit var player: PlayerModel
-    private lateinit var allies: ArrayList<UnitModel>
     private lateinit var unitMap: HashMap<String, UnitModel>
-    private lateinit var textView: TextView
-    private var stringBuilder = SpannableStringBuilder()
     private var isTargetingMode = false
     private var buttons: ArrayList<Button> = ArrayList()
     private var turn = -1
@@ -66,12 +55,13 @@ class CombatFragment : Fragment() {
         textView.movementMethod = ScrollingMovementMethod()
         player = arguments?.getParcelable("player") ?: return root
         unitMap = arguments?.getSerializable("unitMap") as HashMap<String, UnitModel>
-        player.unit.foes = arguments?.getSerializable("enemies") as ArrayList<UnitModel>
-        allies = arguments?.getSerializable("allies") as ArrayList<UnitModel>
+        val allies = arguments?.getSerializable("allies") as ArrayList<UnitModel>
+        val foes = arguments?.getSerializable("enemies") as ArrayList<UnitModel>
         loots = arguments?.getStringArrayList("loots") as ArrayList<ItemModel?>
-        addCombatant(player.unit, 0)
-        allies.forEach {addCombatant(it, 1)}
-        player.unit.foes.forEach {addCombatant(it, -1)}
+        addCombatant(player.unit, 0, false)
+        allies.forEach {addCombatant(it, 1, false)}
+        foes.forEach {addCombatant(it, -1, false)}
+        updateFaction()
         for (combatant in combatants){
             if ("initiative" in combatant.skills){
                 combatant.recharge()
@@ -82,26 +72,6 @@ class CombatFragment : Fragment() {
         addText("${(arguments?.getString("desc") ?: "")}\n\n")
         nextTurn()
         return root
-    }
-
-    private fun addText(text: String){
-        val split = text.split("\n")
-        for (i in split.indices){
-            if (split[i].startsWith("<color:")){
-                var modText = split[i].substringAfter("<color:")
-                val color = Color.parseColor(modText.substringBefore(">"))
-                modText = modText.substringAfter(">")
-                val spannableString = SpannableString(modText)
-                spannableString.setSpan(ForegroundColorSpan(color), 0, modText.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                stringBuilder.append(spannableString)
-            } else {
-                stringBuilder.append(split[i])
-            }
-            if (i != split.size - 1){
-                stringBuilder.append("\n")
-            }
-        }
-        textView.setText(stringBuilder, TextView.BufferType.SPANNABLE)
     }
 
     private fun addButton(name: String) : Button {
@@ -131,17 +101,32 @@ class CombatFragment : Fragment() {
         }
     }
 
-    private fun addCombatant(combatant: UnitModel, faction: Int = -1){
+    private fun updateFaction(){
+        player.unit.target = player.unit.foes.shuffled()[0]
+        for (ally in player.unit.allies){
+            ally.allies = player.unit.allies.toMutableList() as ArrayList<UnitModel>
+            ally.allies.remove(ally)
+            ally.allies.add(player.unit)
+            ally.foes = player.unit.foes
+            ally.target = ally.foes.shuffled()[0]
+        }
+        for (foe in player.unit.foes){
+            foe.allies = player.unit.foes.toMutableList() as ArrayList<UnitModel>
+            foe.allies.remove(foe)
+            foe.foes = arrayListOf(player.unit)
+            foe.foes.addAll(player.unit.allies)
+            foe.target = foe.foes.shuffled()[0]
+        }
+    }
+
+    private fun addCombatant(combatant: UnitModel, faction: Int = -1, update: Boolean = true){
         combatant.id = idCount++
         combatant.position = idCount
         if (faction == 1){
             combatant.flavors["ally"] = "true"
-            combatant.foes = player.unit.foes
+            player.unit.allies.add(combatant)
         } else if (faction == -1){
-            val targetables = ArrayList<UnitModel>()
-            targetables.addAll(allies)
-            targetables.add(player.unit)
-            combatant.foes = targetables
+            player.unit.foes.add(combatant)
             val sameNames = arrayListOf<UnitModel>()
             for (foe in player.unit.foes) {
                 if (foe.name == combatant.name) {
@@ -154,7 +139,9 @@ class CombatFragment : Fragment() {
                 }
             }
         }
-        combatant.target = combatant.foes.shuffled()[0]
+        if (update){
+            updateFaction()
+        }
         if ("sneak" in combatant.skills) {
             combatant.points += 2
         } else if ("manacharge" in combatant.skills) {
@@ -250,6 +237,9 @@ class CombatFragment : Fragment() {
             {
                 if (turn >= combatants.size) {
                     turn = 0
+                }
+                if ("hardened" in combatants[turn].skills){
+                    combatants[turn].block += 1
                 }
                 if (combatants[turn] == player.unit){
                     val turnText = player.unit.replaceNouns(player.unit.processStatus())

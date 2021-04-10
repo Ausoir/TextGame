@@ -4,9 +4,9 @@
     "units": ["invalid"],
     "loots": []
   },
-  "wolf spiders": {
+  "horned spiders": {
     "desc": "Two large spiders covered in gray hair stares at you with 6 evil red eyes. They are as big as you are and their mandibles are thicker than your arms. You are having a hard time just standing still.\nYour brain is telling you to run, but it is too late. You can't run from these.",
-    "units": ["wolf spider", "wolf spider"],
+    "units": ["horned spider", "horned spider"],
     "loots": []
   },
   "two feral humans": {
@@ -14,14 +14,14 @@
     "units": ["feral human", "feral human"],
     "loots": ["web bolas", "sharp stick", "splinter spear", "mushroom pemmican"]
   },
-  "Sparring Scobby": {
+  "Sparring Cobby": {
     "desc": "He is wielding a sparring stick. He is way more bulkier than you and will destroy you if you make him mad.",
-    "units": ["Sparring Scobby"],
+    "units": ["Sparring Cobby"],
     "loots": []
   },
-  "Teaching Scobby": {
-    "desc": "Scobby: [Alright. Let me teach you about targeting. Tap on this text area to access the targeting options.]\n\nScobby: [You'll see the option to target me, followed by my health status. When you are facing more than one enemies, you will have a better use for this mode.\nAnyways, let's continue.]",
-    "units": ["Sparring Scobby"],
+  "Teaching Cobby": {
+    "desc": "Cobby: [Alright. Let me teach you about targeting. Tap on this text area to access the targeting options.]\n\nCobby: [You'll see the option to target me, followed by my health status. When you are facing more than one enemies, you will have a better use for this mode.\nAnyways, let's continue.]",
+    "units": ["Sparring Cobby"],
     "loots": ["sharp stick"]
   },
   "three ants": {
@@ -109,9 +109,9 @@
     "units": ["feral human", "feral human", "feral human", "feral human"],
     "loots": ["mushroom pemmican"]
   },
-  "wolf spider": {
+  "horned spider": {
     "desc": "A large spider covered in gray hair crawls toward you. It is as big as you are and its mandibles are thicker than your arms. You are having a hard time just standing still.\nYour brain is telling you to run, but it is too late. You can't run from these.",
-    "units": ["wolf spider"],
+    "units": ["horned spider"],
     "loots": []
   },
   "henge guards": {
@@ -181,7 +181,7 @@
   },
   "zombie": {
     "desc": "A bloated, burnt corpse somehow standing on its own... It has sensed you and wants to eat you alive.",
-    "units": ["zombie"],
+    "units": ["closed zombie"],
     "loots": []
   },
   "Cheese the hoarder": {
@@ -190,8 +190,93 @@
     "loots": ["moonglow staff"]
   },
   "amalgamation": {
-    "desc": "A mound of limbs and flesh forming one organism.\nIt is covered in algae at the top and glowing mushrooms everywhere else.\n\nThe monstrosity covers long distances when moving, and you realize that running away is not an option when you're this close.",
+    "desc": "A mound of limbs and flesh forming one organism.\nIt is covered in algae at the top and glowshrooms everywhere else.\n\nThe monstrosity covers long distances when moving, and you realize that running away is not an option when you're this close.",
     "units": ["amalgamation"],
     "loots": []
+  },
+  "cliff vine": {
+    "desc": "A cluster of dark green vines attack you. There's some kind of rocks inside the vines, but it is covered in leaves and you can't tell just exactly what it really is.",
+    "units": ["vine mass"],
+    "loots": ["metal saw", "", ""]
+  },
+  "vines": {
+    "desc": "A cluster of dark green vines attack you. There's some kind of rocks inside the vines, but it is covered in leaves and you can't tell just exactly what it really is.",
+    "units": ["vine mass", "vine mass"],
+    "loots": ["metal saw", ""]
+  },
+  "four vines": {
+    "desc": "A cluster of dark green vines attack you. There's some kind of rocks inside the vines, but it is covered in leaves and you can't tell just exactly what it really is.",
+    "units": ["vine mass", "vine mass", "vine mass", "vine mass"],
+    "loots": ["metal saw"]
+  },
+  "mass of vines": {
+    "desc": "A cluster of dark green vines attack you. There's some kind of rocks inside the vines, but it is covered in leaves and you can't tell just exactly what it really is.",
+    "units": ["large vine", "vine mass", "vine mass", "vine mass"],
+    "loots": ["metal saw"]
+  },
+  "raptors": {
+    "desc": "A swarm of raptors attack you. They look like overgrown chickens with large claws and vicious fangs. You've never seen these hideous creatures in your life.",
+    "units": ["raptor", "raptor", "raptor"],
+    "loots": ["raptor fang", "beast meat"]
+  },
+  "ancient bug": {
+    "desc": "An ancient... pill bug? Does not look very threatening, but sure is big.",
+    "units": ["ancient bug"],
+    "loots": ["chitin breastplate", "chitin gauntlet", "bug meat"]
+  },
+  "ancientquito": {
+    "desc": "An ancient... bloodquito! It's hideous, large, and sickening to watch.",
+    "units": ["ancientquito"],
+    "loots": ["blood droplet", "ancientquito proboscis"]
+  },
+  "highwaymen": {
+    "desc": "You are surrounded by armed men up to no good.\nThey look like they won't hesitate to kill you.",
+    "units": ["highwayman", "bowman", "bowman"],
+    "loots": ["coin purse", "fur jacket", "fur boots", "leather pants"]
+  },
+  "metal fox": {
+    "desc": "A fox-like creature made of metal pops out of some metal ball.\nThis is a monster that fits in a pocket!",
+    "units": ["metal fox"],
+    "loots": ["cog system"]
+  },
+  "thief": {
+    "desc": "It's a thief!\nHe looks like he won't hesitate to kill you.",
+    "units": ["highwayman"],
+    "loots": ["coin purse", "fur jacket", "fur boots", "leather pants"]
+  },
+  "jericho guards": {
+    "desc": "People wearing fully plated brass armor approach you.\nThey wear funny metal and glass artifacts on their eyes.\nThey look pretty disciplined.",
+    "units": ["jericho guard", "jericho guard", "jericho guard"],
+    "loots": ["brass sword"]
+  },
+  "jericho prisoners": {
+    "desc": "You are facing lowlife prisoners with nothing to lose.\nThey are armed with pickaxes.",
+    "units": ["jericho prisoner", "jericho prisoner", "jericho prisoner"],
+    "loots": [""]
+  },
+  "jericho outlaws": {
+    "desc": "You are facing the outlaws of Jericho.\nThey wear funny goggles and make bad remarks about you.",
+    "units": ["highwayman", "highwayman", "highwayman"],
+    "loots": [""]
+  },
+  "arena 1": {
+    "desc": "Broadcaster: [We have another challenger! A hunter from the frontier! Underdog or a tribute? Find out!]\nYou are facing an ex criminal on the second win streak.\nHe has fresh wounds all over his naked upper body.\nHe seems pretty exhausted.",
+    "units": ["highwayman"],
+    "loots": ["coin purse"]
+  },
+  "arena 2": {
+    "desc": "Broadcaster: [The underdog triumphs! But we have another underdog from the frontier! Dog versus dog! Who's more under?]\n\nPemmi: [Jeez, this broadcaster is terrible.]\n\nPemmi raises her crossbow and aims at you.",
+    "units": ["Pemmi"],
+    "loots": ["coin bag"]
+  },
+  "arena 3": {
+    "desc": "Broadcaster: [The nobody boy makes it to the semi finals! Will he... WIN???]\n\nYou are facing some kind of adjoined twin.\nUpon closer look, it looks like they're actually 2 people pretending to be adjoined.",
+    "units": ["cheating mage", "cheating rogue"],
+    "loots": ["jewel"]
+  },
+  "arena 4": {
+    "desc": "Broadcaster: [The final round! This is this 4th round, and if he makes it, he WINS IT!]\n\nYou are facing some generic bulky guy with bald head and ugly face who is completely unscathed.\nHe obviously looks like he was hired by the arena to stop anyone from getting the grand prize.",
+    "units": ["bulky dude"],
+    "loots": ["golden ticket"]
   }
 }

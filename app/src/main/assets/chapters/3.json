@@ -4,8 +4,779 @@
     "text": "",
     "opt": [
       {
-        "to": ">join>Scobby>@woods 1",
+        "to": ">timeset>14>>heal>9>>dropAll>>save>temp>0>@feral cave",
         "text": "Begin"
+      }
+    ]
+  },
+  "feral cave": {
+    "title": "Feral Cave",
+    "text": "You are at feral cave.\nIt is a giant, open underground cave lit with glowshrooms.\nThere are holes in the cave walls from where the feral residents peek out to watch you with curiosity.",
+    "opt": [
+      {
+        "to": ">add>temp>1>@feral cave converse 1",
+        "text": "Make a conversation",
+        "reqs": [
+          "var>temp>0"
+        ]
+      },
+      {
+        "to": ">add>temp>1>@feral cave converse 2",
+        "text": "Make a conversation",
+        "reqs": [
+          "var>temp>1"
+        ]
+      },
+      {
+        "to": ">add>temp>1>@feral cave converse 3",
+        "text": "Make a conversation",
+        "reqs": [
+          "var>temp>2"
+        ]
+      },
+      {
+        "to": ">add>temp>1>@feral cave leave 3",
+        "text": "Make a conversation",
+        "reqs": [
+          "var>temp>10"
+        ]
+      },
+      {
+        "to": ">add>temp>1>@feral cave leave 4",
+        "text": "Make a conversation",
+        "reqs": [
+          "var>temp>11",
+          "!var>time>0"
+        ]
+      },
+      {
+        "to": ">view shop>Feral Cave Shop>@feral cave",
+        "text": "Trade with the residents"
+      },
+      {
+        "to": ">add>karma>-1>>encounter>feral ambushers>@defeat>@deep spider den 4",
+        "text": "Vandalize supplies"
+      },
+      {
+        "to": ">add>time>1>>view rest>@feral cave",
+        "text": "Rest and heal"
+      },
+      {
+        "to": "@feral cave leave",
+        "text": "Prepare to leave",
+        "reqs": [
+          "!var>temp>10",
+          "!var>temp>11",
+          "!var>temp>12"
+        ]
+      },
+      {
+        "to": "@feral cave leave 7",
+        "text": "Descend into deeper caverns",
+        "reqs": [
+          "var>temp>12"
+        ]
+      }
+    ]
+  },
+  "feral cave converse 1": {
+    "title": "Feral Cave",
+    "text": "Lucid: [It's a fascinating place, but why are they living in a spider den?]\n\nSugar: [I tried to escape with some other sane people here. Every time we tried, we were chased by the spiders back into this cavern. My guess is that they keep us in here like cattle or something. Wrapping people in wraps don't last long enough, you know? It's messed up.]\n\nPemmi: [If the people of Stone Henge knew what was going on, they would try to free these people!]\n\nSugar: [These spiders are no joke. Even if the entire Stone Henge comes marching down it'll take serious dedication to defeat these monsters. We should worry about ourselves first.]",
+    "opt": [
+      {
+        "to": "@feral cave",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave converse 2": {
+    "title": "Feral Cave",
+    "text": "Sugar: [I can't wait to get out of this dirt hole. I've packed up all my stuff. Whenever ya'll are are ready, I'm outta here.]\n\nPemmi: [Really? I thought this place would feel similar to Ant Hill.]\n\nSugar: [What the hell are you saying? Don't insult us, you rock chewing-guest kidnapping-pollen sniffing maggot!]",
+    "opt": [
+      {
+        "to": "@feral cave",
+        "text": "Calm Sugar and proceed"
+      }
+    ]
+  },
+  "feral cave converse 3": {
+    "title": "Feral Cave",
+    "text": "Pemmi: [Cheer up, Cheese. I'll teach you how to cast spells.]\n\nCheese: [Okay.]\n\nPemmi takes Cheese to a corner and shows him a book.",
+    "opt": [
+      {
+        "to": "@feral cave",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave leave": {
+    "title": "Feral Cave",
+    "text": "Lucid: [Alright, let us return to Stone Henge.]\n\nSugar: [I don't know how strong you are, but you better have an escape plan.]\n\nYou leave the blue feral cave behind and set off for the exit.\nYou step out into the dark tunnels and start walking.\n\nSugar: [This is about the time when I'd be ambushed... Wait, I hear it! spiders!]",
+    "opt": [
+      {
+        "to": ">join>Sugar>>encounter>horned spiders>@feral cave leave 2>@feral cave leave 2",
+        "text": "Prepare to fight"
+      }
+    ]
+  },
+  "feral cave leave 2": {
+    "title": "Feral Cave",
+    "text": "Lucid: [You alright?]\n\nPemmi: [Look!]\n\nPemmi shoots her spell light into the darkness.\nYou see at least 5 more spiders slowly crawling toward you.\n\nSugar: [No chance, we gotta run back inside!]\n\nYou hurry back inside.\nCurious residents come out of their caves to watch you.\n\nCheese: [What the hell was that? Why so many all of a sudden?]\n\nSugar: [This is what's been happening every time I tried to escape. They know!]\n\nLucid: [It's very strange how they don't seem to chase us here. Let's go back to our resting spot.]",
+    "opt": [
+      {
+        "to": ">save>temp>10>>@feral cave",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave leave 3": {
+    "title": "Feral Cave",
+    "text": "Pemmi: [So what do we do? Is there any other exit?]\n\nSugar: [There is one entrance to the deeper caves. No one goes there so I don't know if it would lead to an exit.]\n\nLucid: [We could stay here for a couple days and see if the spiders go away.]",
+    "opt": [
+      {
+        "to": "@feral cave",
+        "text": "Proceed to deeper caves"
+      },
+      {
+        "to": ">save>temp>11>>@feral cave",
+        "text": "Stay until the spiders are gone"
+      }
+    ]
+  },
+  "feral cave leave 4": {
+    "title": "Feral Cave",
+    "text": "Pemmi: [We've been here for a while. Want to try moving out?]\n\nYou leave the caverns and start walking the sticky webbed tunnel.\n\nLucid: [I sense the spiders again. Prepare yourselves.]",
+    "opt": [
+      {
+        "to": ">encounter>horned spiders>@feral cave leave 5-1>@feral cave leave 5-2",
+        "text": "Prepare to fight"
+      }
+    ]
+  },
+  "feral cave leave 5-1": {
+    "title": "Feral Cave",
+    "text": "You collapse.\nSomehow, your team manages to take down the spiders and drag you back to the caverns.\nLucid and Pemmi take turns mending your broken bones and sealing your flesh with magic.\n\nPemmi: [This is ridiculous. Are these spiders trying to keep us in here?]\n\nSugar: [Like I said, this place is a cattle farm. We're won't make it.]\n\nPemmi: [Well, what do you suggest then?]\n\nSugar: [We're doomed.]\n\nLucid: [I've seen ferals outside the spider den. I don't think people can live underground forever.]\n\nSugar: [Maybe there are other farms. For the month I've been here, no one's ever gotten out.]\n\nLucid: [Let us try to go deeper in. If this is a proper cave system, there could be multiple exits.]",
+    "opt": [
+      {
+        "to": "@feral cave leave 6",
+        "text": "Proceed deeper into the caverns"
+      }
+    ]
+  },
+  "feral cave leave 5-2": {
+    "title": "Feral Cave",
+    "text": "Pemmi: [There were nowhere near this amount of spiders when we entered! This is ridiculous! Were these spiders smart enough to lure us in like this?]\n\nSugar: [Like I said, this place is a cattle farm. We're won't make it.]\n\nPemmi: [Well, what do you suggest then?]\n\nSugar: [We're doomed.]\n\nLucid: [I've seen ferals outside the spider den. I don't think people can live underground forever.]\n\nSugar: [Maybe there are other farms. For the month I've been here, no one's ever gotten out.]\n\nLucid: [Let us try to go deeper in. If this is a proper cave system, there could be multiple exits.]",
+    "opt": [
+      {
+        "to": "@feral cave leave 6",
+        "text": "Proceed deeper into the caverns"
+      }
+    ]
+  },
+  "feral cave leave 6": {
+    "title": "Feral Cave",
+    "text": "Sugar leads you deep into the caverns into a room at the end of a long, descending hallway.\n\nSugar: [This is the 'exit' that you are looking for.]\n\nPemmi: [This... is just a large hole in the ground.]\n\nPemmi casts light and send it down the hole.\n\nSugar: [Look carefully. There is a thin spiral staircase leading down into the hole. At the bottom is a door... I've not bothered to go past the door. There are sounds of hostiles behind it.]\n\nLucid: [What kind of hostiles?]\n\nSugar: [I don't know. I wouldn't bother to find out.]\n\nPemmi: [Can't be worse than the spiders. We should heal up the rest of our injuries and try the door.]",
+    "opt": [
+      {
+        "to": ">save>temp>12>@feral cave",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave leave 7": {
+    "title": "Deeper Caves",
+    "text": "You and your companions pack up and move down the spiral stairs at the room in the lower caverns.\n\nSugar: [Careful, if you trip, you go splat.]\n\nYou reach the pitch black bottom.\nStrange moaning sounds emanate from behind the door.\n\nLucid: [This is the smell of death. We'll couple up to watch each other's backs. You with me and Sugar with Pemmi. Cheese, you should stay out of the fights and make sure our retreat is clear.]\n\nLucid opens the door.",
+    "opt": [
+      {
+        "to": ">dropAll>>join>Lucid>>encounter>zombies>@feral cave leave 8>@feral cave leave 8",
+        "text": "Prepare to fight"
+      }
+    ]
+  },
+  "feral cave leave 8": {
+    "title": "Deeper Caves",
+    "text": "Lucid: [The walking dead... This is the wicked result of cannibalization.]\n\nSugar: [Are you telling me that I'll turn into one of these things?]\n\nLucid: [If you keep eating them for years, perhaps.]\n\nSugar: [Well shit, more reason for us to get the hell outta here.]\n\nYou continue down the pitch black abyss.\nThe entire place is saturated with foul miasma.\n\nPemmi: [Looks like this area is a large square room with two exits. There is a door leading out on our left and just a dirt tunnel on our right. Which way do you think we should go?]",
+    "opt": [
+      {
+        "to": "@feral cave leave 9-1",
+        "text": "The dirt hole"
+      },
+      {
+        "to": "@feral cave leave 9-2",
+        "text": "The door"
+      }
+    ]
+  },
+  "feral cave leave 9-1": {
+    "title": "Deeper Caves",
+    "text": "Sugar: [Why did you choose the hole? What a shitty scout.]\n\nYou proceed into the dirt tunnel.\nThe low ceiling and narrow, curvy path makes you claustrophobic.\nYour group walk the tunnel in single file.\n\nYou bump into something.\nIt is a zombie.",
+    "opt": [
+      {
+        "to": ">dropAll>>encounter>zombie>@defeat>@feral cave leave 9-1 2",
+        "text": "Ugh! Fight!"
+      }
+    ]
+  },
+  "feral cave leave 9-1 2": {
+    "title": "Deeper Caves",
+    "text": "Lucid: [This was a bad idea. Let's go back. We'll try the door.]\n\nYou return to the large room and enter the door.",
+    "opt": [
+      {
+        "to": ">join>Lucid>@feral cave leave 9-2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave leave 9-2": {
+    "title": "Deeper Caves",
+    "text": "Pemmi: [This place looks pretty safe, wooden floor, furniture, and less disgusting smell. I'm gonna close the door behind us.]\n\nLucid: [Look over here, weapon racks full of spears. Tipped with silver for fighting zombies. Take a look.]",
+    "opt": [
+      {
+        "to": ">item>silver spear>@feral cave leave 11",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave leave 11": {
+    "title": "Deeper Caves",
+    "text": "Cheese: [What's this?]\n\nLucid: [That... looks like a polymorph artifact, similar to my necklace.]\n\nCheese: [Nice, this is mine now.]\n\nMotivated by Cheese's fortune, you also look around and find a light blue crystal necklace. Nice!",
+    "opt": [
+      {
+        "to": "@feral cave leave 12",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave leave 12": {
+    "title": "Deeper Caves",
+    "text": "You leave the safe room behind and proceed into the dirt tunnel.\nYou enter a much larger hall with strange metal furniture and rails on the floor.\n\nLucid: [This... looks like an ancient mine. Which is good news, because that means this place will have a proper exit that may not be flooded with spiders. But it is my knowledge that Stone Henge do not forge metals, am I correct, Pemmi?]\n\nPemmi: [Forging? I've never actually seen it in my life.]\n\nLucid: [Very interesting. So this is an ancient ruin. In the frontier, too. Hmm.]\n\nSugar: [You know what this place is? This is an ancient ruin?]\n\nLucid: [This is a ruin, yes. Ruins are filled with treasures left behind by the lost civilizations. We may find more than just silver spears in these places. There's no chance that any spelunkers made it down here, so we may be in for some fortune.]\n\nPemmi: [Eeeeek!! Cheese, what the?!]\n\nYou turn around to see Cheese's body and clothing turn purple... until he is some kind of a translucent ghost.\n\nCheese: [Woo! Look at me!]\n\nLucid: [Ghost shifting artifact! Very nice! If he can come back to human form, that is.]\n\nSuddenly, you hear strange moaning sound.\nYou turn back around to see zombies coming from around the corner.\n\nPemmi: [Sorry, I may have yelled too loud. Cheese scared me.]",
+    "opt": [
+      {
+        "to": ">dropAll>>join>Cheese2>>encounter>zombies>@feral cave leave 13>@feral cave leave 13",
+        "text": "Fight"
+      }
+    ]
+  },
+  "feral cave leave 13": {
+    "title": "Deeper Caves",
+    "text": "Sugar: [Hey, that artifact is pretty good! Give me that!]\n\nSugar tries to snatch the artifact from Cheese, but Cheese stuns her with mysterious force.\n\nCheese: [Never!]\n\nPemmi: [We should definitely search this entire area for useful items. This is amazing!]\n\nLucid: [Yes, we could make enough fortune to last a lifetime here. But if we can't escape from here, no amount of artifact will be of use. We should stick together for now.]\n\nYour group and purple Cheese walk around the mining complex looking for a way out.\n\nLucid: [This whole area seems pretty secure. I think the rooms that we just passed by may have some valuable artifacts. We could spend some time looting the place. But let's be careful. We should never walk alone here. Let's form a group.]",
+    "opt": [
+      {
+        "to": ">dropAll>>join>Cheese2>>save>temp>Cheese>feral cave leave 14",
+        "text": "Group with Cheese"
+      },
+      {
+        "to": ">dropAll>>join>Lucid>>save>temp>Lucid>feral cave leave 14",
+        "text": "Group with Lucid"
+      },
+      {
+        "to": ">dropAll>>join>Pemmi>>save>temp>Pemmi>feral cave leave 14",
+        "text": "Group with Pemmi"
+      },
+      {
+        "to": ">dropAll>>join>Sugar>>save>temp>Sugar>feral cave leave 14",
+        "text": "Group with Sugar"
+      }
+    ]
+  },
+  "feral cave leave 14": {
+    "title": "Deeper Caves",
+    "text": "Lucid: [Ok. We'll look for artifacts for half an hour and meet back here.]\n\nEveryone scatters.\n\n%?temp: [Alright, let's do this. One for you, then one for me.]\n\nYou return to the dormitory complex and start looting.",
+    "filler": [
+      "%?temp"
+    ],
+    "opt": [
+      {
+        "to": "@feral cave leave 15-1",
+        "text": "Proceed",
+        "reqs": [
+          "var>temp>Pemmi"
+        ]
+      },
+      {
+        "to": "@feral cave leave 15-2",
+        "text": "Proceed",
+        "reqs": [
+          "var>temp>Lucid"
+        ]
+      },
+      {
+        "to": "@feral cave leave 15-3",
+        "text": "Proceed",
+        "reqs": [
+          "var>temp>Cheese"
+        ]
+      },
+      {
+        "to": "@feral cave leave 15-4",
+        "text": "Proceed",
+        "reqs": [
+          "var>temp>Sugar"
+        ]
+      }
+    ]
+  },
+  "feral cave leave 15-1": {
+    "title": "Deeper Caves",
+    "text": "Pemmi: [So here's what we found: A hand crossbow, a potion, a runed staff, bunch of clothes, and some wooden beads. Since you already have an artifact, I'll pick mine first.]\n\nPemmi picks the hand crossbow.",
+    "opt": [
+      {
+        "to": ">item>kidney staff>@feral cave leave 16",
+        "text": "Pick the staff"
+      },
+      {
+        "to": ">item>potion of experience>@feral cave leave 16",
+        "text": "Pick the potion"
+      }
+    ]
+  },
+  "feral cave leave 15-2": {
+    "title": "Deeper Caves",
+    "text": "Lucid: [So, it looks like we've found a hand crossbow, a potion of experience, and a kidney staff. Since you already have one artifact, I will take the first pick and take the staff.]",
+    "opt": [
+      {
+        "to": ">item>hand crossbow>@feral cave leave 16",
+        "text": "Pick the hand crossbow"
+      },
+      {
+        "to": ">item>potion of experience>@feral cave leave 16",
+        "text": "Pick the potion"
+      }
+    ]
+  },
+  "feral cave leave 15-3": {
+    "title": "Deeper Caves",
+    "text": "Cheese: [Doesn't look like we found anything.]\n\nYou notice that Cheese is casually holding a staff that you've never seen before.",
+    "opt": [
+      {
+        "to": ">item>kidney staff>@feral cave leave 16",
+        "text": "Snatch the staff from Cheese"
+      }
+    ]
+  },
+  "feral cave leave 15-4": {
+    "title": "Deeper Caves",
+    "text": "Sugar: [Nice. A hand crossbow, staff, and a potion. I'll take this potion and this hand crossbow. I don't think this staff is any useful to a scout, so I'll take it as well.]",
+    "opt": [
+      {
+        "to": ">item>hand crossbow>@feral cave leave 16",
+        "text": "Proceed"
+      },
+      {
+        "to": ">encounter>Sugar>@feral cave leave 15-4 2>>item>hand crossbow>@feral cave leave 15-4 3",
+        "text": "Take the hand crossbow by force"
+      },
+      {
+        "to": ">encounter>Sugar>@feral cave leave 15-4 2>>item>kidney staff>@feral cave leave 15-4 3",
+        "text": "Take the staff by force"
+      },
+      {
+        "to": ">encounter>Sugar>@feral cave leave 15-4 2>@feral cave leave 15-4 4",
+        "text": "Take the potion by force"
+      }
+    ]
+  },
+  "feral cave leave 15-4 2": {
+    "title": "Deeper Caves",
+    "text": "Sugar: [Ha, you piece of shit. I wasn't anywhere as weak as you are even when I was a lil scout.]",
+    "opt": [
+      {
+        "to": "@feral cave leave 16",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave leave 15-4 3": {
+    "title": "Deeper Caves",
+    "text": "Sugar: [Ha, you pack a punch. You deserve it, take it.]",
+    "opt": [
+      {
+        "to": "@feral cave leave 16",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave leave 15-4 4": {
+    "title": "Deeper Caves",
+    "text": "Sugar: [Ha, you pack a punch. You deserve it, take it.]\n\nYou see that the potion had been shattered from violent motions...",
+    "opt": [
+      {
+        "to": "@feral cave leave 16",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave leave 16": {
+    "title": "Deeper Caves",
+    "text": "You return to the rendezvous.\nEveryone is already there, showing off their new artifacts.\n\nLucid: [It doesn't look like we've found anything that would help us get out of here... But we did find things that will help us fight the zombies, so good enough. Let's proceed into the main tunnels, then.]",
+    "opt": [
+      {
+        "to": "@feral cave leave 17",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "feral cave leave 17": {
+    "title": "Deeper Caves",
+    "text": "You continue along the rails.\nDeeper in the mines, you start seeing glowshrooms again, lighting the way.\n\nPemmi: [Look! Light!]\n\nYou exit the tunnel into a giant cavern, with a hole on the ceiling in the distance where sunlight shines down.\n\nSugar: [What in the... hell is that?]\n\nBelow the hole is a mound of faint blue light, slowly expanding and shrinking, as if breathing.\n\nLucid: [I don't know, it could be a creature. Do you see the tunnel behind the creature? We're getting pretty close to the surface. Let's move silently and try to pass the mound.]\n\nYou carefully approach the mound.\nOn a closer look, you realize that it is an amalgamation of flesh, moving as one, covered in glowshrooms.\n\nLucid: [This... is an abomination, created from hordes of zombies attracted to sunlight! This...]\n\nCheese sneezes.\n\nThe mound rises...",
+    "opt": [
+      {
+        "to": ">encounter>amalgamation>@defeat>@feral cave leave 18",
+        "text": "Prepare to fight"
+      }
+    ]
+  },
+  "feral cave leave 18": {
+    "title": "Deeper Caves",
+    "text": "The Lucid: [Ugh... is everyone alright?]\n\nPemmi: [I... I'm alive...]\n\nLucid: [Cheese? Sugar? This is not a mortal wound, I can cure it... And it looks like no one is in critical condition, this is a miracle!]\n\nSugar: [Let's just go... I'm sick of this shit.]\n\nYou enter the tunnel behind the dead, rotting mass.\nAt the end of the tunnel you find another hole to the surface, except with a wooden ladder.\nYou return to the surface.",
+    "opt": [
+      {
+        "to": ">timeset>10>@henge woods",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "henge woods": {
+    "title": "Woods",
+    "text": "You have returned to the Stone Henge woods.\n\nIt is %time.\nYou sit on the green grass with everyone and enjoy the surface breeze.\n\nCheese: [Wow, these ant egg biscuits are really good!]\n\nPemmi: [Thanks, this is actually my first time cooking.]\n\nSugar: [Finally! something other than mushrooms and human meat!]\n\nYou finish your delicious biscuits and look around.\nThe leaves of the trees in Stone Henge woods are starting to turn red.\nYou wonder where Cobby is right now.\n\nSugar: [So this man named Lucid. What a funny guy, why did he go through all that trouble to help us?]\n\nPemmi: [He's a nice person. I helped you guys too when I found out about all this.]\n\nSugar: [Foolish.]\n\nCheese: [So where do we go now?]\n\nSugar: [I'm going back to Ant Hill. I'm gonna show that son of a bitch some lesson. Also I need to get my stuff and say goodbyes.]\n\nCheese: [And where to after you are done with Ant Hill?]\n\nSugar: [Don't know... Maybe I'll go to that Jericho place. Or maybe if I kill your dad they won't bother me in Ant Hill.]\n\nPemmi: [Uh... Cheese, you want to go hunting? We're out of food.]\n\nCheese: [Naw, I'm going to take a nap.]",
+    "filler": ["%time"],
+    "opt": [
+      {
+        "to": ">time>4>@henge woods 2",
+        "text": "Go hunting with Pemmi"
+      }
+    ]
+  },
+  "henge woods 2": {
+    "title": "Woods",
+    "text": "You are out in the woods hunting for food with Pemmi.\n\nPemmi: [You know, the last couple weeks have been a wild ride for me. I think I'll go to Jericho with Lucid. There's little I can do in Stone Henge...]\n\nYou continue searching for prey with Pemmi.",
+    "opt": [
+      {
+        "to": ">join>Pemmi>>combat>river night encounter>@defeat>@henge woods 3",
+        "text": "Hunt"
+      }
+    ]
+  },
+  "henge woods 3": {
+    "title": "Woods",
+    "text": "You return to camp to see the bonfire burnt out and Cheese curled up in front of it, crying.\n\nPemmi: [Cheese! What happened? Are you okay?]\n\nCheese: [It's Sugar! She beat me and took my amulet!]\n\nPemmi: [Oh, no! Where is Sugar now?]\n\nCheese continues crying angrily.\n\n---\n\nIt is %time.\nYou see Lucid returning to camp, packed up with all his stuff from the Inn.\n\nLucid: [I'm back. I brought food from Dolomite Inn.]\n\nPemmi: [Lucid! You're back!]\n\nLucid: [Yes, it's time for me to return to Jericho. Where's Sugar?]\n\nYou explain what happened to Lucid.\n\nCheese: [I bet she ran to Ant Hill. I'm going to get my amulet back.]\n\nPemmi: [Cheese, do you really want to go all the way back to Ant Hill? You guys should just come with me and Lucid to Jericho. There's nothing for us here.]\n\nLucid: [That is not true. You probably want to return to Ant Hill to find Cobby, don't you?]",
+    "filler": ["%time"],
+    "opt": [
+      {
+        "to": ">dropAll>>join>Cheese>@to ant hill",
+        "text": "I need to return to Ant Hill to find Cobby"
+      },
+      {
+        "to": ">join>Lucid>>join>Cheese>>save>chapter>4>>refresh chapter>@skip",
+        "text": "I'll go with you to Jericho"
+      }
+    ]
+  },
+  "to ant hill": {
+    "title": "Woods",
+    "text": "Lucid: [Of course... Good luck with your journey. I'm sure Cobby made it out. Also...]\n\nLucid hands you a map.\n\nLucid: [If you ever decide to get to Jericho, look for me in the Guild of Things.]",
+    "opt": [
+      {
+        "to": ">time>2>>remove item>Lucid's amulet>@to ant hill 2",
+        "text": "Farewell"
+      }
+    ]
+  },
+  "to ant hill 2": {
+    "title": "Woods",
+    "text": "You and Cheese part ways with Lucid and Pemmi.\n\nCheese: [You wanna visit Stone Henge before we go?]",
+    "opt": [
+      {
+        "to": "@to ant hill 3-2",
+        "text": "We have enough food..."
+      },
+      {
+        "to": "@to ant hill 3-1",
+        "text": "Visit Stone Henge"
+      }
+    ]
+  },
+  "to ant hill 3-1": {
+    "title": "Stone Henge",
+    "text": "You and Cheese sneak into Stone Henge again.",
+    "opt": [
+      {
+        "to": "@to ant hill 3-1 2",
+        "text": "Leave"
+      },
+      {
+        "to": ">view shop>Stone Henge Shop>@to ant hill 3-1",
+        "text": "Sneak into Stone Henge shop"
+      }
+    ]
+  },
+  "to ant hill 3-1 2": {
+    "title": "Stone Henge",
+    "text": "Just as you leave, you were spotted by a particularly perceptive guard.\n\nGuard: [Hey, you there, stop!]",
+    "opt": [
+      {
+        "to": ">encounter>henge guards>@defeat>@to ant hill 3-1 3",
+        "text": "Prepare to fight"
+      }
+    ]
+  },
+  "to ant hill 3-1 3": {
+    "title": "Woods",
+    "text": "You hurriedly run out of Stone Henge and head to Ant Hill.",
+    "opt": [
+      {
+        "to": ">time>4>@to ant hill 3-2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "to ant hill 3-2": {
+    "title": "Fields",
+    "text": "You are now on the way back to Ant Hill.\n\nThis is your fourth time walking the route between Stone Henge and Ant Hill.\nYou maneuver the familiar path with ease, dispatching monsters and sourcing food with proficiency.\n\n---\n\nIt is late night, and you have arrived at Ant Hill outskirts.\n\nCheese: [I wonder if I could sneak into my dad's room and steal all his gold.]\n\nYou look around the settlement.\nThere is no one outside, and the gate to the underground is shut.",
+    "opt": [
+      {
+        "to": "@to ant hill 4-1",
+        "text": "Approach the gate"
+      },
+      {
+        "to": "@to ant hill 4-2",
+        "text": "Loot the unoccupied vendors"
+      }
+    ]
+  },
+  "to ant hill 4-2": {
+    "title": "Ant Hill",
+    "text": "You try to loot the unoccupied vendors, but you find all of them were wiped clean.\nSome vendors were even destroyed.\n\nCheese: [Don't they store stocks in here? Why are they all empty?]\n\nYou feel that something is wrong.\nWhat's going on here?",
+    "opt": [
+      {
+        "to": "@to ant hill 4-1",
+        "text": "Approach the gate"
+      }
+    ]
+  },
+  "to ant hill 4-1": {
+    "title": "Ant Hill",
+    "text": "You climb the mound of Ant Hill to find that the gate is barricaded with wood and chitin splinters.\nThere are spots of blood splattered on the floor.\n\nIt looks like there has been an attack on Ant Hill...",
+    "opt": [
+      {
+        "to": "@to ant hill 5-1",
+        "text": "Shout for attention"
+      },
+      {
+        "to": "@to ant hill 5-2",
+        "text": "Try to enter through"
+      }
+    ]
+  },
+  "to ant hill 5-1": {
+    "title": "Ant Hill",
+    "text": "You shout for attention.\nIt is completely silent, and there is no response from inside the gate.\n\nCheese: [Why did you do that? We're exiled, remember?]",
+    "opt": [
+      {
+        "to": "@to ant hill 5-2",
+        "text": "Try to enter through"
+      }
+    ]
+  },
+  "to ant hill 5-2": {
+    "title": "Ant Hill",
+    "text": "You move around the wooden blockades and sharp chitin splinters to approach the gate.\nThe gate is locked, so you decide to dig the dirt under the gate to pass through.\n\nYou enter the underground section of Ant Hill.",
+    "opt": [
+      {
+        "to": "@to ant hill 6",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "to ant hill 6": {
+    "title": "Ant Hill",
+    "text": "You move around the wooden blockades and sharp chitin splinters to make way to the gate.\nThe iron gate is firmly locked, so you dig the dirt under the gate to pass through.\nInside the gate you find some more blood splattered around the hole to the underground.\n\nYou proceed to enter the underground section of Ant Hill.",
+    "opt": [
+      {
+        "to": "@to ant hill 7",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "to ant hill 7": {
+    "title": "Ant Hill",
+    "text": "You enter the darkness leading to underground Ant Hill.\n\nCheese: [Good thing I brought these mushrooms from that cave.]\n\nCheese takes out his glowshroom bundle from his bag to light the way.\nWhen you turn your sight from Cheese back to the tunnels again, you realize that there were three armed people in the darkness with their weapons ready to strike you.\n\n???: [Stop!]\n\nJust as the armed warriors were about to strike you, you hear a familiar voice from the darkness.\n\nSugar: [Heh, looks like we're all here again. Did you chase me for the amulet? Or to save Cobby? Doesn't matter. You are on a good timing. We can use a hand here.]\n\nCheese: [Give me my amulet back, you bitch!]\n\nSugar: [Now, Cheese. You know you won't be any more useful with this amulet. Ant Hill is in trouble, and I'm not gonna waste my time fooling around with you. Get lost.]",
+    "opt": [
+      {
+        "to": "@to ant hill 8",
+        "text": "What's going on here?"
+      }
+    ]
+  },
+  "to ant hill 8": {
+    "title": "Ant Hill",
+    "text": "Sugar signs the guards to back away.\nThe guards sheathe their weapons away and back off.\n\nSugar: [I came crashing down on Ant Hill, is what happened. I put down all the morons who tried to arrest me and gathered my fellow hunters against that mad priest.]\n\nSugar: [Turns out, Cobby became one of them. Maybe the priest got him with some sweet deals? Or maybe the exile was too much for him to handle. What a disappointment, he was a fine hunter.]",
+    "opt": [
+      {
+        "to": "@to ant hill 9",
+        "text": "What's with the barricade?"
+      }
+    ]
+  },
+  "to ant hill 9": {
+    "title": "Ant Hill",
+    "text": "Sugar: [Just when we were bickering at each other the spiders came. I mean, what a god damn timing. The spiders came in a pretty large group and we all huddled up in here for them to pass...]\n\nSugar: [But in here the bickering got worse till one of my hunters killed one of theirs, and shit went down. Now the priest, Cobby, and the rest of his zealots hide in the lower section of the tunnels near the temple while me and my followers take these upper tunnels.]\n\nCheese suddenly jump at Sugar and reach for her amulet.\nSugar throws him on the ground and punches him in the stomach.\n\nCheese: [Oof!]\n\nSugar: [Do I look like I'm fooling around? Stay down!]",
+    "opt": [
+      {
+        "to": "@to ant hill 10",
+        "text": "Calm down"
+      }
+    ]
+  },
+  "to ant hill 10": {
+    "title": "Ant Hill",
+    "text": "Sugar: [Anyways... I might be a lil rough around the edges but I know this shit is wrong. I don't want blood all over Ant Hill, you know? But the priest and Cobby doesn't want to change their old ways, and they're trying to convert my people at every given chance... I might have to make a bloody decision soon.]\n\nYou help Cheese up.",
+    "opt": [
+      {
+        "to": "@to ant hill 11",
+        "text": "I'll go talk to Cobby"
+      }
+    ]
+  },
+  "to ant hill 11": {
+    "title": "Ant Hill",
+    "text": "Sugar: [Yea, go ahead. There's a chance the priest might try to detain you like he did before, so be on your guard. Might also be a good idea to drop off Cheese there. He's a burden. What the?]\n\nSugar suddenly trips and falls.\nCheese jumps her again and takes her amulet from her neck.\nThe guards charge at Cheese, but Cheese uses the amulet to turn into spirit form and fades away into darkness.\n\nCheese: [See ya, sucker!]\n\nSugar: [SON OF A -!! When did he learn to cast? UGH! Catch that idiot!]\n\nThe guards scatter to find Cheese.\nSugar gets up.\n\nSugar: [Ugh, anyways, go talk to Cobby, try to beat some sense into him. I'm going to go teach this moron some respect.]",
+    "opt": [
+      {
+        "to": "@to ant hill 12",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "to ant hill 12": {
+    "title": "Ant Hill",
+    "text": "Sugar: [Yea, go ahead. The priest might try to detain you like he did before, so be prepared. Might also be a good idea to drop off Cheese there. He's a- What the?]\n\nSugar suddenly trips and falls.\nCheese jumps her again and takes her amulet from her neck.\nThe guards charge at Cheese, but Cheese uses the amulet to turn into spirit form and fades away into darkness.\n\nCheese: [See ya, sucker!]\n\nSugar: [SON OF A -!! When did he learn to spellcast? UGH! Catch that idiot!]\n\nThe guards scatter to find Cheese.\nSugar gets up.\n\nSugar: [Ugh, anyways, go talk to Cobby, try to beat some sense into him. I'm going to go teach this moron some respect.]",
+    "opt": [
+      {
+        "to": "@to ant hill 13",
+        "text": "Head to the temple"
+      }
+    ]
+  },
+  "to ant hill 13": {
+    "title": "Ant Hill",
+    "text": "You descend down the dirt halls.\nFurther down glowshrooms lining the halls were destroyed, so you pluck a few and carry it around with you to light the way.\n\n???: [Stop! Do not approach.]\n\nYou hear a voice from the dark.\nYou tell them that you came in peace, that you wish to speak to Cobby.\nTwo guards appear from the shadows and approach you.\nThey forcibly take your weapons away.\n\nGuard: [Don't make any sudden moves. Follow me.]",
+    "opt": [
+      {
+        "to": "@to ant hill 14",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "to ant hill 14": {
+    "title": "Ant Hill",
+    "text": "You enter the temple of Gaia.\n\nYou look around the temple.\nIt looks like the whole place was covered in blood and cleaned off as much as they could.\nNear the altar you see Cobby tending to the wounds of a critically wounded patient... The priest.\nCobby turns his head toward you.\n\nCobby: [Hey! You're alive! Thank Gaia!]",
+    "opt": [
+      {
+        "to": "@to ant hill 15",
+        "text": "Greet and share your stories"
+      }
+    ]
+  },
+  "to ant hill 15": {
+    "title": "Ant Hill",
+    "text": "You greet him and share your side of the story.\n\nCobby: [So Sugar is willing to shed blood, eh? Sugar is a great hunter, but she is hot headed. She stormed the temple with her friends, seized power, then announced the truth to everyone. At the time, I was in the vicinity of Ant Hill, far away enough not to be caught again by the priest but close enough to know what was going on. I believed what Sugar was doing was too radical, so I came in and freed the priest. Then he told me everything...]",
+    "opt": [
+      {
+        "to": "@to ant hill 16",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "to ant hill 16": {
+    "title": "Ant Hill",
+    "text": "Cobby sighs.\n\nCobby: [As messed up as it looks, the priest had his reasons to hide all this stuff from the people. If you haven't figured it out by now, let me tell you.]\n\nCobby: [The priest sent us out as tribute to the horned spiders. These spiders... The priest told me how wickedly intelligent they are. When they attack a settlement, they pick off the strongest members and let the settlement repopulate. Years ago, when they first realized this, the settlements have learned to just sacrifice a few people every month. And now, we're kidnapping ourselves for the spiders. We've been domesticated.]",
+    "opt": [
+      {
+        "to": "@to ant hill 17",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "to ant hill 17": {
+    "title": "Ant Hill",
+    "text": "Cobby: [Sugar wants to fight the spiders, but it's completely hopeless. They are strong, organized, and probably outnumber us. Every attempt to fight them ended with a massacre.]\n\nCobby: [But we're not completely without hope... There was a man here in Ant Hill by the name of Lucid. He had promised us that he will try to get help from his home settlement. But when he silently left Ant Hill, we thought he had bailed... But if your stories are true, he may yet save us.]",
+    "opt": [
+      {
+        "to": "@to ant hill 18",
+        "text": "So what now?"
+      }
+    ]
+  },
+  "to ant hill 18": {
+    "title": "Ant Hill",
+    "text": "Cobby: [If Sugar wants to start a bloodshed, we won't stand a chance. She has the best hunters of Ant Hill by her side, hunters who are too full of pride to accept our reality. I'm going to surrender. It's better to spill blood fighting the spiders than amongst ourselves.]",
+    "opt": [
+      {
+        "to": "@to ant hill 19",
+        "text": "I'll try to convince Sugar"
+      },
+      {
+        "to": "@to ant hill 19",
+        "text": "I'm going to see Lucid in Jericho"
+      },
+      {
+        "to": "@to ant hill 19",
+        "text": "I'll look for ways to fight the spiders"
+      }
+    ]
+  },
+  "to ant hill 19": {
+    "title": "Ant Hill",
+    "text": "The wounded patient in front of him slowly raises his hand.\nYou realize that the patient is the priest of Ant Hill who had exiled you and Cobby.\n\nPriest: [...W..Wait...]\n\nCobby gently rubs a wet, bloody rag on the priest's wounded stomach.\nIt looks like the priest had been impaled several times.\n\nPriest: [...Please... tell Cheese that I'm sorry.]\n\nCobby: [I don't think he will make it. After he passes away, I will surrender to Sugar. Oh, the priest wanted to give something to Cheese.]\n\nCobby hands you an old book.\n\nCobby: [Good luck.]\n\nYou leave the temple and climb back up the halls toward Sugar.",
+    "opt": [
+      {
+        "to": "@to ant hill 20",
+        "text": "Why did you send him to die in the first place?"
+      }
+    ]
+  },
+  "to ant hill 20": {
+    "title": "Ant Hill",
+    "text": "Priest: [...As much as I love him, I couldn't put his life over other valuable hunters of Ant Hill... Please...]\n\nCobby: [I don't think he will make it. After he passes away, I will surrender to Sugar.]\n\nCobby: [...Whatever you're up to, good luck.]\n\nYou leave the temple and climb back up the halls toward Sugar.",
+    "opt": [
+      {
+        "to": "@to ant hill 21",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "to ant hill 21": {
+    "title": "Ant Hill",
+    "text": "The guards of either factions let you pass without any hassle.\nYou arrive at the entrance hall.\n\nThere are a dozen guards in the room and Sugar laying on the ground in the center.\n\nSugar: [Kill him! Find and Kill HIM!]\n\nYou ask one of the guards and he tells you that Cheese came back and attacked her while she was resting.\n\nGuard: [He also hid away her weapons and put feces in her food... He better be running right now.]\n\nIt doesn't look like Sugar is in any mood for conversation.",
+    "opt": [
+      {
+        "to": "@to ant hill 22",
+        "text": "Leave Ant Hill"
+      },
+      {
+        "to": "@to ant hill 21-1",
+        "text": "Find Cheese"
+      }
+    ]
+  },
+  "to ant hill 21-1": {
+    "title": "Ant Hill",
+    "text": "You poke around the halls yelling Cheese's name but you don't find Cheese anywhere. Maybe he's outside?",
+    "opt": [
+      {
+        "to": "@to ant hill 21",
+        "text": "Leave Ant Hill"
+      }
+    ]
+  },
+  "to ant hill 22": {
+    "title": "Ant Hill",
+    "text": "You return to the surface and open the iron gate without much thought.\nYou take a quick look around the streets and see footsteps leading to the woods.\nYou follow the steps into the woods and find Cheese, sitting on a tree eating an egg.\nHe stares at you.",
+    "opt": [
+      {
+        "to": ">heal>1>>save>chapter>4>>refresh chapter>@start",
+        "text": "...Let's go."
       }
     ]
   }

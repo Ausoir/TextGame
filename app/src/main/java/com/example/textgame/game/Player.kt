@@ -9,7 +9,7 @@ import com.google.gson.Gson
 data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged: Int,
                        var equip: ArrayList<String>, val vars: HashMap<String, String>,
                        var unit: UnitModel, var companion: ArrayList<String>, var companionMoves: HashMap<String, ArrayList<String>>,
-                       var specialization: String) : Parcelable {
+                       var specialization: String, var quests: ArrayList<String>) : Parcelable {
     @Suppress("JAVA_CLASS_ON_COMPANION")
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
@@ -21,14 +21,9 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
         parcel.readSerializable() as UnitModel,
         parcel.readArrayList(String.javaClass.classLoader) as ArrayList<String>,
         parcel.readSerializable() as HashMap<String, ArrayList<String>>,
-        parcel.readString() ?: ""
+        parcel.readString() ?: "",
+        parcel.readArrayList(String.javaClass.classLoader) as ArrayList<String>
     )
-
-    fun gameStart(){
-        if (seed == -1){
-            seed = (0..9999).random()
-        }
-    }
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeInt(seed)
@@ -41,6 +36,7 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
         dest.writeList(companion)
         dest.writeSerializable(companionMoves)
         dest.writeString(specialization)
+        dest.writeList(quests)
     }
 
     override fun describeContents(): Int {
@@ -158,7 +154,6 @@ class Player(private val fileManager: FileManager) {
         val result = if (data == null){
             val finalData: String = fileManager.readAsset("player.json") !!
             val player = gson.fromJson(finalData, PlayerModel::class.java)
-            player.gameStart()
             player
         } else {
             gson.fromJson(data, PlayerModel::class.java)

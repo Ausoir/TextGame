@@ -7,45 +7,55 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.fragment.app.Fragment
 import com.example.textgame.App
 import com.example.textgame.R
-import com.example.textgame.game.DialogModel
 import com.example.textgame.game.SpecialModel
 import com.example.textgame.tools.Grammar
 
 
-class AdvanceFragment : Fragment() {
-    private lateinit var layout: LinearLayout
-
+class AdvanceFragment : CustomFragment() {
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
+        textView = root.findViewById(R.id.text_home)
         textView.movementMethod = ScrollingMovementMethod()
         layout = root.findViewById(R.id.home_button_container) as LinearLayout
         val page = arguments?.getString("page") ?: "invalid"
         val specMap = arguments?.getSerializable("specMap") as HashMap<String, SpecialModel>
         val specString = arguments?.getString("spec") ?: "basic"
-        val branch = arguments?.getStringArray("branch") as Array<String>
+        val branch = arguments?.getStringArray("branch") as Array<String>?
         val spec = specMap[specString]!!
-        textView.append("Choose your specialization.\nYour current class:\n\n${spec.getDescription(specString)}\n\nAvailable specializations:\n\n")
-        addButton("Stay as $specString").setOnClickListener {
-            val app: App = activity as App
-            app.openDialog(page)
-        }
-        for (adv in branch) {
-            val advSpec = specMap[adv]
-            val text = advSpec?.getDescription(adv) ?: "INVALID"
-            val flavor = advSpec?.flavor ?: "INVALID"
-            textView.append("$text\n\n")
-            addButton("Become ${Grammar.getArticle(adv)}").setOnClickListener {
+        if (spec.branch.isNullOrEmpty()){
+            addText("You have reached the end of your specialization.\nYou cannot advance your class any further!")
+            addButton(resources.getString(R.string.proceed)).setOnClickListener {
                 val app: App = activity as App
-                app.openDialog(">custom>$flavor>>specialize>$adv>$page")
+                app.openDialog(page)
+            }
+        } else {
+            addText(
+                    "<color:#709570>Your current class:\n\n${
+                        spec.getDescription(
+                                specString
+                        )
+                    }\n\n<color:#709570>Available specializations:\n\n"
+            )
+            val available = branch ?: spec.branch
+            addButton("Stay as $specString").setOnClickListener {
+                val app: App = activity as App
+                app.openDialog(page)
+            }
+            for (adv in available) {
+                val advSpec = specMap[adv]
+                val text = advSpec?.getDescription(adv) ?: "INVALID"
+                val flavor = advSpec?.flavor ?: "INVALID"
+                addText("$text\n\n")
+                addButton("Become ${Grammar.getArticle(adv)}").setOnClickListener {
+                    val app: App = activity as App
+                    app.openDialog(">custom>$flavor>>specialize>$adv>$page")
+                }
             }
         }
         return root

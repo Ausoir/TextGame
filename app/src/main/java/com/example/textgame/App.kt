@@ -74,6 +74,17 @@ class App : AppCompatActivity() {
         transition(frag)
     }
 
+    private fun viewQuest(page: String){
+        menu?.getItem(0)?.isVisible = false
+        val frag = QuestFragment()
+        val bundle = Bundle()
+        bundle.putString("page", page)
+        bundle.putParcelable("player", game.player.model)
+        frag.arguments = bundle
+        title = getString(R.string.quest_title)
+        transition(frag)
+    }
+
     private fun viewLearn(page: String, forget: Boolean){
         menu?.getItem(0)?.isVisible = false
         val frag = LearnFragment()
@@ -91,7 +102,7 @@ class App : AppCompatActivity() {
         transition(frag)
     }
 
-    private fun viewAdvance(branch: Array<String>, page: String){
+    private fun viewAdvance(branch: Array<String>?, page: String){
         menu?.getItem(0)?.isVisible = false
         val frag = AdvanceFragment()
         val bundle = Bundle()
@@ -184,6 +195,13 @@ class App : AppCompatActivity() {
                     }
                     openDialog(Grammar.substringAfter(to, ">", 4))
                 }
+                "savepage" -> {
+                    game.player.model.vars["saving"] = game.player.model.vars["page"]!!
+                    viewCustom("You use the amulet.", Grammar.substringAfter(to, ">", 2))
+                }
+                "loadpage" -> {
+                    openDialog(game.player.model.vars["saving"] ?: "now")
+                }
                 "load" -> {
                     openDialog(game.player.model.vars[split[2]] ?: "invalid")
                 }
@@ -235,11 +253,25 @@ class App : AppCompatActivity() {
                 }
                 "dropAll" -> {
                     game.player.model.companion.clear()
+                    openDialog(Grammar.substringAfter(to, ">", 2))
+                }
+                "questFill" -> {
+                    for (quest in game.variables.model[split[2]] ?: arrayListOf()){
+                        game.player.model.quests.add(quest)
+                    }
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
-                "readdAll" -> {
-                    game.player.model.companion.clear()
+                "quest" -> {
+                    game.player.model.quests.add(split[2])
                     openDialog(Grammar.substringAfter(to, ">", 3))
+                }
+                "forfeitAll" -> {
+                    game.player.model.quests.clear()
+                    openDialog(Grammar.substringAfter(to, ">", 2))
+                }
+                "removeAll" -> {
+                    game.player.model.equip.clear()
+                    openDialog(Grammar.substringAfter(to, ">", 2))
                 }
                 "learn" -> {
                     game.player.model.unit.moves.add(split[2])
@@ -254,6 +286,9 @@ class App : AppCompatActivity() {
                 }
                 "moneyAdd" -> {
                     game.player.model.money += split[2].toInt()
+                    if (game.player.model.money < 0){
+                        game.player.model.money = 0
+                    }
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
                 "moneySet" -> {
@@ -281,6 +316,9 @@ class App : AppCompatActivity() {
                 "view shop" -> {
                     viewShop(split[2], Grammar.substringAfter(to, ">", 3))
                 }
+                "view quest" -> {
+                    viewQuest(Grammar.substringAfter(to, ">", 2))
+                }
                 "view learn" -> {
                     viewLearn(Grammar.substringAfter(to, ">", 2), false)
                 }
@@ -288,6 +326,9 @@ class App : AppCompatActivity() {
                     viewLearn(Grammar.substringAfter(to, ">", 2), true)
                 }
                 "view advance" -> {
+                    viewAdvance(null, Grammar.substringAfter(to, ">", 2))
+                }
+                "view specialize" -> {
                     viewAdvance(split[2].split(":").toTypedArray(), Grammar.substringAfter(to, ">", 3))
                 }
                 "heal" -> {

@@ -1,0 +1,1621 @@
+{
+  "start": {
+    "title": "Chapter 4",
+    "text": "",
+    "opt": [
+      {
+        "to": ">timeset>14>>heal>9>>dropAll>>save>temp> >>join>Cheese2>@to jericho 1",
+        "text": "Begin"
+      }
+    ]
+  },
+  "skip": {
+    "title": "Chapter 4",
+    "text": "",
+    "opt": [
+      {
+        "to": ">timeset>14>>heal>9>>dropAll>>save>temp> >>save>crime>0>>join>Cheese2>>join>Pemmi>@jericho 1",
+        "text": "Begin"
+      }
+    ]
+  },
+  "to jericho 1": {
+    "title": "Fields",
+    "text": "You are walking across a vast open field of grass.\nThe open field concaves down, and you see across the field a massive crack in the ground blocking your way.\nOn the other side of the crack the grass fields are much more vibrant in color. The grass is greener on the other side!\n\nCheese: [Woo!]\n\nCheese enters ghost form and floats over the canyon towards the other side.\nIn the middle of flight he changes direction and comes back.\n\nCheese: [Wow, the canyon is way wider than it looks. It's kind of scary to float across.]\n\nYou look to the sides and find that the canyon stretches from horizon to horizon.\nIt's strange, since this canyon is not found on the map that Lucid gave you.",
+    "opt": [
+      {
+        "to": "@field 1",
+        "text": "Go around the canyon"
+      },
+      {
+        "to": "@canyon 1",
+        "text": "Go down the canyon"
+      }
+    ]
+  },
+  "field 1": {
+    "title": "Fields",
+    "text": "You travel parallel to the canyon in hopes of finding a way around it.\nYou travel for the whole day and see the canyon still stretched across the horizon.\n\nCheese: [We should just go down and across. I can scout for you, you know?]",
+    "opt": [
+      {
+        "to": "@canyon 1",
+        "text": "Go down the canyon"
+      },
+      {
+        "to": "@field 2",
+        "text": "Continue without going down"
+      }
+    ]
+  },
+  "canyon 1": {
+    "title": "Canyon",
+    "text": "You follow a narrow path leading down the canyon, trailing through strange dark green foliage growing on the cliff walls.\n\nCheese: [Wew, I just went way down to see how far this goes, and it's pitch black all the way down.]\n\nIt is getting dark, and you decide to set up camp here and decide whether or not to climb back up tomorrow.",
+    "opt": [
+      {
+        "to": ">view rest>>timeset>22>@canyon 2",
+        "text": "Rest and heal"
+      }
+    ]
+  },
+  "canyon 2": {
+    "title": "Canyon",
+    "text": "You hear some faint whirring noise and wake up.\nIt is still late night.\nYou look out the cliff and see orange light in the distance.\nYou look carefully, and it looks like someone had started a fire on a bush, and has gotten into a fight with a bunch of strange things.\nThere is also someone lying on the ground ahead of him.\nYou wake Cheese up.\n\nCheese: [Orange light? That way? Ok.]\n\nCheese floats toward where the light was in ghost form, swaying side to side because he's still half asleep.\nYou pack up all your stuff and wait for Cheese to come back...",
+    "opt": [
+      {
+        "to": ">timeset>10>@canyon 3",
+        "text": "..."
+      }
+    ]
+  },
+  "canyon 3": {
+    "title": "Canyon",
+    "text": "It's now bright above the canyon, yet Cheese still hasn't returned.\nYou decide to walk further down the canyon toward the light to find Cheese.\n\nThe narrow path down the canyon is ever so dangerous, and you try your hardest to keep steady... Until a vine grasps your foot.",
+    "opt": [
+      {
+        "to": ">encounter>cliff vine>@chasm 1>@canyon 4",
+        "text": "Prepare to fight"
+      }
+    ]
+  },
+  "canyon 4": {
+    "title": "Canyon",
+    "text": "You barely destroy the vine without falling over.\nYou continue down the path, sometimes jumping and rock climbing to get down.\nIt's going to be hard to get back up.\n\n---\n\nYou hike for hours.\nYou have an urge to shout for Cheese, but fear of something unknown in the abyss below keeps you from doing so.\nYou hear the familiar whirring sound from the darkness ahead of you.",
+    "opt": [
+      {
+        "to": ">encounter>vines>@chasm 1>@canyon 5",
+        "text": "Prepare to fight"
+      },
+      {
+        "to": "@canyon 5",
+        "text": "Run away from it"
+      }
+    ]
+  },
+  "canyon 5": {
+    "title": "Canyon",
+    "text": "As you descend down further, it gets harder to see where you are going.\nMaybe coming down here was a bad idea...\n\nYou arrive at a flatter surface with more room to walk.\nYou walk a bit further down, and now whirring sounds echo from all around you... and they're getting closer.",
+    "opt": [
+      {
+        "to": ">encounter>vines>@chasm 1>@canyon 6-1",
+        "text": "Prepare to fight"
+      },
+      {
+        "to": "@canyon 6-2",
+        "text": "Light the surroundings with a fire"
+      },
+      {
+        "to": "@canyon 6-3",
+        "text": "Run away from it"
+      },
+      {
+        "to": "@canyon 6-4",
+        "text": "Take out your glowshroom bundle to light the way",
+        "reqs": ["item>glowshroom bundle"]
+      }
+    ]
+  },
+  "canyon 6-4": {
+    "title": "Canyon",
+    "text": "You take out your glowshroom bundle to light the way.\nThe glowshroom light reveal dozens and dozens of the dreadful vines all around you!",
+    "opt": [
+      {
+        "to": ">encounter>four vines>@chasm 1>@canyon 6-1",
+        "text": "Fight"
+      }
+    ]
+  },
+  "canyon 6-3": {
+    "title": "Canyon",
+    "text": "You keep running down the canyon into the darkness, but the whirring sounds only get louder. Just how many of those things are down here?",
+    "opt": [
+      {
+        "to": ">encounter>four vines>@chasm 1>@canyon 6-1",
+        "text": "Prepare to fight"
+      }
+    ]
+  },
+  "canyon 6-2": {
+    "title": "Canyon",
+    "text": "You quickly get your campfire kit out and light the nearest bush.\n\nThe newly lit light reveals the corpse of Cheese in front of you, lying face up and lifeless...\n\nYou stumble backward.\nDozens and dozens of vines emerge from the darkness and approach you...",
+    "opt": [
+      {
+        "to": ">encounter>four vines>@chasm 1>@canyon 6-1",
+        "text": "Fight"
+      }
+    ]
+  },
+  "canyon 6-1": {
+    "title": "Canyon",
+    "text": "You realize you are completely surrounded with those things.\nEscaping does not seem possible...",
+    "opt": [
+      {
+        "to": ">encounter>mass of vines>@chasm 1>@canyon 6-1",
+        "text": "Fight"
+      }
+    ]
+  },
+  "chasm 1": {
+    "title": "???",
+    "text": "\n...",
+    "opt": [
+      {
+        "to": ">remove part>offhand>>remove part>weapon>@chasm 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "chasm 2": {
+    "title": "Abyss",
+    "text": "\n...\n\nYou feel your face against warm sand.\nYou open your eyes.\nIt's pitch black.\nYou turn your head up and see the white crevice of daylight far, far above you. Is this the end?\nEvery bone in your body aches.\n\nYou walk the pitch black darkness hopelessly for a bit before giving up and lie down on the warm sands.\n\nHow much time has passed? The white crevice has faded into pitch black abyss.",
+    "opt": [
+      {
+        "to": "@chasm 3",
+        "text": "Yell"
+      }
+    ]
+  },
+  "chasm 3": {
+    "title": "Abyss",
+    "text": "You yell.\nWhatever attention you gather seems like the least of your problems now.\n\nBut there are no responses whatsoever.\n\n...\n\nYou start singing a steady chant in the darkness to alleviate your boredom and sense of doom.",
+    "opt": [
+      {
+        "to": "@chasm 4",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "chasm 4": {
+    "title": "Abyss",
+    "text": "You hear footsteps on the sand.\nYou stop singing.\nYou hear a soft thud.\nYou freeze in place. What monstrosity could take residence in this abyss?",
+    "opt": [
+      {
+        "to": "@chasm 5-1",
+        "text": "Proceed",
+        "reqs": ["!item>mysterious amulet"]
+      },
+      {
+        "to": "@chasm 5-2",
+        "text": "Proceed",
+        "reqs": ["item>mysterious amulet"]
+      }
+    ]
+  },
+  "chasm 5-1": {
+    "title": "Abyss",
+    "text": "???: [Don't give up. Here's a gift.]\n\nA familiar yet strange voice reaches out to you from the darkness.",
+    "opt": [
+      {
+        "to": ">force item>mysterious amulet>@chasm 6-1",
+        "text": "Hello?"
+      }
+    ]
+  },
+  "chasm 5-2": {
+    "title": "Abyss",
+    "text": "???: [Don't give up. Here's a gift... Wait, you already have it.]\n\nA familiar yet strange voice reaches out to you from the darkness. He sounds a little confused.",
+    "opt": [
+      {
+        "to": ">force item>mysterious amulet>@chasm 6-2",
+        "text": "Hello?"
+      }
+    ]
+  },
+  "chasm 6-1": {
+    "title": "Abyss",
+    "text": "No response.\nYou walk toward where the sound came from and find what feels like an amulet on the ground.\n\nYou press on it.",
+    "opt": [
+      {
+        "to": "@again to jericho 1",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "chasm 6-2": {
+    "title": "Abyss",
+    "text": "No response.\nYou walk toward where the sound came from but find nothing.\nFor some reason, this places feels familiar... You take out your amulet and subconsciously press it.",
+    "opt": [
+      {
+        "to": "@again to jericho 1",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "again to jericho 1": {
+    "title": "Fields",
+    "text": "For some reason, it feels like you'ved died for a moment.\n\nYou look around... It's just the same open field of grass that you've been walking for the whole day.\n\nYou look forward.\nThe open field concaves down, and you see across the field a massive crack in the ground blocking your way.\nOn the other side of the crack the grass fields are much more vibrant in color. The grass is greener on the other side!\n\nCheese: [Woo!]\n\nCheese enters ghost form and floats over the canyon towards the other side.\nIn the middle of flight he changes direction and comes back.\n\nCheese: [Wow, the canyon is way wider than it looks. It's kind of scary to float across.]\n\nYou look to the sides and find that the canyon stretches from horizon to horizon.\nIt's strange, since this canyon is not found on the map that Lucid gave you.",
+    "opt": [
+      {
+        "to": "@field 1",
+        "text": "Go around the canyon"
+      },
+      {
+        "to": "@canyon 1",
+        "text": "Go down the canyon"
+      }
+    ]
+  },
+  "field 2": {
+    "title": "Fields",
+    "text": "Cheese: [Blue skies, green fields, soft winds, this is the joy of travel... Cobby used to say.]\n\nYou've been travelling west for a day now, but the canyon to your right does not seem to end.\n\nCheese: [At least there aren't monsters around the canyon.]\n\nYou hear a sound.",
+    "opt": [
+      {
+        "to": ">combat>canyon side encounter>@defeat>@field 3",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "field 3": {
+    "title": "Fields",
+    "text": "You continue walking along the canyon.\nIt seems to be thinning a little...\n\nCheese: [Hey look, a bridge!]\n\nYou look toward the canyon and see a rope hanging across the canyon.\nYou approach the rope and see that the rope was tied firmly to a tree all the way by the woods.\nYou find a pile of logs near the knot. It looks like someone is trying to build a bridge.",
+    "opt": [
+      {
+        "to": "@field 4-1",
+        "text": "Set up camp and wait for someone to come"
+      },
+      {
+        "to": "@field 4-2",
+        "text": "Cross the canyon using the rope"
+      }
+    ]
+  },
+  "field 4-1": {
+    "title": "Fields",
+    "text": "You are at camp.",
+    "opt": [
+      {
+        "to": ">add>temp>1>>view rest>@field 4-1",
+        "text": "Rest and heal",
+        "reqs": ["!var>temp>4"]
+      },
+      {
+        "to": ">view rest>@field 4-1 2",
+        "text": "Rest and heal",
+        "reqs": ["var>temp>4"]
+      },
+      {
+        "to": "@field 4-3",
+        "text": "Scout around"
+      },
+      {
+        "to": "@field 4-2",
+        "text": "Just cross the canyon using the rope"
+      }
+    ]
+  },
+  "field 4-1 2": {
+    "title": "Fields",
+    "text": "You are at camp.\n\nCheese: [Are we gonna live here? Let's just use the rope to cross.]",
+    "opt": [
+      {
+        "to": ">add>temp>1>>view rest>@field 4-1",
+        "text": "Rest and heal",
+        "reqs": ["!var>temp>4"]
+      },
+      {
+        "to": ">time>6>>view rest>@field 4-1 2",
+        "text": "Rest and heal",
+        "reqs": ["var>temp>4"]
+      },
+      {
+        "to": "@field 4-3",
+        "text": "Scout around"
+      },
+      {
+        "to": "@field 4-2",
+        "text": "Just cross the canyon using the rope"
+      }
+    ]
+  },
+  "field 4-3": {
+    "title": "Fields",
+    "text": "You scout around to try to find someone.\nYou hear a sound.",
+    "opt": [
+      {
+        "to": ">combat>canyon side encounter>@defeat>@field 4-1",
+        "text": "Fight"
+      }
+    ]
+  },
+  "field 4-2": {
+    "title": "Fields",
+    "text": "You give all your baggage to Cheese.\n\nCheese: [Woo!]\n\nCheese floats across.\nYou hug the rope and start slithering toward the other side.",
+    "opt": [
+      {
+        "to": "@field 5",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "field 5": {
+    "title": "Fields",
+    "text": "You try not to look down into the abyss.\nOnce in a while Cheese would shake the rope from the other side to scare you.\nYour hands are sweating, but the other side is still far away...",
+    "opt": [
+      {
+        "to": ">time>6>@field 4-1",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "field 6": {
+    "title": "Fields",
+    "text": "You make it to the other side and drop on the ground, trembling. Whew!\nThe rope was tied to a wooden pole, next to the start of a dirt path.\n\nCheese: [If we follow this dirt path we'll run into some wooden buildings and people. Ya wanna get up now?]",
+    "opt": [
+      {
+        "to": "@field 7",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "field 7": {
+    "title": "Fields",
+    "text": "You follow the dirt path.\nYou see a group of wooden buildings near a forest, like Cheese said.\nYou enter the village.",
+    "opt": [
+      {
+        "to": ">save>t1>Maybe you should say hello?>>save>temp>0>@village",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "village": {
+    "title": "Woodcutters' Village",
+    "text": "You are at a lumber mill.\nThere are bulky lumberjacks dressed in leather and furs walking around. %?t1",
+    "filler": ["%?t1"],
+    "opt": [
+      {
+        "to": ">view rest>@village rest",
+        "text": "Rest and heal"
+      },
+      {
+        "to": ">save>t1> >>add>temp>1>@village talk",
+        "text": "Make a conversation with one of the villagers",
+        "reqs": ["var>temp>0"]
+      },
+      {
+        "to": ">save>t1> >>add>temp>1>@village talk 2",
+        "text": "Make a conversation with one of the villagers",
+        "reqs": ["var>temp>1"]
+      },
+      {
+        "to": ">view shop>Woodcutters' Village Shop>@village",
+        "text": "Trade with the villagers"
+      },
+      {
+        "to": "@jericho woods",
+        "text": "Continue on to Jericho"
+      }
+    ]
+  },
+  "village rest": {
+    "title": "Woodcutters' Village",
+    "text": "You roll out your sleeping bag and rest by the perimeter of the village.",
+    "opt": [
+      {
+        "to": "@village",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "village talk": {
+    "title": "Woodcutters' Village",
+    "text": "Villager: [What? Yea, the crevice. It just cracks like that after a big earthquake. Happens.]\n\nCheese: [Happens?]\n\nVillage: [Happens.]",
+    "opt": [
+      {
+        "to": "@village",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "village talk 2": {
+    "title": "Woodcutters' Village",
+    "text": "Villager: [We sell wood to Jericho. Ever heard of it? Place's full of god forsaken metal heads. They look nothin like us.]",
+    "opt": [
+      {
+        "to": "@village",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods": {
+    "title": "Woods",
+    "text": "From the lumber mill you follow the Jericho River, which will take you directly to Jericho according to the map.\nYou walk along the river for a while and notice that you haven't run into any monsters ever since leaving the canyon area.\n\nCheese: [Life is so much simpler without monsters around. Hey look, another tree cutter.]\n\nYou see a person wearing fur armor just standing by a tree near the river, staring at you.\n\nStranger: [Howdy, got a minute?]\n\nYou hear bowstrings being drawn around you.",
+    "opt": [
+      {
+        "to": ">encounter>highwaymen>@defeat>@jericho woods 2",
+        "text": "Fight"
+      }
+    ]
+  },
+  "jericho woods 2": {
+    "title": "Woods",
+    "text": "Cheese: [What the hell was that? Why did they attack us?]",
+    "opt": [
+      {
+        "to": "@jericho woods 3",
+        "text": "Looks like they wanted our gold."
+      }
+    ]
+  },
+  "jericho woods 3": {
+    "title": "Woods",
+    "text": "Cheese: [What? They wanted to kill us for gold? That doesn't make sense.]\n\nYou bury their corpses and continue along the river.\nOnce in a while you see wooden buildings and people wearing leather and strange metal objects on their face.\nBut every time you try to talk to them, they would just tell you to go away in a rude way.\n\nCheese: [You know, it's like the closer we get to Jericho, the more metal we find on these people's faces. Maybe that's why they act so cold? The metal in their faces must have drove them insane.]",
+    "opt": [
+      {
+        "to": "@jericho woods 4",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods 4": {
+    "title": "Woods",
+    "text": "Cheese: [Wow, they have stone tiles all along the river! We could take these and build a house!]\n\nThere are several people walking by you and they all look at Cheese in a funny way.\n\nCheese: [What are you looking at? You want my money too?]\n\nThey all hurry along.\n\nThe river splits into two, turning the mountain in between the rivers into an island.\nOn the top of the small mountain you see a tall brick tower.\nAccording to the map, Jericho lies directly behind the tower.",
+    "opt": [
+      {
+        "to": "@jericho woods 5",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods 5": {
+    "title": "Woods",
+    "text": "You try to find a way to cross the river, but see no bridges around.\nYou see a funny metal boat floating on the river.\nIt's got a funny spinning metal on the top and two people riding on it.\n\nCheese: [Hey! nice boat! Can we hitch a ride to the island?]\n\nThey look at Cheese but don't respond.\n\nCheese: [What the hell is wrong with these metalheads? they mute or something?]\n\nCheese starts throwing rocks at them.\n\nCheese: [Hey! Morons! I'm talking to you!]",
+    "opt": [
+      {
+        "to": "@jericho woods 6-1",
+        "text": "Stop Cheese"
+      },
+      {
+        "to": "@jericho woods 6-2",
+        "text": "See what happens"
+      }
+    ]
+  },
+  "jericho woods 6-2": {
+    "title": "Woods",
+    "text": "Cheese hits one of them with his stone.\n\nCheese: [Did that hurt? Huh? Say that it did and I'll stop throwing!]\n\nThey yell something at Cheese and chuck a metal ball at him.\nRed flashes leak out from the metal ball, unleashing a monster!",
+    "opt": [
+      {
+        "to": ">encounter>metal fox>@defeat>@jericho woods 6-1",
+        "text": "Fight"
+      }
+    ]
+  },
+  "jericho woods 6-1": {
+    "title": "Woods",
+    "text": "You tell Cheese that it's probably not a good idea to make a scene in an unfamiliar place.\nYou pass the tower and just continue down the river.\n\nYou hear a waterfall.\nSoon you emerge from the treeline and find yourself at the top of a cliff, with a grand view of a massive open field of dirt.\n\nCheese: [Dry dirt, all the way to the horizon. Is that Jericho?]\n\nIn the distance you see what must be Jericho, a cluster of tall towers and spinning metals in the middle of the dirt field.\nAbove the sky you see dozens and dozens of strange floating constructs, way larger than bloodquito or any monster you know.\n\nCheese: [Hey, look at this thing!]\n\nYou look down the waterfall and see that all of the water from the fall is just splashed onto the dirt below and drained straight into the ground.\n\nCheese: [That map never said anything about this cliff. Maybe they don't care about cliffs and canyons?]",
+    "opt": [
+      {
+        "to": "@jericho woods 7",
+        "text": "Find a way down"
+      }
+    ]
+  },
+  "jericho woods 7": {
+    "title": "Woods",
+    "text": "You look around the cliff trying to find a way down, but you don't find any.\nAbove the air you see flying constructs pass you by towards the city.\n\nCheese: [Hey! Let us on!]\n\nCheese throws a rock at them but they spit on him from above.\nFurious, Cheese turns into a ghost and floats toward them, but he is nowhere as fast as the flying construct.\nThe passengers seem panicked by Cheese's ghost form.\nThey fly away even faster than before.",
+    "opt": [
+      {
+        "to": ">save>crime>0>@jericho woods 8",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods 8": {
+    "title": "Woods",
+    "text": "You look for the way down the cliff, but there doesn't seem to be any around.\nYou give up looking and set up camp.\n\nOnce in a while people would come by and look at you and Cheese in a funny way.",
+    "opt": [
+      {
+        "to": ">heal>4>>time>6>@jericho woods 9",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods 9": {
+    "title": "Woods",
+    "text": "You are taking a nap when you hear a bustling sound.\nYou look up and see a thief stealing your entire baggage.\nYou wake Cheese up.\nThe thief draws a knife.",
+    "opt": [
+      {
+        "to": ">encounter>thief>@defeat>>time>4>@jericho woods 10",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods 10": {
+    "title": "Woods",
+    "text": "You leave the thief lying on the ground and proceed to search for the way down.\nThree people in full plate armor approach you.\n\nGuard: [Sir, can we ask you some questions?]\n\nCheese: [No. Why?]\n\nGuard: [Wait, is that a corpse? Take them down!]",
+    "opt": [
+      {
+        "to": ">encounter>jericho guards>@jericho jail>@jericho woods 11",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods 11": {
+    "title": "Woods",
+    "text": "Guard: [Oof, c-call backup!]\nThe guards try to run away.",
+    "opt": [
+      {
+        "to": ">encounter>jericho guards>@defeat>>save>crime>1>@jericho woods 12",
+        "text": "Chase and kill them"
+      },
+      {
+        "to": "@jericho woods 12",
+        "text": "Let them go"
+      }
+    ]
+  },
+  "jericho woods 12": {
+    "title": "Woods",
+    "text": "You hurry out of the crime scene and continue looking for a way down.\n\nCheese: [I don't think Jericho's gonna be friendly to us now... You know, I don't remember the last time being in a friendly settlement.]\n\nYou are starting to experience less foot and air traffic.\nThe cliff seems to curve inward around Jericho, and you see the cliff continue all the way to your left in the distance.\n\nYou finally give up and decide to go back to the river and hitch a ride down.",
+    "opt": [
+      {
+        "to": ">time>8>@jericho woods 13",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods 13": {
+    "title": "Air boat rental",
+    "text": "You travel all the way back to the river.\nYou track where those flying constructs are coming from and find a giant wooden building in the woods near the river.\nThere are people outside and some of them seem to recognize Cheese and point at him while saying something.\n\nCheese: [What?]\n\nThey hurry inside, and you follow them in.\n\nMerchant: [Ah, uh, hello, do you have business with us?]",
+    "opt": [
+      {
+        "to": "@jericho woods 14",
+        "text": "We wish to go down the cliff to Jericho"
+      }
+    ]
+  },
+  "jericho woods 14": {
+    "title": "Air boat rental",
+    "text": "Merchant: [Well... Do you have any gold? It's quite expensive. It's 10 gold.]",
+    "opt": [
+      {
+        "to": ">moneyAdd>-10>@jericho woods 14-1",
+        "text": "Pay 10 gold",
+        "reqs": ["moneyG>10"]
+      },
+      {
+        "to": ">save>crime>2>@jericho woods 14-2",
+        "text": "Coerce the merchant for a free ride"
+      },
+      {
+        "to": ">save>crime>1>@jericho woods 14-3",
+        "text": "Ask the merchant for a free ride"
+      }
+    ]
+  },
+  "jericho woods 14-2": {
+    "title": "Air boat rental",
+    "text": "Merchant: [Of course, yes, free air boat, over here please.]\n\nThe merchant guides you to an air boat.\nIt's a brass boat with many circular machine parts and a glider canopy at the top.\nYou grab his assistant and carry him on board with you and Cheese.\n\nMerchant: [Uh, I'd never let my customers fall using any of my boats! But if you must take him, please leave him at the arrivals.]\n\nThe merchant pulls down a lever and the boat departs toward Jericho.\n\nCheese: [You know, at this point we can't go any worse. We should just rob Jericho for super weapons and return to Ant Hill and beat the shit out of the spiders.]\nYou see the assistant quietly trembles with fear.",
+    "opt": [
+      {
+        "to": "@jericho woods 15",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods 14-3": {
+    "title": "Air boat rental",
+    "text": "Merchant: [Of course, yes, free air boat, over here please.]\n\nThe merchant guides you to an air boat.\nIt's a brass boat with many circular machine parts and a glider canopy at the top. You and Cheese hop in.\n\nThe merchant pulls down a lever and the boat departs toward Jericho.\nThe boat slowly rise to the skies.\nAs the boat flies past the waterfall and over the dirt plains, you start to panic from being so far off the ground.\n\nCheese: [You know, that merchant was actually a nice person, giving us free ride and all. I was starting to get frustrated from everyone looking at us funny.]\n\nSuddenly, the air boat stops flying and you start to crash down towards the ground.\nYou see Cheese enter ghost form and float away.\nYou look back down at the ground, which getting closer every second. Well shit.",
+    "opt": [
+      {
+        "to": "@defeat",
+        "text": "AAAAAAAAAAAHHHHH"
+      }
+    ]
+  },
+  "jericho woods 14-1": {
+    "title": "Air boat rental",
+    "text": "Merchant: [Very good, sir! Over here please.]\n\nThe merchant guides you to an air boat.\nIt's a brass boat with many circular machine parts and a glider canopy at the top. You and Cheese hop in.\n\nThe merchant pulls down a lever and the boat departs toward Jericho.\nThe boat slowly rise to the skies.\nAs the boat flies past the waterfall and over the dirt plains, you start to panic from being so far off the ground.\n\nCheese: [Wow, this is awesome!]\n\nYou see that he is clutching on his amulet nervously with his trembling hand.",
+    "opt": [
+      {
+        "to": "@jericho woods 15",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods 15": {
+    "title": "Jericho",
+    "text": "The boat flies over the massive dirt plains.\nJericho, with all its strange metal structures, seems like a place from the wildest dreams.\nYou feel the cold breeze pass you by and throw up over the boat.\nYou look around and see that Cheese had entered ghost form long ago, and is trying to catch up in the distance.\nYou throw up again.\n\nYou enter Jericho.\nThe strange looking buildings are much stranger close up, with spinning metal blades and circular machinery everywhere.\nThe boat bumps into the side of a tower and slowly fall onto the flat roof of a building.\n\nThe boat drops onto the roof with a thud.\nYou jump off the boat and throw up one last time.\nIn the distance you see a shimmering purple dot, which must be Cheese trying to catch up to you.",
+    "opt": [
+      {
+        "to": ">drop>Cheese2>>if>crime>0>@jericho woods 16-1>>if>crime>1>@jericho woods 16-2>@jericho woods 16-3",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho woods 16-2": {
+    "title": "Jericho",
+    "text": "Suddenly, you hear busy footsteps everywhere around you.\nYou see guards pop out from behind the crates around you.\n\nGuard: [Bloodied weapon. It's the killer, go go!]",
+    "opt": [
+      {
+        "to": ">encounter>guards>@jericho jail>@jericho woods 16-1",
+        "text": "Fight"
+      }
+    ]
+  },
+  "jericho woods 16-3": {
+    "title": "Jericho",
+    "text": "Assistant: [Please, can you let me go now?]\n\nSuddenly, you hear busy footsteps everywhere around you.\nYou see guards pop out from behind the crates around you.\nThe assistant runs away toward the guards.\n\nAssistant: [HELP! They abducted me!]",
+    "opt": [
+      {
+        "to": ">encounter>guards>@jericho jail>@jericho woods 16-1",
+        "text": "Fight"
+      }
+    ]
+  },
+  "jericho woods 16-1": {
+    "title": "Jericho",
+    "text": "You sit down and wait patiently for Cheese to arrive.\n\nCheese: [Hey. I accidentally used my amulet. My bad.]\n\nYou climb down a ladder on the side of the building and enter the streets of Jericho.",
+    "opt": [
+      {
+        "to": ">join>Cheese2>@jericho 1",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho jail": {
+    "title": "Jericho Jail",
+    "text": "You are severely beaten by the guards and dragged into a large building complex.\nThey take away your weapons and money.\nThey cuff your hands and throw you in a large brass cell.",
+    "opt": [
+      {
+        "to": ">moneySet>0>>removeAll>>force item>prisoner clothes>>force item>prisoner pants>>force item>pickaxe>@jericho jail 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho jail 2": {
+    "title": "Jericho Quarry",
+    "text": "They move your cage out of the city to some quarry out by the cliffs.\n\nThey cuff your legs to a heavy metal ball.\n\nThere are about ten other prisoners in the quarry.\n\nPrisoner: [Take this pick. You see those two barrels? You need to fill those with copper.]\n\nFat prisoner: [No, you need to fill all three barrels over there.]\n\nShort prisoner: [Fill mine while you're at it too, rookie!]",
+    "opt": [
+      {
+        "to": "@jericho jail 3-3",
+        "text": "Okay"
+      },
+      {
+        "to": ">encounter>jericho prisoners>@jericho jail 3-2>@jericho jail 3-1",
+        "text": "Fight these losers"
+      }
+    ]
+  },
+  "jericho jail 3-2": {
+    "title": "Jericho Quarry",
+    "text": "Fat Prisoner: [HAHAHAHA! I like this guy! Keep fighting rookie, you're gonna mine for me from now on!]\n\nThe prisoners put you down on the ground and continue to beat you.\nYou see a purple dot behind the prisoners... It's getting bigger.\n\nGuard: [What the hell is that?]\n\nYou are suddenly engulfed in a fiery explosion.\nYou pass out...",
+    "opt": [
+      {
+        "to": "@jericho jail 4",
+        "text": "Okay"
+      }
+    ]
+  },
+  "jericho jail 3-1": {
+    "title": "Jericho Quarry",
+    "text": "Prisoner: [Oof... Okay, you're a tough one. Hey guys, come over here, this rookie wants to fight!]\n\nDozens of prisoners walk toward you.\nThe guards also gather around, interested in watching this fight.\nAbove the crowd of people gathering around you, you notice a purple light in the sky. It is getting bigger.\n\nPrisoner: [Alright rookie, time for a good beating!]\n\nA good number of the crowd rushes toward you!\nSuddenly, you are blinded by strong light and deafened by a loud sound of explosion.. You lose consciousness.",
+    "opt": [
+      {
+        "to": "@jericho jail 4",
+        "text": "Okay"
+      }
+    ]
+  },
+  "jericho jail 3-3": {
+    "title": "Jericho Quarry",
+    "text": "Another prisoner: [Hey, fill mine too!]\n\nScarred prisoner: [You see that barrel by the post? Fill that. To the rim.]\n\nSome prisoners just straight out give you their pickaxes.\n\nLimping grandpa prisoner: [You know what to do. Mine's the one on the far right.]\n\nGuard: [What the hell?]\n\nYou look where the guard is looking at and see a purple ghost in the sky.\nIt materializes on the second floor of the guard tower... and it's Cheese.\nCheese starts casting fireball.\n\nGuard: [Is that... a wizard?]\n\nThe fireball strikes the guard, and the resulting explosion engulfs everyone nearby.\n\nGuard: [We are under attack!]\n\nAnother guard: [Who? Where?]\n\nAnother fireball hits the dormitory building.\nPeople run out of the building screaming, on fire.\nYou break your foot chain with your pickaxe and run towards the exit with the other prisoners.\nJust as you make it to the gates, you are engulfed by a fiery explosion...",
+    "opt": [
+      {
+        "to": "@jericho jail 4",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho jail 4": {
+    "title": "Jericho Jail",
+    "text": "You wake up in the prison hospital.\nThe place is packed with badly burnt prisoners and guards.\nA guard comes in and escorts you out.\nYou look carefully, and it's Cheese in guard uniform.\n\nCheese: [You all looked the same, so I just fireballed everyone. Here, wear this.]",
+    "opt": [
+      {
+        "to": ">heal>4>>drop>pickaxe>>item>silk robe>@jericho jail 5",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho jail 5": {
+    "title": "Jericho Jail",
+    "text": "Cheese: [Hey, I gotta take this prisoner to the city. Help me out.]\n\nGuard: [Ask one of them to give you a ride.]\n\nYou and Cheese hitch a ride on a wagon to Jericho.\n\nCheese: [Easy stuff. You can thank me later.]\n\nYou arrive back in Jericho.\n\nGuard: [To the jail, right?]\n\nCheese: [Nah, just drop me off here.]",
+    "opt": [
+      {
+        "to": "@jericho 1",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho 1": {
+    "title": "Jericho",
+    "text": "You take look around you.\nBuildings taller than trees all around you block the skies.\nMetal pipes connect floors and rooms of buildings, unleashing steam and smoke at their ends.\nStrange orange light on a pole decorate the streets, where people wearing fancy leather jackets and wearing funny metal and glass shapes on their faces roam.\nThey are either completely apathetic toward you or points and laughs at Cheese's dirty hair.\nOnce in a while you see someone driving a ridiculously large wheel with a wagon attached behind.\n\nThe entire city is saturated with screeching metal sounds and smell of sulfur.",
+    "opt": [
+      {
+        "to": "@jericho 2",
+        "text": "Look for the Guild of Things",
+        "reqs": ["!ally>Lucid"]
+      },
+      {
+        "to": "@jericho 4",
+        "text": "Proceed",
+        "reqs": ["ally>Lucid"]
+      }
+    ]
+  },
+  "jericho 2": {
+    "title": "Jericho",
+    "text": "You ask around for the Guild of Things.\n\nThe residents point to one of the tallest towers in the city.\n\nCheese: [Wow, Lucid might be a big boy.]\n\nYou enter the building.\nYou are astonished at how smooth, clean, and light brown the inside of the building is.\nA fat man wearing full leather armor stops you.\n\nGuild Door Guard: [Wait, what's your business here?]",
+    "opt": [
+      {
+        "to": "@jericho 3",
+        "text": "We're here to see Lucid"
+      }
+    ]
+  },
+  "jericho 3": {
+    "title": "Jericho",
+    "text": "Guild Door Guard: [Ok, just stay here. I'll tell Lucid.]\n\nHe goes and talks to one of the people in the building.\n\nCheese: [Did you just tell a person to tell Lucid that we're here?]\n\nGuild Door Guard: [Yes. If he knows you, he'll be here.]\n\nCheese: [How would he know if it's me if I haven't even told you my name yet?]\n\nGuild Door Guard: [Oh, he'd know.]\n\nFive minutes later, you see Lucid and Pemmi descend down from above in a small cage.\nThe cage door opens and they greet you with open arms.\n\nPemmi: [Hey! You're here!]\n\nLucid: [Very good, friends. This is a pleasant surprise.]",
+    "opt": [
+      {
+        "to": "@jericho 4",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho 4": {
+    "title": "Jericho",
+    "text": "You, Pemmi, Lucid, and Cheese walk down the streets of Jericho.\n\nCheese: [Ooo, what's that?]\n\nLucid: [That is a bicycle. You sit and pump a set of pistons with your legs, and the machine moves you and your luggage with ease.]\n\nCheese: [What's that? Looks dangerous.]\n\nLucid: [That is a propeller. Converts wind into moving parts.]\n\nCheese: [What are those hideous things that people are wearing?]\n\nLucid: [Those are glasses. They let you see better.]\n\nYou arrive at a fancy tavern with multiple pipes coming out of its windows.\n\nCheese: [Wow, metal chairs!]\n\nPeople look at Cheese.\n\nPemmi: [Cheese, please shut up in here.]\n\nLucid: [This is an inn where you can stay. You should get cleaned and dressed like a Jericho resident as soon as possible.]\n\nCheese: [Like Jericho-nians? Looks weird as hell.]\n\nLucid: [Cheese, your purpose here is to get help for Ant Hill, isn't it? It's going to be very helpful if you adjust to Jericho's looks first.]\n\nCheese: [Actually, that's his business. I'm just here for the tour.]\n\nLucid: [...]",
+    "opt": [
+      {
+        "to": ">save>temp>0>@jericho camp",
+        "text": "Proceed to your room"
+      }
+    ]
+  },
+  "jericho camp": {
+    "title": "Jericho",
+    "text": "You are at the Jericho Inn.\n\nYour room is at the second floor, with a window providing a wide view of the streets of Jericho.\nThe sound of screeching metal from the streets and people talking in the lobby can be heard in your room without much effort.",
+    "opt": [
+      {
+        "to": ">add>temp>1>@jericho first talk",
+        "text": "Visit the Guild of Things",
+        "reqs": ["var>temp>0", "var>guild>0"]
+      },
+      {
+        "to": "@jericho talk",
+        "text": "Visit the Guild of Things",
+        "reqs": ["!var>temp>0", "var>guild>0"]
+      },
+      {
+        "to": "@jericho guild",
+        "text": "Visit the Guild of Things",
+        "reqs": ["!var>guild>0"]
+      },
+      {
+        "to": ">view shop>Jericho Shop>@jericho camp",
+        "text": "Visit the shop"
+      },
+      {
+        "to": "@jericho tavern",
+        "text": "Visit the tavern",
+        "reqs": ["var>getweapon>1"]
+      },
+      {
+        "to": "@jericho tavern find",
+        "text": "Visit the tavern",
+        "reqs": ["var>quest>crate", "!var>getweapon>1"]
+      },
+      {
+        "to": "@jericho new",
+        "text": "Visit New Jericho",
+        "reqs": ["var>getweapon>2"]
+      },
+      {
+        "to": "@jericho depart",
+        "text": "Prepare to leave Jericho",
+        "reqs": ["var>guild>4"]
+      },
+      {
+        "to": ">view rest>@jericho camp",
+        "text": "Rest and heal"
+      }
+    ]
+  },
+  "jericho first talk": {
+    "title": "Guild of Things",
+    "text": "Guild Door Guard: [You again? Just go up to suite 303.]\n\nCheese: [Donno how.]\n\nThe guard shoves you and Cheese into the brass cage in the middle of the room and presses some buttons.\nYou are carried upward into a lobby on the third floor.\n\nLucid: [Oh.]\n\nPemmi: [Hey.]\n\nCheese: [What are you doing? Oh, mother of Gaia, poor Cobby!]\n\nLucid: [Please excuse us. You've come to talk about the Ant Hill situation, yes? Please wait in that room, I'll be with you shortly.]\n\nYou and Cheese walk in to Jericho's office and wait.\nA moment later, Lucid and Pemmi joins you.",
+    "opt": [
+      {
+        "to": ">save>guild>0>>save>gethelp>0>>save>getweapon>0>>save>getknow>0>@jericho talk",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho talk": {
+    "title": "Guild of Things",
+    "text": "Lucid: [So. What is your plan now?]",
+    "opt": [
+      {
+        "to": "@jericho talk gather",
+        "text": "Gather help for Ant Hill",
+        "reqs": ["var>gethelp>0"]
+      },
+      {
+        "to": "@jericho talk weapons",
+        "text": "Gather weapons and artifacts for Ant Hill",
+        "reqs": ["var>getweapon>0"]
+      },
+      {
+        "to": "@jericho talk spiders",
+        "text": "Gather knowledge about the horned spiders",
+        "reqs": ["var>getknow>0"]
+      },
+      {
+        "to": ">moneyAdd>40>@jericho talk job",
+        "text": "Earning money in Jericho",
+        "reqs": ["var>guild>0"]
+      },
+      {
+        "to": "@jericho get weapons",
+        "text": "Go buy the crate of muskets",
+        "reqs": ["moneyG>4000"]
+      },
+      {
+        "to": "@jericho talk lucid",
+        "text": "About Lucid"
+      },
+      {
+        "to": "@jericho camp",
+        "text": "Go back to your room"
+      }
+    ]
+  },
+  "jericho talk job": {
+    "title": "Guild of Things",
+    "text": "Lucid: [The inn is free for you to stay in. Also, take this.]\n\nLucid hands you 40g.\n\nLucid: [You could take jobs from the guild if you want. The guild can provide you gold and many useful items. I'll let them know downstairs that you are looking for jobs.]",
+    "opt": [
+      {
+        "to": ">save>guild>1>@jericho talk",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho talk lucid": {
+    "title": "Guild of Things",
+    "text": "Lucid: [I work here in the Guild of Things. I had taken an offer from the guild to explore the frontier settlements to look for some artifact. I had known that the frontier was a dangerous place, but I never imagined that it could be this bad.]\n\nCheese: [It ain't so bad, if you're tough.]\n\nLucid: [No... The spiders, they had the strength and wits to overtake humanity's place at the top of the food chain. It shocked me.]\n\nLucid: [I wasn't successful in accomplishing my mission, so I may be down in the frontier again. I will take this opportunity to help you and your people.]",
+    "opt": [
+      {
+        "to": "@jericho talk",
+        "text": "Thank you"
+      }
+    ]
+  },
+  "jericho talk gather": {
+    "title": "Guild of Things",
+    "text": "Lucid: [Frankly, there are very few ways to get people to travel all the way to Ant Hill to save some people they don't know exists... And not just anyone, you need many people who know how to fight against ferocious monsters.]\n\nLucid: [The only group I can think of is the infamous Adventurers Guild... ]\n\nPemmi: [Infamous?]\n\nLucid: [They've had their share of scandals. They've been accused of thievery, murder, and demon worship, among others.]\n\nCheese: [Oh, fucking great. That's great, dude.]\n\nLucid: [I'm just brainstorming available options. The Adventurers Guild may help you defeat the spiders, even with low compensation, if you can promise them artifacts.]\n\nPemmi: [But we don't have artifacts... Oh, the feral caves!]\n\nLucid: [If Cheese shows them his amulet's power, they may even agree to help you for free.]\n\nCheese: [No... Are you kidding me?]",
+    "opt": [
+      {
+        "to": "@jericho talk",
+        "text": "We'll come back to this later"
+      },
+      {
+        "to": ">save>gethelp>1>@jericho get help",
+        "text": "This is a good idea, let's get started"
+      }
+    ]
+  },
+  "jericho talk spiders": {
+    "title": "Guild of Things",
+    "text": "Lucid: [When I accepted the contract to the frontier, I was given access to the great library to study the frontier. I remember there being a book of menageries. Maybe that book could help you.]",
+    "opt": [
+      {
+        "to": "@jericho talk",
+        "text": "We'll come back to this later"
+      },
+      {
+        "to": ">save>getknow>1>@jericho get know",
+        "text": "This is a good idea, let's get started"
+      }
+    ]
+  },
+  "jericho talk weapons": {
+    "title": "Guild of Things",
+    "text": "Lucid: [In Jericho, we have powerful weapons called muskets. I did not take it with me in my travels as it was too heavy and limited in ammunition. But if you can somehow bring these to Ant Hill and equip them with it, you will have good chance at destroying the spiders.]",
+    "opt": [
+      {
+        "to": "@jericho talk",
+        "text": "We'll come back to this later"
+      },
+      {
+        "to": ">save>getweapon>1>@jericho get weapon",
+        "text": "This is a good idea, let's get started"
+      }
+    ]
+  },
+  "jericho get know": {
+    "title": "Guild of Things",
+    "text": "Lucid: [I'm afraid that I can't take the book out of the library for you. I recommend that you take up on a job with the guild and ask for library access up above.]\n\nPemmi: [Up?]\n\nLucid: [Yes, sweetie, the library is on an airship. We'll need to take an air boat to get there. When you have time, go downstairs and ask for a job. When they give you a list of available contracts, pick one that requires library access.]",
+    "opt": [
+      {
+        "to": ">add>getknow>1>>save>guild>1>@jericho talk",
+        "text": "Ok..."
+      }
+    ]
+  },
+  "jericho get know 2": {
+    "title": "Guild of Things",
+    "text": "Lucid: [When you have time, go downstairs and ask for a contract. When you've gained some trust with the guild, ask them for a library card.]",
+    "opt": [
+      {
+        "to": "@jericho talk",
+        "text": "Ok"
+      }
+    ]
+  },
+  "jericho get weapon": {
+    "title": "Guild of Things",
+    "text": "Lucid: [Alright then, let's visit the supply district.]\n\nLucid guides you through the city to the supply district, where buildings are rather wide and the air is replaced with steam and smoke.\n\nSmith: [Howdy.]\n\nLucid: [Hello. We're looking to buy muskets. As much muskets and ammunition as possible for 4 people to carry around.]\n\nSmith: [Alright. That'll be around 4000g.]\n\nLucian: [We don't have that much money right now. Is there a cheaper option?]\n\nSmith: [Unless you make your own muskets, no.]\n\nLucian: [Well... I don't see how we can make 4000g on our own. We'll have to think of something else.]",
+    "opt": [
+      {
+        "to": "@jericho talk",
+        "text": "Ok"
+      }
+    ]
+  },
+  "jericho get help": {
+    "title": "Adventurers Guild",
+    "text": "Cheese: [The moment this amulet they're gonna kill us over it like those bandits in the woods. I don't trust these Jericho-nians.]\n\nLucid: [They can't just kill you in the city. Also, those could be just rumors, Cheese. We'll see how it turns out.]\n\nLucid leads you to the Adventurers Guild, right across the street.\n\nRecipient: [Hello, how may I help you?]\n\nLucian: [We're looking to get help fighting a colony of horned spiders... in a frontier settlement. Can your guild provide help?]\n\nRecipient: [Oh... Let me talk to my boss. I'll be right back.]\n\nA few minutes later, a giant man with scars on his face shows up.\n\nBigs: [Hello. My name is Bigs. I'm the Guild Lieutenant. You said you have a horned spider situation?]\n\nLucian: [Yes. An entire colony of spiders. Can you help?]\n\nBigs: [We haven't been doing mercenary work for a while. How many spiders are we talking about? A colony? We're going to need at least 10000g.]\n\nCheese: [Oh, great mother of Gaia!]\n\nLucid: [We have knowledge of a deep ancient mine with powerful artifacts.]\n\nBigs: [Oh?]\n\nLucid stares at Cheese.\n\nCheese: [...]",
+    "opt": [
+      {
+        "to": "@jericho get help 2",
+        "text": "Force Cheese to show his power"
+      }
+    ]
+  },
+  "jericho get help 2": {
+    "title": "Adventurers Guild",
+    "text": "You reach for Cheese's amulet.\nCheese tries to run but you grab him.\nJust as you are about to reach the amulet, Cheese presses it and turns into a purple phantom.\n\nBigs: [Incredible!]\n\nCheese stuns you and floats out the window.\n\nLucian: [We had found a few similar artifacts. The mine was infested with... some kind of cursed undead, so we did not delve in any further. The mine is located deep inside one of the horned spider nests.]\n\nBigs: [And... this place is at the frontier? Hmm... You're Lucid from the guild across, right? I'll visit you sometime later once I've talked this through with everyone.]\n\nYou leave the guild.\n\nPemmi: [Well, I hope they're up to the challenge.]\n\nLucid: [He sounded pretty excited about it. Shall we return?]",
+    "opt": [
+      {
+        "to": "@jericho talk",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho tavern": {
+    "title": "Brass Dishes",
+    "text": "You, Cheese, and Pemmi walk into a Jericho tavern named Brass Dishes.\n\nPemmi: [It's nice here, don't you think?]\n\nWaiter: [What would you like to have?]\n\nYou are given a menu.",
+    "opt": [
+      {
+        "to": ">save>temp>soup>@jericho tavern 2",
+        "text": "A leek soup with cheese and asparagus"
+      },
+      {
+        "to": ">save>temp>sweetroll>@jericho tavern 2",
+        "text": "Some sweetrolls and raw salmon"
+      },
+      {
+        "to": ">save>temp>steak>@jericho tavern 2",
+        "text": "A steak"
+      }
+    ]
+  },
+  "jericho tavern 2": {
+    "title": "Brass Dishes",
+    "text": "You eat your %?temp.\nIt tastes alright.\n\nLocal: [Hey, you're the guy who turns into ghosts!]\n\nCheese: [The what? you believe in ghosts? get outta here.]\n\nAnother local: [Yea, he's the guy who destroyed the guards! I'm sure!]\n\nLocal: [Look mate, you need to get in the tourney, you're gonna be rich, I swear!]\n\nCheese: [What tourney and how much rich?]\n\nLocal: [It's the tournament at New Jericho, winner gets a grand prize of 5000 gold!! If you can beat up an entire squad of guards, you're the one who can get that prize! And, and! Don't forget me, mate, throw me a coin!]\n\nThe entire tavern starts cheering for Cheese.\nCheese gathers mana and juggles a fireball with a big smile.\n\nCheese: [Aight, I'm the ghost wizard, ya got me. If I win that tourney or whatever, I'll buy ya'll drinks for a week.]\n\nEveryone goes wild, chanting 'Ghost Wizard'.\n\nBy the end of the day, you've had more drinks than you can remember, all for free.",
+    "filler": ["%?temp"],
+    "opt": [
+      {
+        "to": ">time>12>>save>getweapon>2>>heal>8>>view forget>@jericho camp",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho guild": {
+    "title": "Guild of Things",
+    "text": "You are at the Guild of Things lobby.\n\nThe fat door guard makes a conversation with you, complaining about the state of Guild of Things.",
+    "opt": [
+      {
+        "to": "@jericho talk",
+        "text": "Visit Lucid"
+      },
+      {
+        "to": "@jericho guild register",
+        "text": "Sign up with the guild",
+        "reqs": ["var>guild>1"]
+      },
+      {
+        "to": "@jericho guild 2",
+        "text": "Ask for available jobs",
+        "reqs": ["!var>guild>1"]
+      },
+      {
+        "to": "@jericho quest research depart",
+        "text": "Wait for the research team to arrive",
+        "reqs": ["var>getknow>2"]
+      },
+      {
+        "to": "@jericho camp",
+        "text": "Return to inn"
+      }
+    ]
+  },
+  "jericho guild register": {
+    "title": "Guild of Things",
+    "text": "Recipient: [Please fill out these forms.]\n\nCheese: [Huh?]\n\nRecipient: [Can you write your name here?]\n\nCheese: [I know how to read.]\n\nRecipient: [Huh?]\n\nCheese: [We only know how to read.]\n\nRecipient: [Oh... Let me get Lucid real quick.]\n\nLucid comes down, and has a long conversation with the recipient.\n\nRecipient: [Alright. This way, please.]",
+    "opt": [
+      {
+        "to": ">save>guild>2>>questFill>Guild of Things>@jericho guild 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho guild 2": {
+    "title": "Guild of Things",
+    "text": "Manager: [Welcome. Would you like to see the contract listing?]",
+    "opt": [
+      {
+        "to": ">view quest>@jericho guild",
+        "text": "View contracts"
+      }
+    ]
+  },
+  "jericho quest kill": {
+    "title": "Guild of Things",
+    "text": "Manager: [This is a quest to fetch an artifact in the possession of outlaws. There are four of them out by the perimeter in a shack under the northern cliffs.]",
+    "opt": [
+      {
+        "to": "@jericho quest kill 2",
+        "text": "Depart"
+      }
+    ]
+  },
+  "jericho quest kill 2": {
+    "title": "Guild of Things",
+    "text": "Since you and Cheese didn't trust the air boats, you walk to the northern cliffs over an hour.\n\nCheese: [Hey look, thugs chilling by a brass shack.]",
+    "opt": [
+      {
+        "to": ">encounter>jericho outlaws>@defeat>@jericho quest kill done",
+        "text": "Ambush them"
+      },
+      {
+        "to": "@jericho quest kill 2-1",
+        "text": "Approach and talk to them"
+      }
+    ]
+  },
+  "jericho quest kill 2-1": {
+    "title": "Guild of Things",
+    "text": "You approach them and say hello.\nThey hello you back.\nYou have a conversation about how bad the streets of Jericho smells.",
+    "opt": [
+      {
+        "to": "@jericho camp",
+        "text": "These guys are pretty nice, let's go back"
+      },
+      {
+        "to": "@jericho quest kill 2-1 2",
+        "text": "Ask for the artifact"
+      },
+      {
+        "to": ">encounter>jericho outlaws>@defeat>@jericho quest kill done",
+        "text": "Stab them in the back"
+      }
+    ]
+  },
+  "jericho quest kill 2-1 2": {
+    "title": "Guild of Things",
+    "text": "They look at each other for a second then pulls out their swords.",
+    "opt": [
+      {
+        "to": ">encounter>jericho outlaws>@defeat>@jericho quest kill done",
+        "text": "Prepare to fight"
+      }
+    ]
+  },
+  "jericho quest kill done": {
+    "title": "Guild of Things",
+    "text": "You take the amulet and return to the guild.\n\nManager: [Very good! Here's your reward.]\n\nYou receive 20g.",
+    "opt": [
+      {
+        "to": ">save>guild>3>>moneyAdd>20>>questFill>Guild of Things 2>@jericho guild",
+        "text": "Proceed",
+        "reqs": ["!var>guild>3"]
+      },
+      {
+        "to": ">save>guild>3>>moneyAdd>20>@jericho guild",
+        "text": "Proceed",
+        "reqs": ["var>guild>3"]
+      }
+    ]
+  },
+  "jericho quest find": {
+    "title": "Guild of Things",
+    "text": "Manager: [We've lost a crate full of shock inducing rings.]\n\nCheese: [Why do you have a crate full of shocking rings?]\n\nManager: [We trade all kinds of artifacts in this guild.]\n\nCheese: [What particular use does shock rings have?]\n\nManager: [I don't know... maybe it's a part of some machine?]\n\nCheese: [Can we read up about it in the great library?]\n\nManager: [No... that's not part of this job at all. The crate was lost in the supply district, right before being sent here. The crate is a bit illegal, so try to avoid asking the guards about it.]",
+    "opt": [
+      {
+        "to": "@jericho quest find 2",
+        "text": "Depart"
+      }
+    ]
+  },
+  "jericho quest find 2": {
+    "title": "Guild of Things",
+    "text": "You find the warehouse quartermaster in the supply district.\n\nQuartermaster: [I've been transporting doodads for 3 guilds for the last 20 years, but never have lost a package like this. It's a shame.]\n\nPemmi: [Do you have any clues as to where it could be?]\n\nQuartermaster: [I don't, sorry.]",
+    "opt": [
+      {
+        "to": ">save>quest>crate>@jericho guild",
+        "text": "Go back to the guild"
+      }
+    ]
+  },
+  "jericho tavern find": {
+    "title": "Brass Dishes",
+    "text": "You, Cheese, and Pemmi walk into a Jericho tavern named Brass Dishes.\n\nPemmi: [I love Brass Dishes, we should come whenever we have the chance.]\n\nWaiter: [What would you like to have?]\n\nYou are given a menu.",
+    "opt": [
+      {
+        "to": ">save>temp>stir fry>@jericho tavern find 2",
+        "text": "Stir fried young grass roots and clams"
+      },
+      {
+        "to": ">save>temp>salad>@jericho tavern find 2",
+        "text": "Roasted rat skins salad"
+      },
+      {
+        "to": ">save>temp>milk pudding>@jericho tavern find 2",
+        "text": "Milk pudding"
+      }
+    ]
+  },
+  "jericho tavern find 2": {
+    "title": "Brass Dishes",
+    "text": "You enjoy your %?temp and talk about the whereabouts of the crate.\n\nWaiter: [Oh, the crate? it's back here. The quartermaster always leaves his stuff in here.]\n\nYou retrieve the crate.",
+    "filler": ["%?temp"],
+    "opt": [
+      {
+        "to": ">view forget>@jericho quest find done",
+        "text": "Return to the guild"
+      }
+    ]
+  },
+  "jericho quest find done": {
+    "title": "Guild of Things",
+    "text": "Manager: [Well done. We used to have someone run this contract every time I assigned it... I guess he was just fetching it from the bar all this time. I think we need a new quartermaster. What the hell was he doing with that crate in the bar, anyways?]\n\nThe manager gives you 20g.",
+    "opt": [
+      {
+        "to": ">save>guild>3>>moneyAdd>20>>questFill>Guild of Things 2>@jericho guild",
+        "text": "Proceed",
+        "reqs": ["!var>guild>3"]
+      },
+      {
+        "to": ">save>guild>3>>moneyAdd>20>@jericho guild",
+        "text": "Proceed",
+        "reqs": ["var>guild>3"]
+      }
+    ]
+  },
+  "jericho quest haggle": {
+    "title": "Guild of Things",
+    "text": "Manager: [There's a guy that we've been trying to buy an artifact from. He's a wizard that lives in a tower by the waterfall. We can offer up to 100g, but he's asking for 200. Take this 100g, you can keep any margins you make.]\n\nCheese: [This... doesn't seem like a fair contract.]\n\nManager: [If that's what you think, just take another contract. Remember that all we care about is the artifact, however you get it is none of our business.]",
+    "opt": [
+      {
+        "to": ">dropAll>>join>Pemmi>jericho quest haggle 2",
+        "text": "Depart"
+      }
+    ]
+  },
+  "jericho quest haggle 2": {
+    "title": "Guild of Things",
+    "text": "Cheese: [I'm out of this one. I'm, uh, supposed to have a spellcasting session with Lucid today.]\n\nYou and Pemmi take the air boat to the tower.\nPemmi throws up twice, and you only throw up once during the flight.\n\nPemmi: [I should've stayed back with Cheese... ugh!]\n\nYou arrive at the tower at the top of the mountain.\nYou knock, but no one answers.\nYou hear sound inside the tower.\nYou continue knocking...\nFinally, an old man wearing a blue robe and hat answers.\n\nTower Wizard: [Helloo?]\n\nYou tell him you're here to buy the artifact.\n\nTower Wizard: [Of course, yes, yes, come in!]\n\nTower Wizard: [Tea? It is very good, yes, good!]\n\nThe wizard leave you in the fancy living room and leaves to fetch some tea.\n\nPemmi: [Did you see him looking at me? I don't trust him at all...]\n\nTower Wizard: [I'm back! yes, ooh, here's some tea, would you mind telling me how you like the view?]\n\nPemmi: [No, we're quite busy. We'd appreciate it if we can talk about the artifact.]\n\nTower Wizard: [hehehe, of course, my darling, why, I may even consider giving it to you as a present! Just stay a while and make a conversation with a poor lonely old man.]",
+    "opt": [
+      {
+        "to": "@jericho quest haggle 2",
+        "text": "Alright"
+      },
+      {
+        "to": "@jericho camp",
+        "text": "No... We'll just go back."
+      }
+    ]
+  },
+  "jericho quest haggle 3": {
+    "title": "Guild of Things",
+    "text": "The old wizard talks about the wonders of spells over steam engines.\nYou and Pemmi do not even touch the tea.\n\nTower Wizard: [Why, aren't you all thirsty? This tea is really good, you must try it!]\n\nPemmi: [We... we come from a region where we only eat or drink after business is done.]\n\nTower Wizard: [Oh, and where's that?]\n\nPemmi: [It's Stone Henge, some frontier settlement far away. Please stop touching me with your foot.]\n\nTower Wizard: [Ah, excuse me, it's an old habit. Yes, Stone Henge, I've been there. Nice place, sadly infested with horned spiders.]\n\nPemmi: [Wait, you've been to the frontier? You know about the spiders?]\n\nTower Wizard: [Of course, dear. I've gone hunting for ancient ruins far and wide. I've explored distant lands and triumphed over many monstrosities!]\n\nThe old wizard goes on and on about his exploits.\n\nPemmi: [Like you said, Stone Henge and Ant Hill are both infested with those spiders. Is there any way you can help us?]\n\nTower Wizard: [Oh, sweetheart, you are so pretty when you plead like that, oh yes. But then, sadly, no. I can't help you. Those horned spiders are one of the most terrifying things I've seen.]\n\nPemmi: [We've killed a couple before, they can be defeated if we gather some people!]\n\nTower Wizard: [Oh, young girl, you have no idea what you're talking about. Does killing a few soldiers befall a kingdom? Killing a few spiders doesn't mean anything to them.]\n\nPemmi: [A kingdom?]\n\nTower Wizard: [Oh, sometimes I just talk too much. Here, take this artifact. Dear, listen to this old man and stay in Jericho where the grass is greener.]\n\nThe wizard refuses to talk any more about the spiders.\nYou leave the tower.",
+    "opt": [
+      {
+        "to": "@jericho quest haggle done",
+        "text": "Return to guild"
+      }
+    ]
+  },
+  "jericho quest haggle done": {
+    "title": "Guild of Things",
+    "text": "Manager: [He gave it to you for free? Wow. Honestly, I expected you to kill him and take it from him. But this is even better. What was it, coercion or temptation? Actually, don't tell me.]\n\nYou receive an additional 20g for contract completion.",
+    "opt": [
+      {
+        "to": ">save>guild>3>>moneyAdd>20>>questFill>Guild of Things 2>@jericho guild",
+        "text": "Proceed",
+        "reqs": ["!var>guild>3"]
+      },
+      {
+        "to": ">save>guild>3>>moneyAdd>20>@jericho guild",
+        "text": "Proceed",
+        "reqs": ["var>guild>3"]
+      }
+    ]
+  },
+  "jericho quest research": {
+    "title": "Guild of Things",
+    "text": "Manager: [This is a research contract. We usually hand these out only to internal members, but... You are all registered under Lucid's name, so you are able to take this contract. You will join a research team in researching what caused the ground to fissure by the fields west of a Woodcutters' Village. There is a possibility that the fissure was man-made, which implies artifact involvement.]\n\nPemmi: [Will Lucid join us?]\n\nManager: [He's got a lot of work to do right now, but you should definitely ask him.]\n\nCheese: [Can we get library access? We need some background knowledge, you know?]\n\nManager: [Of course. Let me get you all a library card.]\n\nManager: [Here you go. You need to be waiting in the lobby by tomorrow, or the team will leave without you. Good luck!]",
+    "opt": [
+      {
+        "to": "@jericho quest research 2",
+        "text": "Visit Lucid"
+      }
+    ]
+  },
+  "jericho quest research 2": {
+    "title": "Guild of Things",
+    "text": "Lucid: [Very good, you got the library access. I will be with you tomorrow. It could be a bit dangerous, so be sure to prepare. Let's head out.]",
+    "opt": [
+      {
+        "to": "jericho quest research 3",
+        "text": "To library"
+      }
+    ]
+  },
+  "jericho quest research 3": {
+    "title": "New Jericho",
+    "text": "You take a wagon to an air boat rental in the middle of the dirt plains away from Jericho.\nLucid and Pemmi takes an air boat, and you and Cheese take another air boat toward New Jericho.\nAs soon as the boat lifts, Cheese enters ghost form.\n\nYou fly as high as the clouds.\nIn the clouds, you see a giant balloon airship bigger than any building you've seen on Jericho.\nYou land on a pad under the airship\n\nLucid: [Welcome to New Jericho. Where's Cheese? Oh.]\n\nYou enter the airship through a hatch on the ceiling and wait for Cheese to arrive.\n\nCheese: [Sup.]\n\nLucid: [Welcome to New Jericho. Let's get to the library.]\n\nYou leave the fancy arrivals hall decorated with various statues and paintings.\nYou follow Lucid through several narrow halls and enter the library.\nIt is a long room laced with labeled levers along the walls.\n\nLucid: [Alright, we'll each do our own studies then meet up here when we're done.]",
+    "opt": [
+      {
+        "to": "jericho library",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho library": {
+    "title": "New Jericho",
+    "text": "You walk up and down the library.\nThere's no chairs and barely any people...",
+    "opt": [
+      {
+        "to": "@jericho library reports",
+        "text": "Pull the lever labeled 'Reports'"
+      },
+      {
+        "to": "@jericho library fiction",
+        "text": "Pull the lever labeled 'Fiction'"
+      },
+      {
+        "to": "@jericho library manuals",
+        "text": "Pull the lever labeled 'Manuals'"
+      }
+    ]
+  },
+  "jericho library fiction": {
+    "title": "New Jericho",
+    "text": "You pull the lever labeled 'Fiction'.\nThe wall with the lever flips inward, and you find yourself in a small room full of books.\nYou sit on a chair and start reading a book about the story of a man went around Jericho killing pipe cleaners.",
+    "opt": [
+      {
+        "to": "@jericho library",
+        "text": "Leave room"
+      }
+    ]
+  },
+  "jericho library manuals": {
+    "title": "New Jericho",
+    "text": "You pull the lever labeled 'Manuals'.\nThe wall with the lever flips inward, and you find yourself in a small room full of manuals.\n\nMerchant: [Let me know if you want to buy any of them.]",
+    "opt": [
+      {
+        "to": ">view shop>Jericho Library Manuals>@jericho library",
+        "text": "View manuals"
+      },
+      {
+        "to": "@jericho library",
+        "text": "Leave room"
+      }
+    ]
+  },
+  "jericho library reports": {
+    "title": "New Jericho",
+    "text": "You pull the lever labeled 'Reports'.\nThe wall with the lever flips inward, and you find yourself in a small room full of books.\nYou see Pemmi sitting on a chair reading a book.\n\nPemmi: [Here, the book of menageries that Lucid was talking about. 'When the brave settlers left Jericho to create the frontier settlements 300 years ago, they have faced many monstrosities that no men have encountered before.' It has a list of monsters, but no horned spiders...]\n\nPemmi: [Wait, here. 'At the time of writing, new monstrosities such as the horned spiders have been reported in the frontier.']\n\nPemmi: [Let's see... 'It's only been a few years since the horned spiders have emerged to prey upon mankind, but they are reported to have a deep understanding of the human specie.' That's no help at all!]",
+    "opt": [
+      {
+        "to": "@jericho library done",
+        "text": "Leave room"
+      }
+    ]
+  },
+  "jericho library done": {
+    "title": "New Jericho",
+    "text": "Lucid: [Hey. Found what you need?]\n\nPemmi: [Apparently the horned spiders are pretty new. There's barely any information on them.]\n\nLucid: [I see... Let's go upstairs and tour around New Jericho before leaving.]",
+    "opt": [
+      {
+        "to": "@new jericho",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "new jericho": {
+    "title": "New Jericho",
+    "text": "You are at New Jericho main hall.\nThe huge room is fully lit with bright orange spell lights as well as sunlight from the windows on the side walls.\nThere are three rows of long fancy tables and countless chairs, only a few occupied by fancy looking aristocrats.\nThere are open stairs leading up to the second and third floor on the far end.",
+    "opt": [
+      {
+        "to": "@new jericho bar",
+        "text": "Visit the bar"
+      },
+      {
+        "to": "@new jericho colosseum",
+        "text": "Visit the colosseum",
+        "reqs": ["var>getweapon>2"]
+      },
+      {
+        "to": ">view shop>New Jericho Shop>@village",
+        "text": "Visit the shop"
+      },
+      {
+        "to": "@new jericho done",
+        "text": "Return to Jericho"
+      }
+    ]
+  },
+  "new jericho bar": {
+    "title": "New Jericho",
+    "text": "You, Cheese, Pemmi, and Lucid take a sit at the fancy New Jericho bar.\n\nCheese: [Golden lights and carpet floors, nice.]\n\nWaiter: [What would you like to have?]\n\nYou are given a menu.",
+    "opt": [
+      {
+        "to": ">view forget>@new jericho bar 2",
+        "text": "maggots and cheese with a cup of fermented honey"
+      },
+      {
+        "to": ">view forget>@new jericho bar 2",
+        "text": "quicksilver-coated fried brain tumor"
+      },
+      {
+        "to": ">view forget>@new jericho bar 2",
+        "text": "red tick popcorn with a cup of female urine"
+      }
+    ]
+  },
+  "new jericho bar 2": {
+    "title": "New Jericho",
+    "text": "That was pretty bad... You leave the rest on the table.\n\nPemmi: [You know Lucid is paying for all this, right? Don't order something that you're not going to finish...]",
+    "opt": [
+      {
+        "to": "@new jericho",
+        "text": "Head back"
+      }
+    ]
+  },
+  "new jericho colosseum": {
+    "title": "New Jericho",
+    "text": "Recipient: [Hello. The entrance fee is 5g.]",
+    "opt": [
+      {
+        "to": "@new jericho arena",
+        "text": "We're here to participate"
+      },
+      {
+        "to": ">moneyAdd>-5>@new jericho colosseum 2",
+        "text": "Pay 5g to watch the tournament",
+        "reqs": ["moneyG>5"]
+      },
+      {
+        "to": ">moneySet>0>@new jericho colosseum 2",
+        "text": "Ask Lucid to help pay 5g to watch the tournament",
+        "reqs": ["moneyL>4"]
+      }
+    ]
+  },
+  "new jericho arena defeat": {
+    "title": "Colosseum",
+    "text": "You, Cheese, Pemmi were all eliminated.\nSome bulky guy wins the grand prize.",
+    "opt": [
+      {
+        "to": "@new jericho",
+        "text": "Leave"
+      }
+    ]
+  },
+  "new jericho arena": {
+    "title": "Colosseum",
+    "text": "Coach: [New participants? good stuff, we were running out of slaves. The rules here are simple, you kill or defeat your enemies in a row, you get the money. Also, no explosions.]",
+    "opt": [
+      {
+        "to": ">encounter>arena 1>@new jericho arena defeat>>encounter>arena 2>@new jericho arena defeat>>encounter>arena 3>@new jericho arena defeat>>encounter>arena 4>@new jericho arena defeat>@new jericho arena win",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "new jericho arena win": {
+    "title": "Colosseum",
+    "text": "Broadcaster: [Amazing! You have triumphed over all other experts of violence! YOU DESERVE THE FIVE GRAND!]\n\nThe crowd cheers, and you receive a ticket worth 5000 gold.\nYou return to the waiting room.\n\nPemmi: [Yess! You are certainly better than any hunters I've seen! Cobby would've been so proud of you!]\n\nLucid: [Hold on to that ticket tight. You did very, very good!]\n\nCheese: [What kind of moronic duel outlaws fireball? This is complete bullshit. I could've won easy.]\n\nYou return to the main hall.",
+    "opt": [
+      {
+        "to": "@new jericho",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "new jericho colosseum 2": {
+    "title": "Colosseum",
+    "text": "You enter the colossum.\nYou watch two people hack and slash at each other with various weaponry.\nOne of them finally dies in the bloodbath.\nSome healers jump in, revive and heal the dead guy, and drag him off.\n\nCheese: [Looks pretty boring. I bet I could've beat anyone here.]\n\nLucid: [You're not allowed to use explosive magic here, Cheese.]\n\nCheese: [Then this isn't a fight. This is a child's play.]\n\nSome bulky guy wins the grand prize.",
+    "opt": [
+      {
+        "to": "@new jericho",
+        "text": "Leave"
+      }
+    ]
+  },
+  "new jericho done": {
+    "title": "New Jericho",
+    "text": "You return to Jericho...",
+    "opt": [
+      {
+        "to": ">save>getknow>2>@jericho camp",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho quest research depart": {
+    "title": "Jericho",
+    "text": "The research team arrives in the lobby.\n\nManager: [Here are the rest of your members.]\n\nTeam Lead: [Thank you. Nice to meet you all. Shall we go?]\n\nYou take another air boat ride to the cliffs.\n\nTeam Lead: [Are you alright? Not a fan of air boats, huh? That's fine. We're going to be walking from now on, since the machines don't work outside Jericho. Let's go.]\n\nCheese: [Legwork or air boat... life is pain.]",
+    "opt": [
+      {
+        "to": ">timeset>16>@jericho guild research canyon",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho quest research canyon": {
+    "title": "Fields",
+    "text": "You travel with the research team for a week and arrive at the Woodcutters' Village.\n\nTeam Lead: [Hello, can we stay here for a while?]\n\nVillager: [Who are you?]\n\nTeam Lead: [We're a research team from Jericho. We can pay for food and shelter.]\n\nVillager: [You're here to see the crevice? How long you gon be here?]\n\nTeam Lead: [We don't know yet, but maybe for a week. We'll pay 70 gold. 10 gold per day.]\n\nVillager: [All seven of you? alright. You can stay in that big building. You need some food now?]\n\nTeam Lead: [No, we're gonna take a look at the canyon before dinner, thank you.]\n\nVillager: [Alright. Just note that the canyon bridge is not done. We can't get it made because it's too dangerous over there.]",
+    "opt": [
+      {
+        "to": "@jericho guild research canyon 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho quest research canyon 2": {
+    "title": "Fields",
+    "text": "You and the team walks over to the canyon.\n\nTeam Lead: [Let's go down on to that surface below. Ready the spell lights.]\n\nThey tie a rope to a pole and climb down, one by one.\nYou follow right behind Lucid, and Cheese floats around the team lead.]\n\nTeam Lead: [Nice! I don't know how you're doing that, but could you scout ahead for us?]\n\nCheese: [Sure.]\n\nCheese floats down.\nYou start hearing weird whirring sounds from below.\n\nCheese: [Huh?]\n\nSomething hits Cheese from the darkness below.\nCheese's ghost body is ripped somewhat.\nHe tries to float toward the cliff.\n\nTeam Lead: [Light, shoot the light!]\n\nThe team shoots several spell lights toward the abyss.\nThere are countless amounts of masses of vines down below, slowly creeping toward your group.",
+    "opt": [
+      {
+        "to": ">dropAll>>join>Lucid>>encounter>four vines>@defeat>@jericho guild research canyon 3",
+        "text": "Fight"
+      }
+    ]
+  },
+  "jericho quest research canyon 3": {
+    "title": "Fields",
+    "text": "Team Lead: [Up! UP!!]\n\nYou find Cheese near the cliff.\n\nCheese: [Lucid! Heal me!]\n\nYou climb up the rope along with all other panicked research team.\nSome of the surviving vine things shoot metal fragments at your group.\nSeveral members get hit and fall into the abyss.\n\nYou get to the top and see Lucid climb up behind you, with ghosted Cheese on his back.\n\nTeam Lead: [What on earth was that? Vines shooting metals?]\n\nLucid: [We should get back to Jericho. There is no way we can save those that fell.]\n\nTeam Lead: [...You are right. We are ill equipped for this. We are going back.]\n\nYou return to Jericho.",
+    "opt": [
+      {
+        "to": ">save>guild>4>>dropAll>@jericho quest research done",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho quest research done": {
+    "title": "Guild of Things",
+    "text": "Manager: [Oh, yes, I heard about what happened. Research sometimes turn into bloodbath like this. It's just a part of the job at this point. Here's your 20g.]\n\nCheese: [Well... mission accomplished, I guess.]",
+    "opt": [
+      {
+        "to": ">var>gethelp>2>>moneyAdd>20>@jericho guild bigs",
+        "text": "Proceed",
+        "reqs": ["var>gethelp>1"]
+      },
+      {
+        "to": ">moneyAdd>20>@jericho guild",
+        "text": "Proceed",
+        "reqs": ["!var>gethelp>1"]
+      }
+    ]
+  },
+  "jericho guild bigs": {
+    "title": "Guild of Things",
+    "text": "You return to the guild lobby and see Bigs.\n\nBigs: [Howdy, our guild decided to invest in this venture. We're sending 8 of our finest members equipped with muskets to deal with the horned spiders.]\n\nPemmi: [Oh, yes!]\n\nBigs: [We're going to get prepared soon, just let us know when you are going back to the frontier.]",
+    "opt": [
+      {
+        "to": "@jericho guild",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho get weapons": {
+    "title": "Guild of Things",
+    "text": "Lucid: [Alright, we got the money, let's find the smith.]\n\nYou go over to the supply district and buy two dozens of muskets and a barrel of ammunition.\n\nLucid: [That should be enough to arm the veteran hunters of Ant Hill or Stone Henge.]",
+    "opt": [
+      {
+        "to": ">save>getweapon>3>@jericho camp",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho depart": {
+    "title": "Jericho",
+    "text": "You prepare to leave Jericho.\nAt the streets in front of the inn you see Cheese, Pemmi, and Lucid, all packed up and ready to go.",
+    "opt": [
+      {
+        "to": "@jericho depart 1-1",
+        "text": "Check status",
+        "reqs": ["var>getweapon>3", "!var>gethelp>2"]
+      },
+      {
+        "to": "@jericho depart 1-2",
+        "text": "Check status",
+        "reqs": ["!var>getweapon>3", "var>gethelp>2"]
+      },
+      {
+        "to": "@jericho depart 1-3",
+        "text": "Check status",
+        "reqs": ["var>getweapon>3", "var>gethelp>2"]
+      },
+      {
+        "to": "@jericho depart 1-4",
+        "text": "Check status",
+        "reqs": ["!var>getweapon>3", "!var>gethelp>2"]
+      }
+    ]
+  },
+  "jericho depart 1-1": {
+    "title": "Guild of Things",
+    "text": "Lucid: [We got enough muskets to equip the veteran hunters of Ant Hill or Stone Henge. It's a shame that we couldn't get the adventurers. Let's return now.]",
+    "opt": [
+      {
+        "to": ">save>chapter>5>>refresh chapter>@start",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho depart 1-2": {
+    "title": "Guild of Things",
+    "text": "Lucid: [We got the adventurers. They'll be of great help in defeating the horned spiders. But it's a shame that we couldn't get muskets to arm the hunters. Let's return now.]",
+    "opt": [
+      {
+        "to": ">save>chapter>5>>refresh chapter>@start",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho depart 1-3": {
+    "title": "Guild of Things",
+    "text": "Lucid: [We got enough muskets to equip the hunter and experienced adventurers to defeat the horned spiders. Let's return to free the frontier settlements!]",
+    "opt": [
+      {
+        "to": ">save>chapter>5>>refresh chapter>@start",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "jericho depart 1-4": {
+    "title": "Guild of Things",
+    "text": "Pemmi: [Alright, now... We didn't get the weaponry nor the help from Jericho as we had hoped. But we gotta do what we gotta do for our people.]\n\nLucid: [Yes. We'll see what we can do.]",
+    "opt": [
+      {
+        "to": ">save>chapter>5>>refresh chapter>@start",
+        "text": "Proceed"
+      }
+    ]
+  }
+}

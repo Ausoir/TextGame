@@ -18,7 +18,12 @@ class Game(context: Context){
     )
 
     init {
+        if (player.model.seed == -1){
+            player.model.seed = (0..9999).random()
+        }
         player.model.unit.healthPt = player.model.unit.health - player.model.damaged
+        player.model.unit.allies = arrayListOf()
+        player.model.unit.foes = arrayListOf()
     }
 
     fun refreshChapter(){

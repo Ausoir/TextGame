@@ -72,6 +72,12 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
                         target.position += 1
                     }
                 }
+                if ("mana regeneration" in target.skills){
+                    target.mana += 1
+                }
+                if ("perseverance" in target.skills){
+                    target.inflict(1)
+                }
             }
             "shuffle" -> {
                 target.deck?.shuffle()
@@ -104,6 +110,14 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
             "health", "blood" -> {
                 healthChange = value
             }
+            "torment" -> {
+                healthChange = -(target.health / 2)
+            }
+            "decapitate" -> {
+                if (target.health <= value){
+                    healthChange = -(target.health + target.block)
+                }
+            }
             "rot" -> {
                 healthChange = -(target.health - target.healthPt)
             }
@@ -112,6 +126,19 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
             }
             "mana" -> {
                 target.mana += value
+            }
+            "siphon" -> {
+                if (target.mana > 0) {
+                    target.mana -= value
+                    if (imposer != null) {
+                        imposer.mana += value
+                    }
+                    result += "<color:#000055>${target.replaceNouns("%Us mana is siphoned by %F")}\n"
+                }
+            }
+            "mimic" -> {
+                val mimic = imposer?.deck?.getLastMove()
+                mimic?.perform(imposer, arrayListOf())
             }
             "retarget" -> {
                 for (foe in target.foes.shuffled()){
@@ -125,13 +152,42 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
             }
             "observe" -> {
                 val moveNames = target.deck!!.getQueues()
-                result += "<i>${target.replaceNouns("%U")} may use: ${moveNames.joinToString { it }}</i>\n"
+                result += "<color:#000055>${target.replaceNouns("%U")} may use: ${moveNames.joinToString { it }}\n"
             }
             "taunt" -> {
                 target.position = imposer?.position ?: target.position
             }
             "defend" -> {
                 target.block += target.foes.size
+            }
+            "dispel" -> {
+                result += target.removeAllStatus()
+            }
+            "repeat" -> {
+                target.deck?.undoMove()
+            }
+            "curse" -> {
+                for (foe in target.foes){
+                    foe.inflict(-1)
+                }
+                for (foe in target.allies){
+                    foe.inflict(-1)
+                }
+                target.inflict(-1)
+            }
+            "glass form" -> {
+                target.deck?.clearMoves()
+                target.deck?.addNextMove(MoveModel.mapping["bleeding edge"] ?: MoveModel.shuffle)
+                target.deck?.addNextMove(MoveModel.mapping["bleeding edge"] ?: MoveModel.shuffle)
+                target.deck?.addNextMove(MoveModel.mapping["camouflage"] ?: MoveModel.shuffle)
+                target.deck?.addNextMove(MoveModel.mapping["crystallize"] ?: MoveModel.shuffle)
+            }
+            "spider form" -> {
+                target.deck?.clearMoves()
+                target.deck?.addNextMove(MoveModel.mapping["dodge"] ?: MoveModel.shuffle)
+                target.deck?.addNextMove(MoveModel.mapping["venomous bite"] ?: MoveModel.shuffle)
+                target.deck?.addNextMove(MoveModel.mapping["burrow"] ?: MoveModel.shuffle)
+                target.deck?.addNextMove(MoveModel.mapping["weave web"] ?: MoveModel.shuffle)
             }
         }
         result += getStatusDescription(target, add_text)
@@ -142,9 +198,14 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
             }
             val oldHp = target.healthPt
             result += target.inflict(healthChange)
-            if (imposer != null && effect == "blood" && oldHp != target.healthPt){
-                result += imposer.inflict(oldHp - target.healthPt)
-                result += getStatusDescription(target, end_text)
+            if (imposer != null) {
+                if (effect == "blood" && oldHp != target.healthPt) {
+                    result += imposer.inflict(oldHp - target.healthPt)
+                    result += getStatusDescription(target, end_text)
+                }
+                if (target.getStatus("thorn") != null){
+                    imposer.inflict(-1)
+                }
             }
         }
         return result
@@ -154,6 +215,7 @@ data class Status(val id: String?, val effect: String, val target: Int, val dura
 data class MoveModel(val effects: List<Status>, val reqs: List<Status>?, val speed: Int, val desc: String, val text: String): Serializable{
     companion object {
         lateinit var shuffle: MoveModel
+        lateinit var mapping: HashMap<String, MoveModel>
         fun getWait(text: String): MoveModel{
             return MoveModel(emptyList(), emptyList(), 1, "", text)
         }
@@ -276,6 +338,7 @@ class MoveController(fileManager: FileManager) {
         val listType = object : TypeToken<HashMap<String, MoveModel>?>() {}.type
         val result: HashMap<String, MoveModel> = Gson().fromJson(data, listType)
         MoveModel.shuffle = result["shuffle"]!!
+        MoveModel.mapping = result
         for ((key, value) in result){
             value.name = key
         }

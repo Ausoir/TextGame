@@ -67,4 +67,28 @@ class Deck(var me: UnitModel, val moves: MutableList<MoveModel>, handSize: Int) 
         result.add("gather")
         return result
     }
+
+    fun getLastMove(): MoveModel? {
+        return if (discard.isNotEmpty() && discard.last() >= 0) {
+            moves[discard.last()]
+        } else {
+            null
+        }
+    }
+
+    fun undoMove() {
+        if (discard.isNotEmpty() && discard.last() >= 0) {
+            queue.add(0, discard.last())
+            discard.remove(discard.last())
+        }
+    }
+
+    fun clearMoves(){
+        queue.clear()
+        discard.clear()
+        moves.clear()
+        for (i in hand.indices){
+            hand[i] = i
+        }
+    }
 }

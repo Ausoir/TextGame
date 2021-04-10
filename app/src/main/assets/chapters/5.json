@@ -1,0 +1,22 @@
+{
+  "start": {
+    "title": "Final Chapter",
+    "text": "",
+    "opt": [
+      {
+        "to": ">timeset>14>>heal>9>>dropAll>>save>temp> >@field 1",
+        "text": "Begin"
+      }
+    ]
+  },
+  "field 1": {
+    "title": "Fields",
+    "text": "",
+    "opt": [
+      {
+        "to": "You reach the abyssal canyon once again.\n\nLucid: [We're here again. After that incident, the manager told me stories about various things in and around the canyon that... have never been seen anywhere else.]\n\nPemmi: [Like new species?]\n\nLucid: [No. Things that are... strange. It's hard to explain. We should be as careful as possible.]\n\nYou tell him how you had crossed the canyon when you first came here.\n\nLucid: [Using the rope? That... seems dangerous. But if this canyon is as big as you say, then we may not have a choice.]",
+        "text": ""
+      }
+    ]
+  }
+}

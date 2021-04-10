@@ -7,9 +7,10 @@
     <string name="page_title">%1$s  -  %2$s</string>
     <string name="profile_title">Your Profile</string>
     <string name="shop_title">Shop</string>
+    <string name="quest_title">Quest</string>
     <string name="combat_title">Combat - %1$s</string>
     <string name="learn_title">Moveset</string>
-    <string name="advance_title">Specialization</string>
+    <string name="advance_title">Choose Your Specialization</string>
     <string name="profile_button_equipment">Equipments</string>
     <string name="profile_button_moveset">Movesets</string>
     <string name="profile_button_companion">Companions</string>
@@ -38,4 +39,6 @@
     <string name="sell">Sell</string>
     <string name="leave">Leave</string>
     <string name="money">You currently have %1$dg.</string>
+    <string name="quest">Select a contract.</string>
+    <string name="quest_confirm">Start this contract? It will cancel all previous contracts.</string>
 </resources>
