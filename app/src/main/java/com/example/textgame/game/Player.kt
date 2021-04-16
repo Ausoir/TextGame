@@ -10,7 +10,7 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
                        var equip: ArrayList<String>, val vars: HashMap<String, String>,
                        var unit: UnitModel, var companion: ArrayList<String>, var companionMoves: HashMap<String, ArrayList<String>>,
                        var specialization: String, var quests: ArrayList<String>) : Parcelable {
-    @Suppress("JAVA_CLASS_ON_COMPANION")
+    @Suppress("JAVA_CLASS_ON_COMPANION", "UNCHECKED_CAST")
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readInt(),
@@ -146,8 +146,8 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
 }
 
 class Player(private val fileManager: FileManager) {
-//    val model: Model = make(fileManager.read("save"))
-    var model: PlayerModel = make(fileManager.readAsset("player.json"))
+    var model: PlayerModel = make(fileManager.read("save.json"))
+//    var model: PlayerModel = make(fileManager.readAsset("player.json"))
 
     private fun make(data: String?): PlayerModel {
         val gson = Gson()
@@ -176,8 +176,12 @@ class Player(private val fileManager: FileManager) {
         model = make(fileManager.readAsset("player.json"))
     }
 
-    fun save(){
+    fun load(to: String){
+        model = make(fileManager.readAsset("$to.json"))
+    }
+
+    fun save(to: String){
         val json = Gson().toJson(model)
-        fileManager.write("save", json)
+        fileManager.write("$to.json", json)
     }
 }

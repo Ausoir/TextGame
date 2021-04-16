@@ -24,6 +24,7 @@ class ProfileFragment : Fragment() {
     private lateinit var moveset: ArrayList<MoveModel>
     private lateinit var itemMap: HashMap<String, ItemModel>
 
+    @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -88,13 +89,13 @@ class ProfileFragment : Fragment() {
             val item = itemMap[itemName] ?: return@OnItemClickListener
             if (item.page != null) {
                 AlertDialog.Builder(activity)
-                    .setTitle(R.string.sell)
+                    .setTitle(R.string.use)
                     .setMessage(resources.getString(R.string.use_confirm, itemName))
-                    .setPositiveButton(android.R.string.yes) { _, _ ->
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
                         val app: App = activity as App
                         app.openDialog(item.page)
                     }
-                    .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                    .setNegativeButton(android.R.string.cancel) { _, _ -> return@setNegativeButton }
                     .show()
             } else {
                 textView.text = resources.getString(R.string.use_unavailable, itemName)
@@ -128,11 +129,11 @@ class ProfileFragment : Fragment() {
             AlertDialog.Builder(activity)
                 .setTitle(R.string.sell)
                 .setMessage(resources.getString(R.string.kick_confirm, selected))
-                .setPositiveButton(android.R.string.yes) { _, _ ->
+                .setPositiveButton(android.R.string.ok) { _, _ ->
                     val app: App = activity as App
                     app.openDialog(">drop>$selected>")
                 }
-                .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                .setNegativeButton(android.R.string.cancel) { _, _ -> return@setNegativeButton }
                 .show()
         }
     }
@@ -152,12 +153,12 @@ class ProfileFragment : Fragment() {
             AlertDialog.Builder(activity)
                 .setTitle(R.string.sell)
                 .setMessage(resources.getString(R.string.chapter_confirm, selected))
-                .setPositiveButton(android.R.string.yes) { _, _ ->
+                .setPositiveButton(android.R.string.ok) { _, _ ->
                     player.companion.clear()
                     val app: App = activity as App
                     app.openDialog(">save>chapter>$position>>refresh chapter>start")
                 }
-                .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                .setNegativeButton(android.R.string.cancel) { _, _ -> return@setNegativeButton }
                 .show()
         }
     }

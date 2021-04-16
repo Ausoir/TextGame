@@ -10,11 +10,11 @@
   "spell deck": ["clarity", "premonition", "confuse", "heal", "redirect", "gather mana", "omniscience", "phase", "rot", "torrent", "dispel"],
   "shaman deck": ["premonition", "dispel", "remedy", "spider form"],
   "conjuration deck": ["clarity", "premonition", "redirect", "gather mana", "phase", "rot", "lightning", "torment", "torrent", "curse", "dispel"],
-  "Ant Hill Shop": ["training manual", "silk robe", "spine spear", "chitin claws", "hair ball", "blood droplet", "sturdy wood"],
-  "Stone Henge Shop": ["training manual", "horn bow", "web bolas", "rose spike", "hair ball", "chitin claws", "pollen ball", "silk robe", "spellcasting manual", "ranger manual"],
+  "Ant Hill Shop": ["training manual", "silk robe", "spine spear", "chitin claws", "hair ball", "blood droplet", "sturdy wood", "shrapnel", "healing salve"],
+  "Stone Henge Shop": ["training manual", "horn bow", "web bolas", "rose spike", "hair ball", "chitin claws", "pollen ball", "silk robe", "spellcasting manual", "ranger manual", "healing potion"],
   "Feral Cave Shop": ["web bolas", "furry foot wrap", "glowshroom bundle", "mushroom pemmican", "shrapnel"],
-  "Lumber Mill Shop": ["training manual", "furry foot wrap", "beast meat", "sturdy wood", "warrior manual", "shaman manual", "cutthroat manual", "wood axe", "great axe"],
-  "Jericho Shop": ["training manual", "brass mace", "brass sword", "steel mace", "steel sword", "lottery ticket", "healing potion", "potion of experience"],
+  "Lumber Mill Shop": ["training manual", "furry foot wrap", "beast meat", "sturdy wood", "warrior manual", "shaman manual", "cutthroat manual", "wood axe", "great axe", "raptor fang", "healing salve"],
+  "Jericho Shop": ["training manual", "musket", "brass mace", "brass sword", "steel mace", "steel sword", "lottery ticket", "healing potion", "potion of experience", "shrapnel"],
   "Jericho Library Manuals": ["training manual", "spellcasting manual", "ranger manual", "warrior manual", "shaman manual", "cutthroat manual"],
   "river encounter": ["three ants", "millipede", "pill bug", "caterpillar", "bloodquito"],
   "river night encounter": ["two bloodquitos", "centipede", "moth", "two ticks", "mouse"],
@@ -23,8 +23,8 @@
   "return river encounter": ["centipede", "ant swarm", "rotting pile", "two bloodquitos"],
   "feral cave encounter": ["feral ambushers", "feral ambushers 2", "feral ambushers 3"],
   "canyon side encounter": ["three bloodquitos", "raptors", "ancient bug", "ancientquito"],
-  "Guild of Things": ["Kill and Retrieve>@jericho quest kill>There were reports of some outlaws near the perimeter with a spellcast artifact. Retrieve the artifact.",
+  "Guild of Retrieval": ["Kill and Retrieve>@jericho quest kill>There were reports of some outlaws near the perimeter with a spellcast artifact. Retrieve the artifact.",
     "Investigation>@jericho quest find>We have lost a crate full of shock artifacts. Find the crates.",
     "Haggle>@jericho quest haggle>Buy an artifact from its owner."],
-  "Guild of Things 2": ["Research>@jericho quest research>Research a fissure."]
+  "Guild of Retrieval 2": ["Research>@jericho quest research>Research a fissure."]
 }

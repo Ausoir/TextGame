@@ -670,7 +670,7 @@
         ]
       },
       {
-        "to": ">drop>Cheese>>drop>Cobby>>encounter>stone henge arena>@stone henge>>time>4>>join>Cheese>>join>Cobby>@stone henge",
+        "to": ">dropAll>>encounter>stone henge arena>@stone henge>>time>4>>join>Cheese>>join>Cobby>@stone henge",
         "text": "Ask to visit training grounds"
       },
       {
@@ -682,7 +682,7 @@
         "text": "Ask to shop around"
       },
       {
-        "to": ">view shop>Stone Henge Shop>@stone henge",
+        "to": "@stone henge trainer",
         "text": "Ask to visit the trainer"
       }
     ]

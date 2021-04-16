@@ -12,7 +12,7 @@
   },
   "horned spider": {
     "name": "horned spider",
-    "speed": 3,
+    "speed": 2,
     "health": 8,
     "moves": [
       "venomous bite",
@@ -865,8 +865,6 @@
     "speed": 1,
     "health": 12,
     "moves": [
-      "engage",
-      "disengage",
       "deadly shot",
       "tackle"
     ],
@@ -875,6 +873,45 @@
     "flavors": {
       "pronoun": "he",
       "weapon": "musket"
+    }
+  },
+  "wounded horned spider": {
+    "name": "wounded horned spider",
+    "speed": 1,
+    "health": 4,
+    "moves": [
+      "engage",
+      "dodge",
+      "weave web",
+      "weak bite"
+    ],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "grazed": "The horned spider looks furious.",
+      "hurt": "The horned spider is limping its legs.",
+      "death": "The horned spider rolls belly up and skitters its legs, and slowly stops moving."
+    }
+  },
+  "large horned spider": {
+    "name": "large horned spider",
+    "speed": 3,
+    "health": 6,
+    "moves": [
+      "engage",
+      "dodge",
+      "quick attack",
+      "weave web",
+      "venomous bite"
+    ],
+    "skills": [
+      "hardened"
+    ],
+    "status": [],
+    "flavors": {
+      "grazed": "The horned spider looks furious.",
+      "hurt": "The horned spider is limping its legs.",
+      "death": "The horned spider rolls belly up and skitters its legs, and slowly stops moving."
     }
   }
 }

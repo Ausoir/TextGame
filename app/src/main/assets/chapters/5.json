@@ -4,17 +4,600 @@
     "text": "",
     "opt": [
       {
-        "to": ">timeset>14>>heal>9>>dropAll>>save>temp> >@field 1",
+        "to": ">timeset>18>>heal>9>>dropAll>>save>quest>0>@field 1",
         "text": "Begin"
       }
     ]
   },
   "field 1": {
     "title": "Fields",
+    "text": "You reach the abyssal canyon once again.\n\nLucid: [We're here again. After that incident, the manager told me stories about various things in and around the canyon that... have never been seen anywhere else.]\n\nPemmi: [Like new species?]\n\nLucid: [No. Things that are... strange. It's hard to explain. We should be as careful as possible.]\n\nYou tell him how you had crossed the canyon when you first came here.\n\nLucid: [Using the rope? We know the canyon is full of unknown danger. We'll find another way to cross.]\n\nYou go back to the woodcutters' village near the canyon.\n\nVillager: [The crevice? The bridge isn't done. Some people tried to cross it using a shifty air boat but it didn't work. They left it here, if you want to give it a try.]\n\nThe villager leads you to an old building, and you see a rather crude air boat inside.\n\nLucid: [This air boat was modified to use mana instead of Jericho's power field. I'm guessing it failed because this thing requires too much mana.]\n\nCheese: [Mana? I got plenty.]\n\nLucid: [Yes, if Cheese uses the amulet to provide mana, he could take us to the other side one by one.]\n\nYou drag the boat out and Cheese takes each of you one by one across the canyon.\n\nCheese: [This is pain... This is torture...]\n\nYou leave the vomit stained air boat behind and continue the journey.",
+    "opt": [
+      {
+        "to": "@field 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "field 2": {
+    "title": "Fields",
+    "text": "You travel back to Stone Henge over a week.\nThe monsters that you had fought on your way to Jericho are no match for all of you.",
+    "opt": [
+      {
+        "to": "@henge help",
+        "text": "Proceed",
+        "reqs": ["var>gethelp>2"]
+      },
+      {
+        "to": "@field 3",
+        "text": "Proceed",
+        "reqs": ["!var>gethelp>2"]
+      }
+    ]
+  },
+  "henge help": {
+    "title": "Stone Henge",
+    "text": "Lucid: [We're at Stone Henge.]\n\nBigs: [What's our plan?]\n\nLucid: [We'll march in and request meeting with the priest. They won't harm us if we show up in numbers and heavily armed.]\n\nYou march into Stone Henge and stop before the guard outpost.\nThe Stone Henge guards are on full alert, and the move about busily in the distance.\n\nPemmi: [I'll go alone.]\n\nPemmi walks into Stone Henge.\nA few guards come out and escort her inside.\nYou wait.\n\nHalf an hour later, Pemmi and the priest walks out, escorted by several guards.\n\nPemmi: [Our priest agreed to accept help and fight the spiders.]\n\nPriest: [I... apologize for what had happened. We did what we thought was best. If you'd help us, Stone Henge shall attempt to be free once again.]\n\nThe priest escorts you all into Stone Henge.\n\nPriest: [I will now gather all residents of Stone Henge and declare a state of emergency against the horned spiders. Do you have any questions?]",
+    "opt": [
+      {
+        "to": "@ask henge",
+        "text": "How did it come to be this way?"
+      },
+      {
+        "to": "@henge help 2-1",
+        "text": "Proceed",
+        "reqs": ["var>getweapon>3"]
+      },
+      {
+        "to": "@henge help 2-2",
+        "text": "Proceed",
+        "reqs": ["!var>getweapon>3"]
+      }
+    ]
+  },
+  "ask henge": {
+    "title": "Stone Henge",
+    "text": "Priest: [It started 5 years ago. Those wretched horned spiders came from nowhere and started preyed upon everyone. Stone Henge continuously lost our valuable hunters to their cunning ambushes... Stone Henge was bleeding dry. Without hunters, we can't defend nor feed ourselves. Just when we were starting to lose hope, the spiders stopped attacking us.]\n\nLucid: [They stopped attacking altogether?]\n\nPriest: [Precisely. They are just as coordinated as we are. They stopped the ambushes, and instead began taking few of our hunters out on the fields once every month. So we tried to place various meats out in the spider forest in hopes of reducing our hunter casualties, but the spiders seemed only interested in live humans.]\n\nCheese: [Mother of mother of Gaia...]\n\nLucid: [We had found some feral humans deep inside the spider nest where we were sacrificed. They had a whole village going, but they didn't speak any of our languages.]\n\nPriest: [I don't know who those ferals are, but they aren't any of us. The kidnapping only started 5 years ago. Have you found any of our people in the den?]\n\nLucid: [No, we found Sugar, a hunter from Ant Hill. She said that everyone else had died trying to break out.]\n\nPriest: [I'm not sure who those barbarians are, but we were aware of their existence. They started showing up a bit after the spiders came.]",
+    "opt": [
+      {
+        "to": "@henge help 2-1",
+        "text": "Proceed",
+        "reqs": ["var>getweapon>3"]
+      },
+      {
+        "to": "@henge help 2-2",
+        "text": "Proceed",
+        "reqs": ["!var>getweapon>3"]
+      }
+    ]
+  },
+  "henge help 2-1": {
+    "title": "Stone Henge",
+    "text": "Lucid: [Very good. Let's put our conflicts behind us and work together to drive the spiders out of Stone Henge. We have brought powerful weapons from Jericho, strong enough to down a spider in a single volley.]\n\nPriest: [Thank you, Lucid. To be honest, when I first met you, I was a bit skeptical about your motives. I hope you found what you were looking for.]\n\nLucid: [I did not, but there are more important things in this world. Let us work together and rid the abominations from the frontier.]\n\nThe priest invites you all to watch him declare a state of emergency and distribute muskets to the finest hunters of Stone Henge.\nMost people in Stone Henge seems to have no idea what had been happening.\n\nBigs: [We'll need a day to familiarize your hunters with the muskets.]\n\nPriest:[Then we should strike in two days. We can't give the spiders much time to prepare.]",
+    "opt": [
+      {
+        "to": "@stone henge",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "henge help 2-2": {
+    "title": "Stone Henge",
+    "text": "Lucid: [Very good. Let's put our conflicts behind us and work together to drive the spiders out of Stone Henge.]\n\nPriest: [Thank you, Lucid. To be honest, when I first met you, I was a bit skeptical about your motives. I hope you found what you were looking for.]\n\nLucid: [I did not, but there are more important things in this world. Let us work together and rid the abominations from the frontier.]\n\nThe priest invites you all to watch him declare a state of emergency.\nMost people in Stone Henge seems to have no idea what had been happening.\n\nBigs: [Alright. We'll make our preparations. When are we moving?]\n\nLucid: [The priest wants to move out in two days. The spiders probably know of your coming, and we shouldn't give them much time to prepare.]",
+    "opt": [
+      {
+        "to": "@stone henge",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "stone henge": {
+    "title": "Stone Henge",
+    "text": "You are at Stone Henge.\nThe streets are bustling with people buying rations and weapons.\nThe gardens outside Stone Henge has turned into a training ground.",
+    "opt": [
+      {
+        "to": ">view shop>Stone Henge Shop>@stone henge",
+        "text": "Shop around"
+      },
+      {
+        "to": ">dropAll>>encounter>stone henge arena>@stone henge>>time>4>@stone henge",
+        "text": "Visit training grounds"
+      },
+      {
+        "to": ">view rest>@stone henge",
+        "text": "Rest and heal"
+      },
+      {
+        "to": ">timeset>10>@henge fight",
+        "text": "Finish departure preparations",
+        "vars": [">var>quest>0"]
+      },
+      {
+        "to": "@henge moveset",
+        "text": "Move on to Ant Hill",
+        "vars": [">var>quest>1"]
+      }
+    ]
+  },
+  "henge moveset": {
+    "title": "Stone Henge Temple",
+    "text": "You pack up and leave Stone Henge.\nJust as you leave the building, the priest calls you.\n\nPriest: [Wait! You've done me great service, even when I had failed you as a human being. Please, accept this. It will help you fight the spiders.]",
+    "opt": [
+      {
+        "to": ">item>priest sigil>@field 4",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "henge fight": {
+    "title": "Stone Henge",
+    "text": "You visit Pemmi at the training grounds.\n\nPemmi: [Are you ready?]",
+    "opt": [
+      {
+        "to": "@henge fight ask",
+        "text": "Ask details"
+      },
+      {
+        "to": ">timeset>10>@henge fight 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "henge fight ask": {
+    "title": "Stone Henge",
+    "text": "Pemmi: [There will be four different offense groups. The first group is Lucid, Bigs, and all of the adventurers from Jericho.]\n\nPemmi: [The second and third group are all made of the best hunters from Stone Henge. You, me, and Cheese belong to the last group. Our role is to wait by the spider forest and report and intercept any movements toward Stone Henge.]",
+    "opt": [
+      {
+        "to": ">timeset>10>@henge fight 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "henge fight 2": {
+    "title": "Stone Henge",
+    "text": "You wait for everyone to arrive on the training grounds.\n\nCheese: [Where's Lucid?]\n\nPemmi: [All the other groups have departed earlier, Cheese.]\n\nPemmi: [We are heading out now, hopefully the spiders are distracted from the previous groups.]\n\nYou, Pemmi, Cheese, and three Stone Henge guards march on to the spider forest where the feral cave was located.\n\nPemmi: [We wait here now.]",
+    "opt": [
+      {
+        "to": "@henge fight 3",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "henge fight 3": {
+    "title": "Stone Henge",
+    "text": "You wait for an hour.\nPemmi: [Look, there's several of them over there. We need to dispatch them before they get to Stone Henge. You and Cheese can each take one, me and the rest can take the other two.]",
+    "opt": [
+      {
+        "to": ">encounter>horned spider>@defeat>@henge fight 4",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "henge fight 4": {
+    "title": "Stone Henge",
+    "text": "Pemmi: [Are you ok? Let's heal up and keep waiting.]\n\nYou continue hiding for ambushes.\n\nCheese: [I see one, over there.]\n\nPemmi: [Same plan, let's go!]",
+    "opt": [
+      {
+        "to": ">heal>2>>encounter>horned spider>@defeat>@henge fight 5",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "henge fight 5": {
+    "title": "Stone Henge",
+    "text": "You heal up and wait some more.\n\nGuard: [It's getting dark. We need to go back.]\n\nPemmi: [Lucid hasn't come back from the nest... We should go check up on them in the nest before we leave.]",
+    "opt": [
+      {
+        "to": "@henge done",
+        "text": "Just go back"
+      },
+      {
+        "to": "@henge fight 6",
+        "text": "Let's go check up on them"
+      }
+    ]
+  },
+  "henge fight 6": {
+    "title": "Stone Henge",
+    "text": "You move deeper into the forest.\nYou hear howling sounds from the trees.\n\nPemmi: [They're on the trees!]\n\nCheese casts fireball on the tree.\n\nGuard: [There's more here, come!]",
+    "opt": [
+      {
+        "to": ">join>henge scout>>encounter>wounded horned spiders>@defeat>>dropAll>@henge fight 7",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "henge fight 7": {
+    "title": "Stone Henge",
+    "text": "You move deeper into the forest into the nest.\nThe nest is packed with spider carcasses.\n\nCheese: [Holy grandma of Gaia, that's a lot of spiders.]\n\nLucid: [Cheese? What are you doing here?]\n\nPemmi: [It's getting dark and I didn't see you come out, so we were worried.]\n\nLucid: [Everything is going according to plan here. Bigs just wanted more time exploring the ancient mines. Go back to town, we'll be there shortly.]\n\nYou return to Stone Henge.",
+    "opt": [
+      {
+        "to": "@henge done",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "henge done": {
+    "title": "Stone Henge",
+    "text": "The priest and the residents of Stone Henge welcome you with open arms.\n\nPriest: [Pemmi! Looks like all our hunters have come back successful from the raid. Where is Lucid and Bigs? Ah, there's Lucid.]\n\nLucid: [Hello, it looks like everything has gone great, marvelous!]\n\nPriest: [Hello, Lucid. Where is Bigs and the adventurers?]\n\nLucid: [They... decided to explore the ancient mines longer. Bigs said that his work was done here, and he'll return to Jericho after looting the mines.]\n\nCheese: [What? What about Ant Hill?]\n\nLucid: [I'm sorry...]\n\nCheese: [Son of a bitch.]\n\nPemmi: [I'll come with you guys to Ant Hill, Cheese.]\n\nPriest: [We will send the best of our hunters to Ant Hill as soon as we are done, I promise.]\n\nLucid: [When do you think you can send help to Ant Hill?]\n\nPriest: [Our hunters tell me that there are still threatening number of spiders around. I would say a week.]\n\nLucid: [Do you think you still need us?]\n\nPriest: [Honestly, the problem is that we don't know where the spiders are. We've cleared out known locations, and I can only hope that was all of them. We've dealt with what little retaliation that they attempted, so I think we are good on our own now. Help Ant Hill.]",
+    "opt": [
+      {
+        "to": ">save>quest>1>@stone henge",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "field 3": {
+    "title": "Fields",
+    "text": "Lucid: [Well, we don't have anything to offer Stone Henge. I'll go in and get some supplies.]\n\nCheese: [What about you, Pemmi?]\n\nPemmi: [I'll come with you guys to Ant Hill. If Sugar defeats the spiders out of Ant Hill, Stone Henge will have a chance too.]\n\nLucid comes back from Stone Henge with food and medical supplies, and you continue on to Ant Hill.",
+    "opt": [
+      {
+        "to": "@field 4",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "field 4": {
+    "title": "Ant Hill Outskirts",
+    "text": "You travel for days across the fields and forest, cross the river, and now you are nearing Ant Hill.\n\nPemmi: [So how was Ant Hill when you left?]\n\nYou explain to her the situation on Ant Hill in detail.\n\nPemmi: [Hmm. I'm sorry to hear that about your father, Cheese.]\n\nCheese: [Nah, he tried to kill me. I wouldn't care if he died.]\n\nPemmi: [...]\n\nYou finally reach Ant Hill.\nIn the distance you see the familiar Ant Hill mound where you grew up.",
+    "opt": [
+      {
+        "to": "@ant hill 1",
+        "text": "Approach further"
+      }
+    ]
+  },
+  "ant hill 1": {
+    "title": "Ant Hill",
+    "text": "The streets of Ant Hill are in ruins.\nThe wood on vendor shops are rotten, leather and carpets are molded, and there are dried blood splatters all over the streets.\nYou look around the derelict buildings that you once had fond memories of.\n\nLucid: [It looks like they're still inside the mound. If they've never left since the time you left Ant Hill, I'm afraid they must have run out of food long ago.]",
+    "opt": [
+      {
+        "to": ">timeset>22>@ant hill 2",
+        "text": "Enter the underground Ant Hill"
+      }
+    ]
+  },
+  "ant hill 2": {
+    "title": "Ant Hill Underground",
+    "text": "You enter the pitch black darkness of the deeply familiar underground Ant Hill.\nOnce your home, this place is now reeking of blood.\nFurther in, Lucid's spell light unveils spots of blood on the surface of the entrance tunnel.\n\nLucid: [...]\n\nYou continue going in deeper, but there are no signs of Sugar or any of the guards.\nYou move into upper dormitory tunnels.\nThis time, Lucid's spell light unveils a horned spider.\n\nPemmi: [Spider!]\n\nLucid: [They're behind us, too. This is an ambush. Be ready!]",
+    "opt": [
+      {
+        "to": ">join>Lucid>>join>Pemmi>>join>Cheese2>>encounter>three horned spiders>@defeat>@ant hill 3",
+        "text": "Prepare to fight"
+      }
+    ]
+  },
+  "ant hill 3": {
+    "title": "Ant Hill Underground",
+    "text": "Cheese: [FUCK!!! IS EVERYONE FUCKING DEAD?!]\n\nLucid: [I don't know Cheese, but I don't think it's good idea to stay here. We need to get out.]\n\nCheese: [No, we gotta go deeper in. We came all the way here to go back? There was no spiders outside, there can't be that many inside.]\n\nJust before you can make a decision, you hear a shout from down the halls.\n\nLucid: [That sounds like someone shouting for help. Let's go!]\n\nYou run towards the shouting, and the spell light unveils yet more spiders in the darkness.",
+    "opt": [
+      {
+        "to": ">encounter>three horned spiders>@defeat>@ant hill 4",
+        "text": "Fight"
+      }
+    ]
+  },
+  "ant hill 4": {
+    "title": "Ant Hill Underground",
+    "text": "You kill the spiders, and someone comes out from the shadows.\n\n???: [My god... is that you?]\n\nIt is Sugar.\nShe is in total mess. She is missing her left arm.\n\nSugar: [Hurry, come inside.]\n\nSugar leads you into Gaia's temple and sets up a wooden barricade.\n\nSugar: [I heard you fighting outside and screamed for help. I can't believe you made it in here... Is it safe to go out?]\n\nLucid: [We don't know, Sugar. You and these five hunters are all that's left of Ant Hill?]\n\nSugar: [There are about twenty people deeper in. I've put them in a safe place with the remaining supplies. We came up to try to fight our way out... and got trapped here. We were just starting to run out of that god forsaken spider meat...]\n\nCheese: [First human meat, and now spider meat. Cruel fate.]\n\nSugar: [Cheese. I swore to myself I'd pluck out your eyes the next time I see you... but I can't believe I'm actually glad to see you here. Also, your dad died.]\n\nCheese: [...Where is Cobby?]\n\nSugar: [I killed him. He was a traitor to our people.]\n\nCheese: [You are an unbearable moron. Pathetic freak.]\n\nLucid: [...Enough fighting, let's focus on our common enemy. We'll help you clear the way out. After we secure the way out, we should move to Stone Henge with the remaining people down there.]\n\nSugar: [It's pitiful, but we are not in good shape to fight. We'll help, but we'll be of little use.]",
+    "opt": [
+      {
+        "to": "@ant hill 5",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "ant hill 5": {
+    "title": "Ant Hill Underground",
+    "text": "You are scouting underground Ant Hill for any remaining horned spiders.\nYou need to scout five locations in total: Upper dormitory tunnels, lower dormitory tunnels, storage tunnels, garden tunnels, and the entrance tunnels.",
+    "opt": [
+      {
+        "to": ">custom>You scout the upper dormitory tunnels.>>encounter>three horned spiders>@defeat>>add>quest>1>@ant hill 5",
+        "text": "Scout upper dormitory tunnels"
+      },
+      {
+        "to": ">custom>You scout the lower dormitory tunnels and the waste storage tunnels.\nIt reeks of blood and feces.>>encounter>three horned spiders>@defeat>>encounter>three horned spiders>@defeat>>add>quest>1>@ant hill 5",
+        "text": "Scout lower dormitory tunnels"
+      },
+      {
+        "to": "@ant hill storage",
+        "text": "Scout storage tunnels"
+      },
+      {
+        "to": ">custom>You scout the garden tunnels.\nThe entire garden area is bright greenish yellow with glowshrooms growing rampant.>>encounter>horned spiders>@defeat>>add>quest>1>@ant hill 5",
+        "text": "Scout garden tunnels"
+      },
+      {
+        "to": ">custom>You scout the entrance tunnels and the guards' dormitory.>>encounter>horned spider>@defeat>>add>quest>1>@ant hill 5",
+        "text": "Scout entrance tunnels"
+      },
+      {
+        "to": "@ant hill 6",
+        "text": "Lead the residents outside",
+        "reqs": ["var>quest>6"]
+      }
+    ]
+  },
+  "ant hill storage": {
+    "title": "Ant Hill Underground",
+    "text": "You enter the storage tunnels.\nThere are destroyed wooden barricades and furniture everywhere.\n\nLucid: [Looks like this place was looted for food by the spiders after supplies were taken out by the residents. Let's search for any remaining supplies.]",
+    "opt": [
+      {
+        "to": ">item>Healing Salve>>custom>Just as you are about to return, you hear a sound from one of the storage rooms.>encounter>horned spider>@defeat>>add>quest>1>@ant hill 5",
+        "text": "Continue"
+      }
+    ]
+  },
+  "ant hill 6": {
+    "title": "Ant Hill",
+    "text": "Lucid: [Alright, it seems the route to outside is clear.]\n\nSugar: [But are the streets clear?]\n\nLucid: [We didn't run into anything on the way here. The more time we spend in here, the more chance of them coming back to Ant Hill. I recommend that we move to Stone Henge as soon as possible.]\n\nSugar: [You're right... Let's get the hell outta here.]\n\nYou gather up all the residents from the secure tunnels and bring them up to the entrance.\nYou leave the residents inside go outside.",
+    "opt": [
+      {
+        "to": "@ant hill 7",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "ant hill 7": {
+    "title": "Ant Hill",
+    "text": "You stand on the mound and look around the ruined streets.\nThe streets are just the same... Until you noticed shadows moving behind vendor shops.\n\nCountless horned spiders crawled out of every shadow on the streets.\nTerrifying howling fill the air.\n\nSugar: [Inside! INSIDE!!]\n\nYou lock the gate and hurry back inside.\n\nSugar: [Hell... They've trapped us all... Just like in the feral caves... Except.. this time there is no way out.]",
+    "opt": [
+      {
+        "to": "@ant hill 8",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "ant hill 8": {
+    "title": "Ant Hill",
+    "text": "You barricade the entrance and gather up what little supplies are left.\nA sense of doom dominate the atmosphere.\n\nLucid: [We're going to be here for a long time. We should start butchering the spiders for meat. Stone Henge promised to send the best of their hunters to Ant Hill in a week...]\n\nSugar: [No chance. There's like... a hundred out there. I don't know how you think Stone Henge has won the fight, but they definitely didn't fight THAT many spiders.]\n\nSugar charges at Cheese.\nCheese stuns her and runs to the entrance.\n\nSugar: [Cheese... please... I gotta get outta here. I'm going insane!]\n\nCheese leaves.\nYou run outside, and watch him float away above the hordes of spiders.\nHe does not come back.",
+    "opt": [
+      {
+        "to": "@ant hill 9",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "ant hill 9": {
+    "title": "Ant Hill",
+    "text": "You spend the next few days in the underground Ant Hill.\nNot being able to see the sun, drinking stale glowshroom wine, and eating nauseous spider meat has taken some toll on your sanity and health.\n\nYou sit on the bed of your old dormitory with Pemmi and Lucid.\n\nLucid: [The whole thing doesn't make sense. Where did they come from? How did no one ever even witness them while they grew in such incredible numbers?]\n\nThe whole situation drives you mad.\nYou sit and think about when you used to sit on this bed and chat with your roommates.\nYou subconsciously take out an amulet from around your neck and hold it in your hands.\n\nLucid: [That's a strange amulet. I haven't seen it before.]",
+    "opt": [
+      {
+        "to": "@ant hill 10",
+        "text": "I don't remember either"
+      }
+    ]
+  },
+  "ant hill 10": {
+    "title": "Ant Hill",
+    "text": "Lucid: [You don't... remember having that amulet? Can I see it?]\n\nLucid takes a careful look at the amulet.\n\nLucid: [When do you last remember having it?]\n\nYou tell him that you last remember having it near the abyssal canyon.\n\nLucid: [The canyon... The spiders... Could this be... The amulet of will?]",
+    "opt": [
+      {
+        "to": "@ant hill 11",
+        "text": "What is it?"
+      }
+    ]
+  },
+  "ant hill 11": {
+    "title": "Ant Hill",
+    "text": "Lucid: [Since long before I was born, the Guild of Retrieval has been looking for a very precious timeless artifact... An amulet said to grant the user the power to turn their will into reality.]\n\nLucid: [Have you seen the grand statue of Mansmith in Jericho? He is a legendary warrior and the founder of Jericho. A legendary man, he was said to know exactly what to do when the situations required his attention.]\n\nLucid: [After Mansmith's death, a group of scholars who researched him to write his biography have found ...Strange things about Mansmith. He had wrote and spoke about things that there was no way of him knowing, and he had won battles when there was no way of him winning... multiple times in a row. Mansmith also had a transformation Oopart back when there was no Oopart ever found. Do you have any peculiar memories or knowledge since you've obtained this amulet?]",
+    "opt": [
+      {
+        "to": "@ant hill 12",
+        "text": "I don't know"
+      }
+    ]
+  },
+  "ant hill 12": {
+    "title": "Ant Hill",
+    "text": "Lucid: [It's probably that you can't tell yet, since you obtained the amulet rather recently. Let me test something. Pemmi, can you hide this gold coin in one of your pockets while I turn around?]\n\nPemmi: [Uh, ok.]\n\nLucid presses the amulet.\nLucid: [The coin is in that pocket.]\n\nPemmi: [Nice... Let me hide it somewhere else.]\n\nPemmi continues to hide the coin in various places, but Lucid finds it every time.\n\nPemmi: [Uh... Do you have psychic vision or something?]\n\nLucid: [No. This amulet is much more than that. This amulet... explains how we all survived countless life threatening situations.]\n\nPemmi: [Amulet of will, huh? If such thing is real, do you think it can get us out of here?]\n\nLucid: [If this really is the amulet of will, then it will not only help us get out of here, but may also be the key to saving the frontier from the spiders.]\n\nLucid hands you back your amulet.\n\nLucid: [The scholars who were researching Mansmith had concluded that the amulet of will grants the user such power through the manipulation of time. Whenever you wish to turn back time, you rub the amulet... and voila, you are back to the turn point of time in which you can change things again.]\n\nPemmi: [WHAT? That... Such thing is possible?!]\n\nLucid: [That's not actually how it works, I was just giving an example. I don't actually remember using the amulet to turn back time when I used it to find your coin, Pemmi. But according to the scholars who researched this amulet, the manipulation of time was the only thing that made sense. These scholars soon set up the Guild of Retrieval in Jericho and devoted their life searching for the amulet.]\n\nPemmi: [Looking for the amulet? Did Mansmith lose it?]\n\nLucid: [The amulet disappeared right before his death. It's a time traveling amulet... it makes sense to pop in and out of places.]",
+    "opt": [
+      {
+        "to": "@ant hill 13",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "ant hill 13": {
+    "title": "Ant Hill",
+    "text": "Pemmi: [So... Are you going to turn back time to when the spiders are weak and kill them?]\n\nLucid: [It doesn't work like that. If I haven't existed when the spiders were first born, I can't port back to that time. This amulet may manipulate time, but it's limited by the memory span of its user.]\n\nPemmi: [Do you think we can get help from the Guild of Retrieval?]\n\nLucid: [There is no time for us... Even if we do get to Jericho, the Guild of Retrieval will try to take the amulet away from us.]\n\nPemmi: [Ah... Thank you, Lucid, for siding with us all the time. This was the artifact that you came to look for in the frontier, right?]\n\nLucid: [Indeed. And you don't need to thank me. My mission was not only to find the amulet, but to destroy it if possible.]\n\nPemmi: [So. Our plan now is to use the amulet to get us out of here then destroy it? Oh, maybe after using it to destroy the spiders?]\n\nLucid: [The amulet is powerful indeed, but it has it's limits. We can't take out hundreds of spiders no matter how many times we turn back time. We'll use it to get out of here... And you need to promise me to let me destroy this thing. The Guild of Retrieval have long declared this amulet a threat to mankind.]",
+    "opt": [
+      {
+        "to": ">save>temp>0>@ant hill 14",
+        "text": "I promise"
+      }
+    ]
+  },
+  "ant hill 14": {
+    "title": "Ant Hill",
+    "text": "You are at underground Ant Hill.\n\nLucid: [Use your amulet here. You will lead us out at the best timing. Remember, if the spiders seem too hard, use the amulet and try another day.]",
+    "opt": [
+      {
+        "to": "@ant hill out",
+        "text": "Go outside"
+      },
+      {
+        "to": ">add>temp>1>view rest>@ant hill 14",
+        "text": "Stay one more day",
+        "reqs": ["!var>temp>8"]
+      },
+      {
+        "to": ">item>spider meat",
+        "text": "Take supplies"
+      }
+    ]
+  },
+  "ant hill out": {
+    "title": "Ant Hill",
+    "text": "Lucid: [Sugar and I can guard the sides. Pemmi, can you guard the rear?]\n\nPemmi: [Ok.]\n\nYou and the hunters lead the group out.\nThe spiders howl loudly, warning their allies nearby.",
+    "opt": [
+      {
+        "to": ">encounter>guard spiders>@defeat>@ant hill out 2",
+        "text": "Fight",
+        "reqs": ["!var>temp>2", "!var>temp>8"]
+      },
+      {
+        "to": ">encounter>wounded horned spiders>@defeat>@ant hill out 2",
+        "text": "Fight",
+        "reqs": ["var>temp>2"]
+      },
+      {
+        "to": ">encounter>wounded horned spiders>@defeat>@ant hill out 2",
+        "text": "Fight",
+        "reqs": ["var>temp>8"]
+      }
+    ]
+  },
+  "ant hill out 2": {
+    "title": "Fields",
+    "text": "Pemmi: [We made it out! Let's get to Stone Henge as fast as possible!]\n\nThe size of your group constantly attracts horned spiders, but you use your amulet to miraculously maneuver around them.",
+    "opt": [
+      {
+        "to": ">timeset>10>@stone henge refuge",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "stone henge refuge": {
+    "title": "Stone Henge",
+    "text": "You arrive at Stone Henge.\nThe priest and the guards take you in.\n\nPriest: [This is a great tragedy... Let them take refuge here. And as for the rest of us, come to the temple.]\n\nThe exhausted refuges and hunters from Ant Hill are escorted inside.\nYou, Pemmi, and Lucid follow the priest to the temple.\n\nLucid: [We were trapped inside by the spiders. There were at least a hundred of them at Ant Hill.]\n\nPriest: [A hundred? At Ant Hill?]\n\nLucid: [I was afraid that Stone Henge was decimated by them. Were you not attacked since we left?]\n\nPriest: [No. I had hoped that we had drove them out completely... But it looks like they were just taking their time. I fear the worst for us all.]\n\nLucid: [It's too early to give up hope. Let us travel to Jericho and get help one last time.]\n\nPriest: [Lucid, you've done so much for all of us. But I don't think there are any way out of this. You do what you wish. I will defend Stone Henge to my last breath, and never let them take away our dignity again.]",
+    "opt": [
+      {
+        "to": "@stone henge refuge 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "stone henge refuge 2": {
+    "title": "Fields",
+    "text": "Lucid: [Come on, there is no time to lose. Let's continue on to Jericho. The Guild of Retrieval will surely help us if I show them this amulet.]\n\nYou are all exhausted from days of traveling from Ant Hill, but you continue on to Jericho after a brief respite at Stone Henge.\n\nYou travel for several days, and now you are nearing the canyon.\n\nPemmi: [See that? Weird creatures near the canyon.]\n\nLucid: [Let's be careful. Remember the dreadful vines in the canyons.]",
+    "opt": [
+      {
+        "to": ">encounter>raptors>@defeat>@final canyon",
+        "text": "Prepare to fight"
+      }
+    ]
+  },
+  "final canyon": {
+    "title": "Fields",
+    "text": "You dispatch the raptors and move closer to the canyon.\nYou notice that there is a vast field of dirt and sand on the other side, instead of green grass like you've seen last time.\n\nLucid: [Something's not right...]\n\nPemmi: [Hey, there is some kind of a bridge over there.]\n\nYou walk toward the bridge.\nA chain of strange, floating smooth metal cylinders connect the two land masses across the bottomless canyon.\n\nLucid: [A stepping stone of some sort? This... How are these things floating? Who made these?]\n\nLucid: [I will attempt to cross these metal steps.]\n\nPemmi: [Lucid, no!]\n\nLucid: [It's ok. We have the amulet of will. Watch me cross.]\n\nLucid crosses the canyon using the steps.\nStrange sounds echo from deep in the bottomless canyon.\n\nLucid makes it to the other side and waves his hand.\nYou and Pemmi follow.",
+    "opt": [
+      {
+        "to": "@final canyon 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "final canyon 2": {
+    "title": "Desert",
+    "text": "You walk across the vast desert on the other side of the canyon.\n\nLucid: [This is just a desert... No trees whatsoever. Is it possible that we got lost on the way here? No, that can't be. We followed the map. There is no desert like this around here.]\n\nYou continue moving east.\n\nLucid: [That... is that the woodcutters' village?]\n\nIn the middle of the desert, you see couple derelict buildings.\nUpon closer inspection, it looks like the buildings were abandoned long ago.\n\nLucid: [These buildings look like they've been abandoned long time ago... This should be the woodcutters' village according to our map.]\n\nYou drag your exhausted legs and continue on to Jericho.\nThe blazing sun above fries your skin.\n\nPemmi: [Look, a small cliff. We should take shelter from the sun and move at night.]\n\nYou sit under the shades by the small rocky cliff until sundown.\n\nLucid: [Sun's down low. Let's move out.]",
+    "opt": [
+      {
+        "to": ">timeset>22>>heal>4>@final canyon 3",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "final canyon 3": {
+    "title": "Desert",
+    "text": "Lucid: [We should be at the cliff and the Jericho waterfall soon, since we came straight east from the canyon.]\n\nYou continue walking for a bit, and you see the tall tower by Jericho waterfall.\nThe river that used to block the way to the tower is replaced with a shallow canyon that could easily be climbed across.\n\nLucid: [That's the old wizard's tower by Jericho. It seems to be still in tact. Let's continue on to Jericho.]\n\nYou soon reach the grand cliff surrounding the desert lowlands.\nIn the distance you see what must be Jericho... or ruins of Jericho.\n\nLucid: [...No!]\n\nYou see things roaming the vast fields surrounding Jericho.\n\nPemmi: [Those things... they're the vine things that we've seen. I don't think it's safe to go down there.]",
+    "opt": [
+      {
+        "to": "@final canyon 4",
+        "text": "Let's check out the wizard tower"
+      }
+    ]
+  },
+  "final canyon 4": {
+    "title": "Wizard's Tower",
+    "text": "You go back to the wizard tower.\nYou knock.\n\nLucid: [No response. We should break the window on the second floor and climb in.]\n\nYou break into the tower.\nYou find yourself in an office, surrounded by bookshelves.\nIn the middle of the room is a chair... With someone sitting on it.\n\nPemmi: [Hello?]\n\nOld man: [Hello.]\n\nPemmi: [What happened here? What happened to Jericho?]\n\nOld man: [You... look fresh. Where have you come from?]\n\nPemmi: [We come from Stone Henge, a frontier settlement. Lucid here is from Jericho, the Guild of Retrieval.]\n\nOld man: [The frontier? I didn't know people could survive in such places... And you.. the Guild of Retrieval?]\n\nThe old man carefully examines Lucid.\n\nOld man: [You... the fissure... it changed again, didn't it?]\n\nLucid: [Can you tell us what happened here?]\n\nThe old man starts murmuring something.\n\nPemmi: [Do you need help? Water?]\n\nLucid: [Let's give him some time.]\n\nOld man: [No... I have water. My teacher had taught me useful spells to survive before he passed away. You crossed the fissure, huh? You come from the past.]\n\nLucid: [...?]\n\nOld man: [It's been half a century since Jericho's fall. You said you're from the Guild of Retrieval? There hasn't been a guild for half a century. I had hoped you had come from a distance settlement unknown to mankind, but it looks like... you've traveled time.]\n\nLucid: [But how?]\n\nPemmi: [Traveled in time? Past or future? How?]\n\nOld man: [You've probably crossed the fissure on your way here.]\n\nPemmi: [The fissure? You mean the bottomless canyon to the west?]\n\nOld man: [Yes. The root of evil. The fall of mankind. Those wretched things all crawled out of that fissure.]\n\nLucid: [The fall of mankind? Listen, why don't you come with us and cross the fissure? We can take you back to greener places.]\n\nOld man: [The fissure is the root of all evil. Not only did it spawn abominations of time, but caused many people to abandon us to try to cross it to a better time.]\n\nLucid: [We come from a time when the fissure had just happened years ago. Do you know of any way to close it?]\n\nOld man: [Close it? Impossible. Half a century ago, your Guild of Retrieval had retraced the cause of the fissures. It's spawned from a paradox of time.]\n\nLucid: [A paradox of time... The amulet of will?]\n\nOld man: [What did you say?]\n\nLucid: [We have the amulet of will.]\n\nOld man: [You... WHAT?]\n\nThe old man gets up and walks toward Lucid.\n\nOld man: [Yes... The amulet of will! That's the cause of the paradox! You must destroy it!]\n\nLucid: [We were on our way to Jericho to destroy the amulet... But it seems Jericho never even belonged to the time when the frontier was attacked by the horned spiders. Now we're completely lost.]\n\nOld man: [Right... If the fissure has moved in time, then there is no way to get to the old Jericho to destroy the amulet...!]\n\nThe old man wraps his hands around his head and rocks back and forth.\n\nPemmi: [Lucid, did you say Jericho doesn't belong in our time?]\n\nLucid: [If the fissure was truly a disruption of time, then Jericho never belonged in the same time as your settlements... I had always wondered why the frontier settlements were so... primitive, compared to Jericho.]\n\nPemmi: [This is all mind blowing.]",
+    "opt": [
+      {
+        "to": "@final canyon 5",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "final canyon 5": {
+    "title": "Wizard's Tower",
+    "text": "You leave the old man to his mumbling and explore the tower.\nYou find rooms filled with strange artifacts and furniture you've never seen before.\nIn the bookshelves you find books that you can barely read, filled with strange vocabularies and topics about things you have no clue of.\n\nThe old man walks into the room.\n\nOld man: [Lucid, was it?]\n\nLucid: [Yes.]\n\nOld man: [Listen, there are two ways that you could destroy the amulet. One way is to wait for the fissure to move in time and hope that it takes you to a civilization advanced enough to melt the amulet.]\n\nLucid: [The chance of that happening would be very dim.]\n\nOld man: [Yes... The second way is to find when and how the amulet was found... and place it back to that exact time and place. Doing so would close the loop, making the amulet exist solely within that loop, ending the paradox of time once and for all - That means the fissure will never have functioned since the time when the amulet was first found. Do you remember when and how the amulet was obtained?]\n\nLucid: [...Yes. My friend remembers having it for the first time near the fissure.]\n\nOld man: [That's not close enough. Do you remember when and where?]",
+    "opt": [
+      {
+        "to": "@final canyon 6",
+        "text": "No..."
+      }
+    ]
+  },
+  "final canyon 6": {
+    "title": "Wizard's Tower",
+    "text": "A deep, long silence covers the room.\nThe old man hands you a strange belt.\n\nOld man: [This belt will continuously create food and water for you. Stay near the fissure, and cross it when it shifts in time. Destroy the amulet, once and for all...]",
+    "opt": [
+      {
+        "to": ">force item>belt of sustain>@final tower",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "final tower": {
+    "title": "Wizard's Tower",
+    "text": "You sit by the window, looking out at the vast deserts.\n\nEverything feels so unreal.",
+    "opt": [
+      {
+        "to": "@final tower 2",
+        "text": "Travel to the fissure"
+      },
+      {
+        "to": ">view rest>@final tower",
+        "text": "Rest and heal"
+      }
+    ]
+  },
+  "final tower 2": {
+    "title": "Canyon",
+    "text": "You travel back to the canyon.\n\nLucid: [Let's cross the fissure and leave a mark. If we come back and don't see the mark, then the fissure has shifted.]\n\nPemmi: [Lucid... Do you think destroying the amulet will save Stone Henge too?]\n\nLucid: [The horned spiders are abominations of time. There's no other explanation. If we destroy the amulet, then the fissure will no longer spawn those abominations.]\n\nLucid: [Now, I will cross over and leave a marker on the other side.]\n\nLucid crosses the canyon, leaves a spell light hovering in the air, and comes back across the canyon.\n\nLucid: [Let's leave now. If that spell light disappears, it would mean this fissure has ported in time again.]\n\nPemmi: [Like right now?]\n\nYou turn around to see the spell light gone.\nThe grassy fields on the other side are nowhere to be seen. Instead, the other side is nothing but pitch black abyss.\n\nLucid: [What the...?]\n\nStrange flying creatures emerge from the darkness.\nThey are things of nightmares... pale, veiny flesh with multiple eyes and wings and covered with blood red veins.\nThe flying creatures pour out of the darkness and fill the skies.\n\nLucid grabs you and jumps down the canyon.",
+    "opt": [
+      {
+        "to": "@final tower 3",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "final tower 3": {
+    "title": "Abyss",
+    "text": "You land on a small ledge with the sound of your bones being crushed.\nIt is pitch black.\n\nLucid: [Are you... ok?]",
+    "opt": [
+      {
+        "to": "@final tower 4",
+        "text": "It's over, Lucid"
+      }
+    ]
+  },
+  "final tower 4": {
+    "title": "Abyss",
+    "text": "Lucid: [No... Don't give up... Please...]\n\nThis situation feels very familiar to you...\n\nSuddenly, you remember the voice at the bottom of the abyss. It was Lucid!",
+    "opt": [
+      {
+        "to": "@final tower 5",
+        "text": "Tell Lucid when and where you found the amulet and hand it over to him"
+      }
+    ]
+  },
+  "final tower 5": {
+    "title": "Abyss",
+    "text": "Lucid: [You remembered! I... Thank you. We can finally close the loop. This cursed amulet will never exist outside of our small time frame. Thank you... and I am sorry.]\n\nYou hear Lucid's footsteps walk away down deeper into the abyss.\n\nYou lie there in the dark...",
+    "opt": [
+      {
+        "to": "@end",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "end": {
+    "title": "The End",
     "text": "",
     "opt": [
       {
-        "to": "You reach the abyssal canyon once again.\n\nLucid: [We're here again. After that incident, the manager told me stories about various things in and around the canyon that... have never been seen anywhere else.]\n\nPemmi: [Like new species?]\n\nLucid: [No. Things that are... strange. It's hard to explain. We should be as careful as possible.]\n\nYou tell him how you had crossed the canyon when you first came here.\n\nLucid: [Using the rope? That... seems dangerous. But if this canyon is as big as you say, then we may not have a choice.]",
+        "to": "",
         "text": ""
       }
     ]

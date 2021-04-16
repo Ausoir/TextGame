@@ -86,12 +86,6 @@
     "desc": "a plate breastplate crafted from pill bug chitin. +1 Health.",
     "rating": 1
   },
-  "chitin gauntlet": {
-    "type": "hands",
-    "value": 5,
-    "desc": "a plated gauntlet crafted from chitin. +1 Health.",
-    "rating": 1
-  },
   "spine spear": {
     "type": "weapon",
     "value": 2,
@@ -167,13 +161,13 @@
   },
   "chitin gauntlets": {
     "type": "legging",
-    "value": 2,
-    "desc": "a pair of gauntlets crafted from baby pill bug chitin. Allows you to punch.",
+    "value": 5,
+    "desc": "a pair of chitin gauntlets. Allows you to punch.",
     "moves": ["punch"]
   },
   "chitin shield": {
-    "type": "shield",
-    "value": 2,
+    "type": "offhand",
+    "value": 4,
     "desc": "a shield crafted from pill bug chitin. Allows you to block.",
     "moves": ["guard"]
   },
@@ -233,7 +227,7 @@
   "crystal necklace": {
     "type": "necklace",
     "value": 10,
-    "desc": "It shimmers when you press it. You think you can briefly stun an enemy using this artifact.",
+    "desc": "A strange necklace. It shimmers when you press it. You think you can briefly stun an enemy using this artifact.",
     "moves": ["blinding flash"]
   },
   "kidney staff": {
@@ -343,6 +337,18 @@
     "desc": "a heavy steel mace. A powerful military grade weapon.",
     "moves": ["heavy guard", "stun", "slam", "slam"]
   },
+  "musket": {
+    "type": "weapon",
+    "value": 80,
+    "desc": "a powerful weapon from Jericho. It's a long stick with a bunch of gears sticking out the shaft.",
+    "moves": ["deadly shot", "deadly shot"]
+  },
+  "priest sigil": {
+    "type": "head",
+    "value": 100,
+    "desc": "A sigil worn by the priest of Stone Henge that contains life force.",
+    "moves": ["regenerate"]
+  },
 
   "human corpse": {
     "type": "food",
@@ -408,8 +414,8 @@
   "healing salve": {
     "type": "item",
     "value": 1,
-    "desc": "a healing salve. Apply outside combat to heal 1 health immediately.",
-    "page": ">remove part>item>>heal>1>>now"
+    "desc": "a healing salve. Apply outside combat to heal 2 health immediately.",
+    "page": ">remove part>item>>heal>2>>now"
   },
   "warrior manual": {
     "type": "item",
@@ -421,13 +427,13 @@
     "type": "item",
     "value": 30,
     "desc": "an incredibly valuable and mystical potion that grants you experiences that you've never had.",
-    "page": ">remove part>item>>view advance>now"
+    "page": ">remove part>item>>view advance>>now"
   },
   "mysterious amulet": {
     "type": "necklace",
     "value": 1000,
     "desc": "a mysterious amulet that you don't remember having at all. Strange...",
-    "page": ">if>saved>1>loadpage>>savepage>now"
+    "page": ">copy>return>prev>@amulet of will"
   },
   "shaman manual": {
     "type": "item",
@@ -445,7 +451,7 @@
     "type": "item",
     "value": 10,
     "desc": "a purse full of coin. Use to obtain 10g.",
-    "page": ">remove part>item>>moneyAdd>10>now"
+    "page": ">remove part>item>>moneyAdd>10>>now"
   },
   "cog system": {
     "type": "item",
@@ -456,7 +462,7 @@
     "type": "item",
     "value": 2,
     "desc": "a lottery ticket. One in a million chance to win 1 million gold!",
-    "page": ">remove part>item>>moneyAdd>0>now"
+    "page": ">remove part>item>>moneyAdd>0>>now"
   },
   "healing potion": {
     "type": "item",
@@ -468,13 +474,13 @@
     "type": "item",
     "value": 5,
     "desc": "a manual that teaches you a set of moves.",
-    "page": ">view learn>now"
+    "page": ">view learn>>now"
   },
   "coin bag": {
     "type": "item",
     "value": 20,
     "desc": "a bag full of coin. Use to obtain 20g.",
-    "page": ">remove part>item>>moneyAdd>20>now"
+    "page": ">remove part>item>>moneyAdd>20>>now"
   },
   "jewel": {
     "type": "item",
@@ -483,8 +489,26 @@
   },
   "golden ticket": {
     "type": "item",
-    "value": 4653,
-    "desc": "a golden ticket. Use to obtain 4000g or sell for 4653g.",
-    "page": ">remove part>item>>moneyAdd>4000>now"
+    "value": 2653,
+    "desc": "a golden ticket. Use to obtain 2000g or sell for 2653g.",
+    "page": ">remove part>item>>moneyAdd>2000>>now"
+  },
+  "spider meat": {
+    "type": "food",
+    "value": 1,
+    "rating": 1,
+    "desc": "a spider meat. Could be edible, if you are desperate enough."
+  },
+  "ambrosia paste": {
+    "type": "food",
+    "value": 10,
+    "rating": 20,
+    "desc": "an unknown paste. Doesn't taste like anything, but incredibly fulfilling."
+  },
+  "belt of sustain": {
+    "type": "belt",
+    "value": 1000,
+    "desc": "a metal belt. Continuously creates food and water and places them in attached metal pockets.",
+    "page": ">item>ambrosia paste>now"
   }
 }

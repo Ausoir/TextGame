@@ -54,7 +54,7 @@
         "text": "Trade with the residents"
       },
       {
-        "to": ">add>karma>-1>>encounter>feral ambushers>@defeat>@deep spider den 4",
+        "to": ">add>karma>-1>>encounter>feral ambushers>@defeat>@feral cave",
         "text": "Vandalize supplies"
       },
       {
@@ -239,7 +239,7 @@
   },
   "feral cave leave 11": {
     "title": "Deeper Caves",
-    "text": "Cheese: [What's this?]\n\nLucid: [That... looks like a polymorph artifact, similar to my necklace.]\n\nCheese: [Nice, this is mine now.]\n\nMotivated by Cheese's fortune, you also look around and find a light blue crystal necklace. Nice!",
+    "text": "Cheese: [What's this?]\n\nLucid: [That... looks like an Oopart, similar to my necklace.]\n\nCheese: [What's an Oopart?]\n\nLucid: [Out of place artifacts. In other words, artifacts much ahead of our time... Cannot be replicated, which usually means incredibly valuable.]\n\nCheese: [Nice, this is mine now.]\n\nMotivated by Cheese's fortune, you also look around and find a light blue crystal necklace. Nice!",
     "opt": [
       {
         "to": "@feral cave leave 12",
@@ -262,19 +262,19 @@
     "text": "Sugar: [Hey, that artifact is pretty good! Give me that!]\n\nSugar tries to snatch the artifact from Cheese, but Cheese stuns her with mysterious force.\n\nCheese: [Never!]\n\nPemmi: [We should definitely search this entire area for useful items. This is amazing!]\n\nLucid: [Yes, we could make enough fortune to last a lifetime here. But if we can't escape from here, no amount of artifact will be of use. We should stick together for now.]\n\nYour group and purple Cheese walk around the mining complex looking for a way out.\n\nLucid: [This whole area seems pretty secure. I think the rooms that we just passed by may have some valuable artifacts. We could spend some time looting the place. But let's be careful. We should never walk alone here. Let's form a group.]",
     "opt": [
       {
-        "to": ">dropAll>>join>Cheese2>>save>temp>Cheese>feral cave leave 14",
+        "to": ">dropAll>>join>Cheese2>>save>temp>Cheese>@feral cave leave 14",
         "text": "Group with Cheese"
       },
       {
-        "to": ">dropAll>>join>Lucid>>save>temp>Lucid>feral cave leave 14",
+        "to": ">dropAll>>join>Lucid>>save>temp>Lucid>@feral cave leave 14",
         "text": "Group with Lucid"
       },
       {
-        "to": ">dropAll>>join>Pemmi>>save>temp>Pemmi>feral cave leave 14",
+        "to": ">dropAll>>join>Pemmi>>save>temp>Pemmi>@feral cave leave 14",
         "text": "Group with Pemmi"
       },
       {
-        "to": ">dropAll>>join>Sugar>>save>temp>Sugar>feral cave leave 14",
+        "to": ">dropAll>>join>Sugar>>save>temp>Sugar>@feral cave leave 14",
         "text": "Group with Sugar"
       }
     ]
@@ -474,7 +474,7 @@
   },
   "to ant hill": {
     "title": "Woods",
-    "text": "Lucid: [Of course... Good luck with your journey. I'm sure Cobby made it out. Also...]\n\nLucid hands you a map.\n\nLucid: [If you ever decide to get to Jericho, look for me in the Guild of Things.]",
+    "text": "Lucid: [Of course... Good luck with your journey. I'm sure Cobby made it out. Also...]\n\nLucid hands you a map.\n\nLucid: [If you ever decide to get to Jericho, look for me in the Guild of Retrieval.]",
     "opt": [
       {
         "to": ">time>2>>remove item>Lucid's amulet>@to ant hill 2",
@@ -650,7 +650,7 @@
   },
   "to ant hill 12": {
     "title": "Ant Hill",
-    "text": "Sugar: [Yea, go ahead. The priest might try to detain you like he did before, so be prepared. Might also be a good idea to drop off Cheese there. He's a- What the?]\n\nSugar suddenly trips and falls.\nCheese jumps her again and takes her amulet from her neck.\nThe guards charge at Cheese, but Cheese uses the amulet to turn into spirit form and fades away into darkness.\n\nCheese: [See ya, sucker!]\n\nSugar: [SON OF A -!! When did he learn to spellcast? UGH! Catch that idiot!]\n\nThe guards scatter to find Cheese.\nSugar gets up.\n\nSugar: [Ugh, anyways, go talk to Cobby, try to beat some sense into him. I'm going to go teach this moron some respect.]",
+    "text": "Sugar: [Yea, go ahead. Just watch out: the priest might try to detain you like he did before. Might be a good idea to drop off Cheese there. He's a- What the?]\n\nSugar suddenly trips and falls.\nCheese jumps her again and takes her amulet from her neck.\nThe guards charge at Cheese, but Cheese uses the amulet to turn into spirit form and fades away into darkness.\n\nCheese: [See ya, sucker!]\n\nSugar: [SON OF A -!! When did he learn to spellcast? UGH! Catch that idiot!]\n\nThe guards scatter to find Cheese.\nSugar gets up.\n\nSugar: [Ugh, anyways, go talk to Cobby, try to beat some sense into him. I'm going to go teach this moron some respect.]",
     "opt": [
       {
         "to": "@to ant hill 13",
@@ -660,7 +660,7 @@
   },
   "to ant hill 13": {
     "title": "Ant Hill",
-    "text": "You descend down the dirt halls.\nFurther down glowshrooms lining the halls were destroyed, so you pluck a few and carry it around with you to light the way.\n\n???: [Stop! Do not approach.]\n\nYou hear a voice from the dark.\nYou tell them that you came in peace, that you wish to speak to Cobby.\nTwo guards appear from the shadows and approach you.\nThey forcibly take your weapons away.\n\nGuard: [Don't make any sudden moves. Follow me.]",
+    "text": "You descend down the dirt halls.\nFurther down, glowshrooms lining the halls were destroyed, so you pluck a few and carry it around with you to light the way.\n\n???: [Stop! Do not approach.]\n\nYou hear a voice from the dark.\nYou tell them that you came in peace, that you wish to speak to Cobby.\nTwo guards appear from the shadows and approach you.\nThey forcibly take your weapons away.\n\nGuard: [Don't make any sudden moves. Follow me.]",
     "opt": [
       {
         "to": "@to ant hill 14",
@@ -728,7 +728,7 @@
   },
   "to ant hill 19": {
     "title": "Ant Hill",
-    "text": "The wounded patient in front of him slowly raises his hand.\nYou realize that the patient is the priest of Ant Hill who had exiled you and Cobby.\n\nPriest: [...W..Wait...]\n\nCobby gently rubs a wet, bloody rag on the priest's wounded stomach.\nIt looks like the priest had been impaled several times.\n\nPriest: [...Please... tell Cheese that I'm sorry.]\n\nCobby: [I don't think he will make it. After he passes away, I will surrender to Sugar. Oh, the priest wanted to give something to Cheese.]\n\nCobby hands you an old book.\n\nCobby: [Good luck.]\n\nYou leave the temple and climb back up the halls toward Sugar.",
+    "text": "The wounded patient in front of him slowly raises his hand.\nYou realize that the patient is the priest of Ant Hill who had exiled you and Cobby.\n\nPriest: [...W..Wait...]\n\nIt looks like the priest had been impaled several times before Cobby saved him.\n\nPriest: [...Please... tell Cheese that I'm sorry.]",
     "opt": [
       {
         "to": "@to ant hill 20",
@@ -738,7 +738,7 @@
   },
   "to ant hill 20": {
     "title": "Ant Hill",
-    "text": "Priest: [...As much as I love him, I couldn't put his life over other valuable hunters of Ant Hill... Please...]\n\nCobby: [I don't think he will make it. After he passes away, I will surrender to Sugar.]\n\nCobby: [...Whatever you're up to, good luck.]\n\nYou leave the temple and climb back up the halls toward Sugar.",
+    "text": "Priest: [I am the priest of Ant Hill... I have given up my name and my life to lead our people... as such, I must make choices for all of Ant Hill...]\n\nPriest: [...As much as I love him, I couldn't put his life over other valuable hunters of Ant Hill... Please...]\n\nCobby: [I don't think he will make it. After he passes away, I will surrender to Sugar. Whatever you're up to, good luck.]\n\nYou leave Cobby and the priest behind and climb back up the halls toward Sugar.",
     "opt": [
       {
         "to": "@to ant hill 21",
@@ -748,7 +748,7 @@
   },
   "to ant hill 21": {
     "title": "Ant Hill",
-    "text": "The guards of either factions let you pass without any hassle.\nYou arrive at the entrance hall.\n\nThere are a dozen guards in the room and Sugar laying on the ground in the center.\n\nSugar: [Kill him! Find and Kill HIM!]\n\nYou ask one of the guards and he tells you that Cheese came back and attacked her while she was resting.\n\nGuard: [He also hid away her weapons and put feces in her food... He better be running right now.]\n\nIt doesn't look like Sugar is in any mood for conversation.",
+    "text": "All of the guards let you pass without any hassle.\nYou arrive at the entrance hall.\n\nThere are a dozen guards in the room and Sugar laying on the ground in the center.\n\nSugar: [Kill him! Find and Kill HIM!]\n\nYou ask one of the guards and he tells you that Cheese came back and attacked her while she was resting.\n\nGuard: [He also hid away her weapons and put feces in her food... He better be running right now.]\n\nIt doesn't look like Sugar is in any mood for conversation.",
     "opt": [
       {
         "to": "@to ant hill 22",

@@ -585,7 +585,7 @@
   },
   "dolomite inn 2": {
     "title": "Stone Henge",
-    "text": "You rest.\nYou dream of flying around Ant Hill annoying people with your mandibles...\n\n...\n\nYou awaken to someone talking.\n\nLucid: [Hey, wake up, today I learned that your friend Cheese was caught and sent to the spider forest.]\n\nLucid hands you a necklace.\n\nLucid: [Look, this is my precious necklace that I always wear. It will allow you to turn yourself into a small mouse. If you make it out of the forest, you must give it back to me.]",
+    "text": "You rest.\nYou dream of flying around Ant Hill annoying people with your mandibles...\n\n...\n\nYou awaken to someone talking.\n\nLucid: [Hey, wake up, today I learned that your friend Cheese was caught and sent to the spider forest.]\n\nLucid hands you a necklace.\n\nLucid: [Do you know what an Oopart is? They are powerful artifacts much ahead of our time. This one will allow you to turn yourself into a small mouse. If you make it out of the forest, you must give it back to me.]",
     "opt": [
       {
         "to": ">item>Lucid's amulet>@stone henge search",

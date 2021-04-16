@@ -24,8 +24,8 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
         val result = UnitModel(name, speed, health, moves.toMutableList(), skills.toMutableList(),
             mutableListOf(), flavors.toMutableMap() as HashMap<String, String>)
         for (i in status.indices){
-            result.statusDuration.add(result.status[i].duration)
-            result.status.add(result.status[i].copy())
+            result.status.add(status[i].copy())
+            result.statusDuration.add(result.status.last().duration)
         }
         result.points = points
         result.block = block
@@ -321,7 +321,7 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
         pronoun.addAll(getPronouns(this))
         pronoun.addAll(getPronouns(target ?: this))
 
-        result = if (pronoun[0] == "s") {
+        result = if (pronoun[1] == "s") {
             result.replace("%ies", "ies")
             result.replace("%es", "es")
         } else {

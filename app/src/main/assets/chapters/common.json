@@ -2,29 +2,57 @@
   "invalid": {
     "title": "",
     "text": "Dialog page is missing...",
-    "opt": [{
-      "to": "@defeat",
-      "text": "Go back"
-    }]
+    "opt": [
+      {
+        "to": "@defeat",
+        "text": "Go back"
+      }
+    ]
   },
   "defeat": {
     "title": "Game Over",
     "text": "It is GAME OVER!",
-    "opt": [{
-      "to": ">heal>8>@start",
-      "text": "Start Over"
-    }]
+    "opt": [
+      {
+        "to": ">heal>8>@start",
+        "text": "Start Over"
+      }
+    ]
   },
   "custom2": {
     "title": "",
     "text": "%?t1",
-    "filler": ["%?t1", "%?t2", "%?t3", "%?t4", "%?t5"],
-    "opt": [{
-      "to": "%?t2",
-      "text": "%?t3"
-    },{
-      "to": "%?t4",
-      "text": "%?t5"
-    }]
+    "filler": [
+      "%?t1",
+      "%?t2",
+      "%?t3",
+      "%?t4",
+      "%?t5"
+    ],
+    "opt": [
+      {
+        "to": "%?t2",
+        "text": "%?t3"
+      },
+      {
+        "to": "%?t4",
+        "text": "%?t5"
+      }
+    ]
+  },
+  "amulet of will": {
+    "title": "The Amulet",
+    "text": "You are holding the mysterious amulet.",
+    "opt": [
+      {
+        "to": ">saveplayer>save2>>copy>saving>return>>copy>page>return>>custom>You press the amulet.\nIt feels as if time stopped for a moment.>>now",
+        "text": "Press it"
+      },
+      {
+        "to": ">custom>You rub the amulet.\nIt feels like you've died for a moment.>>copy>page>saving>>save>saving>>>loadplayer>save2>>now",
+        "text": "Rub it counter clockwise",
+        "reqs": ["!null>saving"]
+      }
+    ]
   }
 }

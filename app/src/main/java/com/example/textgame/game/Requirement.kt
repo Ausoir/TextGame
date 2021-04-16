@@ -45,6 +45,9 @@ object Requirement{
             split[0] == "class" -> {
                 model.specialization == split[1]
             }
+            split[0] == "null" -> {
+                (split[1] !in model.vars || model.vars[split[1]].isNullOrEmpty() || model.vars[split[1]]!! == "0")
+            }
             split[0] == "var" -> {
                 model.vars[split[1]] == split[2]
             }

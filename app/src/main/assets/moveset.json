@@ -1958,17 +1958,11 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": -4
       }
     ],
-    "reqs": [
-      {
-        "effect": "melee",
-        "target": -1
-      }
-    ],
-    "desc": "snipe the enemy for 4 damage.",
-    "text": "snipe%s the %F with a %w"
+    "desc": "shoot the enemy for 4 damage.",
+    "text": "fire%s the %F"
   },
   "thrust": {
     "effects": [

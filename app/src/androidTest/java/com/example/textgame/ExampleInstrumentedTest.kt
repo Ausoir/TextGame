@@ -15,17 +15,17 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
-    private val logID = "log7"
-    private val knownTags = listOf("time", "timeset", "heal", "view rest", "dropAll", "refresh chapter")
+    private val logID = "log9"
+    private val knownTags = listOf("time", "timeset", "heal", "view rest", "dropAll")
     private val chainTags = listOf("encounter", "join", "drop", "view advance", "view shop", "combat",
-        "add", "save", "remove part", "item", "force item", "learn", "if")
+        "add", "save", "remove part", "item", "force item", "learn", "if", "refresh chapter", "remove item", "custom")
     private val errors = arrayListOf<String>()
     private val history = arrayListOf<String>()
     @Test
     fun validate_chapter() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         val game = Game(appContext)
-        game.player.model.vars["chapter"] = "1"
+        game.player.model.vars["chapter"] = "5"
         game.refreshChapter()
         recurse_dialog(game, "start")
         Log.d(logID, "---- VALIDATION COMPLETE. LISTING ERRORS ----")

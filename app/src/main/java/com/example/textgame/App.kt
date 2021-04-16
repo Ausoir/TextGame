@@ -187,6 +187,18 @@ class App : AppCompatActivity() {
                     game.player.model.vars[split[2]] = split[3]
                     openDialog(Grammar.substringAfter(to, ">", 4))
                 }
+                "copy" -> {
+                    game.player.model.vars[split[2]] = game.player.model.vars[split[3]] ?: ""
+                    openDialog(Grammar.substringAfter(to, ">", 4))
+                }
+                "saveplayer" -> {
+                    game.player.save(split[2])
+                    openDialog(Grammar.substringAfter(to, ">", 3))
+                }
+                "loadplayer" -> {
+                    game.player.load(split[2])
+                    openDialog(Grammar.substringAfter(to, ">", 3))
+                }
                 "add" -> {
                     if (split[2] in game.player.model.vars){
                         game.player.model.vars[split[2]] += split[3]
@@ -194,13 +206,6 @@ class App : AppCompatActivity() {
                         game.player.model.vars[split[2]] = split[3]
                     }
                     openDialog(Grammar.substringAfter(to, ">", 4))
-                }
-                "savepage" -> {
-                    game.player.model.vars["saving"] = game.player.model.vars["page"]!!
-                    viewCustom("You use the amulet.", Grammar.substringAfter(to, ">", 2))
-                }
-                "loadpage" -> {
-                    openDialog(game.player.model.vars["saving"] ?: "now")
                 }
                 "load" -> {
                     openDialog(game.player.model.vars[split[2]] ?: "invalid")
@@ -376,15 +381,16 @@ class App : AppCompatActivity() {
                 }
             }
         } else if (to.startsWith("@")) {
-            viewPage(to.substring(1))
+            val page = to.substring(1)
+            game.player.model.vars["prev"] = page
+            viewPage(page)
             viewHome()
         }
     }
 
     private fun viewPage(newPage: String){
-        game.player.model.vars["prev"] = game.player.model.vars["page"]!!
         game.player.model.vars["page"] = newPage
-        game.player.save()
+        game.player.save("save")
         title = getString(R.string.page_title, game.player.model.getTime().capitalize(), game.dialog.model[newPage]?.title ?: "")
     }
 
