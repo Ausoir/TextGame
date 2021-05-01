@@ -1,9 +1,10 @@
 package com.example.textgame.game
 
-class Deck(var me: UnitModel, val moves: MutableList<MoveModel>, handSize: Int) {
+class Deck(var me: UnitModel, var moves: MutableList<MoveModel>, handSize: Int) {
     private val discard = arrayListOf<Int>()
     private var hand = IntArray(handSize)
     private var queue = arrayListOf<Int>()
+    private var moves2 = mutableListOf<MoveModel>()
 
     private fun incHand(place: Int){
         discard.add(hand[place])
@@ -68,21 +69,6 @@ class Deck(var me: UnitModel, val moves: MutableList<MoveModel>, handSize: Int) 
         return result
     }
 
-    fun getLastMove(): MoveModel? {
-        return if (discard.isNotEmpty() && discard.last() >= 0) {
-            moves[discard.last()]
-        } else {
-            null
-        }
-    }
-
-    fun undoMove() {
-        if (discard.isNotEmpty() && discard.last() >= 0) {
-            queue.add(0, discard.last())
-            discard.remove(discard.last())
-        }
-    }
-
     fun clearMoves(){
         queue.clear()
         discard.clear()
@@ -90,5 +76,11 @@ class Deck(var me: UnitModel, val moves: MutableList<MoveModel>, handSize: Int) 
         for (i in hand.indices){
             hand[i] = i
         }
+    }
+
+    fun switchMoves(){
+        val temp = moves2
+        moves2 = moves
+        moves = temp
     }
 }

@@ -10,7 +10,6 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
                      val flavors: HashMap<String, String>): Serializable{
     lateinit var foes: ArrayList<UnitModel>
     lateinit var allies: ArrayList<UnitModel>
-    var statusDuration: ArrayList<Int> = arrayListOf()
     var id = 0
     var points = 0
     var healthPt = 1
@@ -24,8 +23,8 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
         val result = UnitModel(name, speed, health, moves.toMutableList(), skills.toMutableList(),
             mutableListOf(), flavors.toMutableMap() as HashMap<String, String>)
         for (i in status.indices){
-            result.status.add(status[i].copy())
-            result.statusDuration.add(result.status.last().duration)
+            val status = status[i].copy()
+            result.status.add(status)
         }
         result.points = points
         result.block = block
@@ -38,6 +37,7 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
     fun initialize(moves: MutableList<MoveModel>, handSize: Int){
         deck = Deck(this, moves, handSize)
         deck?.shuffle()
+        allies = arrayListOf()
         foes = arrayListOf()
     }
 
@@ -84,16 +84,21 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
         return null
     }
 
-    fun removeAllStatus(){
+    fun removeAllStatus(): String{
         var result = ""
-        for (i in status.indices){
-            val feedback = status[i].onRemove(this)
-            status.removeAt(i)
-            statusDuration.removeAt(i)
-            if (feedback.isNotEmpty()) {
-                result += "$feedback\n"
+        for (i in status.indices.reversed()){
+            if (i >= status.size){
+                result += "something"
+            }
+            if (status[i].duration != -1) {
+                val feedback = status[i].onRemove(this)
+                status.removeAt(i)
+                if (feedback.isNotEmpty()) {
+                    result += "$feedback\n"
+                }
             }
         }
+        return result
     }
 
     fun removeStatus(id: String?, effect: String?): String{
@@ -125,7 +130,6 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
                 if (status[i].id == id) {
                     val result = status[i].onRemove(this)
                     status.removeAt(i)
-                    statusDuration.removeAt(i)
                     return result
                 }
             }
@@ -138,29 +142,30 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
             if (status[i].effect == p){
                 val result = status[i].onRemove(this)
                 status.removeAt(i)
-                statusDuration.removeAt(i)
                 return result
             }
         }
         return null
     }
 
-    fun addStatus(effect: Status, duration: Int){
-        status.add(effect)
-        statusDuration.add(duration)
+    fun addStatus(effect: Status){
+        status.add(0, effect.copy())
     }
 
     fun processStatus(): String {
         var result = ""
-        for (i in status.indices.reversed()){
-            result += status[i].process(this, status[i].text)
-            if (statusDuration[i] > 0) {
-                statusDuration[i] -= 1
-            }
-            if (statusDuration[i] == 0){
-                result += status[i].onRemove(this)
-                status.removeAt(i)
-                statusDuration.removeAt(i)
+        for (i in status.indices.reversed()) {
+            try {
+                result += status[i].process(this, status[i].text)
+                if (status[i].duration > 0) {
+                    status[i].duration -= 1
+                }
+                if (status[i].duration == 0) {
+                    result += status[i].onRemove(this)
+                    status.removeAt(i)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
         block = 0
@@ -179,19 +184,19 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
         val percentage = getHealthPercentage()
         val result = when {
             percentage <= 0 -> {
-                flavors["death"] ?: "<color:#220000>%U collapse%s."
+                "<color:#220000>${flavors["death"] ?: "%u collapse%s."}"
             }
             percentage <= 25 -> {
-                "<color:#553030>%Ur seriously wounded."
+                "<color:#553030>%ur seriously wounded."
             }
             percentage <= 50 -> {
-                "<color:#553636>%Ur wounded."
+                "<color:#553636>%ur wounded."
             }
             percentage <= 75 -> {
-                "<color:#554040>%Ur lightly wounded."
+                "<color:#554040>%ur lightly wounded."
             }
             else -> {
-                "%Ur healthy."
+                "<color:#554444>%ur healthy."
             }
         }
         return "$result (${getHealthPercentage()}%)"
@@ -218,8 +223,7 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
                         " "
                     }
                 } else if (req.effect == "mana") {
-                    return if (mana >= req.value){
-                        mana -= req.value
+                    return if (req.value != null && mana >= req.value.toInt()){
                         ""
                     } else {
                         " "
@@ -321,12 +325,16 @@ data class UnitModel(val name: String, val speed: Int, var health: Int,
         pronoun.addAll(getPronouns(this))
         pronoun.addAll(getPronouns(target ?: this))
 
-        result = if (pronoun[1] == "s") {
-            result.replace("%ies", "ies")
-            result.replace("%es", "es")
+        if (pronoun[1] == "s") {
+            result = result.replace("%!ies", "y")
+            result = result.replace("%!es", "")
+            result = result.replace("%ies", "ies")
+            result = result.replace("%es", "es")
         } else {
-            result.replace("%ies", "y")
-            result.replace("%es", "")
+            result = result.replace("%!ies", "ies")
+            result = result.replace("%!es", "es")
+            result = result.replace("%ies", "y")
+            result = result.replace("%es", "")
         }
         result = result.replace("%ur", pronoun[2])
         result = result.replace("%us", pronoun[3])

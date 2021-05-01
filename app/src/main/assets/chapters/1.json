@@ -11,7 +11,7 @@
   },
   "start2": {
     "title": "Training ground",
-    "text": "Cobby: [Aight, let me teach you how to fight as a hunter before we depart. The monsters out there are way more dangerous than normal ants, and I need you to watch my back when the time comes.]",
+    "text": "You wake up early in the morning and pack all your stuff.\nYou visit Cobby in the training grounds outside.\n\nCobby: [Aight, let me teach you how to fight like a hunter before we depart. The monsters out there are way more dangerous than the normal ants around Ant Hill, and I need you to watch my back when the time comes.]",
     "opt": [
       {
         "to": "@sparring",
@@ -25,7 +25,7 @@
   },
   "sparring": {
     "title": "Training ground",
-    "text": "Cobby: [Let's learn about the basics of combat.]\n\nCobby: [On the top right, you'll see a button that you can click to access your profile. You can see your known movesets under movesets in that profile screen. These are the moves that you are able to perform in combat.]\n\nCobby: [Since you are not very skilled in fighting yet, you will have trouble dealing damage. Let me teach you an offensive move.\n\nYou learn <Bash>!\n\nCobby: [You will need to use the skill <Engage> to get close to me before you can use <Bash>.]\n\nCobby: [Use your new skill to try to deal damage to me. Let's spar!]",
+    "text": "Cobby: [Let's learn about the basics of combat.]\n\nCobby: [On the top right, you'll see a cyan button that you can click to access your profile. You can view the list of your moves under <movesets> menu in the profile screen.]\n\nCobby: [Since you are not very skilled in fighting, you don't have many offensive moves. Let me teach you an offensive move.\n\nScobby teaches you <Bash>.\n\nCobby: [Now, try to deal damage to me. You will need to use your <Engage> move to get close to me before you can use any melee skills like <Bash>.]\n\nCobby: [Let's spar!]",
     "opt": [
       {
         "to": ">learn>bash>>encounter>Sparring Cobby>@sparring2>@sparring2",
@@ -35,7 +35,7 @@
   },
   "sparring2": {
     "title": "Training ground",
-    "text": "Cobby: [No offense, but you are almost as weak as Cheese... anyways, let's go over the moves you used.]\n\nCobby: [As you experienced, you have 3 random skills to choose from your knowledge pool each turn. When you use up all of the skills from the pool, you had the option to 'Gather yourself' and re-stock all of the skills. Also, you may have noticed that only the skill that is currently usable is shown to you. For example, you don't have the option to kick me when disengaged.]\n\nCobby: [Now, let me teach you to be a fighter.]",
+    "text": "Cobby: [No offense, but you are almost as weak as Cheese... anyways, let's go over that last fight.]\n\nCobby: [As you just experienced, you have 3 random skills to choose from your knowledge pool each turn. When you use up all of the skills from the pool, you have the option to 'Gather yourself' and re-stock all of the skills. Also, only the skill that is currently usable is shown to you.]\n\nCobby: [Now, let me train you to be a fighter.]",
     "opt": [
       {
         "to": ">time>4>>view specialize>fighter>@sparring3",
@@ -45,7 +45,7 @@
   },
   "sparring3": {
     "title": "Training ground",
-    "text": "Hours pass. It is now %time.\n\nCobby: [Phew, now you're a little more of a hunter. Let me give you one last instruction about targeting before we move on.]",
+    "text": "Hours pass. It is now %time.\n\nCobby: [Phew, now you're a little more useful. Let me give you one last instruction about targeting before we move on.]",
     "filler": [
       "%time"
     ],
@@ -62,15 +62,15 @@
   },
   "sparring skip": {
     "title": "Training ground",
-    "text": "Cobby: [...Are you sure? Fine. Let me at least teach you a combat skill.]\n\nCobby: [Wind up buffs up your next attack to deal double damage.\nCripple deals 1 damage and make them unable to move for 3 turns.\nCharge allows you to engage and deal 1 damage when disengaged.]",
+    "text": "Cobby: [...Are you sure? Fine. Let me at least teach you a combat skill.]\n\nCobby: [Tackle deals 2 damage but stuns you and your target for a turn.\nBash gives you 1 block and lets you attack a foe for damage equal to your current block.\nCharge allows you to engage and deal 1 damage when disengaged.]",
     "opt": [
       {
-        "to": ">learn>parry>@sparring end",
-        "text": "Learn <Wind Up>"
+        "to": ">learn>tackle>@sparring end",
+        "text": "Learn <Tackle>"
       },
       {
-        "to": ">learn>cripple>@sparring end",
-        "text": "Learn <Cripple>."
+        "to": ">learn>bash>@sparring end",
+        "text": "Learn <Bash>."
       },
       {
         "to": ">learn>charge>@sparring end",
@@ -80,7 +80,7 @@
   },
   "sparring end": {
     "title": "Field",
-    "text": "Today is the day of departure.\nYou eat as much as you can at the feast of Full Moon's Journey.\nThe people of Ant Hill wave goodbye as you, Cheese, and Cobby leave Ant Hill through a dirt road sprinked with flower petals.\n\nYour group spend the whole day traveling North through the forests until you see a body of water blocking the way.\n\nCobby: [This is the river that separates our land from northern foreign lands. There are many hostile monsters on the other side of this river... lot more than around Ant Hill.]\n\nCobby: [Let's build a camp here so we can construct a raft to cross the river.]",
+    "text": "Today is the day of departure.\nYou eat as much as you can at the feast of Full Moon's Journey.\nThe people of Ant Hill wave goodbye as you, Cheese, and Cobby leave Ant Hill through a dirt road sprinked with flower petals.\n\n---\n\nYour group spend the whole day traveling north through the forests until you see a body of water blocking the way.\n\nCobby: [This is the river that separates our land from the foreign lands. There are many hostile monsters on the other side of this river... lot more than around Ant Hill.]\n\nCobby: [Let's build a camp here before we start constructing a raft to cross the river.]",
     "opt": [
       {
         "to": ">timeset>14>@river camp",
@@ -90,7 +90,7 @@
   },
   "river camp": {
     "title": "River side camp",
-    "text": "You are at camp. Cobby is busy building a raft.\n\nCobby: [Please get me some sturdy woods while you are out scouting. Be careful after dark.]",
+    "text": "You are at camp. Cobby is busy building a raft.\n\nCobby: [Please get me some sturdy wood while you are out scouting. Be careful after dark.]",
     "opt": [
       {
         "to": "@river scout",
@@ -146,7 +146,7 @@
   },
   "river scout1-1": {
     "title": "River side",
-    "text": "Cheese joins you.\n\nYou start scouting around the camp.\n\nCheese: [I heard you tried to fight a horned spider. How did that go?]\n\nYou tell him about your story.\n\nCheese: [Wow, you are pretty weak!]\n\nYou hear a sound.",
+    "text": "Cheese joins you.\n\nYou start scouting around the camp.\n\nCheese: [I heard you tried to fight a horned spider. How did that go?]\n\nYou tell him about your story.\n\nCheese: [Wow, you are pretty weak!]\n\nJust as you are about to make an objection, you hear a sound.",
     "opt": [
       {
         "to": ">combat>river encounter>@river defeat>@river scout3",
@@ -160,11 +160,11 @@
   },
   "river scout1-2": {
     "title": "River side",
-    "text": "Cheese joins you.\n\nYou and Cheese scout around for a while.\n\nCheese: [I hope we run into something dangerous. I always wanted to be a hunter, but my father is a lame-ass priest.]\n\nYou hear something.",
+    "text": "Cheese joins you.\n\nYou and Cheese scout around for a while.\n\nCheese: [I hope we run into something dangerous. I always wanted to be a hunter, but my dad is a lame-ass priest.]\n\nYou hear something.",
     "opt": [
       {
         "to": ">combat>river encounter>@river defeat>@river scout3",
-        "text": "Prepare for a fight"
+        "text": "Fight"
       },
       {
         "to": ">time>3>@river camp",
@@ -174,7 +174,7 @@
   },
   "river scout2": {
     "title": "River side",
-    "text": "You scout the woods along the river. This area is pretty humid, which means there are dangerous predators nearby... Actually, you hear one coming your way right now.",
+    "text": "You scout the woods along the river.\nThis area is pretty humid, which means it's likely that there are dangerous predators nearby... Actually, you hear one coming your way right now.",
     "opt": [
       {
         "to": ">combat>river encounter>@river defeat>@river scout3",
@@ -191,7 +191,7 @@
     "text": "You are still out in the woods.\nIt is %time.",
     "filler": [
       "%time",
-      "%trand3"
+      "%trand2"
     ],
     "opt": [
       {
@@ -199,7 +199,7 @@
         "text": "Return to camp"
       },
       {
-        "to": "@river scout4-%trand3",
+        "to": "@river scout4-%trand2",
         "text": "Poke around a bit more"
       }
     ]
@@ -230,31 +230,17 @@
   },
   "river scout4-2": {
     "title": "River side",
-    "text": "You are walking around in the woods again. You hear something.",
+    "text": "You walk around the woods and find a sturdy wood.",
     "opt": [
       {
-        "to": ">time>3>@river camp",
-        "text": "Run back to camp"
-      },
-      {
-        "to": ">combat>river encounter>@river defeat>@river scout3",
-        "text": "Fight",
-        "reqs": [
-          "daytime"
-        ]
-      },
-      {
-        "to": ">combat>river night encounter>@river defeat>@river scout3",
-        "text": "Fight",
-        "reqs": [
-          "nighttime"
-        ]
+        "to": ">time>3>>item>sturdy wood>@river camp",
+        "text": "Proceed"
       }
     ]
   },
   "river defeat": {
     "title": "River side",
-    "text": "You are unconscious.\n\n...\nSomething is gently shaking you...\n\nYou open your eyes and see Cobby's ugly face.\n\nCobby: [Are you alright? You should rest here for a bit.\nWhen you are defeated in battle, you lose some knowledge and equipment. Be careful next time.]\n\nEvery bone in your body ache.",
+    "text": "You are unconscious.\n\n...\nSomething gently shakes you...\n\nYou open your eyes and see Cobby's ugly face.\n\nCobby: [Are you alright? You should rest here for a bit.\nWhen you are defeated in battle, you lose your weapons. Be careful next time.]\n\nEvery bone in your body ache.",
     "opt": [
       {
         "to": ">time>8>@river camp",
@@ -262,22 +248,9 @@
       }
     ]
   },
-  "river scout4-3": {
-    "title": "River side",
-    "text": "You walk around the woods and find a sturdy wood.",
-    "opt": [
-      {
-        "to": ">time>3>>item>@sturdy wood>@river camp",
-        "text": "Pick it up and go back to camp"
-      }
-    ]
-  },
   "river quest done": {
     "title": "River",
-    "text": "You provide the sturdy wood.\nIt is %time.\n\nCobby: [The raft is done... Let's get rowing.]\n\n---\n\nYou row your way across the river.\n\nCobby: [So, according to the map, this river will take about 2 hours to cross. Cheese, please stop touching the water. We don't want to attract fish.]\n\nCobby: [Let's take this time to talk about our mission. Do you have any questions for me?]",
-    "filler": [
-      "%time"
-    ],
+    "text": "You provide the sturdy wood.\n\nCobby: [The raft is done... Let's get rowing.]\n\n---\n\nYou row your way across the river.\n\nCobby: [So, according to the map, this river will take about 2 hours to cross. Cheese, please stop touching the water. We don't want to attract fish.]\n\nCobby: [Let's take this time to talk about our mission. Do you have any questions for me?]",
     "opt": [
       {
         "to": "@ask mission",
@@ -295,7 +268,7 @@
   },
   "ask mission": {
     "title": "River",
-    "text": "Cobby: [5 years ago, Ant Hill used to trade food and crafts with the neighboring settlements. There were people dying from monster attacks and such, but nowhere as dangerous as it is now.\nBut then the roads suddenly became very dangerous. So dangerous, that we don't even know what is happening outside, let alone trading.\n\nThey tried coordinating hunter groups to clear the road, but they would get massacred by horned spiders who attack with even bigger numbers...]\n\nCobby: [Later in that year, the priest and the leaders of Ant Hill decided to gather and choose 2 people to leave and contact our old neighbors. It's incredibly dangerous, but understandable... we can't just sit and do nothing.\nIf we can somehow resume trade, we can import things like crossbows and advanced spells to defend ourselves better.]\n\nCobby: [I am willing to die for Ant Hill, and I hope you are, too.]",
+    "text": "Cobby: [5 years ago, Ant Hill used to trade food and crafts with the neighboring settlements. There were people dying from monster attacks and such, but nowhere as dangerous as it is now.\nBut then the roads suddenly became very dangerous. So dangerous, that we can't even spare hunters to protect traders to Stone Henge.\n\nThey tried coordinating hunter groups to clear the road, but they all get killed by the damned horned spiders...]\n\nCobby: [Later in that year, the priest and the leaders of Ant Hill decided to send 2 people every month to keep in touch with our old neighbors. It's incredibly dangerous, but necessary... we can't just sit and do nothing.\nIf we can somehow resume trade, we can import things like crossbows and advanced spells to defend ourselves better.]\n\nCobby: [I am willing to die for Ant Hill, and I hope you are, too.]",
     "opt": [
       {
         "to": "@ask hunting",
@@ -309,7 +282,7 @@
   },
   "ask hunting": {
     "title": "River",
-    "text": "Cobby: [As you know, the main source of food in Ant Hill is meat from hunted bugs. Ant Hill has always been thriving ever since we had conquered the hill from the fire ants, thanks to us hunters who provide plenty of meat to the market in Ant Hill. Although, nowadays our population has been stagnant due to people constantly being ambushed and kidnapped...\n\nBut anyways, most of the men in Ant Hill are hunters like me, and you should sooner or later learn how to hunt.]\n\nCobby: [The last hunter sent out before us was Sugar. She was a pretty good hunter, very crafty. She was once just a scout like you, but she had learned how to fight and became a hunter.]\n\nCobby gives you one of those looks.\n\nCobby: [She hasn't returned from the Journey, and it will probably be the same for us, too. But it will be an honorable death.]\n\nCheese: [Nah... I'm pretty sure she and all the other pilgrims went to someplace nicer than Ant Hill and forgot about us. No way all of those people just died.]",
+    "text": "Cobby: [As you know, the main source of food in Ant Hill is meat from hunted bugs. Ant Hill has always been thriving ever since we had conquered the hill from the giant ants, thanks to us hunters who provide plenty of meat to the market in Ant Hill. Although, nowadays our population has been stagnant due to people constantly being ambushed and kidnapped...\n\nBut anyways, you should sooner or later learn how to hunt.]\n\nCobby: [The last hunter sent out before us was Sugar. He was a pretty good hunter, very crafty. He was once just a scout like you, but he learned how to fight and became a hunter.]\n\nCobby gives you one of those looks.\n\nCobby: [He hasn't returned from the Journey like most others. It will probably be the same for us, but it will be an honorable death.]\n\nCheese: [Nah... I'm pretty sure he and all the other hunters just settled in Stone Henge for good. Ant Hill is a real shithole.]",
     "opt": [
       {
         "to": "@ask mission",
@@ -323,17 +296,17 @@
   },
   "other side": {
     "title": "Other side",
-    "text": "The three of you arrive on the other side of the river. You see dozens of weird flying monsters that you don't recognize above the riverbed in the distance.\n\nCheese: [So what's out here that makes people never return?]\n\nCobby: [Well... spiders, mantis, rats, bloodquito... could be anything, really. Even the most skilled hunter can't constantly fight off bloodquitos without proper rest.]\n\nCobby: [Our goal is Stone Henge, which might take more than 4 days of walking. Our best option is stealth. Let's just hope we don't run into something big.]\n\nCobby: [Also.. if we get defeated in battle, we'll have to retreat here and start over again. Remember that when you are defeated, one random move from your moveset will be turned useless. If you run out of engaging moves, it may as well be game over, and you'd have to start over by accessing the Chapters menu in your profile. Let's move.]",
+    "text": "The three of you arrive on the other side of the river.\nYou see dozens of weird flying monsters above the riverbed in the distance.\n\nCheese: [So what's out here that's so dangerous?]\n\nCobby: [Well... other than the horned spiders, there are centipedes, rats, bloodquito, ticks, worms... Even the most skilled hunters can't fend off bloodquitos one after another.]\n\nCobby: [Our goal is Stone Henge, which might take more than 4 days of walking. Our best option is stealth. Let's just hope we don't run into something big.]\n\nCobby: [Also.. if we get defeated in battle, we'll have to retreat here and start over again. Let's move.]",
     "opt": [
       {
-        "to": ">view specialize>scout:forester>>join>Cobby>@day 1",
+        "to": ">save>temp>0>>view specialize>scout:forester>>join>Cobby>@day 1",
         "text": "Proceed",
         "reqs": [
           "!class>fighter"
         ]
       },
       {
-        "to": ">join>Cobby>@day 1",
+        "to": ">save>temp>0>>join>Cobby>@day 1",
         "text": "Proceed",
         "reqs": [
           "class>fighter"
@@ -342,12 +315,38 @@
     ]
   },
   "journey defeat": {
+    "title": "...",
+    "text": "...",
+    "opt": [
+      {
+        "to": ">add>temp>1>@journey defeat 2",
+        "text": "Proceed",
+        "reqs": ["!>var>temp>2"]
+      },
+      {
+        "to": "@journey defeat end",
+        "text": "Proceed",
+        "reqs": ["var>temp>2"]
+      }
+    ]
+  },
+  "journey defeat 2": {
     "title": "River side",
-    "text": "You are unconscious.\n\n...\nYour sides ache, as if being struck by a pole...\n\nYou open your eyes. Cobby is sitting on a tree trunk and poking you with a stick.\n\nCobby: [You awake? you really need to bulk up, kid.]\n\nEvery bone in your body ache.",
+    "text": "\n\n...\n\nYour sides ache, as if being poked with a stick...\n\nYou open your eyes. Cobby is sitting on a tree trunk, poking you with a stick.\n\nCobby: [You awake? you really need to bulk up, kid.]\n\nEvery bone in your body ache.",
     "opt": [
       {
         "to": ">join>Cheese>>join>Cobby>>time>8>@day 1",
         "text": "Proceed"
+      }
+    ]
+  },
+  "journey defeat end": {
+    "title": "River side",
+    "text": "\n\n...\n\nYou open your eyes. Cobby is sitting on a tree trunk.\n\nCobby: [Look, I don't think this is going to work out. Let's go back to Ant Hill, I'll drop you off and leave alone.]",
+    "opt": [
+      {
+        "to": "@defeat",
+        "text": "Sorry..."
       }
     ]
   },
@@ -367,10 +366,10 @@
   },
   "day 1-2": {
     "title": "Day 1 - Flower forest",
-    "text": "You decide to walk through the forest of goldenrod flowers. Those flowers are towering over your head, at least 3 times as tall as you are and blooming with menacing yellow petals. Pollen dust and yellow petals dance with gentle breeze.\n\nCheese: [Guys, my legs hurt. Why don't we take lunch here in the beautiful scenary?]",
+    "text": "You decide to walk through the forest of goldenrod flowers.\nThose flowers are towering over your head. They are at least three times as tall as you are and blooming with menacing yellow petals.\nPollen dust and yellow petals dance with gentle breeze.\n\nCheese: [Guys, my legs hurt. Why don't we take lunch here in the beautiful scenary?]",
     "opt": [
       {
-        "to": "@day 1-3",
+        "to": ">heal>1>@day 1-3",
         "text": "Eat lunch"
       },
       {
@@ -408,17 +407,17 @@
         "text": "Trust Cheese"
       },
       {
-        "to": "@day 2",
+        "to": ">timeset>10>@day 2",
         "text": "No way"
       }
     ]
   },
   "day 1 end-1": {
     "title": "Day 2 - Fields",
-    "text": "You leave Cheese on watch and go to sleep.\n\n...\n\nYou wake up to Cobby's muffled screams. You see that there is a giant blood red tick wrapped around his face. There is blood everywhere.\n\nCobby: [ARRRRGGHHHH!!!!!]\n\nYou see that Cheese is sleeping.",
+    "text": "You decide to listen to Cheese and rest for the day.\nYou leave Cheese on watch and go to sleep.\n\n...\n\nYou wake up to Cobby's muffled screams. You see that there is a giant blood red tick wrapped around his face. There is blood everywhere.\n\nCobby: [ARRRRGGHHHH!!!!!]\n\nYou see that Cheese is sleeping.",
     "opt": [
       {
-        "to": ">drop>Cobby>>drop>Cheese>>encounter>two ticks>@journey defeat>>join>Cheese>@day 2",
+        "to": ">drop>Cobby>>drop>Cheese>>encounter>two ticks>@journey defeat>>join>Cheese>>timeset>10>@day 2",
         "text": "Fight"
       }
     ]
@@ -432,17 +431,14 @@
         "text": "Keep going"
       },
       {
-        "to": ">heal>8>>timeset>20>@day 2-1",
+        "to": ">custom>You listen to Cheese and rest.\nYou resume walking and continue walking after dark.>>heal>8>>timeset>20>@day 2-1",
         "text": "Rest"
       }
     ]
   },
   "day 2-1": {
     "title": "Day 2 - Fields",
-    "text": "It is %time.\nThe three of you trail through the woods.\n\nCheese: [You know, it's kinda quiet here. And my legs have been sore for three days, so...]",
-    "filler": [
-      "%time"
-    ],
+    "text": "The three of you trail through the woods.\n\nCheese: [You know, it's kinda quiet here. And my legs have been sore for three days, so...]",
     "opt": [
       {
         "to": ">time>1>@day 2 end",
@@ -456,14 +452,14 @@
   },
   "day 2-2": {
     "title": "Day 2 - Fields",
-    "text": "Couple minutes have passed, and now it is time to go. You turn to see that Cobby has fallen asleep.\nYou don't see Cheese anywhere.",
+    "text": "Couple minutes have passed, and now it is time to go.\nYou notice that Cobby has fallen asleep.\nYou don't see Cheese anywhere.",
     "opt": [
       {
         "to": "@day 2-1-3",
         "text": "Look for Cheese"
       },
       {
-        "to": "@day 2-1-2",
+        "to": ">dropAll>>join>Cheese>@day 2-1-2",
         "text": "Shout to call Cheese"
       },
       {
@@ -494,7 +490,7 @@
   },
   "day 2-1-2": {
     "title": "Day 2 - Fields",
-    "text": "You go around shouting for Cheese. You find him behind a tree not far from you.\n\nCheese: [What? Can't I take a dump in peace?]\n\nThere is a giant bloodquito sitting on the tree, silently gazing down at him.",
+    "text": "You go around shouting for Cheese. You find him behind a tree not far from you.\n\nCheese: [What? Can't I take a dump in peace?]\n\nRight above him, there is a giant bloodquito sitting on the tree, silently gazing down at him.",
     "opt": [
       {
         "to": ">encounter>bloodquito>@journey defeat>@day 2 end",
@@ -523,25 +519,25 @@
     ]
   },
   "day 2 end": {
-    "title": "",
-    "text": "redirect",
+    "title": "Day 2 - Fields",
+    "text": "Cobby: [Open fields. Just a few more hours then we can rest.]\n\nYou leave the forest and walk across a vast field of short grass.",
     "opt": [
       {
         "to": "@day 2 end1",
-        "text": "",
+        "text": "Proceed",
         "reqs": [
           "var>trustcheese>@day 2 end1"
         ]
       },
       {
         "to": "@day 2 end2",
-        "text": ""
+        "text": "Proceed"
       }
     ]
   },
   "day 2 end1": {
     "title": "Day 2 - Fields",
-    "text": "It is getting dark.\n\nCheese: [Can we stop now? my legs are trembling... I'll really be on watch this time, I swear.]\n\nCobby: [No... no.]",
+    "text": "Cheese: [Can we stop now? my legs are trembling... I'll really be on watch this time, I swear.]\n\nCobby: [No... no.]",
     "opt": [
       {
         "to": ">save>trustcheese>1>>timeset>1>@day 2 end2-1",
@@ -555,10 +551,10 @@
   },
   "day 2 end2": {
     "title": "Day 2 - Fields",
-    "text": "It is getting dark.\n\nCheese: [Can we stop now? my legs are trembling!]\n\nCobby: [Cheese... not this again.]\n\nCheese: [If we stop now, I'll be on watch for 3 hours tonight. Please?]",
+    "text": "Cheese: [Can we stop now? my legs are trembling!]\n\nCobby: [Cheese... not this again.]\n\nCheese: [If we stop now, I'll be on watch for 3 hours tonight. Please?]",
     "opt": [
       {
-        "to": ">save>trustcheese>1>timeset>1>@day 2 end2-1",
+        "to": ">save>trustcheese>1>>timeset>1>@day 2 end2-1",
         "text": "Trust Cheese"
       },
       {
@@ -579,7 +575,7 @@
   },
   "day 3-1": {
     "title": "Day 3 - Fields",
-    "text": "It is the third day.\nCobby: [We are on our third day. Just two more days of walking and we'll be at Stone Henge.]\n\nCheese: [Yea, we could maybe spend an extra day resting. It's not good to walk this much.]\n\nWalking down a green valley, you see a giant blue beetle grazing on the grass.\n\nCobby: [Hey, that's a blue beetle. If we hunt that, I'll craft you a nice weapon.]",
+    "text": "It is the third day.\nCobby: [We are on our third day. Just two more days of walking and we'll be at Stone Henge.]\n\nCheese: [We could maybe spend an extra day resting. It's not good to walk this much, ya know?]\n\nWalking down a green valley, you see a giant blue beetle grazing on the grass.\n\nCobby: [Hey, that's a blue beetle. You wanna hunt it down? I'll craft you a nice weapon with its horn.]",
     "opt": [
       {
         "to": ">encounter>beetle>@journey defeat>>timeset>20>@day 3 end",
@@ -610,7 +606,7 @@
     "text": "It is getting dark.\n\nCobby: [We should rest early today and give our wounds some time to heal. If memory serves me right, we will be entering the woods again tomorrow.]",
     "opt": [
       {
-        "to": ">heal>8>timeset>10>@day 4",
+        "to": ">heal>8>>timeset>10>@day 4",
         "text": "Rest and heal"
       }
     ]
@@ -627,7 +623,7 @@
   },
   "day 4 2-1": {
     "title": "Day 4 - Woods",
-    "text": "Cobby inspects the corpses of the feral humans.\n\nCobby: [Hmm... this is weird. These people are wearing rags and wielding primitive weapons, and don't seem to understand us, like some kind of animals... just like the ferals in the Spider Forest that you spoke of. Cheese, for Gaia's sake, don't defile the corpses!]\n\nCobby: [We should bury the corpses under leaves here and mark it. We'll notify Stone Henge of this...]\n\nCheese: [Can I have this corpse? She's... I just... never mind.]\n\nYou proceed to Stone Henge.",
+    "text": "Cobby inspects the corpses of the feral humans.\n\nCobby: [Hmm... this is weird. These people wear primitive leather rags like some kind of animals... just like the ferals in the Spider Forest that you spoke of. Cheese, for god's sake, don't defile the corpses!]\n\nCobby: [We should bury the corpses under leaves here and mark it. We'll notify Stone Henge of this...]\n\nCheese: [Can I have this corpse? I just... never mind.]\n\nYou proceed to Stone Henge.",
     "opt": [
       {
         "to": "@day 4 3",
@@ -637,7 +633,7 @@
   },
   "day 4 2-2": {
     "title": "Day 4 - Woods",
-    "text": "Cobby inspects the corpses of the feral humans.\n\nCobby: [Hmm... this is weird. These people wear rags and bark, like some kind of animals. Cheese, for Gaia's sake, don't defile the corpses!]\n\nCobby: [We should bury the corpses under leaves here and mark it. We'll notify Stone Henge of this.. hopefully nothing has happned to Stone Henge.]\n\nCheese: [Can I carry around this corpse? She's... I just... never mind.]\n\nYou proceed to Stone Henge.",
+    "text": "Cobby inspects the corpses of the feral humans.\n\nCobby: [Hmm... this is weird. These people wear primitive leather rags, like some kind of animals. Cheese, for god's sake, don't defile the corpses!]\n\nCobby: [We should bury the corpses under leaves here and mark it. We'll notify Stone Henge of this.. hopefully nothing has happned to Stone Henge.]\n\nCheese: [Can I have this corpse? She's pretty cute... Never mind.]\n\nYou proceed to Stone Henge.",
     "opt": [
       {
         "to": "@day 4 3",
@@ -647,7 +643,7 @@
   },
   "day 4 3": {
     "title": "Day 4 - Woods",
-    "text": "You leave the forest and walk through a clearing for a while. You see a massive stone structure in the distance.\n\nCobby: [It looks like we had Mother Gaia's blessings. We are at Stone Henge, and in one piece!]\n\nCheese: [So this is the journey that everyone failed to make for 5 years? I'm pretty sure the other scouts just abandoned Ant Hill.]\n\nCobby: [It could be that we're just lucky. But let's be careful, just in case.]\n\nYou see in a distance what looks like a pile of large stones. Walking closer, it looks like a giant structure made of huge stone bricks had collapsed. Could it be that Stone Henge was destroyed?\n\nCobby: [Ah, Stone Henge, looking just as magnificent as it did 8 years ago when I visited! Let's visit the priest of Stone Henge and let him know that we've arrived from Ant Hill.]\n\nYou walk by an outpost, and guards come out of it to greet you.\n\nGuard: [Hail, are you visiting Stone Henge? Please follow us.]",
+    "text": "You leave the forest and walk through a clearing for a while.\nYou see a massive stone structure in the distance.\n\nCobby: [It looks like we had god's blessings. We are at Stone Henge, and in one piece!]\n\nCheese: [So this is the arduous journey that everyone fails? Maybe the other hunters just settled down here.]\n\nCobby: [No... It's just that we were lucky to face so few monsters on our way here, Cheese.]\n\nYou see in a distance what looks like a pile of large stones.\nWalking closer, it looks like a giant structure made of huge stone bricks had collapsed.\n\nCobby: [Ah, Stone Henge, looking just as magnificent as it did 8 years ago when I visited! Let's visit the priest of Stone Henge and let him know that we've arrived from Ant Hill.]\n\nYou walk by an outpost, and some guards come out to greet you.\n\nGuard: [Hail, are you visiting Stone Henge? Please follow us.]",
     "opt": [
       {
         "to": "@stone henge",
@@ -657,69 +653,56 @@
   },
   "stone henge": {
     "title": "Stone Henge",
-    "text": "It is %time.\n\nYou walk through the middle of the busy streets of Stone Henge. Giant stone bricks above cast shadows all over, creating a cool atmosphere protected from the sun.\n\nLike Ant Hill, there are hunters selling meat on display everywhere.\nUnlike Ant Hill, people don't seem surprised by the presence of new faces.\n\nThe guard is guiding you to the temple.",
+    "text": "It is %time.\n\nThe guards walk you through the middle of the busy streets of Stone Henge.\nGiant stone bricks above cast shadows all over, creating a cool atmosphere protected from the sun.\n\nLike Ant Hill, there are hunters selling meat on display everywhere.\n\nThe guard wants to guide you to the temple.",
     "filler": [
       "%time"
     ],
     "opt": [
       {
         "to": ">save>quest>stone henge>@stone henge temple",
-        "text": "Follow to the temple",
+        "text": "Follow guard to the temple",
         "reqs": [
           "!var>quest>stone henge"
         ]
       },
       {
-        "to": ">dropAll>>encounter>stone henge arena>@stone henge>>time>4>>join>Cheese>>join>Cobby>@stone henge",
+        "to": ">custom>You ask the guard to visit the training grounds, and he leads you through.>>dropAll>>encounter>stone henge arena>@stone henge>>time>4>>join>Cheese>>join>Cobby>@stone henge",
         "text": "Ask to visit training grounds"
       },
       {
-        "to": "@stone henge tavern",
+        "to": ">custom>Guard: [I'm sorry, but you can't go to the tavern yet. You should speak to our priest first.]>@stone henge",
         "text": "Ask to visit the tavern"
       },
       {
-        "to": ">view shop>Stone Henge Shop>@stone henge",
+        "to": ">custom>You ask the guard if you can shop around, and he leads you through.>>view shop>Stone Henge Shop>@stone henge",
         "text": "Ask to shop around"
       },
       {
-        "to": "@stone henge trainer",
+        "to": ">custom>You ask the guard to visit the trainer, and he leads you through.>@stone henge trainer",
         "text": "Ask to visit the trainer"
-      }
-    ]
-  },
-  "stone henge tavern": {
-    "title": "Stone Henge",
-    "text": "Guard: [I'm sorry, but you can't go to the tavern yet. You should speak to our priest first.]",
-    "opt": [
-      {
-        "to": "@stone henge",
-        "text": "Proceed"
       }
     ]
   },
   "stone henge trainer": {
     "title": "Stone Henge Trainer",
-    "text": "Trainer: [Welcome. I am a trainer known for my excellence in training discipline. I can help you not panic in combat for 5 gold.]",
+    "text": "Trainer: [Welcome. I am a trainer known for my excellence in training discipline. If you have problems with the move <flinch>, I can help remove it for 3 gold.]",
     "opt": [
       {
-        "to": ">moneyAdd>-5>>forget>panic>@stone henge",
-        "text": "Train me.",
+        "to": ">moneyAdd>-3>>forget>flinch>@stone henge",
+        "text": "Train me",
         "reqs": [
-          "moneyG>5"
+          "moneyG>3"
         ]
       },
       {
         "to": "@stone henge",
-        "text": "I've not enough money..",
-        "reqs": [
-          "!moneyG>5"
-        ]
+        "text": "Go back"
       }
     ]
   },
   "stone henge temple": {
     "title": "Stone Henge Temple",
-    "text": "The guard guides you to the temple.\n\nCheese: [Do you get a lot of visitors from outside? we get none.]\n\nThe guard did not bother to answer Cheese.\n\nYou walk up stone stairs going up one of those massive stone bricks. You walked up almost a hundred steps to get to the temple, which was on the third layer of those stone bricks. The temple is just an open area on one of the bricks, with a nice shade cast by another stone brick above.\n\nPriest: [Welcome! you come from Ant Hill? We had not heard from Ant Hill for a while, and we were worried about you.]\n\nCheese: [You don't sound worried.]\n\nPriest: [...]\n\n",
+    "text": "The guard guides you to the temple.\n\nCheese: [Do you get a lot of visitors from outside? we get none.]\n\nThe guard does not bother to answer.\n\nYou walk up many stone steps to get to the temple on the third floor.\nThe temple is just an open area spanning the whole floor.\n\nPriest: [Welcome! you come from Ant Hill? We had not heard from Ant Hill for a while, and we were worried about you.]\n\nCheese: [You don't sound worried.]\n\nPriest: [...]",
     "opt": [
       {
         "to": "@stone henge affairs",
@@ -729,7 +712,7 @@
   },
   "stone henge affairs": {
     "title": "Stone Henge Temple",
-    "text": "Priest: [We get by. We too, have lost trade with our neighbors, but we do get visitors. I'd love to take time to talk with you, but I'm sure you are all exhausted from your long trip. We have a luxurious guest room for valued guests like you that you can stay for as long as you wish. Please make yourselves at home. Pemmi will help you with anything you may need.]\n\nOne of the two priest's guards standing in the temple greets you.\n\nPemmi: [Hi. Let me guide you to your room.]",
+    "text": "Priest: [We get by. We too, have lost trade with our neighbors, but we do get visitors from time to time. I'd love to take time to talk with you, but I'm sure you are all exhausted from your long trip. We have a luxurious guest room for valued guests like you that you can stay for as long as you wish.]\n\nPriest: [Please make yourselves at home. Pemmi will help you with anything you may need.]\n\nOne of the two priest's guards standing in the temple greets you.\n\nPemmi: [Hi. Let me guide you to your room.]",
     "opt": [
       {
         "to": "@stone henge 2",
@@ -739,7 +722,7 @@
   },
   "stone henge 2": {
     "title": "Stone Henge Home",
-    "text": "Pemmi leads you down the stairs to the guest room.\nThere room has a nice view like the temple.\n\nPemmi: [The guard will bring you dinner soon. Let me know if you need anything!]\n\nCheese collapses on the stone floor and stops moving.\n\nCheese: [Finally... rest.]\n\nCobby: [It's nice here. I like the priest and Pemmi. I have a good feeling about this.]",
+    "text": "Pemmi leads you down the stairs to the guest room.\nThis room has a nice view like the temple.\n\nPemmi: [We'll bring you dinner soon. Let me know if you need anything!]\n\nCheese collapses on the stone floor and stops moving.\n\nCheese: [Finally... rest.]\n\nCobby: [It's nice here. I like the priest and Pemmi. Now we just enjoy Stone Henge for a couple days and head back. And I have a good feeling about this place!]",
     "opt": [
       {
         "to": ">heal>8>>timeset>22>@stone henge",
@@ -753,7 +736,7 @@
   },
   "stone henge tour": {
     "title": "Stone Henge",
-    "text": "Cobby: [I could use a drink too, I'll come with. Come, Cheese.]\n\nCheese: [No... We've been walking day and night for the past week. Just let me sleep.]\n\nYou and Cobby leave the room to get to the tavern.\nPemmi, who was guarding the entrance of your guest room, stops you.\n\nPemmi: [Sorry! The priest instructed me to keep you inside for today. You've traveled a long way, and the priest wants every visitor to take a tour after taking enough rest. I'll bring you food and drinks.]\n\nCobby: [Hmm... Okay. Maybe we should cool off today.]\n\nYou order some food and drink from the tavern.\n\nCobby: [Hey, Pemmi? why don't you join us for dinner? I'd like to learn about Stone Henge.]\n\nPemmi: [Sorry! the priest doesn't let his guards speak to visitors outside business. I'm pretty new here, so I don't want to break any rules, sorry!]\n\nCobby: [Okay... I'll see you around, then. You and me then, huh?]\n\n---\n\nA few hours pass, and you and Cobby are inebriated.\n\nCobby: [Ay, we should definitely call in Pemmi. You know, there are so many pretty faces in Stone Henge. I should try to take Pemmi back with us, you know? I'm 25 now and I need to find a wife!]\n\nCobby gets out of the room.\n\nYou pass out.",
+    "text": "Cobby: [I could use a drink too, I'll come with. Come, Cheese.]\n\nCheese: [No... We've been walking day and night for like the past week. Just let me sleep.]\n\nYou and Cobby leave the room to get to the tavern.\nPemmi, who was guarding the entrance of your guest room, stops you.\n\nPemmi: [Sorry! The priest instructed me to keep you inside for today. You've traveled a long way, and the priest wants every visitor to take a tour after taking enough rest. I'll bring you food and drinks.]\n\nCobby: [Hmm... Okay. Maybe we should cool off today.]\n\nYou ask Pemmi for some drinks from the tavern.\n\nCobby: [Hey, Pemmi? why don't you join us for dinner? I'd like to learn about Stone Henge.]\n\nPemmi: [Sorry! the priest doesn't let his guards speak to visitors outside business. I'm pretty new here, so I don't want to break any rules, sorry!]\n\nCobby: [Okay... I'll see you around, Pemmi.]\n\nCobby: [You and me then, huh?]\n\n---\n\nA few hours pass, and you and Cobby are inebriated.\n\nCobby: [Ay, we should definitely call in Pemmi. You know, there are so many pretty faces in Stone Henge. I should try to take Pemmi back with us, you know? I'm 25 now and I need to find a bride!]\n\nCobby gets out of the room.\n\nYou pass out.",
     "opt": [
       {
         "to": ">heal>8>>timeset>22>@stone henge 3",
@@ -787,7 +770,7 @@
   },
   "stone henge 5": {
     "title": "???",
-    "text": "You get up and touch around the room with your tied hands. It looks like you are in a small enclosed room.\nYou find a door, but it is firmly locked...\n\nYou sit back down beside Cheese.\n\nHours pass...\n\nYour buttocks hurt from sitting on stone floor for so long.\n\nSuddenly, you hear footsteps and see faint light.\nA door opens, and a muscular person looking like one of the guards of Stone Henge comes into the room, accompanied by magical light.\n\nHe casts a spell on you and Cheese.",
+    "text": "You get up and touch around the room with your tied hands.\nIt looks like you are in a small enclosed room.\nYou find a door, but it is firmly locked...\n\nYou sit back down beside Cheese.\n\nHours pass...\n\nYour buttocks hurt from sitting on stone floor for so long.\n\nSuddenly, you hear footsteps and see faint light.\nA door opens, and a muscular person looking like one of the guards of Stone Henge comes into the room, accompanied by magical light.\n\nHe casts a spell on you and Cheese.",
     "opt": [
       {
         "to": "@stone henge 6",
@@ -807,7 +790,7 @@
   },
   "stone henge 7": {
     "title": "Spider Nest",
-    "text": "Cobby: [WAKE UP, GODDAMMIT!]\n\nYou snap out of your hypnosis.\n\nIn front of you stands Cobby with a knife in his hands. It looks like he just cut you free from your hand binding.\nYou see Cheese beside you, just as confused as you are.\n\nCobby: [We gotta get out of here, now!]\n\nYou look around.\nIt looks like you are in a spider nest.\nIt is dark, and the only source of light is from a blue glowing orb down the webbed halls.\nBeside the spell light you see someone who looks like Pemmi, the priest's assistant that you saw earlier.\n\nPemmi: [I sense another one coming. We can't run from it, so let's kill it quick!]\n\nCobby: [Cheese, stay back and alert us if there are more coming.]\n\nCheese: [Uh.. ok?]",
+    "text": "Cobby: [WAKE UP, GODDAMMIT!]\n\nYou snap out of your hypnosis.\n\nIn front of you stands Cobby with a knife in his hands. It looks like he just cut you free from your hand binding.\nYou see Cheese beside you, just as confused as you are.\n\nCobby: [We gotta get out of here, now!]\n\nYou look around.\nIt looks like you are in a spider nest.\nIt is dark, and the only source of light is from a blue glowing orb down the webbed halls.\nBeside the blue spell light you see someone who looks like Pemmi, the priest's guard that you met earlier.\n\nPemmi: [I sense another one coming. We can't run from it, so let's kill it quick!]\n\nCobby: [Cheese, stay back and alert us if there are more coming.]\n\nCheese: [Uh.. ok?]",
     "opt": [
       {
         "to": ">drop>Cheese>>encounter>horned spider>@stone henge 8-1>@stone henge 8-2",
@@ -837,7 +820,7 @@
   },
   "stone henge 9": {
     "title": "Spider Nest",
-    "text": "You try to move quickly through the tunnels, but every surface is covered with sticky spiderwebs.\nYou have to stop and scrape off spiderwebs from under your feet every once in a while.\n\nPemmi: [I feel air... get the knife, that's the exit!]\n\nYou break through a spiderweb covering and reach the surface.\nYou are met with morning light seeping through the canopy of a forest.\n\nYour group continue moving, constantly looking back in paranoia, until you are out of the forest.\n\nCheese: [Guys, I'm exhausted. Please, what is going on?]\n\nPemmi: [I think we are far enough, let's find a place to rest...]",
+    "text": "You try to move quickly through the tunnels, but every surface is covered with sticky spiderwebs.\nYou have to stop and scrape off spiderwebs from under your feet every once in a while.\n\nPemmi: [I feel air... get the knife, that's the exit!]\n\nYou break through a spiderweb covering and reach the surface.\nYou are met with pleasant morning light leaking through the canopy of a forest.\n\nYour group continue moving, constantly looking back in paranoia, until you are out of the forest.\n\nCheese: [Guys, I'm exhausted. Please, what is going on?]\n\nPemmi: [I think we are far enough, let's find a place to rest...]",
     "opt": [
       {
         "to": "@stone henge 10",
@@ -847,7 +830,7 @@
   },
   "stone henge 10": {
     "title": "Spider Nest",
-    "text": "You set up camp in the middle of a field full of goldenrod flowers, completely hidden from sight.\n\nCobby: [I don't know where to start... bear with me.]\n\nCobby: [*Sigh*\nIt looks like the priest of Stone Henge had ordered his men to capture us and put us in that spider nest.]\n\nCheese: [Huh?]\n\nCobby: [I.. had gone out last night to talk to Pemmi. I talked to her about our Journey, and she told me that Stone Henge had received guests from Ant Hill almost every month. I knew something was wrong...]\n\nCheese: [They received guests from Ant Hill before? So they are in Stone Henge right now?]\n\nCobby: [No. We've come to a conclusion that they've done to them what they've done to us today... which is why no one ever returned to Ant Hill.]\n\nCheese: [What? no, no, no... Are you telling me all those people sent out were kidnapped like this?]\n\nCheese panics.\n\nCheese: [I was sure they all found a better place and abandoned shitty Ant Hill... I didn't sign up for this...]\n\nCobby looked at Cheese with frustration.\n\nPemmi: [...I've only been priest's guard for two months, but I know that we get a lot of visitors from Ant Hill. I've met one by the name of Sugar last month. The priest had told me that she had returned to Ant Hill, but now I don't know...]",
+    "text": "You set up camp in the middle of a tall grass field.\n\nCobby: [I don't know where to start... bear with me.]\n\nCobby: [*Sigh* It looks like the priest of Stone Henge had ordered his men to capture us and put us in that spider nest.]\n\nCheese: [Huh?]\n\nCobby: [I.. had gone out last night to talk to Pemmi. We had a conversation about our Full Moon's Journey, and she told me that Stone Henge had received guests from Ant Hill almost every month. But we in Ant Hill know that barely anyone returns from the Journey. I knew something was wrong...]\n\nCheese: [They received guests from Ant Hill before? So they are in Stone Henge right now?]\n\nCobby: [No. We've come to a conclusion that they've done to them what they've done to you today... which is why no one ever returned to Ant Hill.]\n\nCheese: [What? what's done to us? Kidnapped here?]\n\nCheese looks around the nest then panics.\n\nCheese: [I thought they all found a better place and abandoned shitty Ant Hill... I didn't sign up for this...]\n\nCobby looks at Cheese with frustration.\n\nPemmi: [...I've only been priest's guard for two months, but I know that we get a lot of visitors from Ant Hill. I've met one by the name of Sugar last month. The priest had told me that he had returned to Ant Hill, but now I don't know...]",
     "opt": [
       {
         "to": "@stone henge 11",
@@ -857,7 +840,7 @@
   },
   "stone henge 11": {
     "title": "Spider Nest",
-    "text": "Cobby: [I agree. We should return at once. The priest is probably desperately trying to catch us. And also...]\n\nCobby: [Pemmi, I'm so sorry, but I don't think it's safe for you here anymore. We should move together.]\n\nPemmi: [No.. If I go back now, they won't know that I helped you out of the nest. I need to go back and let people know about this. I can't leave Stone Henge.]\n\nCobby: [...Alright. We need to go back to Ant Hill for our own people. I hope we'd meet again, Pemmi.]\n\nCheese: [Wait... Can I stay here? I don't think I can walk anymore...]\n\nCobby: [Damn it Cheese, we don't got time for your whining!]\n\nPemmi: [No, it's fine! If Cheese wants to stay, I know a place he can stay. He could even help me tell people the truth.]\n\nCobby: [Are you sure? ...Alright. If everything works out at Ant Hill, we'll return here with more people to help out.]\n\nPemmi: [Thanks! If everything works out on this side first, we'll send people to help Ant Hill. We'll race who gets to save each other.]\n\nCobby's ugly face folds into a smile.\n\nYou and Cobby depart your journey back to Ant Hill.",
+    "text": "Cobby: [I agree. We should return at once. The priest is probably desperately trying to catch us. And also...]\n\nCobby: [Pemmi, I'm so sorry, but I don't think it's safe for you in Stone Henge anymore. We should move together.]\n\nPemmi: [No... If I go back to Stone Henge now, they won't know that I helped you out. I need to go back and let people know about this. I can't leave Stone Henge.]\n\nCobby: [...Alright. I hope we meet again, Pemmi.]\n\nCheese: [Wait... Can I stay here? I don't think I can walk anymore...]\n\nCobby: [Damn it Cheese, we don't got time for your whining!]\n\nPemmi: [No, it's fine! If Cheese wants to stay, I know a place he can stay. He could even help me unveil the priest's plots.]\n\nCobby: [Are you sure? ...Alright. If everything works out at Ant Hill, we'll return here with more people to help out.]\n\nPemmi: [Thanks! If everything works out on this side first, we'll send people to help Ant Hill. We'll race who gets to save each other.]\n\nCobby's ugly face folds into a smile.\n\nYou and Cobby leave on your journey back to Ant Hill.",
     "opt": [
       {
         "to": ">drop>Pemmi>>drop>Cheese>>save>chapter>2>>refresh chapter>@start",

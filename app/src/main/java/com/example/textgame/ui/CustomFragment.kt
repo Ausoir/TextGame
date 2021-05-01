@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 open class CustomFragment : Fragment() {
     protected lateinit var layout: LinearLayout
     protected lateinit var textView: TextView
-    protected var stringBuilder = SpannableStringBuilder()
+    private var stringBuilder = SpannableStringBuilder()
 
     protected fun addText(text: String){
         val split = text.split("\n")

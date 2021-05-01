@@ -35,6 +35,12 @@
     "desc": "a chitin spiked mace that somewhat preserves the previous shape of an ant leg.",
     "moves": ["swing"]
   },
+  "wooden shield": {
+    "type": "offhand",
+    "value": 3,
+    "desc": "a wooden shield used to block.",
+    "moves": ["weak guard"]
+  },
   "ant leg": {
     "type": "weapon",
     "value": 1,
@@ -82,7 +88,7 @@
   },
   "chitin breastplate": {
     "type": "armor",
-    "value": 2,
+    "value": 5,
     "desc": "a plate breastplate crafted from pill bug chitin. +1 Health.",
     "rating": 1
   },
@@ -95,8 +101,8 @@
   "hair ball": {
     "type": "weapon",
     "value": 2,
-    "desc": "a poisonous hair ball. Can be hurled at melee or ranged distance to poison enemies.",
-    "moves": ["poison"]
+    "desc": "a venomous hair ball. Can be hurled at melee or ranged distance to poison enemies.",
+    "moves": ["poison", "poison"]
   },
   "needle claws": {
     "type": "weapon",
@@ -106,7 +112,7 @@
   },
   "chitin claws": {
     "type": "weapon",
-    "value": 2,
+    "value": 6,
     "desc": "a claw weapon made from the legs of a centipede.",
     "moves": ["thrust", "thrust", "stab"]
   },
@@ -139,7 +145,7 @@
     "type": "weapon",
     "value": 8,
     "desc": "an axe carved from the horn of the blue beetle. It's very sought after, and incredibly effective in combat.",
-    "moves": ["cleave", "cleave", "cleave"]
+    "moves": ["grand cleave"]
   },
   "horn mace": {
     "type": "weapon",
@@ -151,24 +157,24 @@
     "type": "weapon",
     "value": 8,
     "desc": "a bow carved from the horn of the blue beetle.",
-    "moves": ["double shot", "double shot"]
+    "moves": ["quadruple shot"]
   },
   "chitin greave": {
-    "type": "armor",
+    "type": "legging",
     "value": 2,
     "desc": "a greave crafted from pill bug chitin. +1 Health.",
     "rating": 1
   },
   "chitin gauntlets": {
-    "type": "legging",
+    "type": "hands",
     "value": 5,
     "desc": "a pair of chitin gauntlets. Allows you to punch.",
     "moves": ["punch"]
   },
   "chitin shield": {
     "type": "offhand",
-    "value": 4,
-    "desc": "a shield crafted from pill bug chitin. Allows you to block.",
+    "value": 5,
+    "desc": "a chitin shield that allows you to block.",
     "moves": ["guard"]
   },
   "moonglow staff": {
@@ -188,12 +194,6 @@
     "value": 10,
     "desc": "a bow carved from fish bones.",
     "moves": ["double shot", "double shot", "double shot"]
-  },
-  "priest's ring": {
-    "type": "thumb ring",
-    "value": 1000,
-    "desc": "a marble ring tied with human leather. It is enchanted to let you see in the dark.",
-    "moves": ["observe"]
   },
   "Lucid's amulet": {
     "type": "necklace",
@@ -216,7 +216,7 @@
   "silver spear": {
     "type": "weapon",
     "value": 8,
-    "desc": "a wooden spear with a silver tip. How the ferals came to have access to forged silver is unknown.",
+    "desc": "a wooden spear with precious silver tip.",
     "moves": ["guard", "strike", "cleansing strike"]
   },
   "glowshroom bundle": {
@@ -224,10 +224,10 @@
     "value": 1,
     "desc": "a glowshroom bundle. It's a nice souvenir from the feral caves."
   },
-  "crystal necklace": {
-    "type": "necklace",
-    "value": 10,
-    "desc": "A strange necklace. It shimmers when you press it. You think you can briefly stun an enemy using this artifact.",
+  "glass rod": {
+    "type": "offhand",
+    "value": 20,
+    "desc": "A glass rod. It shimmers when you squeeze it. You think you can briefly stun an enemy using this artifact.",
     "moves": ["blinding flash"]
   },
   "kidney staff": {
@@ -284,6 +284,12 @@
     "desc": "a fur jacket. +1 Health.",
     "rating": 1
   },
+  "chitin boots": {
+    "type": "boots",
+    "value": 4,
+    "desc": "boots made with chitin. +1 Health.",
+    "rating": 1
+  },
   "fur boots": {
     "type": "boots",
     "value": 10,
@@ -294,6 +300,12 @@
     "type": "pants",
     "value": 3,
     "desc": "a rough fabric robe to hide your belongings."
+  },
+  "wizard robe": {
+    "type": "robe",
+    "value": 60,
+    "desc": "a fancy red robe that helps you gather mana.",
+    "moves": ["attract mana", "replicate mana"]
   },
   "brass sword": {
     "type": "weapon",
@@ -374,7 +386,7 @@
     "rating": 3,
     "desc": "a drop of blood. Leaves an unpleasant taste in your mouth, but is very fulfilling. Heals 3 health on rest. Can be used outside combat to heal 2 health instantly.",
     "text": "You eat the blood droplet. Mmmm, chewy!",
-    "page": ">remove part>item>>heal>2>>now"
+    "page": ">remove part>food>>heal>2>>to>page"
   },
   "pollen ball": {
     "type": "food",
@@ -391,19 +403,19 @@
   "sturdy wood": {
     "type": "item",
     "value": 1,
-    "desc": "a sturdy wood suitable for construction."
+    "desc": "this sturdy wood is suitable for building."
   },
   "spellcasting manual": {
     "type": "item",
     "value": 8,
     "desc": "a manual that can teach you to be an apprentice spellcaster.",
-    "page": ">view specialize>apprentice>>remove part>item>>now"
+    "page": ">view specialize>apprentice>>remove part>item>>to>page"
   },
   "ranger manual": {
     "type": "item",
     "value": 10,
     "desc": "a manual that can teach you to be a ranger.",
-    "page": ">view specialize>ranger>>remove part>item>>now"
+    "page": ">view specialize>ranger>>remove part>item>>to>page"
   },
   "mushroom pemmican": {
     "type": "food",
@@ -415,19 +427,19 @@
     "type": "item",
     "value": 1,
     "desc": "a healing salve. Apply outside combat to heal 2 health immediately.",
-    "page": ">remove part>item>>heal>2>>now"
+    "page": ">remove part>item>>heal>2>>to>page"
   },
   "warrior manual": {
     "type": "item",
     "value": 10,
     "desc": "a manual that can teach you to be a warrior.",
-    "page": ">view specialize>warrior>>remove part>item>>now"
+    "page": ">view specialize>warrior>>remove part>item>>to>page"
   },
   "potion of experience": {
     "type": "item",
-    "value": 30,
+    "value": 100,
     "desc": "an incredibly valuable and mystical potion that grants you experiences that you've never had.",
-    "page": ">remove part>item>>view advance>>now"
+    "page": ">remove part>item>>view advance>>to>page"
   },
   "mysterious amulet": {
     "type": "necklace",
@@ -439,19 +451,19 @@
     "type": "item",
     "value": 20,
     "desc": "a manual that can teach you to be a shaman.",
-    "page": ">view specialize>shaman>>remove part>item>>now"
+    "page": ">view specialize>shaman>>remove part>item>>to>page"
   },
   "cutthroat manual": {
     "type": "item",
     "value": 20,
     "desc": "a manual that can teach you to be a cutthroat.",
-    "page": ">view specialize>cutthroat>>remove part>item>>now"
+    "page": ">view specialize>cutthroat>>remove part>item>>to>page"
   },
   "coin purse": {
     "type": "item",
     "value": 10,
     "desc": "a purse full of coin. Use to obtain 10g.",
-    "page": ">remove part>item>>moneyAdd>10>>now"
+    "page": ">remove part>item>>moneyAdd>10>>to>page"
   },
   "cog system": {
     "type": "item",
@@ -462,42 +474,72 @@
     "type": "item",
     "value": 2,
     "desc": "a lottery ticket. One in a million chance to win 1 million gold!",
-    "page": ">remove part>item>>moneyAdd>0>>now"
+    "page": ">remove part>item>>moneyAdd>0>>to>page"
   },
   "healing potion": {
     "type": "item",
     "value": 4,
     "desc": "a healing potion. Apply outside combat to heal 8 health immediately.",
-    "page": ">remove part>item>>heal>8>>now"
+    "page": ">remove part>item>>heal>8>>to>page"
   },
   "training manual": {
     "type": "item",
     "value": 5,
     "desc": "a manual that teaches you a set of moves.",
-    "page": ">view learn>>now"
+    "page": ">view learn>>to>page"
+  },
+  "scroll of whirlwind": {
+    "type": "item",
+    "value": 5,
+    "desc": "a scroll teaching you the move <Whirlwind>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>whirlwind>>to>page"
+  },
+  "scroll of kill": {
+    "type": "item",
+    "value": 5,
+    "desc": "a scroll teaching you the spell <Kill>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>kill>>to>page"
+  },
+  "scroll of siphon": {
+    "type": "item",
+    "value": 5,
+    "desc": "a scroll teaching you the spell <Siphon>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>siphon>>to>page"
   },
   "coin bag": {
     "type": "item",
     "value": 20,
     "desc": "a bag full of coin. Use to obtain 20g.",
-    "page": ">remove part>item>>moneyAdd>20>>now"
+    "page": ">remove part>item>>moneyAdd>20>>to>page"
   },
   "jewel": {
     "type": "item",
     "value": 100,
     "desc": "a jewel worth 100g."
   },
-  "golden ticket": {
-    "type": "item",
-    "value": 2653,
-    "desc": "a golden ticket. Use to obtain 2000g or sell for 2653g.",
-    "page": ">remove part>item>>moneyAdd>2000>>now"
-  },
   "spider meat": {
     "type": "food",
     "value": 1,
     "rating": 1,
     "desc": "a spider meat. Could be edible, if you are desperate enough."
+  },
+  "sweetroll": {
+    "type": "food",
+    "value": 2,
+    "rating": 4,
+    "desc": "a sweetroll. Tastes great."
+  },
+  "pizza": {
+    "type": "food",
+    "value": 3,
+    "rating": 5,
+    "desc": "a pizza. Some flat bread with bunch of weird toppings on it. Some of the toppings don't taste right..."
+  },
+  "burger": {
+    "type": "food",
+    "value": 4,
+    "rating": 7,
+    "desc": "a steak wrapped in bread. Tastes great."
   },
   "ambrosia paste": {
     "type": "food",
@@ -509,6 +551,6 @@
     "type": "belt",
     "value": 1000,
     "desc": "a metal belt. Continuously creates food and water and places them in attached metal pockets.",
-    "page": ">item>ambrosia paste>now"
+    "page": ">item>ambrosia paste>to>page"
   }
 }

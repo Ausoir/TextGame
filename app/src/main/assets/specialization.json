@@ -4,55 +4,56 @@
   },
   "novice scout": {
     "deck": "common deck",
-    "branch": ["scout"]
+    "branch": ["fighter", "scout", "forester"]
   },
   "scout": {
+    "text": "Get 1 extra turn at the beginning of combat.",
     "flavor": "You use your new knowledge to improve yourself as a scout. You are now an actual scout!",
     "deck": "scout deck",
     "health": 1,
-    "branch": ["fighter", "rogue", "forester"]
+    "branch": ["rogue", "ranger"]
   },
   "rogue": {
     "text": "Get 1 extra turn at the beginning of combat.",
     "flavor": "You realized that no matter how strong you get, there are always stronger foes. Instead, you learn to use your quick wits to take the upper hand in combat. You are now a rogue!",
     "skill": "initiative",
     "deck": "rogue deck",
-    "health": 2,
+    "health": 3,
     "branch": ["assassin"]
   },
   "ranger": {
     "text": "Disengage when you gather yourself.",
     "flavor": "You learn to embrace your inner cowardice and triumph over your enemies from distance. You are now a ranger!",
     "skill": "tactical retreat",
-    "deck": "scout deck",
-    "health": 2,
+    "deck": "ranger deck",
+    "health": 3,
     "branch": ["marksman"]
   },
   "marksman": {
-    "text": "Disengage when you gather yourself.",
+    "text": "Heal 1 health when you gather yourself if disengaged.",
     "flavor": "You learn to embrace your inner cowardice and triumph over your enemies from distance. You are now a ranger!",
-    "skill": "tactical retreat",
-    "deck": "scout deck",
-    "health": 3
+    "skill": "combat healing",
+    "deck": "marksman deck",
+    "health": 4
   },
   "assassin": {
     "flavor": "You've learned to sneak well enough to conquer your enemies without them even noticing. You are now an assassin!",
     "deck": "assassin deck",
     "skill": "initiative",
-    "health": 3
+    "health": 4
   },
 
   "fighter": {
     "flavor": "You focus your mind on the intricate movements and strategies of combat. You are now a fighter!",
     "deck": "fighter deck",
-    "health": 2,
-    "branch": ["warrior"]
+    "health": 3,
+    "branch": ["warrior", "cutthroat"]
   },
   "warrior": {
     "flavor": "You train yourself to ignore pain and focus on taking down the enemy. You are now a warrior!",
     "deck": "warrior deck",
-    "health": 4,
-    "branch": ["cutthroat", "hunter"]
+    "health": 5,
+    "branch": ["hunter"]
   },
   "cutthroat": {
     "text": "Start with 2 extra turns at the beginning of combat.",
@@ -65,11 +66,11 @@
   "hunter": {
     "flavor": "You've become proficient in taking down dangerous monsters. With your expertise in combat and knowledge of behaviors, you survive in any hostile environment. You are now a hunter!",
     "deck": "hunter deck",
-    "health": 7
+    "health": 6
   },
 
   "forester": {
-    "text": "Heal 1 health after every victory.",
+    "text": "Heal 1 health after combat.",
     "flavor": "Your new knowledge allows you to improve your perception of the surroundings. You are now a forester!",
     "skill": "herbal remedy",
     "deck": "nature deck",
@@ -77,23 +78,30 @@
     "branch": ["shaman", "apprentice"]
   },
   "shaman": {
-    "text": "Heal 1 health after every victory.",
-    "flavor": "You've become proficient in taking down dangerous monsters. With your expertise in combat and knowledge of behaviors, you survive in any hostile environment. You are now a hunter!",
-    "skill": "herbal remedy",
-    "deck": "nature deck",
+    "text": "Learn various shape changing moves and curses. Heal back to full health after combat.",
+    "flavor": "You are able to exploit your affinity with nature and the supernatural to take the upper hand in combat. You are now a shaman!",
+    "skill": "spirit remedy",
+    "deck": "shaman deck",
     "health": 3
   },
   "apprentice": {
+    "text": "Gain access to spells and mana recharging movesets.",
     "flavor": "You have learned the secrets of spellcasting. You are able to practice the gathering and focusing of mana to manipulate the physical world. You are now an apprentice!",
     "deck": "spell deck",
-    "branch": ["spellcaster"],
+    "branch": ["adept"],
     "health": 1
+  },
+  "adept": {
+    "flavor": "You advance in your studies of mana enough to fully utilize it to your advantage in combat. You are now an adept!",
+    "deck": "conjuration deck",
+    "branch": ["spellcaster"],
+    "health": 2
   },
   "spellcaster": {
     "text": "Gain 1 mana when you gather yourself.",
-    "flavor": "You advance in your studies of mana enough to use it fluently in combat. You are now a spellcaster!",
+    "flavor": "You can manipulate mana fluently without much effort. You are now a spellcaster!",
     "skill": "mana regeneration",
-    "deck": "spell deck",
-    "health": 2
+    "deck": "conjuration deck",
+    "health": 3
   }
 }

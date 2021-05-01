@@ -3,7 +3,7 @@
   "time": 10,
   "money": 5,
   "damaged": 0,
-  "equip": ["grass robe", "blood droplet"],
+  "equip": ["silk robe", "silk pants"],
   "vars": {
     "name": "You",
     "page": "@start",
@@ -15,7 +15,7 @@
     "name": "You",
     "speed": 2,
     "health": 3,
-    "moves": ["hesitate", "weak guard", "engage", "disengage", "panic", "kick"],
+    "moves": ["weak guard", "engage", "disengage", "panic", "kick", "swing"],
     "skills": [],
     "status": [],
     "flavors": {

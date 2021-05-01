@@ -49,7 +49,7 @@ object Requirement{
                 (split[1] !in model.vars || model.vars[split[1]].isNullOrEmpty() || model.vars[split[1]]!! == "0")
             }
             split[0] == "var" -> {
-                model.vars[split[1]] == split[2]
+                model.vars[split[1]] == split[2] || (split[1] !in model.vars && split[2] == "0")
             }
             split[0] == "hurt" -> {
                 model.damaged > split[1].toInt()

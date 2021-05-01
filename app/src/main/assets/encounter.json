@@ -10,19 +10,19 @@
     "loots": ["", "", "", "", "", "", "", "blood droplet", "chitin breastplate", "chitin gauntlets", "chitin greave", "chitin shield"]
   },
   "two feral humans": {
-    "desc": "A feral human wearing rags engages you. It observes you carefully, as if hunting an animal.",
+    "desc": "Two feral women wearing rags engage you.\nIt observes you carefully, as if hunting an animal.",
     "units": ["feral human", "feral human"],
     "loots": ["web bolas", "sharp stick", "splinter spear", "mushroom pemmican"]
   },
   "Sparring Cobby": {
-    "desc": "He is wielding a sparring stick.\nHe is way more bulkier than you and will destroy you if you make him mad.",
+    "desc": "It's Cobby.\nHe is wielding a sparring stick.\nHe is way bulkier than you and will destroy you if you make him mad.",
     "units": ["Sparring Cobby"],
     "loots": []
   },
   "Teaching Cobby": {
-    "desc": "Cobby: [Alright. Let me teach you about targeting. Tap on this text area to access the targeting options.]\n\nCobby: [You'll see the option to target me, followed by my health status. When you are facing more than one enemies, you will have a better use for this mode.\nAnyways, let's continue.]",
+    "desc": "Cobby: [Alright. Let me teach you about targeting. Tap on this text area to access the targeting options.]\n\nCobby: [You'll see the option to target me, followed by my health status. When you are facing more than one enemy, you will have a better use for this mode.\nAnyways, let's continue sparring. Hit me.]",
     "units": ["Sparring Cobby"],
-    "loots": ["sharp stick"]
+    "loots": ["splinter spear"]
   },
   "three ants": {
     "desc": "Ants with the size of a toddler crawl towards you.\nThey constantly wiggle their long antennae on their heads.\nAnts are usually not too aggressive, but these seem to be startled by your presence.",
@@ -30,7 +30,7 @@
     "loots": ["bug meat", "ant leg", "grass robe", "", ""]
   },
   "millipede": {
-    "desc": "A worm-like monster with countless legs slithers its way towards you.",
+    "desc": "A worm-like monster with countless legs slithers its way to you.",
     "units": ["millipede"],
     "loots": ["chitin blade", "long chitin jacket", "needle claws", ""]
   },
@@ -45,22 +45,22 @@
     "loots": []
   },
   "two bloodquitos": {
-    "desc": "Two flying insect monsters bigger than your head are flying toward you.\nTheir giant blood red eyes are staring at you with malice.\nTheir thin wings covered with black veins flap slowly at their sides.\nSix lanky legs stick forward, shivering with excitement for blood.\nThese are the infamous Bloodquitos - they can and will drink you dry!",
+    "desc": "Two flying insect monsters bigger than your head are flying toward you.\nTheir giant blood red eyes are staring at you with malice, and their transparent wings flap slowly at their sides.\nSix lanky legs stick forward, shivering with excitement for blood.\nThese are the infamous Bloodquitos - they can and will drink you dry!",
     "units": ["bloodquito", "bloodquito"],
     "loots": ["blood droplet"]
   },
   "three bloodquitos": {
-    "desc": "Three flying insect monsters bigger than your head are flying toward you.\nTheir giant blood red eyes are staring at you with malice.\nTheir thin wings covered with black veins flap slowly at their sides.\nSix lanky legs stick forward, shivering with excitement for blood.\nThese are the infamous Bloodquitos - they can and will drink you dry!",
+    "desc": "Three flying insect monsters bigger than your head are flying toward you.\nTheir giant blood red eyes are staring at you with malice, and their transparent wings flap slowly at their sides.\nSix lanky legs stick forward, shivering with excitement for blood.\nThese are the infamous Bloodquitos - they can and will drink you dry!",
     "units": ["bloodquito", "bloodquito", "bloodquito"],
     "loots": ["blood droplet"]
   },
   "bloodquito": {
-    "desc": "A bloodquito is flying toward you, its giant blood red eyes fixed on you with malice.\nIts thin wings covered with black veins flap slowly at its sides.\nIts lanky legs shiver with excitement for blood.\nIt can and will drink you dry!",
+    "desc": "A bloodquito is flying toward you, its giant blood red eyes fixed on you with malice.\nIts transparent wings flap slowly at its sides, and its lanky legs shiver with excitement for blood.\nIt can and will drink you dry!",
     "units": ["bloodquito"],
     "loots": ["blood droplet", "bloodquito proboscis"]
   },
   "centipede": {
-    "desc": "A monster with numerous segments of bodies and legs charges at you.\nIts huge mandibles will make sure you won't get out of here in one piece.",
+    "desc": "A monster with numerous segments of bodies and legs crawls toward you.\nIts huge mandibles will make sure you won't get out of here in one piece.",
     "units": ["centipede"],
     "loots": ["chitin blade", "long chitin jacket", "chitin claws", ""]
   },
@@ -100,7 +100,7 @@
     "loots": ["pollen ball", "blood droplet"]
   },
   "beetle": {
-    "desc": "A giant blue beetle with beautiful large horn is grazing on the field.\nIt looks uninterested in you, but you insist on fighting it.\nIt sighs and confronts you.",
+    "desc": "A giant blue beetle with a beautiful large horn is grazing on the field.\nIt looks uninterested in you, but you insist on fighting it.\nIt sighs and confronts you.",
     "units": ["beetle"],
     "loots": ["horn axe", "horn mace", "horn bow"]
   },
@@ -110,7 +110,7 @@
     "loots": ["mushroom pemmican"]
   },
   "horned spider": {
-    "desc": "A large spider covered in gray hair crawls toward you.\nIt is as big as you are and its mandibles are thicker than your arms.\nYou are having a hard time just standing still.\nYour brain is telling you to run, but it is too late.\nYou can't run from these.",
+    "desc": "A large spider covered in gray hair crawls toward you.\nIt is as big as you are and its mandibles are thicker than your arms.\nIt's unnaturally large horn on its head suggest its unnatural origin.\nYou are having a hard time just standing still.",
     "units": ["horned spider"],
     "loots": []
   },
@@ -119,9 +119,9 @@
     "units": ["henge scout", "henge guard", "henge scout"],
     "loots": ["chitin spiked mace", "chitin breastplate", "chitin greave", "chitin gauntlets", "chitin shield"]
   },
-  "henge wizard": {
-    "desc": "A Stone Henge guard wearing a strange robe blocks your way. He is wielding a glowing staff.",
-    "units": ["henge wizard", "henge guard", "henge scout"],
+  "henge shaman": {
+    "desc": "A Stone Henge guard wearing a strange leather robe blocks your way. He is wielding a glowing staff.",
+    "units": ["henge shaman", "henge guard", "henge scout"],
     "loots": ["spellcasting manual", "moonglow staff", "silk robe"]
   },
   "rat": {
@@ -130,9 +130,9 @@
     "loots": ["beast meat"]
   },
   "rotting pile": {
-    "desc": "You find a rotting pile of who-knows-what in a small concave dirt area behind a boulder.\nThe rotting pile is infested with pill bugs and worms.",
+    "desc": "You find a rotting pile of leaves and manure behind a boulder.\nThe rotting pile is infested with pill bugs and worms.\nSome of them notice you and crawl out.",
     "units": ["pill bug", "pill bug", "worm"],
-    "loots": ["chitin breastplate", "sturdy wood"]
+    "loots": ["sturdy wood"]
   },
   "ant swarm": {
     "desc": "A swarm of ants are running for you right now.\nThey must've run out of things to feed their queen.",
@@ -150,7 +150,7 @@
     "loots": ["spine spear"]
   },
   "fish": {
-    "desc": "A giant dark shadow under the surface approach you.\nIt will leap out of the water at any time you swallow you whole.",
+    "desc": "A giant dark shadow under the surface of the water approach you.\nIt might leap out of the water to swallow you whole!",
     "units": ["fish"],
     "loots": ["fishbone spear", "fishbone bow"]
   },
@@ -160,12 +160,12 @@
     "loots": ["web bolas", "sharp stick", "splinter spear", "mushroom pemmican"]
   },
   "feral ambushers": {
-    "desc": "A group of feral humans ambush you from the darkness. They probably didn't like you trying to steal their food.",
+    "desc": "A group of feral humans ambush you from the darkness. They probably wasn't pleased at you trying to steal their food.",
     "units": ["feral ambusher", "feral ambusher", "feral ambusher"],
     "loots": ["mushroom pemmican"]
   },
   "feral ambushers 2": {
-    "desc": "A group of feral humans ambush you from the darkness. They probably didn't like you trying to steal their food.",
+    "desc": "A group of feral humans ambush you from the darkness. They probably wasn't pleased at you trying to steal their food.",
     "units": ["feral shaman", "feral ambusher"],
     "loots": ["mushroom pemmican"]
   },
@@ -181,7 +181,7 @@
   },
   "zombie": {
     "desc": "A bloated, burnt corpse somehow standing on its own... It has sensed you and wants to eat you alive.",
-    "units": ["closed zombie"],
+    "units": ["zombie"],
     "loots": []
   },
   "Cheese the hoarder": {
@@ -189,8 +189,13 @@
     "units": ["Cheese2"],
     "loots": ["moonglow staff"]
   },
+  "Sugar the hoarder": {
+    "desc": "It's Sugar.\nHe is almost as bulky and ugly as Cobby.\nHe isn't open for compromise, and you know that the only way to make him move is by force.",
+    "units": ["Sugar"],
+    "loots": []
+  },
   "amalgamation": {
-    "desc": "A mound of limbs and flesh forming one organism.\nIt is covered in algae at the top and glowshrooms everywhere else.\n\nThe monstrosity covers long distances when moving, and you realize that running away is not an option when you're this close.",
+    "desc": "This is a mound of limb and flesh forming one organism.\nIt is covered in algae at the top and glowshrooms everywhere else.\n\nYou are trembling with fear.",
     "units": ["amalgamation"],
     "loots": []
   },
@@ -211,7 +216,7 @@
   },
   "mass of vines": {
     "desc": "A cluster of dark green vines attack you. There's some kind of rocks inside the vines, but it is covered in leaves and you can't tell just exactly what it really is.",
-    "units": ["large vine", "vine mass", "vine mass", "vine mass"],
+    "units": ["large vine mass", "vine mass", "vine mass"],
     "loots": ["metal saw"]
   },
   "raptors": {
@@ -234,9 +239,9 @@
     "units": ["highwayman", "bowman", "bowman"],
     "loots": ["coin purse", "fur jacket", "fur boots", "leather pants"]
   },
-  "metal fox": {
-    "desc": "A fox-like creature made of metal pops out of some metal ball.\nThis is a monster that fits in a pocket!",
-    "units": ["metal fox"],
+  "metal rat": {
+    "desc": "A giant rat-like machine made of metal pops out of some metal ball.\nIts face fizzes with electricity, watch out!",
+    "units": ["metal rat"],
     "loots": ["cog system"]
   },
   "thief": {
@@ -260,7 +265,7 @@
     "loots": [""]
   },
   "arena 1": {
-    "desc": "Broadcaster: [We have another challenger! A hunter from the frontier! Underdog or a tribute? Find out!]\nYou are facing an ex criminal on the second win streak.\nHe has fresh wounds all over his naked upper body.\nHe seems pretty exhausted.",
+    "desc": "Broadcaster: [We have another challenger! A hunter from the frontier! Underdog or a tribute? Find out!]\n\nYou are facing an ex criminal on his second win streak.\nHe has fresh wounds all over his naked upper body.\nHe seems pretty exhausted.",
     "units": ["highwayman"],
     "loots": ["coin purse"]
   },
@@ -275,19 +280,24 @@
     "loots": ["jewel"]
   },
   "arena 4": {
-    "desc": "Broadcaster: [The final round! This is this 4th round, and if he makes it, he WINS IT!]\n\nYou are facing some generic bulky guy with bald head and ugly face who is completely unscathed.\nHe obviously looks like he was hired by the arena to stop anyone from getting the grand prize.",
+    "desc": "Broadcaster: [The final round! This is the 4th round, and if he makes it, he WINS IT!]\n\nYou are facing some generic bulky guy with a bald head and a ugly face.\nHe is completely unscathed.\nHe obviously looks like he was hired by the arena to stop anyone from getting the grand prize.",
     "units": ["bulky dude"],
-    "loots": ["golden ticket"]
+    "loots": []
   },
   "wounded horned spiders": {
-    "desc": "Two large spiders covered in gray hair stares at you with 6 evil red eyes.\nThey are as big as you are and their mandibles are thicker than your arms.\nThey are covered in blood.",
+    "desc": "Two large spiders covered in gray hair stares at you with 6 evil red eyes.\nThey are as big as you are and their mandibles are thicker than your arms.\nTheir exotically large horn suggest their unnatural origins.\nThey are covered in blood.",
     "units": ["wounded horned spider", "wounded horned spider"],
     "loots": ["", "", "", "", "", "blood droplet", "chitin breastplate", "chitin gauntlets", "chitin greave", "chitin shield"]
   },
   "three horned spiders": {
-    "desc": "Three large spiders covered in gray hair stares at you with 6 evil red eyes.\nThey are as big as you are and their mandibles are thicker than your arms.",
+    "desc": "Three large spiders covered in gray hair stares at you with 6 evil red eyes.\nThey are as big as you are and their mandibles are thicker than your arms.\nTheir exotically large horn suggest their unnatural origins.",
     "units": ["horned spider", "horned spider", "horned spider"],
     "loots": ["", "", "", "", "blood droplet", "chitin breastplate", "chitin gauntlets", "chitin greave", "chitin shield"]
+  },
+  "large horned spider": {
+    "desc": "You face a particularly large horned spider.\nIt looks even more vicious compared to the normal horned spiders.",
+    "units": ["large horned spider"],
+    "loots": ["", "", "", "", "blood droplet"]
   },
   "guard spiders": {
     "desc": "Three particularly large horned spiders block your way.\nThey look even more vicious compared to normal horned spiders.",

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">2022</string>
+    <string name="app_name">From the Abyss</string>
     <string name="proceed">Proceed</string>
     <string name="dialog_not_found">Dialog missing.</string>
     <string name="action_profile">Profile</string>
@@ -41,5 +41,5 @@
     <string name="leave">Leave</string>
     <string name="money">You currently have %1$dg.</string>
     <string name="quest">Select a contract.</string>
-    <string name="quest_confirm">Start this contract? It will cancel all previous contracts.</string>
+    <string name="quest_confirm">Start this contract?</string>
 </resources>

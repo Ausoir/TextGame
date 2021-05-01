@@ -10,10 +10,6 @@
         "target": 1
       },
       {
-        "effect": "dodge",
-        "target": -1
-      },
-      {
         "effect": "stun",
         "target": 1
       },
@@ -34,6 +30,11 @@
     "effects": [],
     "desc": "panic like a fool.",
     "text": "panic%s"
+  },
+  "flinch": {
+    "effects": [],
+    "desc": "flinch from pain. This move is added whenever you fall in combat.",
+    "text": "flinch%s from pain"
   },
   "slack": {
     "effects": [],
@@ -78,13 +79,7 @@
     "effects": [
       {
         "effect": "disengage",
-        "target": 1,
-        "reqs": [
-          {
-            "effect": "closed",
-            "target": -1
-          }
-        ]
+        "target": 1
       }
     ],
     "reqs": [
@@ -110,39 +105,18 @@
     "desc": "observe the enemy, gaining insight about their next moves.",
     "text": "observe%s"
   },
-  "learn": {
-    "effects": [
-      {
-        "effect": "learning",
-        "duration": 1,
-        "target": 1
-      },
-      {
-        "effect": "stun",
-        "target": 1
-      },
-      {
-        "effect": "learned",
-        "target": 1,
-        "duration": -1
-      }
-    ],
-    "reqs": [
-      {
-        "effect": "learned",
-        "target": -1
-      }
-    ],
-    "desc": "learn the next move you observe. Only usable once per combat. Ends turn.",
-    "text": "observe%s the enemy carefully"
-  },
 
   "adrenaline": {
     "effects": [
       {
         "effect": "speed",
-        "value": 3,
+        "value": "3",
         "target": 1
+      },
+      {
+        "effect": "vulnerable",
+        "target": 1,
+        "duration": 1
       },
       {
         "effect": "breath",
@@ -160,29 +134,8 @@
         "target": -1
       }
     ],
-    "desc": "get +2 actions immediately. Cannot be used when crippled. Uses breath.",
+    "desc": "get +2 actions immediately but become vulnerable for 1 turn. Cannot be used when crippled. Uses breath.",
     "text": "pump%s up the adrenaline"
-  },
-  "repeat": {
-    "effects": [
-      {
-        "effect": "repeat",
-        "target": 1
-      },
-      {
-        "effect": "breath",
-        "target": 1,
-        "duration": -1
-      }
-    ],
-    "reqs": [
-      {
-        "effect": "breath",
-        "target": -1
-      }
-    ],
-    "desc": "Repeat last used move. Uses breath.",
-    "text": "repeat%s last action"
   },
   "sprint": {
     "effects": [
@@ -192,13 +145,7 @@
       },
       {
         "effect": "disengage",
-        "target": 1,
-        "reqs": [
-          {
-            "effect": "closed",
-            "target": -1
-          }
-        ]
+        "target": 1
       }
     ],
     "reqs": [
@@ -218,43 +165,48 @@
     "effects": [
       {
         "effect": "observe",
-        "value": 4
+        "target": 5
       },
       {
-        "effect": "block",
-        "target": 1,
-        "value": 1
-      },
-      {
-        "effect": "prepare",
+        "effect": "speed",
+        "value": "2",
         "target": 1,
         "duration": 1
+      },
+      {
+        "effect": "calm",
+        "target": 1,
+        "duration": -1
       }
     ],
     "reqs": [
       {
         "effect": "cripple",
         "target": -1
+      },
+      {
+        "effect": "calm",
+        "target": -1
       }
     ],
-    "desc": "observe everyone around you and gain 1 block.",
+    "desc": "observe your foes. Get +2 actions next turn. Usable once per combat.",
     "text": "become%s calm"
   },
   "prepare": {
     "effects": [
       {
         "effect": "observe",
-        "value": 2
+        "value": "2"
       },
       {
         "effect": "block",
         "target": 1,
-        "value": 2
+        "value": "2"
       },
       {
         "effect": "block",
         "target": 1,
-        "value": 2,
+        "value": "2",
         "reqs": [
           {
             "effect": "prepare",
@@ -271,27 +223,17 @@
     "desc": "observe your target and gain 2 block. Subsequent cast grants 2 additional block.",
     "text": "become%s calm"
   },
-  "mimic": {
-    "effects": [
-      {
-        "effect": "mimic",
-        "target": 2
-      }
-    ],
-    "desc": "mimic target's last used move. Does not mimic area of effect moves well.",
-    "text": "mimic%s %F"
-  },
   "quick attack": {
     "effects": [
       {
         "effect": "speed",
-        "value": 1,
+        "value": "1",
         "target": 1
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "breath",
@@ -317,7 +259,12 @@
       {
         "effect": "speed",
         "duration": 2,
-        "value": 1,
+        "value": "1",
+        "target": 1
+      },
+      {
+        "effect": "speed",
+        "value": "1",
         "target": 1
       },
       {
@@ -328,16 +275,12 @@
       {
         "effect": "health",
         "target": 1,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "breath",
         "target": 1,
         "duration": -1
-      },
-      {
-        "effect": "stun",
-        "target": 1
       }
     ],
     "reqs": [
@@ -346,33 +289,43 @@
         "target": -1
       }
     ],
-    "desc": "Gain +1 action and refresh abilities for 2 turns, at the cost of 1 health. Uses breath. Ends turn.",
+    "desc": "Gain +1 action and refresh abilities for 2 turns, at the cost of 1 health. Uses breath.",
     "text": "berserk%s"
   },
   "dodge": {
     "effects": [
       {
-        "effect": "dodge",
-        "duration": 1,
-        "target": 1
-      },
-      {
-        "effect": "stun",
-        "target": 1
+        "effect": "block",
+        "target": 1,
+        "value": "2",
+        "start_text": "%U gain%s %v block."
       }
     ],
     "reqs": [
-      {
-        "effect": "dodge",
-        "target": -1
-      },
       {
         "effect": "cripple",
         "target": -1
       }
     ],
-    "desc": "dodge the next attack. Cannot be used when crippled. Ends turn.",
+    "desc": "gain 2 block.",
     "text": "prepare%s to dodge"
+  },
+  "evade": {
+    "effects": [
+      {
+        "effect": "invulnerable",
+        "target": 1,
+        "duration": 1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "cripple",
+        "target": -1
+      }
+    ],
+    "desc": "become invulnerable for 1 turn. Must not be crippled.",
+    "text": "prepare%s to evade"
   },
   "stun": {
     "effects": [
@@ -401,7 +354,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -418,7 +371,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -435,7 +388,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "engage",
@@ -464,8 +417,8 @@
       {
         "effect": "block",
         "target": 1,
-        "value": 1,
-        "start_text": "%U guard%s for %v block."
+        "value": "1",
+        "start_text": "%U gain%s %v block."
       },
       {
         "effect": "bash",
@@ -481,23 +434,17 @@
     "desc": "gain 1 block. Bash the enemy to deal damage equal to current block.",
     "text": "bash%s %F"
   },
-  "roundhouse kick": {
+  "strong bash": {
     "effects": [
       {
-        "effect": "health",
-        "target": 2,
-        "value": -1
+        "effect": "block",
+        "target": 1,
+        "value": "2",
+        "start_text": "%U gain%s %v block."
       },
       {
-        "effect": "disengage",
-        "target": 1,
-        "start_text": "%Fr kicked away.",
-        "reqs": [
-          {
-            "effect": "closed",
-            "target": -1
-          }
-        ]
+        "effect": "bash",
+        "target": 4
       }
     ],
     "reqs": [
@@ -506,7 +453,29 @@
         "target": 1
       }
     ],
-    "desc": "roundhouse kick the enemy to deal 1 damage and knock them out of range.",
+    "desc": "gain 2 block. Bash everyone in melee to deal damage equal to current block.",
+    "text": "strong bash%s %F"
+  },
+  "roundhouse kick": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-2"
+      },
+      {
+        "effect": "disengage",
+        "target": 2,
+        "start_text": "%Ur kicked away."
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "melee",
+        "target": 1
+      }
+    ],
+    "desc": "roundhouse kick the enemy to deal 2 damage and knock them out of range.",
     "text": "roundhouse kick%s %F"
   },
   "flurry": {
@@ -514,17 +483,17 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1,
+        "value": "-1",
         "reqs": [
           {
             "effect": "flurry",
@@ -547,27 +516,16 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
-        "effect": "health",
+        "effect": "vulnerable",
         "target": 2,
-        "value": -1,
-        "reqs": [
-          {
-            "effect": "flurry",
-            "target": 1
-          }
-        ]
-      },
-      {
-        "effect": "flurry",
-        "target": 1,
         "duration": 1
       }
     ],
@@ -577,7 +535,7 @@
         "target": 1
       }
     ],
-    "desc": "deal 1 damage 2 times. Subsequent flurry attacks deal 1 additional damage.",
+    "desc": "deal 1 damage 2 times and apply vulnerability for 1 turn.",
     "text": "perform%s a great flurry of attacks"
   },
   "cleave": {
@@ -585,7 +543,7 @@
       {
         "effect": "health",
         "target": 4,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -602,12 +560,12 @@
       {
         "effect": "health",
         "target": 4,
-        "value": -2
+        "value": "-2"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -616,7 +574,7 @@
         "target": 1
       }
     ],
-    "desc": "deal 2 damage to everyone in melee range and 1 additional damage to your target.",
+    "desc": "deal 3 damage to your target and 2 damage to everyone around it.",
     "text": "perform%s grand cleave"
   },
   "whirlwind": {
@@ -624,17 +582,17 @@
       {
         "effect": "health",
         "target": 4,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "health",
         "target": 4,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "health",
         "target": 4,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -651,7 +609,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -2
+        "value": "-2"
       },
       {
         "effect": "stun",
@@ -682,7 +640,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -2
+        "value": "-2"
       }
     ],
     "reqs": [
@@ -699,13 +657,13 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -3
+        "value": "-3"
       },
       {
         "effect": "speed",
-        "target": 1,
+        "target": 2,
         "duration": 1,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "stun",
@@ -726,13 +684,13 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -2
+        "value": "-2"
       },
       {
         "effect": "health",
         "target": 2,
         "duration": 1,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -765,12 +723,12 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "stun",
@@ -778,22 +736,23 @@
       }
     ],
     "desc": "remove target's block and attack twice for 2 damage. Ends turn.",
-    "text": "guard break%s"
+    "text": "perform%s acidic slash"
   },
   "whirring slash": {
     "effects": [
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-2"
       },
       {
         "effect": "vulnerable",
         "target": 2,
-        "duration": 1
+        "duration": 1,
+        "start_text": "%Ur vulnerable."
       }
     ],
-    "desc": "attack for 1 damage and apply vulnerability for 1 turn.",
+    "desc": "attack for 2 damage and apply vulnerability for 1 turn.",
     "text": "slash%es with whirring blades"
   },
   "slash": {
@@ -801,12 +760,12 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -2
+        "value": "-2"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1,
+        "value": "-1",
         "duration": 1,
         "reqs": [
           {
@@ -834,7 +793,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "desc": "remove target's block and deal 1 damage.",
@@ -843,33 +802,21 @@
   "acrobatics": {
     "effects": [
       {
-        "effect": "vulnerable",
-        "target": 2,
-        "duration": 1
+        "effect": "block",
+        "target": 1,
+        "value": 2
       },
       {
-        "effect": "dodge",
-        "duration": 1,
+        "effect": "disengage",
         "target": 1
       },
       {
-        "effect": "acrobatic",
-        "target": 1,
-        "duration": 1
-      },
-      {
-        "effect": "stun",
+        "effect": "vulnerable",
         "target": 2,
-        "duration": 1,
-        "reqs": [
-          {
-            "effect": "acrobatic",
-            "target": 1
-          }
-        ]
+        "duration": 1
       }
     ],
-    "desc": "dodge the next attack and apply vulnerability. Subsequent acrobatics applies stun. Ends turn.",
+    "desc": "gain 1 block and disengage, then apply vulnerability to your target for the turn.",
     "text": "perform%s acrobatics"
   },
   "somersault": {
@@ -877,7 +824,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "break",
@@ -900,7 +847,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -2,
+        "value": "-2",
         "reqs": [
           {
             "effect": "acrobatic",
@@ -911,16 +858,10 @@
       {
         "effect": "acrobatic",
         "target": 1,
-        "duration": 1,
-        "reqs": [
-          {
-            "effect": "acrobatic",
-            "target": -1
-          }
-        ]
+        "duration": 2
       }
     ],
-    "desc": "deal 1 damage, break guard, and disengage. Subsequent somersault engages and deals 3 damage.",
+    "desc": "deal 1 damage, break guard, and disengage. Empowers your next somersault or acrobatics. Engages and deals 3 damage when empowered.",
     "text": "somersault%s"
   },
   "assassinate": {
@@ -928,20 +869,29 @@
       {
         "effect": "decapitate",
         "target": 2,
-        "value": 5
+        "value": "5"
       },
       {
         "effect": "stun",
         "target": 1
+      },
+      {
+        "effect": "assassinate",
+        "target": 1,
+        "duration": -1
       }
     ],
     "reqs": [
+      {
+        "effect": "assassinate",
+        "target": -1
+      },
       {
         "effect": "melee",
         "target": 1
       }
     ],
-    "desc": "Kill the enemy if their health is lower than 6. Ends turn.",
+    "desc": "Kill the enemy if their health is lower than 6. Ends turn. Usable once per combat.",
     "text": "assassinate%s"
   },
   "lethal strike": {
@@ -949,7 +899,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -4
+        "value": "-4"
       },
       {
         "effect": "lethal strike",
@@ -999,6 +949,27 @@
     "desc": "cut enemy health in half. Usable once per combat. Ends turn.",
     "text": "critically strike%s"
   },
+  "jump attack": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-3"
+      },
+      {
+        "effect": "stun",
+        "target": 1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "melee",
+        "target": -1
+      }
+    ],
+    "desc": "jump attack the enemy from afar, dealing 3 damage. Ends turn.",
+    "text": "jump attack%s"
+  },
 
   "injure": {
     "effects": [
@@ -1007,11 +978,6 @@
         "target": 2,
         "text": "%Ur injured!",
         "duration": 2
-      },
-      {
-        "effect": "health",
-        "target": 2,
-        "value": -1
       }
     ],
     "reqs": [
@@ -1020,7 +986,7 @@
         "target": 1
       }
     ],
-    "desc": "deal 1 damage and apply injury, hindering certain abilities and preventing block.",
+    "desc": "apply injury to an enemy in melee for 2 turns, hindering combat capabilities.",
     "text": "injure%s %F"
   },
   "cripple": {
@@ -1029,21 +995,28 @@
         "effect": "cripple",
         "target": 2,
         "text": "%Ur crippled and having trouble moving!",
-        "duration": 2
-      },{
-        "effect": "cripple",
+        "duration": 3
+      },
+      {
+        "effect": "ability",
         "target": 2,
-        "text": "%Ur crippled and having trouble moving!",
-        "duration": 2
+        "value": "hesitate"
       }
     ],
-    "desc": "cripple the enemy for 1 turn and adds a chance for the enemy to hesitate.",
+    "reqs": [
+      {
+        "effect": "cripple",
+        "target": -2
+      }
+    ],
+    "desc": "cripple the enemy for 3 turns, hindering their movement and adding chance to hesitate.",
     "text": "cripple%s %F"
   },
   "taunt": {
     "effects": [
       {
         "effect": "taunt",
+        "text": "%Ur taunted!",
         "target": 5
       },
       {
@@ -1063,16 +1036,12 @@
       {
         "effect": "health",
         "target": 4,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
       {
         "effect": "melee",
-        "target": -1
-      },
-      {
-        "effect": "away",
         "target": -1
       },
       {
@@ -1083,12 +1052,43 @@
     "desc": "charge toward a unit and deal 1 damage to everyone in melee range.",
     "text": "perform%s a cleaving charge"
   },
+  "charge tackle": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-2"
+      },
+      {
+        "effect": "stun",
+        "target": 1
+      },
+      {
+        "effect": "stun",
+        "target": 3,
+        "duration": 1,
+        "start_text": "%Ur stunned by the slam!"
+      },
+      {
+        "effect": "shuffle",
+        "target": 1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "melee",
+        "target": -1
+      }
+    ],
+    "desc": "tackle the enemy from afar, dealing 2 damage and stunning you both for a turn. Refreshes moveset.",
+    "text": "tackle%s %F down"
+  },
   "zeal": {
     "effects": [
       {
         "effect": "blood",
         "target": 2,
-        "value": -1
+        "value": "-2"
       }
     ],
     "reqs": [
@@ -1101,7 +1101,7 @@
         "target": -1
       }
     ],
-    "desc": "",
+    "desc": "attack for 2 damage and heal for damage dealt.",
     "text": "attack%s with zeal"
   },
   "guard break": {
@@ -1132,8 +1132,8 @@
       {
         "effect": "block",
         "target": 1,
-        "value": 1,
-        "start_text": "%U guard%s for %v block."
+        "value": "1",
+        "start_text": "%U gain%s %v block."
       }
     ],
     "desc": "gain 1 block.",
@@ -1144,31 +1144,48 @@
       {
         "effect": "block",
         "target": 1,
-        "value": 2,
-        "start_text": "%U guard%s for %v block."
+        "value": "2",
+        "start_text": "%U gain%s %v block."
       }
     ],
     "desc": "gain 2 block.",
-    "text": "lift%s guard"
+    "text": "guard%s"
   },
   "heavy guard": {
     "effects": [
       {
+        "effect": "vulnerable",
+        "target": -1
+      },
+      {
         "effect": "block",
         "target": 1,
-        "value": 3,
-        "start_text": "%U guard%s for %v block."
+        "value": "4",
+        "start_text": "%U gain%s %v block."
       }
     ],
-    "desc": "gain 3 block.",
+    "desc": "gain 4 block. Removes any vulnerability.",
     "text": "guard%s firmly"
+  },
+  "defensive pose": {
+    "effects": [
+      {
+        "effect": "block",
+        "target": 1,
+        "duration": 3,
+        "value": "1",
+        "start_text": "%U gain%s %v block."
+      }
+    ],
+    "desc": "gain 1 block each turn for 3 turns.",
+    "text": "enter%s defensive posture"
   },
   "crystallize": {
     "effects": [
       {
         "effect": "block",
         "target": 1,
-        "value": 2
+        "value": "2"
       },{
         "effect": "thorn",
         "duration": 1,
@@ -1186,8 +1203,8 @@
       {
         "effect": "block",
         "target": 1,
-        "value": 1,
-        "start_text": "%U guard%s for %v block."
+        "value": "3",
+        "start_text": "%U gain%s %v block."
       },
       {
         "effect": "engage",
@@ -1200,28 +1217,18 @@
         "target": -1
       },
       {
-        "effect": "away",
-        "target": -1
-      },
-      {
         "effect": "cripple",
         "target": -1
       }
     ],
-    "desc": "gain 1 block and engage.",
-    "text": "move%s forward while guarding"
+    "desc": "gain 3 block and engage.",
+    "text": "guard dash%es"
   },
   "backstep": {
     "effects": [
       {
         "effect": "disengage",
-        "target": 1,
-        "reqs": [
-          {
-            "effect": "closed",
-            "target": -1
-          }
-        ]
+        "target": 1
       },
       {
         "effect": "shuffle",
@@ -1251,12 +1258,8 @@
       {
         "effect": "block",
         "target": 1,
-        "value": 1,
-        "start_text": "%U guard%s for %v block."
-      },
-      {
-        "effect": "stun",
-        "target": 1
+        "value": "1",
+        "start_text": "%U gain%s %v block."
       }
     ],
     "reqs": [
@@ -1265,7 +1268,7 @@
         "target": 1
       }
     ],
-    "desc": "parry the next attack, stunning the enemy if successful. Ends turn.",
+    "desc": "parry the next attack, stunning the enemy if successful.",
     "text": "prepare%s to parry"
   },
   "greater parry": {
@@ -1297,7 +1300,7 @@
         "target": -1
       }
     ],
-    "desc": "whenever an enemy engages you, prevent it and stun then. Lasts 2 turns.",
+    "desc": "whenever an enemy engages you, stop and stun them. Cannot be used injured. Lasts 2 turns.",
     "text": "guard%s against engagement"
   },
   "camouflage": {
@@ -1315,12 +1318,13 @@
       {
         "effect": "health",
         "target": 1,
-        "value": 1
+        "value": "1"
       },
       {
         "effect": "vulnerable",
         "target": 1,
-        "duration": 1
+        "duration": 1,
+        "start_text": "%Ur vulnerable."
       }
     ],
     "desc": "heal 1 damage and apply vulnerability for 1 turn.",
@@ -1332,14 +1336,19 @@
       {
         "effect": "health",
         "target": 1,
-        "value": 1
+        "value": "1"
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
+        "value": "1"
       }
     ],
     "desc": "heal 1 damage using 1 mana.",
@@ -1350,17 +1359,27 @@
       {
         "effect": "health",
         "target": 101,
-        "value": 1
+        "value": "1"
+      },
+      {
+        "effect": "health",
+        "target": 1,
+        "value": "1"
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
+        "value": "1"
       }
     ],
-    "desc": "heal 1 damage of the most wounded ally using 1 mana.",
+    "desc": "heal 1 damage of the most wounded ally and yourself using 1 mana.",
     "text": "cast%s heal"
   },
   "recover": {
@@ -1386,13 +1405,18 @@
       {
         "effect": "observe",
         "target": 6
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
+        "value": "1"
       }
     ],
     "desc": "gain insight to everyone's moves using 1 mana.",
@@ -1407,7 +1431,7 @@
       {
         "effect": "speed",
         "target": 1,
-        "value": 1
+        "value": "1"
       },
       {
         "effect": "clarity",
@@ -1421,7 +1445,7 @@
         "target": -1
       }
     ],
-    "desc": "refresh moveset for free. Usable once.",
+    "desc": "refresh moveset for free. Usable once per combat.",
     "text": "gather%s clarity"
   },
   "confuse": {
@@ -1432,7 +1456,7 @@
         "duration": 1
       }
     ],
-    "desc": "confuse the enemy for 1 turn.",
+    "desc": "confuse the enemy for a turn, making their attacks hit themselves.",
     "text": "confuse%s %F"
   },
   "weaken": {
@@ -1440,7 +1464,8 @@
       {
         "effect": "vulnerable",
         "target": 2,
-        "duration": 1
+        "duration": 2,
+        "start_text": "%Ur vulnerable."
       }
     ],
     "desc": "apply vulnerability to an enemy, doubling their damage taken and healing received for 1 turn.",
@@ -1451,19 +1476,10 @@
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
-      },
-      {
-        "effect": "vulnerable",
-        "target": 1,
-        "duration": 1
-      },
-      {
-        "effect": "stun",
-        "target": 1
+        "value": "1"
       }
     ],
-    "desc": "gain 1 mana and become vulnerable for 1 turn. Ends turn.",
+    "desc": "gain 1 mana.",
     "text": "gather%s mana"
   },
   "charge mana": {
@@ -1471,12 +1487,12 @@
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
+        "value": "2"
       },
       {
         "effect": "health",
         "target": 1,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "stun",
@@ -1492,29 +1508,62 @@
         "effect": "mana",
         "target": 1,
         "duration": 3,
-        "value": 1
+        "value": "1"
       },
       {
         "effect": "stun",
         "target": 1
+      },
+      {
+        "effect": "vulnerable",
+        "target": 1,
+        "duration": 1,
+        "start_text": "%Ur vulnerable."
       }
     ],
-    "desc": "gain 1 mana per turn for 3 turns. Ends turn.",
+    "desc": "gain 1 mana per turn for 3 turns, but become vulnerable for 1 turn. Ends turn.",
     "text": "start%s to attract mana"
+  },
+  "replicate mana": {
+    "effects": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "3"
+      },
+      {
+        "effect": "replicate",
+        "target": 1,
+        "duration": -1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "replicate",
+        "target": -1
+      }
+    ],
+    "desc": "gain 3 mana. Usable once per combat.",
+    "text": "replicate%s mana"
   },
   "lightning": {
     "effects": [
       {
         "effect": "health",
         "target": 5,
-        "value": -2
+        "value": "-2"
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-2"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 2
+        "value": "2"
       }
     ],
     "desc": "use 2 mana to deal 2 damage to all foes.",
@@ -1525,28 +1574,37 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
+      },
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-1"
+      },
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-1"
       },
       {
         "effect": "disengage",
+        "target": 2,
+        "start_text": "%Ur pushed away by the torrent."
+      },
+      {
+        "effect": "mana",
         "target": 1,
-        "start_text": "%Fr pushed away by the torrent.",
-        "reqs": [
-          {
-            "effect": "closed",
-            "target": -1
-          }
-        ]
+        "value": "-1"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
+        "value": "1"
       }
     ],
-    "desc": "use 1 mana to deal 2 damage and push back a foe.",
+    "desc": "use 1 mana to deal 3 damage and push back a foe.",
     "text": "cast%s torrent"
   },
   "phase": {
@@ -1555,34 +1613,95 @@
         "effect": "invulnerable",
         "target": 1,
         "duration": 2
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-2"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
+        "value": "2"
       }
     ],
-    "desc": "use 1 mana to become invulnerable for 2 turns.",
+    "desc": "use 2 mana to become invulnerable for 2 turns.",
     "text": "phase%s"
+  },
+  "barrier": {
+    "effects": [
+      {
+        "effect": "block",
+        "target": 7,
+        "value": "4",
+        "start_text": "%U gain%s %v block."
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "1"
+      }
+    ],
+    "desc": "use 1 mana to give 4 block to you and all your allies.",
+    "text": "cast%s barrier"
+  },
+  "mind break": {
+    "effects": [
+      {
+        "effect": "ability",
+        "target": 5,
+        "value": "hesitate"
+      },
+      {
+        "effect": "ability",
+        "target": 5,
+        "value": "hesitate"
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "1"
+      }
+    ],
+    "desc": "all foes get greatly increased chance to hesitate. Uses 1 mana.",
+    "text": "cast%s mind break"
   },
   "redirect": {
     "effects": [
       {
         "effect": "redirect",
+        "target": 1
+      },
+      {
+        "effect": "mana",
         "target": 1,
-        "duration": 2
+        "value": "-1"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
+        "value": "1"
       }
     ],
-    "desc": "redirect incoming attack towards your target using 1 mana. Lasts 2 turns.",
+    "desc": "redirect the next incoming attack towards your target using 1 mana.",
     "text": "prepare%s to redirect"
   },
   "insight": {
@@ -1594,7 +1713,8 @@
       {
         "effect": "vulnerable",
         "target": 2,
-        "duration": 1
+        "duration": 1,
+        "start_text": "%Ur vulnerable."
       }
     ],
     "desc": "observe the enemy, gaining insight about their next moves and apply vulnerability for 1 turn.",
@@ -1605,13 +1725,18 @@
       {
         "effect": "rot",
         "target": 2
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-2"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 2
+        "value": "2"
       }
     ],
     "desc": "deal damage equal to target's missing health using 2 mana.",
@@ -1622,95 +1747,136 @@
       {
         "effect": "torment",
         "target": 2
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-3"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 2
+        "value": "3"
       }
     ],
-    "desc": "cut the target's current health in half using 2 mana.",
+    "desc": "cut the target's current health in half using 3 mana.",
     "text": "cast%s torment"
   },
-  "mouse form": {
+  "kill": {
     "effects": [
       {
-        "effect": "invulnerable",
+        "effect": "health",
+        "target": 2,
+        "value": 99
+      },
+      {
+        "effect": "mana",
         "target": 1,
-        "duration": 2
+        "value": "-5"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": 5
+      }
+    ],
+    "desc": "deal 99 damage to the target using 5 mana.",
+    "text": "point%s and say%s 'Death'"
+  },
+  "stone form": {
+    "effects": [
+      {
+        "effect": "dispel",
+        "target": 1
       },
       {
         "effect": "stun",
         "target": 1,
         "duration": 2,
-        "text": "%U skitter around.",
-        "end_text": "%Ur no long a mouse."
+        "start_text": "%U turn to stone."
+      },
+      {
+        "effect": "invulnerable",
+        "target": 1,
+        "duration": 2
       }
     ],
-    "desc": "turn yourself into a tiny mouse, becoming invulnerable but unable to do anything.",
-    "text": "turn%s into a mouse"
+    "desc": "turn yourself into stone for 2 turns, becoming invulnerable but unable to do anything.",
+    "text": "turn%s into stone"
+  },
+  "petrify": {
+    "effects": [
+      {
+        "effect": "stun",
+        "target": 2,
+        "duration": 3
+      },
+      {
+        "effect": "stun",
+        "target": 2,
+        "start_text": "%U turn to stone."
+      },
+      {
+        "effect": "invulnerable",
+        "target": 2,
+        "duration": 3
+      }
+    ],
+    "desc": "turn target into stone for 3 turns, making them invulnerable but unable to do anything.",
+    "text": "cast%s petrify"
   },
   "teleport": {
     "effects": [
       {
-        "effect": "engage",
-        "target": 1
-      },
-      {
-        "effect": "vulnerable",
-        "target": 1,
-        "duration": 1
-      },
-      {
         "effect": "disengage",
         "target": 1,
-        "duration": 1,
-        "reqs": [
-          {
-            "effect": "closed",
-            "target": -1
-          }
-        ]
+        "duration": 5
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
+        "value": "1"
       }
     ],
-    "desc": "engage and apply vulnerability to target using 1 mana. Automatically disengage next turn.",
+    "desc": "automatically disengage every turn for 5 turns using 1 mana.",
     "text": "teleport%s"
   },
   "blink": {
     "effects": [
       {
         "effect": "disengage",
-        "target": 1,
-        "reqs": [
-          {
-            "effect": "closed",
-            "target": -1
-          }
-        ]
+        "target": 1
       },
       {
-        "effect": "away",
+        "effect": "speed",
         "target": 1,
-        "duration": 1
+        "value": 1
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
       }
     ],
     "reqs": [
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
+        "value": "1"
       }
     ],
-    "desc": "Disengage far enough from the enemy that they can't engage next turn. Uses 1 mana.",
+    "desc": "Disengage as a free action. Uses 1 mana.",
     "text": "blink%s"
   },
   "fireball": {
@@ -1722,17 +1888,16 @@
       {
         "effect": "health",
         "target": 4,
-        "value": -2
+        "value": "-3"
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
       },
       {
         "effect": "disengage",
-        "target": 1,
-        "reqs": [
-          {
-            "effect": "closed",
-            "target": -1
-          }
-        ]
+        "target": 1
       }
     ],
     "reqs": [
@@ -1743,29 +1908,11 @@
       {
         "effect": "mana",
         "target": 1,
-        "value": 1
+        "value": "1"
       }
     ],
-    "desc": "deal 2 damage to a target and nearby units using 1 mana.",
+    "desc": "deal 3 damage to a target and nearby units using 1 mana.",
     "text": "cast%s fireball"
-  },
-  "curse": {
-    "effects": [
-      {
-        "effect": "curse",
-        "target": 1,
-        "duration": -1
-      }
-    ],
-    "reqs": [
-      {
-        "effect": "mana",
-        "target": 1,
-        "value": 2
-      }
-    ],
-    "desc": "every combatant takes 1 damage per turn until the caster is dead",
-    "text": "cast%s the curse of death"
   },
   "dispel": {
     "effects": [
@@ -1781,12 +1928,75 @@
     "effects": [
       {
         "effect": "siphon",
-        "target": 2,
-        "value": 1
+        "target": 6
       }
     ],
-    "desc": "decrease target mana by 1 and add that amount to you.",
-    "text": "siphon%s mana from %F"
+    "desc": "siphon the mana of everyone in combat into you.",
+    "text": "siphon%s mana"
+  },
+  "haste": {
+    "effects": [
+      {
+        "effect": "haste",
+        "target": 1
+      },
+      {
+        "effect": "breath",
+        "target": 1,
+        "duration": -1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "cripple",
+        "target": -1
+      },
+      {
+        "effect": "breath",
+        "target": -1
+      }
+    ],
+    "desc": "gain bonus actions equal to current mana storage. Cannot be used when crippled. Uses breath.",
+    "text": "cast%s haste"
+  },
+  "ice nova": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 5,
+        "value": "-2"
+      },
+      {
+        "effect": "health",
+        "target": 7,
+        "value": "-2"
+      },
+      {
+        "effect": "speed",
+        "target": 5,
+        "duration": 1,
+        "value": "-1"
+      },
+      {
+        "effect": "speed",
+        "target": 7,
+        "duration": 1,
+        "value": "-1"
+      },
+      {
+        "effect": "disengage",
+        "target": 1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "2"
+      }
+    ],
+    "desc": "deal 2 damage to everyone but yourself using 2 mana. Hit targets are slowed for 1 turn.",
+    "text": "cast%s ice nova"
   },
 
   "long thrust": {
@@ -1794,7 +2004,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "desc": "impale the enemy with your %w from afar.",
@@ -1805,12 +2015,12 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -2
+        "value": "-2"
       },
       {
         "effect": "block",
         "target": 1,
-        "value": 2
+        "value": "2"
       }
     ],
     "desc": "impale the enemy from afar for 2 damage. Gain 2 block.",
@@ -1821,7 +2031,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -1830,7 +2040,7 @@
         "target": -1
       }
     ],
-    "desc": "throw something at the enemy.",
+    "desc": "deal 1 damage from range.",
     "text": "throw%s %us %w at %F"
   },
   "shoot": {
@@ -1838,7 +2048,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -1847,20 +2057,31 @@
         "target": -1
       }
     ],
-    "desc": "shoot your %w at the enemy.",
-    "text": "shoot%s the %w at %F"
+    "desc": "shoot at the enemy for 1 damage from range.",
+    "text": "shoot%s at %F"
+  },
+  "exploding shot": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 4,
+        "value": "-2"
+      }
+    ],
+    "desc": "Deal 2 damage to an area. Can be shot in melee.",
+    "text": "shoot%s exploding shot"
   },
   "double shot": {
     "effects": [
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -1869,25 +2090,25 @@
         "target": -1
       }
     ],
-    "desc": "shoot your %w at the enemy, dealing 1 damage twice.",
-    "text": "rapidly shoot%s the %w twice at %F"
+    "desc": "Deal 1 damage twice from range.",
+    "text": "rapidly shoot%s %us %w twice"
   },
   "triple shot": {
     "effects": [
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -1896,15 +2117,74 @@
         "target": -1
       }
     ],
-    "desc": "dealing 1 damage three times.",
-    "text": "rapidly shoot%s thrice at %F"
+    "desc": "deal 1 damage three times from range.",
+    "text": "rapidly shoot%s %us %w thrice"
+  },
+  "quadruple shot": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-1"
+      },
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-1"
+      },
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-1"
+      },
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-1"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "melee",
+        "target": -1
+      }
+    ],
+    "desc": "deal 1 damage four times from range.",
+    "text": "rapidly shoot%s %us %w"
+  },
+  "relentless shot": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 5,
+        "value": "-1"
+      },
+      {
+        "effect": "health",
+        "target": 5,
+        "value": "-1"
+      },
+      {
+        "effect": "health",
+        "target": 5,
+        "value": "-1"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "away",
+        "target": 1
+      }
+    ],
+    "desc": "deal 1 damage three times to all enemies. Must be away.",
+    "text": "relentlessly shoot%s %us %w"
   },
   "blinding shot": {
     "effects": [
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "retarget",
@@ -1919,57 +2199,62 @@
       }
     ],
     "desc": "shoot your %w at the enemy's eyes, blinding and forcing them to change their target.",
-    "text": "shoot%s the %w at %F"
+    "text": "shoot%s a blinding shot at %F"
   },
   "penetrating shot": {
     "effects": [
       {
-        "effect": "health",
+        "effect": "pierce",
         "target": 2,
-        "value": -2
-      },
-      {
-        "effect": "injury",
-        "target": 2,
-        "text": "%Ur injured!",
-        "duration": 1
+        "value": "-2"
       },
       {
         "effect": "retarget",
         "target": 1
       },
       {
-        "effect": "health",
+        "effect": "pierce",
         "target": 2,
-        "value": -2
-      },
-      {
-        "effect": "injury",
-        "target": 2,
-        "text": "%Ur injured!",
-        "duration": 1
+        "value": "-1"
       }
     ],
-    "desc": "shoot a strong penetrating shot at an emey, hitting one other enemy behind it. Hit enemies are injured. Can be shot in melee.",
-    "text": "shoot%s the %w at %F"
+    "desc": "deal 2 damage to one enemy and 1 damage to another enemy behind it. Ignores armor. Can be shot in melee.",
+    "text": "shoot%s a penetrating shot at %F"
+  },
+  "volley": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 4,
+        "value": "-2"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "melee",
+        "target": -1
+      }
+    ],
+    "desc": "deal 2 damage to an area from range.",
+    "text": "shoot%s a penetrating shot at %F"
   },
   "deadly shot": {
     "effects": [
       {
         "effect": "health",
         "target": 2,
-        "value": -4
+        "value": "-4"
       }
     ],
     "desc": "shoot the enemy for 4 damage.",
-    "text": "fire%s the %F"
+    "text": "fire%s the %w"
   },
   "thrust": {
     "effects": [
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -1986,7 +2271,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -1995,7 +2280,7 @@
         "target": 1
       }
     ],
-    "desc": "swing your %w at the enemy.",
+    "desc": "swing your weapon at the enemy.",
     "text": "swing%s at %F"
   },
   "strike": {
@@ -2003,7 +2288,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -2
+        "value": "-2"
       }
     ],
     "reqs": [
@@ -2020,7 +2305,7 @@
       {
         "effect": "cripple",
         "target": 2,
-        "start_text": "%Ur entangled by the bolas!",
+        "start_text": "%Ur entangled by the bolas.",
         "end_text": "%U break%s free of the bolas.",
         "duration": 3
       }
@@ -2039,10 +2324,10 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
-        "effect": "vulnerability",
+        "effect": "vulnerable",
         "target": 2,
         "duration": 1
       }
@@ -2062,7 +2347,8 @@
         "effect": "health",
         "target": 5,
         "duration": 1,
-        "value": -1
+        "value": "-2",
+        "text": "The shot ricochets and hits %U!"
       }
     ],
     "reqs": [
@@ -2079,14 +2365,14 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -2
+        "value": "-2"
       },
       {
         "id": "burn",
         "effect": "health",
         "target": 2,
         "duration": -1,
-        "value": -1,
+        "value": "-1",
         "text": "%Ur burning!",
         "reqs": [
           {
@@ -2110,8 +2396,7 @@
       {
         "effect": "stun",
         "target": 2,
-        "duration": 1,
-        "end_text": "%U break%s out of the stun."
+        "start_text": "%U is stunned."
       }
     ],
     "reqs": [
@@ -2126,9 +2411,9 @@
   "stab": {
     "effects": [
       {
-        "effect": "health",
+        "effect": "pierce",
         "target": 2,
-        "value": -3
+        "value": "-2"
       },
       {
         "effect": "stun",
@@ -2141,7 +2426,7 @@
         "target": 1
       }
     ],
-    "desc": "stab the enemy with your %w for 3 damage. Ends turn.",
+    "desc": "stab the enemy with your %w for 2 damage, ignoring armor. Ends turn.",
     "text": "stab%s %F with the %w"
   },
   "chop": {
@@ -2149,12 +2434,12 @@
       {
         "effect": "decapitate",
         "target": 2,
-        "value": 4
+        "value": "4"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -2
+        "value": "-2"
       }
     ],
     "reqs": [
@@ -2163,8 +2448,32 @@
         "target": 1
       }
     ],
-    "desc": "If the enemy has less than 4 health, they are decapitated. Otherwise deal 2 damage.",
+    "desc": "kill if the enemy's health is lower than 5. Otherwise deal 2 damage.",
     "text": "chop%s %F with the %w"
+  },
+  "mark": {
+    "effects": [
+      {
+        "effect": "vulnerable",
+        "target": 2,
+        "duration": 2,
+        "start_text": "%Ur vulnerable."
+      },
+      {
+        "effect": "injury",
+        "target": 2,
+        "duration": 2,
+        "start_text": "%Ur injured."
+      },
+      {
+        "effect": "cripple",
+        "target": 2,
+        "duration": 2,
+        "start_text": "%U can't move."
+      }
+    ],
+    "desc": "apply vulnerability, injury, and cripple for 2 turns.",
+    "text": "mark%s %F"
   },
 
   "premonition": {
@@ -2174,35 +2483,90 @@
         "target": 2
       },
       {
-        "effect": "vulnerable",
-        "target": 2,
-        "duration": 2
+        "effect": "block",
+        "target": 1,
+        "value": 1,
+        "start_text": "%U gain%s 1 block."
       }
     ],
-    "desc": "gain insight and apply vulnerability to an enemy for 2 turns.",
-    "text": "gather%s premonition"
+    "desc": "gain insight and 1 block.",
+    "text": "experience%s premonition"
   },
   "remedy": {
     "effects": [
       {
         "effect": "health",
         "target": 1,
-        "value": 1
+        "value": "1"
+      }
+    ],
+    "desc": "heal 1 damage.",
+    "text": "remed%ies %uf"
+  },
+  "bless": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 7,
+        "duration": 3,
+        "value": "1"
+      },
+      {
+        "effect": "bless",
+        "target": 1,
+        "duration": -1
       }
     ],
     "reqs": [
       {
         "effect": "away",
         "target": 1
+      },
+      {
+        "effect": "bless",
+        "target": -1
       }
     ],
-    "desc": "heal 1 damage. Must be away.",
-    "text": "remed%ies %uf"
+    "desc": "heal 3 damage over 3 turns for all allies. Must be away. Usable once per combat",
+    "text": "bless%es %u and %us allies"
   },
   "glass form": {
     "effects": [
       {
-        "effect": "glass form",
+        "effect": "dispel",
+        "target": 1
+      },
+      {
+        "effect": "shapeshift",
+        "target": 1
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "bleeding edge"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "bleeding edge"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "camouflage"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "crystallize"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "return form"
+      },
+      {
+        "effect": "shuffle",
         "target": 1
       }
     ],
@@ -2218,14 +2582,56 @@
   "spider form": {
     "effects": [
       {
-        "effect": "spider form",
+        "effect": "dispel",
         "target": 1
       },
       {
         "effect": "speed",
         "target": 1,
-        "duration": -1,
-        "value": 1
+        "value": "1"
+      },
+      {
+        "effect": "shapeshift",
+        "target": 1
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "dodge"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "blood drain"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "weave web"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "venomous bite"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "jump attack"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "quick attack"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "return form"
+      },
+      {
+        "effect": "shuffle",
+        "target": 1
       }
     ],
     "reqs": [
@@ -2234,8 +2640,364 @@
         "target": 1
       }
     ],
-    "desc": "enter spider form. Must be away.",
-    "text": "enter%s spider form"
+    "desc": "enter spider form as a free action. Must be away.",
+    "text": "turn%s into a giant spider"
+  },
+  "spirit form": {
+    "effects": [
+      {
+        "effect": "dispel",
+        "target": 1
+      },
+      {
+        "effect": "shapeshift",
+        "target": 1
+      },
+      {
+        "effect": "speed",
+        "target": 1,
+        "duration": 5,
+        "value": "-1"
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "duration": 5,
+        "value": "1"
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "3"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "torrent"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "phase"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "lightning"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "barrier"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "return form"
+      },
+      {
+        "effect": "shuffle",
+        "target": 1
+      },
+      {
+        "effect": "invulnerable",
+        "target": 1,
+        "duration": 1
+      },
+      {
+        "effect": "stun",
+        "target": 1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "away",
+        "target": 1
+      }
+    ],
+    "desc": "enter spirit form and become invincible for 1 turn. Must be away. Ends turn.",
+    "text": "enter%s spirit form"
+  },
+  "mouse form": {
+    "effects": [
+      {
+        "effect": "dispel",
+        "target": 1
+      },
+      {
+        "effect": "shapeshift",
+        "target": 1
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "burrow"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "refresh"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "return form"
+      },
+      {
+        "effect": "shuffle",
+        "target": 1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "away",
+        "target": 1
+      }
+    ],
+    "desc": "enter mouse form. Must be away.",
+    "text": "turn%s into a mouse"
+  },
+  "lich form": {
+    "effects": [
+      {
+        "effect": "dispel",
+        "target": 1
+      },
+      {
+        "effect": "shapeshift",
+        "target": 1
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "duration": 99,
+        "value": "2"
+      },
+      {
+        "effect": "health",
+        "target": 1,
+        "duration": 99,
+        "value": "-1"
+      },
+      {
+        "effect": "speed",
+        "target": 1,
+        "duration": 99,
+        "value": "-1"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "gather mana"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "charge mana"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "life siphon"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "blood siphon"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "ice nova"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "kill"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "torment"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "return form"
+      },
+      {
+        "effect": "shuffle",
+        "target": 1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "away",
+        "target": 1
+      }
+    ],
+    "desc": "enter lich form. Must be away.",
+    "text": "turn%s into a mighty lich"
+  },
+  "blood parasite": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-1",
+        "duration": -1
+      },
+      {
+        "effect": "health",
+        "target": 1,
+        "value": "-1"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "melee",
+        "target": 1
+      }
+    ],
+    "desc": "using 1 health, make target enemy take 1 damage each turn.",
+    "text": "shoot%s a blood drop"
+  },
+  "blood siphon": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 1,
+        "value": "-1"
+      },
+      {
+        "effect": "blood",
+        "target": 2,
+        "value": "-2"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "melee",
+        "target": 1
+      },
+      {
+        "effect": "injury",
+        "target": -1
+      }
+    ],
+    "desc": "using 1 health, deal 2 damage and heal yourself for the damage dealt. Melee only.",
+    "text": "siphon%s blood from %F"
+  },
+  "life siphon": {
+    "effects": [
+      {
+        "effect": "blood",
+        "target": 5,
+        "value": "-1"
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-2"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "2"
+      },
+      {
+        "effect": "injury",
+        "target": -1
+      }
+    ],
+    "desc": "deal 1 damage to all enemies and heal yourself for the damage dealt using 2 mana. Must not be injured.",
+    "text": "siphon%s life from %F"
+  },
+  "smite": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-2"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "vulnerable",
+        "target": 2
+      }
+    ],
+    "desc": "deal 4 damage to a vulnerable foe.",
+    "text": "smite%s"
+  },
+  "return form": {
+    "effects": [
+      {
+        "effect": "dispel",
+        "target": 1
+      },
+      {
+        "effect": "shuffle",
+        "target": 1
+      },
+      {
+        "effect": "stun",
+        "target": 1
+      },
+      {
+        "effect": "return form",
+        "target": 1
+      }
+    ],
+    "desc": "return to your original form.",
+    "text": "shift%s back"
+  },
+  "hunt mode": {
+    "effects": [
+      {
+        "effect": "shapeshift",
+        "target": 1
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "mark"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "relentless shot"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "quadruple shot"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "refresh"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "return form"
+      },
+      {
+        "effect": "shuffle",
+        "target": 1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "away",
+        "target": 1
+      }
+    ],
+    "desc": "enter hunt mode. Must be away.",
+    "text": "enter%s hunt mode"
   },
 
   "distract": {
@@ -2244,7 +3006,7 @@
         "effect": "speed",
         "target": 6,
         "duration": 1,
-        "value": -1,
+        "value": "-1",
         "start_text": "%Ur distracted and lose a turn."
       }
     ],
@@ -2266,7 +3028,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -2283,7 +3045,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -2
+        "value": "-2"
       }
     ],
     "reqs": [
@@ -2300,16 +3062,16 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "id": "poison",
         "effect": "health",
         "target": 2,
         "duration": 1,
-        "value": -1,
+        "value": "-1",
         "start_text": "%Ur poisoned.",
-        "text": "%U take%s %-v damage from poison."
+        "text": "%Ur sick."
       }
     ],
     "reqs": [
@@ -2326,7 +3088,7 @@
       {
         "effect": "block",
         "target": 1,
-        "value": 1,
+        "value": "1",
         "start_text": "%U harden%s for %v block."
       }
     ],
@@ -2338,7 +3100,7 @@
       {
         "effect": "blood",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -2351,7 +3113,7 @@
         "target": -1
       }
     ],
-    "desc": "",
+    "desc": "deal 1 damage and heal yourself for the damage dealt.",
     "text": "suck%s the life from %F"
   },
   "blood drain": {
@@ -2359,7 +3121,7 @@
       {
         "effect": "blood",
         "target": 2,
-        "value": -2
+        "value": "-2"
       }
     ],
     "reqs": [
@@ -2372,7 +3134,7 @@
         "target": -1
       }
     ],
-    "desc": "",
+    "desc": "deal 2 damage and heal yourself for the damage dealt.",
     "text": "suck%s the life from %F"
   },
   "peck": {
@@ -2380,7 +3142,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -2415,7 +3177,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "desc": "pierce the enemy from afar.",
@@ -2427,10 +3189,9 @@
         "id": "strangle",
         "effect": "health",
         "target": 2,
-        "start_text": "%Ur being strangled.",
         "text": "%Ur being strangled!",
         "duration": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -2449,13 +3210,89 @@
         "effect": "health",
         "target": 2,
         "duration": 2,
-        "value": -1,
+        "value": "-1",
         "start_text": "%Ur poisoned.",
-        "text": "%U take%s %-v damage from poison."
+        "text": "%Ur sick."
       }
     ],
-    "desc": "poison an enemy for 1 damage every turn for 2 turns.",
+    "desc": "poison an enemy for 2 turns.",
     "text": "poison%s %F"
+  },
+  "strong poison": {
+    "effects": [
+      {
+        "id": "poison",
+        "effect": "health",
+        "target": 2,
+        "duration": 3,
+        "value": "-1",
+        "start_text": "%Ur poisoned.",
+        "text": "%Ur sick."
+      }
+    ],
+    "desc": "poison an enemy for 3 turns.",
+    "text": "poison%s %F"
+  },
+  "toxicity": {
+    "effects": [
+      {
+        "id": "poison",
+        "effect": "health",
+        "target": 6,
+        "duration": 3,
+        "value": "-1",
+        "start_text": "%Ur poisoned.",
+        "text": "%Ur sick."
+      }
+    ],
+    "desc": "apply poison to everyone to deal 3 damage over 3 turns.",
+    "text": "conjure%s toxic mist"
+  },
+  "curse of doom": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 6,
+        "duration": -1,
+        "value": "-1"
+      }
+    ],
+    "reqs": [
+    ],
+    "desc": "everyone takes 1 damage per turn until the caster is dead.",
+    "text": "cast%s the curse of doom"
+  },
+  "curse of disability": {
+    "effects": [
+      {
+        "effect": "injury",
+        "target": 2,
+        "duration": 5
+      },
+      {
+        "effect": "cripple",
+        "target": 2,
+        "duration": 5
+      },
+      {
+        "effect": "vulnerable",
+        "target": 2,
+        "duration": 5
+      },
+      {
+        "effect": "disability curse",
+        "target": 1,
+        "duration": -1
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "disability curse",
+        "target": -1
+      }
+    ],
+    "desc": "apply injury, cripple, and vulnerability. Lasts 5 turns. Usable once per combat.",
+    "text": "cast%s the curse of disability"
   },
   "paralyze": {
     "effects": [
@@ -2463,15 +3300,14 @@
         "id": "paralyze",
         "effect": "stun",
         "target": 2,
-        "duration": 1,
-        "text": "%Ur paralyzed.",
-        "end_text": "%U break%s out of the paralysis."
+        "text": "%Ur paralyzed."
       },
       {
         "id": "paralyze",
         "effect": "vulnerable",
         "target": 2,
-        "duration": 1
+        "duration": 1,
+        "start_text": "%Ur vulnerable."
       },
       {
         "effect": "stun",
@@ -2484,7 +3320,7 @@
         "target": 1
       }
     ],
-    "desc": "stun and apply vulnerability to an enemy for 1 turn. Ends turn.",
+    "desc": "stun and apply vulnerability to an enemy in melee for 1 turn. Ends turn.",
     "text": "paralyze%s %F"
   },
   "dive": {
@@ -2497,14 +3333,9 @@
       {
         "effect": "disengage",
         "target": 1
-      },
-      {
-        "effect": "away",
-        "target": 1,
-        "duration": 1
       }
     ],
-    "desc": "dive into water, becoming invulnerable and unapproachable.",
+    "desc": "dive into water, becoming invulnerable for 1 turn.",
     "text": "dive%s into water"
   },
   "burrow": {
@@ -2517,14 +3348,9 @@
       {
         "effect": "disengage",
         "target": 1
-      },
-      {
-        "effect": "away",
-        "target": 1,
-        "duration": 1
       }
     ],
-    "desc": "burrow into the ground, becoming invulnerable and unapproachable.",
+    "desc": "burrow into the ground, becoming invulnerable for 1 turn.",
     "text": "burrow%s into the ground"
   },
   "summon ally": {
@@ -2547,10 +3373,14 @@
         "effect": "health",
         "target": 1,
         "duration": 2,
-        "value": 1
+        "value": "1"
+      },
+      {
+        "effect": "stun",
+        "target": 1
       }
     ],
-    "desc": "heal 2 damage over 2 turns.",
+    "desc": "heal 2 damage over 2 turns. Ends turn.",
     "text": "regenerate%s"
   },
   "claw": {
@@ -2558,12 +3388,12 @@
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       },
       {
         "effect": "health",
         "target": 2,
-        "value": -1
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -2574,5 +3404,20 @@
     ],
     "desc": "deal 1 damage twice.",
     "text": "claw%s %F"
+  },
+  "refresh": {
+    "effects": [
+      {
+        "effect": "shuffle",
+        "target": 1
+      },
+      {
+        "effect": "speed",
+        "target": 1,
+        "value": "1"
+      }
+    ],
+    "desc": "refresh moveset for free.",
+    "text": "refresh%es"
   }
 }

@@ -32,7 +32,7 @@ class QuestFragment : Fragment() {
         textView.text = resources.getString(R.string.quest)
         addButton(resources.getString(R.string.leave)).setOnClickListener{
             val app: App = activity as App
-            app.openDialog(arguments?.getString("page") ?: ">back")
+            app.openDialog(arguments?.getString("page") ?: ">to>page")
         }
         listView.onItemClickListener = OnItemClickListener { _, _, _, _ -> }
         player = arguments?.getParcelable("player") ?: return root
@@ -67,7 +67,7 @@ class QuestFragment : Fragment() {
                 .setPositiveButton(android.R.string.yes) { _, _ ->
                     player.quests.removeAt(position)
                     val app: App = activity as App
-                    app.openDialog(items[position]["Page"] ?: ">back")
+                    app.openDialog(items[position]["Page"] ?: ">to>page")
                 }
                 .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
                 .show()

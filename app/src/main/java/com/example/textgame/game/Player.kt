@@ -124,7 +124,7 @@ data class PlayerModel(var seed: Int, var time: Int, var money: Int, var damaged
     }
 
     fun getDescription(): String{
-        var result = "You are a $specialization.\n"
+        var result = "You are ${Grammar.getArticle(specialization)}.\n"
         result += "You have $${money}.\n"
         if (unit.healthPt < unit.health){
             result += "You are wounded (${unit.healthPt}/${unit.health})\n"
@@ -177,7 +177,7 @@ class Player(private val fileManager: FileManager) {
     }
 
     fun load(to: String){
-        model = make(fileManager.readAsset("$to.json"))
+        model = make(fileManager.read("$to.json"))
     }
 
     fun save(to: String){

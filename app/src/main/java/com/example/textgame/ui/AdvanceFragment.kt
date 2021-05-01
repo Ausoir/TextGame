@@ -29,10 +29,10 @@ class AdvanceFragment : CustomFragment() {
         val branch = arguments?.getStringArray("branch") as Array<String>?
         val spec = specMap[specString]!!
         if (spec.branch.isNullOrEmpty()){
-            addText("You have reached the end of your specialization.\nYou cannot advance your class any further!")
+            addText("You have already reached the end of your specialization.\nYou cannot advance your class any further!\n\nInstead, you gain 1 max health.")
             addButton(resources.getString(R.string.proceed)).setOnClickListener {
                 val app: App = activity as App
-                app.openDialog(page)
+                app.openDialog(">maxhealth>1>$page")
             }
         } else {
             addText(

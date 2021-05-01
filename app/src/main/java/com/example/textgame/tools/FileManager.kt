@@ -35,7 +35,7 @@ class FileManager(private val context: Context) {
         val fileDir = context.filesDir
         val file = File(fileDir, fileName)
         file.bufferedWriter().use {
-            out -> out.write(data)
+                out -> out.write(data)
         }
     }
 

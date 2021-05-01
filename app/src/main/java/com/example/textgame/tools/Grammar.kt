@@ -54,34 +54,34 @@ object Grammar {
     fun getOrderNumber(number: Int): String{
         return when (number) {
             1 -> {
-                "first"
+                "1st"
             }
             2 -> {
-                "second"
+                "2nd"
             }
             3 -> {
-                "third"
+                "3rd"
             }
             4 -> {
-                "fourth"
+                "4th"
             }
             5 -> {
-                "fifth"
+                "5th"
             }
             6 -> {
-                "sixth"
+                "6th"
             }
             7 -> {
-                "seventh"
+                "7th"
             }
             8 -> {
-                "eighth"
+                "8th"
             }
             9 -> {
-                "nineth"
+                "9th"
             }
             else -> {
-                "other"
+                ""
             }
         }
     }

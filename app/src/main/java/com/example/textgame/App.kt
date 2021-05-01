@@ -37,7 +37,7 @@ class App : AppCompatActivity() {
         menu?.getItem(0)?.isVisible = true
         val frag = HomeFragment()
         val bundle = Bundle()
-        val page = game.player.model.vars["page"]!!
+        val page = (game.player.model.vars["page"]!!).substring(1)
         val currentPage = game.dialog.model[page] ?: game.dialog.model2[page] ?: game.dialog.model2["invalid"]!!
         val args = game.getVarMap(currentPage.filler)
         val dialog = currentPage.fillVariables(args).validate(game.player.model)
@@ -201,7 +201,7 @@ class App : AppCompatActivity() {
                 }
                 "add" -> {
                     if (split[2] in game.player.model.vars){
-                        game.player.model.vars[split[2]] += split[3]
+                        game.player.model.vars[split[2]] = (game.player.model.vars[split[2]]!!.toInt() + split[3].toInt()).toString()
                     } else {
                         game.player.model.vars[split[2]] = split[3]
                     }
@@ -217,12 +217,8 @@ class App : AppCompatActivity() {
                         openDialog(Grammar.substringAfter(to, ">", 5))
                     }
                 }
-                "now" -> {
-                    viewPage(game.player.model.vars["page"]!!)
-                    viewHome()
-                }
-                "back" -> {
-                    viewPage(game.player.model.vars["prev"]!!)
+                "to" -> {
+                    viewPage(game.player.model.vars[split[2]]!!)
                     viewHome()
                 }
                 "time" -> {
@@ -289,6 +285,10 @@ class App : AppCompatActivity() {
                     game.player.model.companionMoves[split[2]]!!.add(split[3])
                     openDialog(Grammar.substringAfter(to, ">", 4))
                 }
+                "maxhealth" -> {
+                    game.player.model.unit.health += split[2].toInt()
+                    openDialog(Grammar.substringAfter(to, ">", 3))
+                }
                 "moneyAdd" -> {
                     game.player.model.money += split[2].toInt()
                     if (game.player.model.money < 0){
@@ -336,6 +336,15 @@ class App : AppCompatActivity() {
                 "view specialize" -> {
                     viewAdvance(split[2].split(":").toTypedArray(), Grammar.substringAfter(to, ">", 3))
                 }
+                "advance" -> {
+                    game.player.model.vars["t1"] = "You improve your abilities!"
+                    game.player.model.vars["t2"] = ">view learn>${Grammar.substringAfter(to, ">", 2)}"
+                    game.player.model.vars["t3"] = "Learn a new move"
+                    game.player.model.vars["t4"] = ">view forget>${Grammar.substringAfter(to, ">", 2)}"
+                    game.player.model.vars["t5"] = "Forget a move"
+                    viewPage("@custom2")
+                    viewHome()
+                }
                 "heal" -> {
                     game.player.model.unit.healthPt += split[2].toInt()
                     if (game.player.model.unit.healthPt > game.player.model.unit.health){
@@ -346,17 +355,18 @@ class App : AppCompatActivity() {
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
                 "item" -> {
-                    val piece = game.player.model.getSamePart(game.item.model, split[3])
-                    game.player.model.vars["t1"] = split[2]
-                    game.player.model.vars["t2"] = ">force item>${split[3]}>${Grammar.substringAfter(to, ">", 4)}"
+                    val piece = game.player.model.getSamePart(game.item.model, split[2])
+                    val desc = game.item.model[split[2]]?.desc ?: "No description found."
+                    game.player.model.vars["t1"] = "You find ${Grammar.getArticle(split[2])}:\n\n  ${desc.capitalize()}"
+                    game.player.model.vars["t2"] = ">force item>${split[2]}>${Grammar.substringAfter(to, ">", 3)}"
                     if (piece == null){
-                        game.player.model.vars["t3"] = "Take ${split[3]}"
+                        game.player.model.vars["t3"] = "Take ${split[2]}"
                     } else {
-                        game.player.model.vars["t3"] = "Throw away $piece and take ${split[3]}"
+                        game.player.model.vars["t3"] = "Throw away $piece and take ${split[2]}"
                     }
-                    game.player.model.vars["t4"] = Grammar.substringAfter(to, ">", 4)
+                    game.player.model.vars["t4"] = Grammar.substringAfter(to, ">", 3)
                     game.player.model.vars["t5"] = "Leave the item and continue"
-                    viewPage("custom2")
+                    viewPage("@custom2")
                     viewHome()
                 }
                 "force item" -> {
@@ -381,16 +391,16 @@ class App : AppCompatActivity() {
                 }
             }
         } else if (to.startsWith("@")) {
-            val page = to.substring(1)
-            game.player.model.vars["prev"] = page
-            viewPage(page)
+            game.player.model.vars["prev"] = game.player.model.vars["page"]!!
+            game.player.model.vars["page"] = to
+            game.player.save("save")
+            viewPage(to)
             viewHome()
         }
     }
 
     private fun viewPage(newPage: String){
         game.player.model.vars["page"] = newPage
-        game.player.save("save")
         title = getString(R.string.page_title, game.player.model.getTime().capitalize(), game.dialog.model[newPage]?.title ?: "")
     }
 
@@ -405,6 +415,10 @@ class App : AppCompatActivity() {
         sound.start()
         game = Game(this)
         adjustTheme()
+    }
+
+    override fun onStart(){
+        super.onStart()
         openDialog(game.player.model.vars["page"]!!)
     }
 
@@ -412,6 +426,17 @@ class App : AppCompatActivity() {
         this.menu = menu
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_action, menu)
+        when (supportFragmentManager.findFragmentById(R.id.home)) {
+            is ProfileFragment -> {
+                menu?.getItem(0)?.isVisible = false
+            }
+            is CombatFragment -> {
+                menu?.getItem(0)?.isVisible = false
+            }
+            else -> {
+                menu?.getItem(0)?.isVisible = true
+            }
+        }
         return true
     }
 
@@ -419,8 +444,8 @@ class App : AppCompatActivity() {
         R.id.action_profile -> {
             val frag = supportFragmentManager.findFragmentById(R.id.home)
             if (frag is ProfileFragment){
-                viewHome()
-            } else {
+                openDialog(game.player.model.vars["page"]!!)
+            } else if (frag is HomeFragment) {
                 viewProfile()
             }
             true

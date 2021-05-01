@@ -14,7 +14,17 @@
     "text": "It is GAME OVER!",
     "opt": [
       {
-        "to": ">heal>8>@start",
+        "to": ">loadplayer>player>>saveplayer>save>>refresh chapter>@start",
+        "text": "Start Over"
+      }
+    ]
+  },
+  "ending": {
+    "title": "Game Over",
+    "text": "",
+    "opt": [
+      {
+        "to": ">loadplayer>player>>saveplayer>save>>refresh chapter>@start",
         "text": "Start Over"
       }
     ]
@@ -45,12 +55,12 @@
     "text": "You are holding the mysterious amulet.",
     "opt": [
       {
-        "to": ">saveplayer>save2>>copy>saving>return>>copy>page>return>>custom>You press the amulet.\nIt feels as if time stopped for a moment.>>now",
-        "text": "Press it"
+        "to": ">copy>page>prev>>saveplayer>save2>>copy>saving>return>>custom>You press the amulet.\nIt feels as if time stopped for a moment.>>to>return",
+        "text": "Save Time"
       },
       {
-        "to": ">custom>You rub the amulet.\nIt feels like you've died for a moment.>>copy>page>saving>>save>saving>>>loadplayer>save2>>now",
-        "text": "Rub it counter clockwise",
+        "to": ">custom>You rub the amulet.\nIt feels like you've died for a moment.>>loadplayer>save2>>to>page",
+        "text": "Load Time",
         "reqs": ["!null>saving"]
       }
     ]

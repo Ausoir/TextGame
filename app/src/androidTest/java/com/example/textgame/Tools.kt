@@ -14,13 +14,33 @@ import org.junit.runner.RunWith
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
-    private val logID = "log9"
-    private val knownTags = listOf("time", "timeset", "heal", "view rest", "dropAll")
-    private val chainTags = listOf("encounter", "join", "drop", "view advance", "view shop", "combat",
-        "add", "save", "remove part", "item", "force item", "learn", "if", "refresh chapter", "remove item", "custom")
+class Tools {
+    private val logID = "log2"
+    private val knownTags = listOf("time", "timeset", "heal", "view rest", "dropAll", "removeAll", "view quest", "view forget")
+    private val chainTags = listOf("encounter", "join", "drop", "view advance", "view shop", "combat", "loadplayer", "saveplayer", "questFill",
+        "add", "save", "remove part", "item", "force item", "learn", "if", "refresh chapter", "remove item", "custom", "moneySet", "moneyAdd")
     private val errors = arrayListOf<String>()
     private val history = arrayListOf<String>()
+
+    @Test
+    fun reset_save() {
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        val game = Game(appContext)
+        game.player.load("player")
+        game.player.save("save")
+    }
+
+    @Test
+    fun modify_save() {
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        val game = Game(appContext)
+        game.player.load("save")
+        game.player.model.vars["page"] = "@ant hill good"
+        game.player.model.vars["chapter"] = "5"
+        game.player.model.damaged = 0
+        game.player.save("save")
+    }
+
     @Test
     fun validate_chapter() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext

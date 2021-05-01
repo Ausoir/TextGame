@@ -8,12 +8,12 @@ import java.io.Serializable
 data class SpecialModel(val text: String?, val flavor: String, val skill: String?,
                         val deck: String, val health: Int?, val branch: Array<String>?): Serializable{
     fun getDescription(name: String): String{
-        var result = "The $name. Learn from the $deck."
+        var result = "The $name. Learn from the $deck.\n"
         if (text != null){
             result += " $text"
         }
         if (health != null){
-            result += " Health: $health"
+            result += "\nBonus Health: $health"
         }
         return result
     }

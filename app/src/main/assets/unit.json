@@ -13,7 +13,7 @@
   "horned spider": {
     "name": "horned spider",
     "speed": 2,
-    "health": 8,
+    "health": 7,
     "moves": [
       "venomous bite",
       "engage",
@@ -34,14 +34,15 @@
   },
   "Lucid": {
     "name": "Lucid",
-    "speed": 2,
-    "health": 3,
+    "speed": 1,
+    "health": 6,
     "moves": [
       "disengage",
       "gather mana",
-      "charge mana",
+      "gather mana",
       "redirect",
       "lightning",
+      "petrify",
       "phase"
     ],
     "skills": [
@@ -50,12 +51,12 @@
     "status": [],
     "flavors": {
       "pronoun": "he",
-      "death": "Lucid collapses.\n\nLucid: [Ugh..]\n"
+      "death": "Lucid: [Ugh..]\n\nLucid collapses."
     }
   },
   "Abductee": {
     "name": "abductee",
-    "speed": 2,
+    "speed": 1,
     "health": 3,
     "moves": [
       "hesitate",
@@ -72,7 +73,7 @@
   },
   "feral human": {
     "name": "feral human",
-    "speed": 2,
+    "speed": 1,
     "health": 3,
     "moves": [
       "bola throw",
@@ -204,7 +205,7 @@
   },
   "centipede": {
     "name": "centipede",
-    "speed": 2,
+    "speed": 1,
     "health": 3,
     "moves": [
       "engage",
@@ -219,7 +220,7 @@
   },
   "bloodquito": {
     "name": "bloodquito",
-    "speed": 2,
+    "speed": 1,
     "health": 4,
     "moves": [
       "engage",
@@ -254,7 +255,7 @@
   },
   "squirrel": {
     "name": "squirrel",
-    "speed": 2,
+    "speed": 1,
     "health": 7,
     "moves": [
       "dodge",
@@ -269,11 +270,11 @@
   },
   "Cobby": {
     "name": "Cobby",
-    "speed": 2,
-    "health": 8,
+    "speed": 1,
+    "health": 9,
     "moves": [
-      "charge",
-      "swing",
+      "charge tackle",
+      "strike",
       "guard dash",
       "stun",
       "dodge",
@@ -293,22 +294,21 @@
   },
   "Pemmi": {
     "name": "Pemmi",
-    "speed": 2,
-    "health": 3,
+    "speed": 1,
+    "health": 5,
     "moves": [
       "backstep",
       "heal allies",
       "gather mana",
       "triple shot",
       "triple shot",
-      "weaken",
-      "confuse",
-      "insight"
+      "weaken"
     ],
     "skills": [],
     "status": [],
     "flavors": {
-      "pronoun": "she"
+      "pronoun": "she",
+      "weapon": "crossbow"
     }
   },
   "yellow ant": {
@@ -369,8 +369,8 @@
     }
   },
   "henge scout": {
-    "name": "stone henge scout",
-    "speed": 2,
+    "name": "henge scout",
+    "speed": 1,
     "health": 3,
     "moves": [
       "dodge",
@@ -387,8 +387,8 @@
     }
   },
   "henge guard": {
-    "name": "stone henge guard",
-    "speed": 2,
+    "name": "henge guard",
+    "speed": 1,
     "health": 5,
     "moves": [
       "guard",
@@ -406,7 +406,7 @@
   },
   "henge duelist": {
     "name": "duelist",
-    "speed": 2,
+    "speed": 1,
     "health": 8,
     "moves": [
       "charge",
@@ -423,9 +423,28 @@
       "weapon": "arena bone sword"
     }
   },
+  "henge shaman": {
+    "name": "henge shaman",
+    "speed": 1,
+    "health": 5,
+    "moves": [
+      "spider form",
+      "bless",
+      "toxicity",
+      "curse of disability",
+      "curse of doom",
+      "paralyze"
+    ],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "pronoun": "he",
+      "weapon": "bone bow"
+    }
+  },
   "rat": {
     "name": "rat",
-    "speed": 2,
+    "speed": 1,
     "health": 8,
     "moves": [
       "dodge",
@@ -453,16 +472,17 @@
     "flavors": {}
   },
   "ant hill guard": {
-    "name": "ant hill priest's guard",
-    "speed": 2,
+    "name": "priest's guard",
+    "speed": 1,
     "health": 8,
     "moves": [
-      "long thrust",
-      "throw",
+      "zeal",
+      "charge tackle",
       "backstep",
-      "guard dash",
-      "parry",
-      "thrust"
+      "taunt",
+      "greater parry",
+      "defensive pose",
+      "grand slam"
     ],
     "skills": [],
     "status": [],
@@ -504,7 +524,7 @@
         "effect": "mana",
         "target": 1,
         "duration": -1,
-        "value": 1
+        "value": "1"
       },
       {
         "effect": "vulnerable",
@@ -518,15 +538,16 @@
     }
   },
   "feral elite": {
-    "name": "feral human",
-    "speed": 2,
+    "name": "feral hunter",
+    "speed": 1,
     "health": 5,
     "moves": [
-      "bola throw",
-      "engage",
-      "guard break",
-      "swing",
-      "flurry"
+      "guard dash",
+      "cripple",
+      "guard",
+      "bash",
+      "zeal",
+      "berserk"
     ],
     "skills": [],
     "status": [],
@@ -537,11 +558,12 @@
   },
   "feral ambusher": {
     "name": "feral human",
-    "speed": 2,
+    "speed": 1,
     "health": 4,
     "moves": [
       "bola throw",
-      "disengage",
+      "backstep",
+      "berserk",
       "throw",
       "throw"
     ],
@@ -556,16 +578,16 @@
   },
   "feral shaman": {
     "name": "feral shaman",
-    "speed": 2,
-    "health": 4,
+    "speed": 1,
+    "health": 6,
     "moves": [
-      "gather mana",
-      "rot",
-      "heal allies",
-      "charge mana",
-      "heal",
-      "poison",
-      "suck"
+      "spider form",
+      "curse of disability",
+      "curse of doom",
+      "regenerate",
+      "remedy",
+      "blood parasite",
+      "toxicity"
     ],
     "skills": [],
     "status": [],
@@ -576,7 +598,7 @@
   },
   "Sugar": {
     "name": "Sugar",
-    "speed": 2,
+    "speed": 1,
     "health": 7,
     "moves": [
       "charge",
@@ -591,45 +613,23 @@
     "status": [],
     "flavors": {
       "weapon": "Acidic Chitin Lajatang",
-      "pronoun": "she",
-      "death": "Cobby stops the fight."
+      "pronoun": "he",
+      "death": "Sugar collapses."
     }
   },
   "zombie": {
     "name": "zombie",
     "speed": 1,
-    "health": 10,
+    "health": 13,
     "moves": [
       "engage",
-      "venomous bite"
+      "slack",
+      "swing"
     ],
     "skills": [],
     "status": [
       {
         "effect": "supernatural",
-        "target": 1,
-        "duration": -1
-      }
-    ],
-    "flavors": {}
-  },
-  "closed zombie": {
-    "name": "zombie",
-    "speed": 1,
-    "health": 10,
-    "moves": [
-      "engage",
-      "venomous bite"
-    ],
-    "skills": [],
-    "status": [
-      {
-        "effect": "supernatural",
-        "target": 1,
-        "duration": -1
-      },
-      {
-        "effect": "closed",
         "target": 1,
         "duration": -1
       }
@@ -643,7 +643,6 @@
     "moves": [
       "engage",
       "grand slam",
-      "cleave",
       "regenerate",
       "rest"
     ],
@@ -660,18 +659,25 @@
   "vine mass": {
     "name": "vine mass",
     "speed": 1,
-    "health": 5,
+    "health": 6,
     "moves": [
-      "engage",
       "whirring slice",
       "whirring throw",
-      "rip"
+      "mind break",
+      "barrier"
     ],
     "skills": [
       "self destruct",
       "hardened"
     ],
-    "status": [],
+    "status": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "duration": -1,
+        "value": "1"
+      }
+    ],
     "flavors": {}
   },
   "large vine mass": {
@@ -679,21 +685,28 @@
     "speed": 1,
     "health": 10,
     "moves": [
-      "engage",
       "whirring slice",
       "whirring throw",
-      "rip"
+      "mind break",
+      "lightning"
     ],
     "skills": [
       "self destruct",
       "hardened"
     ],
-    "status": [],
+    "status": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "duration": -1,
+        "value": "1"
+      }
+    ],
     "flavors": {}
   },
-  "raptors": {
+  "raptor": {
     "name": "raptor",
-    "speed": 2,
+    "speed": 1,
     "health": 7,
     "moves": [
       "charge",
@@ -745,7 +758,7 @@
   },
   "highwayman": {
     "name": "highwayman",
-    "speed": 2,
+    "speed": 1,
     "health": 7,
     "moves": [
       "engage",
@@ -779,15 +792,16 @@
       "weapon": "greenwood bow"
     }
   },
-  "metal fox": {
-    "name": "metal fox",
+  "metal rat": {
+    "name": "metal rat",
     "speed": 1,
-    "health": 8,
+    "health": 15,
     "moves": [
-      "claw",
       "tackle",
+      "charge",
       "quick attack",
-      "charge"
+      "charge mana",
+      "lightning"
     ],
     "skills": ["hardened"],
     "status": [],
@@ -795,7 +809,7 @@
   },
   "jericho guard": {
     "name": "jericho guard",
-    "speed": 2,
+    "speed": 1,
     "health": 8,
     "moves": [
       "engage",
@@ -863,7 +877,7 @@
   "bulky dude": {
     "name": "bulky dude",
     "speed": 1,
-    "health": 12,
+    "health": 14,
     "moves": [
       "deadly shot",
       "tackle"
@@ -895,12 +909,13 @@
   },
   "large horned spider": {
     "name": "large horned spider",
-    "speed": 3,
-    "health": 6,
+    "speed": 2,
+    "health": 8,
     "moves": [
-      "engage",
+      "jump attack",
       "dodge",
       "quick attack",
+      "cripple",
       "weave web",
       "venomous bite"
     ],

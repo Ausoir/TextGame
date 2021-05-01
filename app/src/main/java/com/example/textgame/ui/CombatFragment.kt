@@ -33,6 +33,7 @@ class CombatFragment : CustomFragment() {
     private var round = 0
     private var idCount = 0
     private var combatants: ArrayList<UnitModel> = ArrayList()
+    private var prompted = false
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
@@ -45,12 +46,7 @@ class CombatFragment : CustomFragment() {
         scrollView = root.findViewById(R.id.scroll_combat)
         textView = root.findViewById(R.id.text_combat)
         textView.setOnClickListener {
-            if (isTargetingMode){
-                switchToCombat()
-            } else {
-                switchToTargeting()
-            }
-            isTargetingMode = !isTargetingMode
+            switchMode()
         }
         textView.movementMethod = ScrollingMovementMethod()
         player = arguments?.getParcelable("player") ?: return root
@@ -69,9 +65,16 @@ class CombatFragment : CustomFragment() {
         }
         page = arguments?.getString("page") ?: "back"
         defeat = arguments?.getString("defeat") ?: "defeat"
-        addText("${(arguments?.getString("desc") ?: "")}\n\n")
+        addCombatText("${(arguments?.getString("desc") ?: "")}\n\n")
         nextTurn()
         return root
+    }
+
+    private fun addCombatText(text: String){
+        super.addText(text)
+        if (text.isNotEmpty()) {
+            prompted = true
+        }
     }
 
     private fun addButton(name: String) : Button {
@@ -154,13 +157,13 @@ class CombatFragment : CustomFragment() {
         me.points -= 1
         val feedback = move.perform(me, combatants)
         if (feedback.isNotEmpty()) {
-            addText(feedback)
+            addCombatText(feedback)
         }
     }
 
     private fun npcTurn(enemy: UnitModel){
         if (!checkBattleEnd()) {
-            if (enemy.points > 0) {
+            if (!enemy.isDead() && enemy.points > 0) {
                 val hand = enemy.deck!!.getCard(0)
                 turnAction(hand, enemy)
                 if (hand != MoveModel.shuffle) {
@@ -177,6 +180,15 @@ class CombatFragment : CustomFragment() {
                 nextTurn()
             }
         }
+    }
+
+    private fun switchMode(){
+        if (isTargetingMode) {
+            switchToCombat()
+        } else {
+            switchToTargeting()
+        }
+        isTargetingMode = !isTargetingMode
     }
 
     private fun switchToCombat(){
@@ -226,35 +238,48 @@ class CombatFragment : CustomFragment() {
             } else {
                 player.unit.recharge()
                 clearButtons()
+                prompted = false
                 nextTurn()
             }
         }
     }
 
     private fun nextTurn(){
+        if (prompted) {
+            addButton("Continue").setOnClickListener {
+                prompted = false
+                clearButtons()
+                processTurn()
+            }
+        } else {
+            processTurn()
+        }
+    }
+
+    private fun processTurn(){
         turn += 1
-        Handler(Looper.getMainLooper()).postDelayed(
-            {
-                if (turn >= combatants.size) {
-                    turn = 0
+        if (turn >= combatants.size) {
+            turn = 0
+        }
+        if ("hardened" in combatants[turn].skills){
+            combatants[turn].block += 1
+        }
+        val feedback = combatants[turn].replaceNouns(combatants[turn].processStatus())
+        if (combatants[turn] == player.unit){
+            if (round > 0) {
+                addCombatText("--- Round $round ---\n${player.unit.points} Actions, ${player.unit.healthPt}/${player.unit.health} Health, ${player.unit.block} Block\n")
+                textView.setOnClickListener {
+                    switchMode()
                 }
-                if ("hardened" in combatants[turn].skills){
-                    combatants[turn].block += 1
-                }
-                if (combatants[turn] == player.unit){
-                    val turnText = player.unit.replaceNouns(player.unit.processStatus())
-                    if (round > 0) {
-                        addText("--- Round $round ---\n${player.unit.points} Actions, ${player.unit.healthPt} Health, ${player.unit.block} Block\n")
-                    }
-                    round += 1
-                    addText(turnText)
-                    playerTurn()
-                } else {
-                    addText(combatants[turn].replaceNouns(combatants[turn].processStatus()))
-                    npcTurn(combatants[turn])
-                }
-            }, 300
-        )
+            }
+            round += 1
+            addCombatText(feedback)
+            playerTurn()
+        } else {
+            textView.setOnClickListener {}
+            addCombatText(feedback)
+            npcTurn(combatants[turn])
+        }
     }
 
     private fun checkBattleEnd(): Boolean{
@@ -276,10 +301,10 @@ class CombatFragment : CustomFragment() {
                     }
                 }
                 if ("self destruct" in combatants[i].skills) {
-                    addText("The ${combatants[i].name} explodes, dealing 1 damage to everything near it!\n")
+                    addCombatText("The ${combatants[i].name} explodes, dealing 1 damage to everything near it!\n")
                     for (combatant in combatants) {
                         if (combatant != combatants[i] && combatant.position == combatants[i].position) {
-                            addText(combatant.inflict(-1))
+                            addCombatText(combatant.inflict(-1))
                         }
                     }
                     combatants.removeAt(i)
@@ -316,56 +341,48 @@ class CombatFragment : CustomFragment() {
             combatant.deck = null
             combatant.target = null
             combatant.status.clear()
-            combatant.statusDuration.clear()
+            combatant.allies.clear()
             combatant.foes.clear()
+        }
+        if (player.damaged > 0){
+            if ("herbal remedy" in player.unit.skills){
+                player.damaged -= 1
+                player.unit.healthPt += 1
+            }
+            if ("spirit remedy" in player.unit.skills){
+                player.damaged = 0
+                player.unit.healthPt = player.unit.health
+            }
         }
         clearButtons()
     }
 
     private fun victory(){
         endBattle()
-        if ("herbal remedy" in player.unit.skills && player.damaged > 0){
-            player.damaged -= 1
-        }
         if (loots.isNotEmpty()) {
             val loot = loots.shuffled()[0]
             if (loot != null) {
-                val text = "${resources.getString(R.string.victory)}\n\nYou find ${Grammar.getArticle(loot.name)}:\n${loot.desc}"
-                page = ">item>$text>${loot.name}>$page"
+                page = ">item>${loot.name}>>advance>$page"
             }
         }
-        addText(resources.getString(R.string.victory))
+        addCombatText(resources.getString(R.string.victory))
         addButton(resources.getString(R.string.proceed)).setOnClickListener {
-            victoryProceed()
+            val app: App = activity as App
+            app.openDialog(page)
         }
         scrollView.scrollToBottom()
     }
 
-    private fun victoryProceed(){
-        clearButtons()
-        stringBuilder.clear()
-        addText("\n\nYou improve your abilities!")
-        addButton(resources.getString(R.string.level_move)).setOnClickListener {
-            val app: App = activity as App
-            app.openDialog(">view learn>$page")
-        }
-        addButton(resources.getString(R.string.level_forget)).setOnClickListener {
-            val app: App = activity as App
-            app.openDialog(">view forget>$page")
-        }
-    }
-
     private fun defeat(){
-        player.unit.healthPt = 1
-        player.damaged = player.unit.health - 1
-        player.unit.moves.removeAt((0 until player.unit.moves.size).random())
+        player.unit.healthPt = player.unit.health / 2
+        player.damaged = player.unit.healthPt
         player.unit.moves.add("flinch")
         endBattle()
         clearButtons()
-        addText(resources.getString(R.string.defeat))
+        addCombatText(resources.getString(R.string.defeat))
         addButton(resources.getString(R.string.proceed)).setOnClickListener {
             val app: App = activity as App
-            app.openDialog(defeat)
+            app.openDialog(">remove part>weapon>>remove part>offhand>$defeat")
         }
         scrollView.scrollToBottom()
     }

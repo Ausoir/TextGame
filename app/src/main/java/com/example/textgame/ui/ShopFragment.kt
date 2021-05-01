@@ -34,7 +34,7 @@ class ShopFragment : Fragment() {
         textView = root.findViewById(R.id.text_profile)
         addButton(resources.getString(R.string.leave)).setOnClickListener{
             val app: App = activity as App
-            app.openDialog(arguments?.getString("page") ?: ">back")
+            app.openDialog(arguments?.getString("page") ?: ">to>page")
         }
         addButton(resources.getString(R.string.sell)).setOnClickListener{
             showSell()
@@ -84,8 +84,8 @@ class ShopFragment : Fragment() {
                 .setPositiveButton(android.R.string.yes) { _, _ ->
                     player.money -= item.value
                     player.equipItem(itemMap, itemName)
-                    showBuy()
                     itemList.removeAt(position)
+                    showBuy()
                     textView.text = resources.getString(R.string.buy_done, itemName, item.value).capitalize()
                 }
                 .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }

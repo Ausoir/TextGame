@@ -52,7 +52,7 @@ class LearnFragment : Fragment() {
                 }
             } else {
                 textView.append(resources.getString(R.string.forget_move))
-                for (i in (0..min(2, moves.size - 1))) {
+                for (i in (0..min(2, moves.size - 1)).reversed()) {
                     val move = moves[i]
                     val text = moveMap[move]?.desc
                     if (text != null) {
