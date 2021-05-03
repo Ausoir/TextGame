@@ -31,7 +31,7 @@
   },
   "feral cave": {
     "title": "Feral Cave",
-    "text": "You are at feral cave.\nIt is a giant, open underground cave lit with glowshrooms.\nFeral residents peek out of their shelters on the cavern walls from time to time.",
+    "text": "You are at feral cave.\nIt is a giant, open underground cave lit with glowing mushrooms.\nFeral residents peek out of their shelters on the cavern walls from time to time.",
     "opt": [
       {
         "to": ">add>temp>1>@feral cave converse 1",
@@ -426,7 +426,7 @@
   },
   "feral cave leave 17": {
     "title": "Deeper Caves",
-    "text": "You continue along the rails.\nDeeper in the mines, you start seeing glowshrooms again, lighting the way.\n\nPemmi: [Look! Light!]\n\nYou exit the tunnel into a giant cave with high ceiling, with a hole on the ceiling in the distance where sunlight shines down from.\n\nSugar: [What the... hell is that?]\n\nBelow the hole is a strange dirt mound, slowly expanding and shrinking, as if breathing.\n\nLucid: [I don't know, it could be a creature. Do you see the tunnel behind the creature? We're getting pretty close to the surface. Let's move silently and try to pass the mound.]\n\nYou carefully approach the mound.\nOn a closer look, you realize that it is an amalgamation of flesh, moving as one, covered in faint blue glowshrooms.\n\nLucid: [This... is an abomination, hordes of zombies attracted to sunlight, melted to each other! This...]\n\nCheese sneezes.\n\nThe mound rises...",
+    "text": "You continue along the rails.\nDeeper in the mines, you start seeing glowing mushrooms again, lighting the way.\n\nPemmi: [Look! Light!]\n\nYou exit the tunnel into a giant cave with high ceiling, with a hole on the ceiling in the distance where sunlight shines down from.\n\nSugar: [What the... hell is that?]\n\nBelow the hole is a strange dirt mound, slowly expanding and shrinking, as if breathing.\n\nLucid: [I don't know, it could be a creature. Do you see the tunnel behind the creature? We're getting pretty close to the surface. Let's move silently and try to pass the mound.]\n\nYou carefully approach the mound.\nOn a closer look, you realize that it is an amalgamation of flesh, moving as one, covered in faint blue glowing mushrooms.\n\nLucid: [This... is an abomination, hordes of zombies attracted to sunlight, melted to each other! This...]\n\nCheese sneezes.\n\nThe mound rises...",
     "opt": [
       {
         "to": ">encounter>amalgamation>@defeat>@feral cave leave 18",
@@ -608,7 +608,7 @@
   },
   "to ant hill 7": {
     "title": "Ant Hill",
-    "text": "You enter the darkness leading to underground Ant Hill.\n\nCheese: [Good thing I brought these mushrooms from that cave.]\n\nCheese takes out his glowshroom bundle from his bag to light the way.\nThe light reveals three armed people in the darkness with their weapons up.\n\n???: [Stop!]\n\nIt's Sugar's voice.\n\nSugar: [Heh, looks like we're all here again. Did you chase me for the amulet? Or to save Cobby? Doesn't matter. You are on a good timing. We can use a hand here.]\n\nCheese: [Give me my amulet back, you bitch!]\n\nSugar: [Now, Cheese. You know you won't be any more useful with this amulet. Ant Hill is in trouble, and I'm not gonna waste my time fooling around with you. Get lost.]",
+    "text": "You enter the darkness leading to underground Ant Hill.\n\nCheese: [Good thing I brought these mushrooms from that cave.]\n\nCheese takes out his glowing mushroom bundle from his bag to light the way.\nThe light reveals three armed people in the darkness with their weapons up.\n\n???: [Stop!]\n\nIt's Sugar's voice.\n\nSugar: [Heh, looks like we're all here again. Did you chase me for the amulet? Or to save Cobby? Doesn't matter. You are on a good timing. We can use a hand here.]\n\nCheese: [Give me my amulet back, you bitch!]\n\nSugar: [Now, Cheese. You know you won't be any more useful with this amulet. Ant Hill is in trouble, and I'm not gonna waste my time fooling around with you. Get lost.]",
     "opt": [
       {
         "to": "@to ant hill 8",
@@ -658,7 +658,7 @@
   },
   "to ant hill 12": {
     "title": "Ant Hill",
-    "text": "You descend down the dirt halls.\nFurther down, glowshrooms lining the halls were destroyed, so you pluck a few and carry it around with you to light the way.\n\n???: [Stop! Do not approach.]\n\nYou hear a voice from the dark.\nYou tell them that you come in peace, and that you wish to speak to Cobby.\nTwo guards appear from the shadows and approach you.\nThey forcibly take your weapons away.\n\nGuard: [Don't make any sudden moves. Follow me.]",
+    "text": "You descend down the dirt halls.\nFurther down, glowing mushrooms lining the halls were destroyed, so you pluck a few and carry it around with you to light the way.\n\n???: [Stop! Do not approach.]\n\nYou hear a voice from the dark.\nYou tell them that you come in peace, and that you wish to speak to Cobby.\nTwo guards appear from the shadows and approach you.\nThey forcibly take your weapons away.\n\nGuard: [Don't make any sudden moves. Follow me.]",
     "opt": [
       {
         "to": "@to ant hill 13",
@@ -815,7 +815,7 @@
     "text": "You return to the surface and open the iron gates.\nYou take a quick look around the streets and see footsteps leading to the woods.\n\nYou follow the steps into the woods and find Cheese sitting on a tree eating a boiled egg.\nHe stares at you.",
     "opt": [
       {
-        "to": ">heal>1>>save>chapter>4>>refresh chapter>@start",
+        "to": ">ad>>heal>1>>save>chapter>4>>refresh chapter>@start",
         "text": "...Let's go."
       }
     ]

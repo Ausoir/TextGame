@@ -105,14 +105,14 @@
       },
       {
         "to": "@canyon 6-4",
-        "text": "Take out your glowshroom bundle to light the way",
-        "reqs": ["item>glowshroom bundle"]
+        "text": "Take out your glowing mushroom bundle to light the way",
+        "reqs": ["item>glowing mushroom bundle"]
       }
     ]
   },
   "canyon 6-4": {
     "title": "Canyon",
-    "text": "You take out your glowshroom bundle to light the way.\nThe glowshroom light reveal dozens and dozens of the dreadful vines all around you!",
+    "text": "You take out your glowing mushroom bundle to light the way.\nThe glowing mushroom light reveal dozens and dozens of the dreadful vines all around you!",
     "opt": [
       {
         "to": ">encounter>four vines>@chasm 1>@canyon 6-1",
@@ -1668,7 +1668,7 @@
     "text": "Lucid: [We got enough muskets to equip the veteran hunters of Ant Hill or Stone Henge. It's a shame that we couldn't get the adventurers. Let's return now.]",
     "opt": [
       {
-        "to": ">save>chapter>5>>refresh chapter>@start",
+        "to": ">ad>>save>chapter>5>>refresh chapter>@start",
         "text": "Proceed"
       }
     ]
@@ -1678,7 +1678,7 @@
     "text": "Lucid: [We got the adventurers. They'll be of great help in defeating the horned spiders. But it's a shame that we couldn't get muskets to arm the hunters. Let's return now.]",
     "opt": [
       {
-        "to": ">save>chapter>5>>refresh chapter>@start",
+        "to": ">ad>>save>chapter>5>>refresh chapter>@start",
         "text": "Proceed"
       }
     ]
@@ -1688,7 +1688,7 @@
     "text": "Lucid: [We got enough muskets to equip the hunters. We also got Bigs and his adventurers to help us fight the spiders. Let's return to the frontier and free the people from the spiders!]",
     "opt": [
       {
-        "to": ">save>chapter>5>>refresh chapter>@start",
+        "to": ">ad>>save>chapter>5>>refresh chapter>@start",
         "text": "Proceed"
       }
     ]
@@ -1698,7 +1698,7 @@
     "text": "Pemmi: [Alright, now... We didn't get the weaponry nor the help from Jericho as we had hoped. But we gotta do what we gotta do for our people.]\n\nLucid: [Yes. We'll see what we can do.]",
     "opt": [
       {
-        "to": ">save>chapter>5>>refresh chapter>@start",
+        "to": ">ad>>save>chapter>5>>refresh chapter>@start",
         "text": "Proceed"
       }
     ]

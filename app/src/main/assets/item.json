@@ -219,10 +219,10 @@
     "desc": "a wooden spear with precious silver tip.",
     "moves": ["guard", "strike", "cleansing strike"]
   },
-  "glowshroom bundle": {
+  "glowing mushroom bundle": {
     "type": "offhand",
     "value": 1,
-    "desc": "a glowshroom bundle. It's a nice souvenir from the feral caves."
+    "desc": "a glowing mushroom bundle. It's a nice souvenir from the feral caves."
   },
   "glass rod": {
     "type": "offhand",
@@ -421,7 +421,7 @@
     "type": "food",
     "value": 1,
     "rating": 4,
-    "desc": "a dough of pulped glowshroom and ground human meat. Surprisingly good! Heals 4 health on rest."
+    "desc": "a dough of pulped glowing mushroom and ground human meat. Surprisingly good! Heals 4 health on rest."
   },
   "healing salve": {
     "type": "item",

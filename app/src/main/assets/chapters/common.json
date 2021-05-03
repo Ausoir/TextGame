@@ -1,11 +1,15 @@
 {
   "invalid": {
     "title": "",
-    "text": "Dialog page is missing...",
+    "text": "Dialog page is corrupted or missing.\n\nPlease select an option.",
     "opt": [
       {
-        "to": "@defeat",
-        "text": "Go back"
+        "to": ">loadplayer>player>>saveplayer>save>>refresh chapter>@start",
+        "text": "Erase data and start over"
+      },
+      {
+        "to": "@start",
+        "text": "Restart chapter"
       }
     ]
   },
@@ -14,7 +18,7 @@
     "text": "It is GAME OVER!",
     "opt": [
       {
-        "to": ">loadplayer>player>>saveplayer>save>>refresh chapter>@start",
+        "to": ">ad>>loadplayer>player>>saveplayer>save>>refresh chapter>@start",
         "text": "Start Over"
       }
     ]

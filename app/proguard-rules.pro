@@ -19,3 +19,11 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-dontobfuscate
+-optimizations !code/allocation/variable
+
+-keep class com.example.textgame.*
+-keep class com.google.gson.Gson.*
+-keep class com.google.gson.reflect.TypeToken
+-keepclassmembers class com.example.textgame.game.* { <fields>; }

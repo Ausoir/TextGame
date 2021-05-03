@@ -21,7 +21,7 @@
   },
   "start3": {
     "title": "Story",
-    "text": "Every day, you wake up early in the morning and patrol the nearby area to notify the settlement of any dangers or things to scavenge.\n\nThis is a dangerous job. Many scouts disappear without a trace every week. Like any scout, you must carry a weapon around at all times, even if you don't have the courage to fight. Your weapon of choice was...",
+    "text": "Every day, you wake up early in the morning and patrol the nearby area to notify the settlement of any dangers or things to scavenge.\n\nThis is a dangerous job.\nScouts often disappear without a trace.\n\nLike any scout, you must carry a weapon around at all times, even if you don't have the courage to fight.\n\nYour weapon of choice was...",
     "opt": [
       {
         "to": "@startrange",
@@ -85,7 +85,7 @@
   },
   "ant hill underground": {
     "title": "Ant Hill Underground",
-    "text": "You open the barred gate and enter the underground section of the settlement.\n\nIt is mostly dark, and the only light sources here are from green glowshrooms planted along the hallways and domesticated fireflies that people herd around.\nYou walk through the familiar dirt mazes.",
+    "text": "You open the barred gate and enter the underground section of the settlement.\n\nIt is mostly dark, and the only light sources here are from green glowing mushrooms planted along the hallways.\nYou walk through the familiar dirt mazes.",
     "opt": [
       {
         "to": "@ant hill temple",
@@ -96,17 +96,13 @@
       },
       {
         "to": ">save>quest>1>@ant hill home",
-        "text": "Go home"
-      },
-      {
-        "to": "@ant hill",
-        "text": "Go back to the surface"
+        "text": "Go to your dormitory"
       }
     ]
   },
   "ant hill home": {
     "title": "Home",
-    "text": "You arrive at your dormitory. Your roommates greet you.\n\nYou sit on your hammock and make a conversation with your roommates about hunting ants.\n\nYou hear people shouting and running in the halls.\nIt sounds like there is something going on outside on the surface...",
+    "text": "You arrive at your dormitory tunnels deep underground.\nYour roommates greet you.\n\nYou sit on your hammock and make a conversation with your roommates about hunting fire ants.\n\nYou hear people shouting and running in the halls outside.\nMaybe there is something going on outside on the surface...",
     "opt": [
       {
         "to": "@ant hill ambushed",
@@ -120,7 +116,7 @@
   },
   "ant hill ambushed": {
     "title": "Ant Hill",
-    "text": "You run outside to see the streets raided by the infamous horned spiders.\nYou see people getting kidnapped and dragged away.\n\nYour roommates cower back inside.\nThere are hunters with weapons beside you, but they just guard the entrance, not daring to go out to the streets to help the people.\n\nYou see a girl getting dragged off by a horned spider, screaming.",
+    "text": "You run outside to see the infamous horned spiders in the distance.\nYou can see some people getting kidnapped and dragged away.\nYour roommates cower back inside.\n\nIn the distance you see a girl getting dragged off by a horned spider, but the guards and hunters are too busy fighting other spiders.",
     "opt": [
       {
         "to": ">encounter>horned spiders>@ant hill kidnapped>@ant hill aftermath",
@@ -306,7 +302,7 @@
   },
   "ant hill temple": {
     "title": "Ant Hill Temple",
-    "text": "You walk into the underground temple.\nThere is a blue stone altar in the center surrounded by glowshrooms.\nOn the bench at the corner of the room you spot Cobby, a veteran hunter of Ant Hill, and Cheese, son of the priest.\nThe priest dressed in white robe comes out from the back to greet you.\n\nPriest: [Welcome.]",
+    "text": "You walk into the underground temple.\nThere is a blue stone altar in the center surrounded by glowing mushrooms.\nOn the bench at the corner of the room you spot Cobby, a veteran hunter of Ant Hill, and Cheese, son of the priest.\nThe priest dressed in white robe comes out from the back to greet you.\n\nPriest: [Welcome.]",
     "opt": [
       {
         "to": "@ant hill temple1",

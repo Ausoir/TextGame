@@ -383,7 +383,7 @@
     "text": "You, Cheese, and Cobby start cooking some ant steak on Cheese's frying pan while enjoying the beautiful golden scenery.\nUnfortunately, the smell of food brought a guest.",
     "opt": [
       {
-        "to": ">encounter>three yellow ants>@journey defeat>>timeset>20>@day 1 end",
+        "to": ">encounter>three fire ants>@journey defeat>>timeset>20>@day 1 end",
         "text": "Fight"
       }
     ]
@@ -843,7 +843,7 @@
     "text": "Cobby: [I agree. We should return at once. The priest is probably desperately trying to catch us. And also...]\n\nCobby: [Pemmi, I'm so sorry, but I don't think it's safe for you in Stone Henge anymore. We should move together.]\n\nPemmi: [No... If I go back to Stone Henge now, they won't know that I helped you out. I need to go back and let people know about this. I can't leave Stone Henge.]\n\nCobby: [...Alright. I hope we meet again, Pemmi.]\n\nCheese: [Wait... Can I stay here? I don't think I can walk anymore...]\n\nCobby: [Damn it Cheese, we don't got time for your whining!]\n\nPemmi: [No, it's fine! If Cheese wants to stay, I know a place he can stay. He could even help me unveil the priest's plots.]\n\nCobby: [Are you sure? ...Alright. If everything works out at Ant Hill, we'll return here with more people to help out.]\n\nPemmi: [Thanks! If everything works out on this side first, we'll send people to help Ant Hill. We'll race who gets to save each other.]\n\nCobby's ugly face folds into a smile.\n\nYou and Cobby leave on your journey back to Ant Hill.",
     "opt": [
       {
-        "to": ">drop>Pemmi>>drop>Cheese>>save>chapter>2>>refresh chapter>@start",
+        "to": ">ad>>drop>Pemmi>>drop>Cheese>>save>chapter>2>>refresh chapter>@start",
         "text": "Back to Ant Hill"
       }
     ]

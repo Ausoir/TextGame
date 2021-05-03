@@ -44,6 +44,7 @@ class ShopFragment : Fragment() {
         }
         player = arguments?.getParcelable("player") ?: return root
         itemList = arguments?.getStringArrayList("stock") ?: return root
+        @Suppress("UNCHECKED_CAST")
         itemMap = arguments?.getSerializable("item map") as HashMap<String, ItemModel>
         reset()
         return root
@@ -81,14 +82,14 @@ class ShopFragment : Fragment() {
             AlertDialog.Builder(activity)
                 .setTitle(R.string.buy)
                 .setMessage(resources.getString(R.string.buy_confirm, itemName, item.value))
-                .setPositiveButton(android.R.string.yes) { _, _ ->
+                .setPositiveButton(android.R.string.ok) { _, _ ->
                     player.money -= item.value
                     player.equipItem(itemMap, itemName)
                     itemList.removeAt(position)
                     showBuy()
                     textView.text = resources.getString(R.string.buy_done, itemName, item.value).capitalize()
                 }
-                .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                .setNegativeButton(android.R.string.cancel) { _, _ -> return@setNegativeButton }
                 .show()
          }
     }
@@ -113,13 +114,13 @@ class ShopFragment : Fragment() {
             AlertDialog.Builder(activity)
                 .setTitle(R.string.sell)
                 .setMessage(resources.getString(R.string.sell_confirm, itemName, item.value))
-                .setPositiveButton(android.R.string.yes) { _, _ ->
+                .setPositiveButton(android.R.string.ok) { _, _ ->
                     val selling = itemMap[player.unequipItem(itemMap, itemName)] ?: return@setPositiveButton
                     player.money += selling.value
                     showSell()
                     textView.text = resources.getString(R.string.sell_done, itemName, item.value).capitalize()
                 }
-                .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                .setNegativeButton(android.R.string.cancel) { _, _ -> return@setNegativeButton }
                 .show()
         }
     }

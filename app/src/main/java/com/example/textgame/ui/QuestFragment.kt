@@ -64,12 +64,12 @@ class QuestFragment : Fragment() {
             AlertDialog.Builder(activity)
                 .setTitle(R.string.quest_title)
                 .setMessage(resources.getString(R.string.quest_confirm))
-                .setPositiveButton(android.R.string.yes) { _, _ ->
+                .setPositiveButton(android.R.string.ok) { _, _ ->
                     player.quests.removeAt(position)
                     val app: App = activity as App
                     app.openDialog(items[position]["Page"] ?: ">to>page")
                 }
-                .setNegativeButton(android.R.string.no) { _, _ -> return@setNegativeButton }
+                .setNegativeButton(android.R.string.cancel) { _, _ -> return@setNegativeButton }
                 .show()
          }
     }

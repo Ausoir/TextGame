@@ -311,8 +311,8 @@
       "weapon": "crossbow"
     }
   },
-  "yellow ant": {
-    "name": "yellow ant",
+  "fire ant": {
+    "name": "fire ant",
     "speed": 1,
     "health": 2,
     "moves": [

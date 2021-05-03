@@ -84,9 +84,9 @@
     "units": ["yellow butterfly"],
     "loots": ["long proboscis", "pollen ball"]
   },
-  "three yellow ants": {
-    "desc": "Three yellow ants with the size of a toddler crawl towards you.\nThese yellow ants look much more aggressive compared to normal ants.",
-    "units": ["yellow ant", "yellow ant", "yellow ant"],
+  "three fire ants": {
+    "desc": "Three fire ants with the size of a toddler crawl towards you.\nThese fire ants look much more aggressive compared to normal ants.",
+    "units": ["fire ant", "fire ant", "fire ant"],
     "loots": ["pollen ball", "bug meat", "ant leg"]
   },
   "bee": {
@@ -195,7 +195,7 @@
     "loots": []
   },
   "amalgamation": {
-    "desc": "This is a mound of limb and flesh forming one organism.\nIt is covered in algae at the top and glowshrooms everywhere else.\n\nYou are trembling with fear.",
+    "desc": "This is a mound of limb and flesh forming one organism.\nIt is covered in algae at the top and glowing mushrooms everywhere else.\n\nYou are trembling with fear.",
     "units": ["amalgamation"],
     "loots": []
   },

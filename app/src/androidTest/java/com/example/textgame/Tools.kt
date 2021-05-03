@@ -1,19 +1,11 @@
 package com.example.textgame
 
 import android.util.Log
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.textgame.game.Game
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.runner.RunWith
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-@RunWith(AndroidJUnit4::class)
 class Tools {
     private val logID = "log2"
     private val knownTags = listOf("time", "timeset", "heal", "view rest", "dropAll", "removeAll", "view quest", "view forget")

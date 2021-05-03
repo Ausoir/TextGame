@@ -7,6 +7,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 data class DialogOptionModel(var to: String, var text: String, var reqs: Array<String>?): Parcelable{
+    @Suppress("JAVA_CLASS_ON_COMPANION", "UNCHECKED_CAST")
     constructor(parcel: Parcel) : this(
             parcel.readString() ?: "",
             parcel.readString() ?: "",
@@ -35,6 +36,7 @@ data class DialogOptionModel(var to: String, var text: String, var reqs: Array<S
 }
 
 data class DialogModel(val title: String?, val text: String, val filler: List<String>?, val opt: List<DialogOptionModel>): Parcelable {
+    @Suppress("CAST_NEVER_SUCCEEDS")
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString() ?: "",

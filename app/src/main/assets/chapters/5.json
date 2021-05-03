@@ -318,7 +318,7 @@
         "reqs": ["var>quest>6"]
       },
       {
-        "to": ">custom>You scout the garden tunnels.\nThe entire garden area is bright greenish yellow with glowshrooms growing rampant.\nIt seems to be safe.>>save>quest>3>@ant hill 5",
+        "to": ">custom>You scout the garden tunnels.\nThe entire garden area is bright greenish yellow with glowing mushrooms growing rampant.\nIt seems to be safe.>>save>quest>3>@ant hill 5",
         "text": "Scout garden tunnels",
         "reqs": ["var>quest>2"]
       },
@@ -397,7 +397,7 @@
   },
   "ant hill 9": {
     "title": "Ant Hill Underground",
-    "text": "You spend the next few days in the underground Ant Hill.\n\nNot being able to see the sun, drinking stale glowshroom wine, and eating nauseous spider meat has taken toll on your sanity and health.\n\n---\n\nYou sit on the bed of your old dormitory with Lucid.\nHe seems to be lost in thought.\n\nThe whole situation drives you mad.\nYou sit and reminisce about when you used to sit on this bed and chat with your roommates.\n\nYou subconsciously take out an amulet from around your neck and hold it in your hands.\n\nLucid: [That's a strange amulet. I haven't seen it before.]",
+    "text": "You spend the next few days in the underground Ant Hill.\n\nNot being able to see the sun, drinking stale glowing mushroom wine, and eating nauseous spider meat has taken toll on your sanity and health.\n\n---\n\nYou sit on the bed of your old dormitory with Lucid.\nHe seems to be lost in thought.\n\nThe whole situation drives you mad.\nYou sit and reminisce about when you used to sit on this bed and chat with your roommates.\n\nYou subconsciously take out an amulet from around your neck and hold it in your hands.\n\nLucid: [That's a strange amulet. I haven't seen it before.]",
     "opt": [
       {
         "to": "@ant hill 10",
@@ -627,7 +627,7 @@
   },
   "ant hill neutral": {
     "title": "Ant Hill Underground",
-    "text": "You spend the next few days in the underground Ant Hill.\nNot being able to see the sun, drinking stale glowshroom wine, and eating nauseous spider meat has taken some toll on your sanity and health.\n\nYou sit on the bed of your old dormitory with Lucid.\n\nLucid: [The whole thing doesn't make sense. Where did they come from? How did no one ever even witness them while they grew in such incredible numbers?]\n\nThe whole situation drives you mad.\nYou sit and think about when you used to sit on this bed and chat with your roommates.\n\nOne of the guards come into the room.\n\nGuard: [I haven't seen any spiders outside for the last two days.]\n\nLucid: [Then we should make a move. We are going to lose all hope before we run out of supplies.]",
+    "text": "You spend the next few days in the underground Ant Hill.\nNot being able to see the sun, drinking stale glowing mushroom wine, and eating nauseous spider meat has taken some toll on your sanity and health.\n\nYou sit on the bed of your old dormitory with Lucid.\n\nLucid: [The whole thing doesn't make sense. Where did they come from? How did no one ever even witness them while they grew in such incredible numbers?]\n\nThe whole situation drives you mad.\nYou sit and think about when you used to sit on this bed and chat with your roommates.\n\nOne of the guards come into the room.\n\nGuard: [I haven't seen any spiders outside for the last two days.]\n\nLucid: [Then we should make a move. We are going to lose all hope before we run out of supplies.]",
     "opt": [
       {
         "to": "@ant hill neutral 2",
@@ -835,7 +835,7 @@
   },
   "ant hill good 12": {
     "title": "Ant Hill Underground",
-    "text": "You arrive in Stone Henge.\n\nLucid: [I'm going to find Pemmi and ask her to come live in Jericho with me. We should meet up in the tavern before I leave.]\n\nYou agree.\nLucid moves on to the guard dormitories and you move on to the temple.\n\nPriest of Stone Henge: [Oh, hello!]",
+    "text": "You arrive in Stone Henge.\n\nLucid: [I'm going to find Pemmi and ask her to come live in Jericho with me. We should meet up in the tavern before I leave.]\n\nYou agree.\nLucid moves on to the guard dormitories and you move on to the temple.\n\nStone Henge Priest: [Oh, hello!]",
     "opt": [
       {
         "to": "@ant hill good 13",

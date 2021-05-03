@@ -3,6 +3,7 @@ package com.example.textgame
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -12,13 +13,16 @@ import androidx.fragment.app.commit
 import com.example.textgame.game.Game
 import com.example.textgame.tools.Grammar
 import com.example.textgame.ui.*
-import java.util.*
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 
 class App : AppCompatActivity() {
     private lateinit var game: Game
     private var menu: Menu? = null
     private lateinit var sound: MediaPlayer
+    private var mInterstitialAd: InterstitialAd? = null
 
     private fun transition(destination: Fragment){
         supportFragmentManager.commit {
@@ -141,7 +145,8 @@ class App : AppCompatActivity() {
         val companionModels = playerModel.getAllies(game.units.model)
         for (i in companionModels.indices){
             val allyMoves = game.moves.getMoves(companionModels[i].moves)
-            allyMoves.addAll(game.moves.getMoves(playerModel.companionMoves[playerModel.companion[i]]?: listOf()))
+            allyMoves.addAll(game.moves.getMoves(playerModel.companionMoves[playerModel.companion[i]]
+                    ?: listOf()))
             companionModels[i].initialize(game.moves.getMoves(companionModels[i].moves), 1)
             companionModels[i].points = 0
             companionModels[i].healthPt = companionModels[i].health
@@ -200,7 +205,7 @@ class App : AppCompatActivity() {
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
                 "add" -> {
-                    if (split[2] in game.player.model.vars){
+                    if (split[2] in game.player.model.vars) {
                         game.player.model.vars[split[2]] = (game.player.model.vars[split[2]]!!.toInt() + split[3].toInt()).toString()
                     } else {
                         game.player.model.vars[split[2]] = split[3]
@@ -257,7 +262,7 @@ class App : AppCompatActivity() {
                     openDialog(Grammar.substringAfter(to, ">", 2))
                 }
                 "questFill" -> {
-                    for (quest in game.variables.model[split[2]] ?: arrayListOf()){
+                    for (quest in game.variables.model[split[2]] ?: arrayListOf()) {
                         game.player.model.quests.add(quest)
                     }
                     openDialog(Grammar.substringAfter(to, ">", 3))
@@ -279,7 +284,7 @@ class App : AppCompatActivity() {
                     openDialog(Grammar.substringAfter(to, ">", 3))
                 }
                 "allyLearn" -> {
-                    if (split[2] !in game.player.model.companionMoves){
+                    if (split[2] !in game.player.model.companionMoves) {
                         game.player.model.companionMoves[split[2]] = arrayListOf()
                     }
                     game.player.model.companionMoves[split[2]]!!.add(split[3])
@@ -291,7 +296,7 @@ class App : AppCompatActivity() {
                 }
                 "moneyAdd" -> {
                     game.player.model.money += split[2].toInt()
-                    if (game.player.model.money < 0){
+                    if (game.player.model.money < 0) {
                         game.player.model.money = 0
                     }
                     openDialog(Grammar.substringAfter(to, ">", 3))
@@ -310,12 +315,12 @@ class App : AppCompatActivity() {
                 }
                 "view rest" -> {
                     val foodName = game.player.model.unequipPart(game.item.model, "food")
-                    if (foodName == null){
+                    if (foodName == null) {
                         viewCustom("You have no food.\nYou can't rest hungry.", Grammar.substringAfter(to, ">", 2))
                     } else {
                         val food = game.item.model[foodName] ?: game.item.model["invalid"]!!
                         viewCustom("You rest and heal ${food.rating} health.",
-                            ">time>8>>remove part>food>>heal>${food.rating}>" + Grammar.substringAfter(to, ">", 2))
+                                ">time>8>>remove part>food>>heal>${food.rating}>" + Grammar.substringAfter(to, ">", 2))
                     }
                 }
                 "view shop" -> {
@@ -347,9 +352,9 @@ class App : AppCompatActivity() {
                 }
                 "heal" -> {
                     game.player.model.unit.healthPt += split[2].toInt()
-                    if (game.player.model.unit.healthPt > game.player.model.unit.health){
+                    if (game.player.model.unit.healthPt > game.player.model.unit.health) {
                         game.player.model.unit.healthPt = game.player.model.unit.health
-                    } else if (game.player.model.unit.healthPt < 1){
+                    } else if (game.player.model.unit.healthPt < 1) {
                         game.player.model.unit.healthPt = 1
                     }
                     openDialog(Grammar.substringAfter(to, ">", 3))
@@ -359,7 +364,7 @@ class App : AppCompatActivity() {
                     val desc = game.item.model[split[2]]?.desc ?: "No description found."
                     game.player.model.vars["t1"] = "You find ${Grammar.getArticle(split[2])}:\n\n  ${desc.capitalize()}"
                     game.player.model.vars["t2"] = ">force item>${split[2]}>${Grammar.substringAfter(to, ">", 3)}"
-                    if (piece == null){
+                    if (piece == null) {
                         game.player.model.vars["t3"] = "Take ${split[2]}"
                     } else {
                         game.player.model.vars["t3"] = "Throw away $piece and take ${split[2]}"
@@ -389,6 +394,17 @@ class App : AppCompatActivity() {
                     game.player.reset()
                     openDialog(Grammar.substringAfter(to, ">", 2))
                 }
+                "ad" -> {
+                    if (mInterstitialAd != null) {
+                        mInterstitialAd?.show(this)
+                    } else {
+                        Log.d("ad", "The interstitial ad wasn't ready yet.")
+                    }
+                    openDialog(Grammar.substringAfter(to, ">", 2))
+                }
+                "quit" -> {
+                    finishAffinity()
+                }
             }
         } else if (to.startsWith("@")) {
             game.player.model.vars["prev"] = game.player.model.vars["page"]!!
@@ -401,12 +417,22 @@ class App : AppCompatActivity() {
 
     private fun viewPage(newPage: String){
         game.player.model.vars["page"] = newPage
-        title = getString(R.string.page_title, game.player.model.getTime().capitalize(), game.dialog.model[newPage]?.title ?: "")
+        title = getString(R.string.page_title, game.player.model.getTime().capitalize(), game.dialog.model[newPage]?.title
+                ?: "")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        MobileAds.initialize(this) { }
+        MobileAds.setRequestConfiguration(
+                RequestConfiguration.Builder()
+                        .setTestDeviceIds(listOf("ABCDEF012345"))
+                        .build()
+        )
+
+
         sound = MediaPlayer.create(this, R.raw.fastflip)
         sound.setOnCompletionListener {
             it.stop()
@@ -415,11 +441,44 @@ class App : AppCompatActivity() {
         sound.start()
         game = Game(this)
         adjustTheme()
+
+        loadAd()
     }
 
     override fun onStart(){
         super.onStart()
         openDialog(game.player.model.vars["page"]!!)
+    }
+
+    fun loadAd(){
+        val adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                Log.d("ad", adError.message)
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                Log.d("ad", "Ad was loaded.")
+                mInterstitialAd = interstitialAd
+            }
+        })
+
+        mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() {
+                Log.d("ad", "Ad was dismissed.")
+            }
+
+            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                Log.d("ad", "Ad failed to show.")
+            }
+
+            override fun onAdShowedFullScreenContent() {
+                Log.d("ad", "Ad showed fullscreen content.")
+                mInterstitialAd = null;
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -443,7 +502,7 @@ class App : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_profile -> {
             val frag = supportFragmentManager.findFragmentById(R.id.home)
-            if (frag is ProfileFragment){
+            if (frag is ProfileFragment) {
                 openDialog(game.player.model.vars["page"]!!)
             } else if (frag is HomeFragment) {
                 viewProfile()

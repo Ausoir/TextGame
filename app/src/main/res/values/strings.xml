@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">From the Abyss</string>
+    <string name="app_name">Artifacts from Abyss</string>
     <string name="proceed">Proceed</string>
     <string name="dialog_not_found">Dialog missing.</string>
     <string name="action_profile">Profile</string>

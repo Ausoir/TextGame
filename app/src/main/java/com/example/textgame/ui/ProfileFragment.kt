@@ -43,9 +43,9 @@ class ProfileFragment : Fragment() {
         addButton(resources.getString(R.string.profile_button_companion)).setOnClickListener{
             showCompanion()
         }
-        addButton(resources.getString(R.string.profile_button_chapter)).setOnClickListener{
-            showChapter()
-        }
+//        addButton(resources.getString(R.string.profile_button_chapter)).setOnClickListener{
+//            showChapter()
+//        }
         val serial = arguments?.getSerializable("moveset") ?: return root
         player = arguments?.getParcelable("player") ?: return root
         itemMap = arguments?.getSerializable("item map") as HashMap<String, ItemModel>
