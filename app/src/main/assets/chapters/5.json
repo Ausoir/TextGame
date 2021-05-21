@@ -4,14 +4,42 @@
     "text": "",
     "opt": [
       {
-        "to": ">timeset>18>>heal>9>>dropAll>>save>quest>0>@field 1",
+        "to": ">timeset>18>>heal>9>>dropAll>>save>quest>0>@field 0",
         "text": "Begin"
+      }
+    ]
+  },
+  "field 0": {
+    "title": "Fields",
+    "text": "You journey on from Jericho until you reach the woodcutters' village once again.\n\nLucid: [We're here again...]\n\nPemmi: [Did they find out what those vine things were?]\n\nLucid: [I don't think so. We should be extremely careful near the canyon. We'll try to cross using a safe method. Let's ask the villagers here.]",
+    "opt": [
+      {
+        "to": "@village",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "village": {
+    "title": "Woodcutters' Village",
+    "text": "You are at a woodcutters' village.\nThere are bulky lumberjacks dressed in leather and furs walking around.",
+    "opt": [
+      {
+        "to": ">view rest>@village rest",
+        "text": "Rest and heal"
+      },
+      {
+        "to": ">view shop>Lumber Mill Shop>@village",
+        "text": "Trade with the villagers"
+      },
+      {
+        "to": "@field 1",
+        "text": "Make a conversation with one of the villagers"
       }
     ]
   },
   "field 1": {
     "title": "Fields",
-    "text": "You reach the abyssal canyon once again.\n\nLucid: [We're here again. After that incident, the manager told me stories about various things in and around the canyon that... have never been seen anywhere else.]\n\nPemmi: [Like new species?]\n\nLucid: [No. Things that are... strange. It's hard to explain. We should be as careful as possible.]\n\nYou tell him how you had crossed the canyon when you first came here.\n\nLucid: [Using the rope? We know the canyon is full of unknown danger. We'll find another way to cross.]\n\nYou go back to the woodcutters' village near the canyon.\n\nVillager: [The crevice? The bridge isn't done. Some people tried to cross it using a shifty air boat but it didn't work. They left it here, if you want to give it a try.]\n\nThe villager leads you to an old building, and you see a rather crude air boat inside.\n\nLucid: [This air boat was modified to utilize mana instead of Jericho's power field. I'm guessing it failed because it requires too much mana.]\n\nLucid: [But... if Cheese uses his amulet to provide mana for the boat, he could take us to the other side one by one.]\n\nYou drag the boat out and Cheese takes each of you one by one across the canyon.\n\nCheese: [This is pain... This is torture...]\n\nYou leave the vomit stained air boat behind and continue the journey.",
+    "text": "Villager: [The crevice? The bridge isn't done. Some people tried to cross it using a shifty air boat but it didn't work. They left it here, if you want to give it a try.]\n\nThe villager leads you to an old building, and you see a rather crude air boat inside.\n\nLucid: [This air boat was modified to utilize mana instead of Jericho's power field. I'm guessing it failed because it requires too much mana.]\n\nLucid: [But... if Cheese uses his amulet to provide mana for the boat, he could take us to the other side one by one.]\n\nCheese: [No! there's gotta be another way!]\n\nPemmi: [Cheese, come on. It's less than a minute of flying. You'll get used to it.]\n\nLucid: [There's another way, Cheese. Which is handing over your amulet to another person who can be the ferry man. Either way, you'll have to ride the boat at least once.]\n\nCheese: [...!]\n\nYou drag the boat out and Cheese takes each of you one by one across the canyon.\n\nCheese: [This is pain... This is torture...]\n\nYou leave the vomit stained air boat behind and continue the journey.",
     "opt": [
       {
         "to": "@field 2",
@@ -21,7 +49,7 @@
   },
   "field 2": {
     "title": "Fields",
-    "text": "You travel back to Stone Henge over a week.\nThe monsters that you had fought on your way to Jericho are no match for all of you.",
+    "text": "You travel back to Stone Henge over a week.\n\nThe monsters that block your way are no match for all of you.",
     "opt": [
       {
         "to": "@henge help",
@@ -37,7 +65,7 @@
   },
   "henge help": {
     "title": "Stone Henge",
-    "text": "Lucid: [Alright, we're nearing Stone Henge.]\n\nBigs: [What's our plan?]\n\nLucid: [We'll march in and request meeting with the priest. They won't harm us if we show up in numbers and heavily armed.]\n\nYou march into Stone Henge and stop before the guard outpost.\nThe Stone Henge guards are on full alert, and the move about busily in the distance.\n\nPemmi: [I'll go alone.]\n\nPemmi walks into Stone Henge.\nA few guards come out and escort her inside.\n\nYou wait.",
+    "text": "Lucid: [Alright, we're nearing Stone Henge.]\n\nBigs: [What's our plan?]\n\nLucid: [We'll march in and request meeting with the priest. They won't harm us if we show up in numbers and heavily armed.]\n\nYou march into Stone Henge and stop before the guard outpost.\nThe Stone Henge guards are on full alert, and they move about busily in the distance.\n\nPemmi: [I'll go alone.]\n\nPemmi walks into Stone Henge.\nA few guards come out and escort her inside.\n\nYou wait.",
     "opt": [
       {
         "to": "@henge help 2",
@@ -67,7 +95,7 @@
   },
   "ask henge": {
     "title": "Stone Henge",
-    "text": "Priest: [It started 5 years ago. Those wretched horned spiders came from nowhere and started preying upon our people. We slowly lost our valuable hunters to their cunning ambushes... Stone Henge was bleeding dry. Without our hunters, we can't defend nor feed ourselves.]\n\nPriest: [So we tried to offer various meats to the spiders in hopes of reducing our hunter casualties, but the spiders seemed only interested in live humans.]\n\nLucid: [We had found some feral humans living deep inside one of the spider nests. They had a whole village going, but they didn't speak our language. Maybe the spiders were abducting people and putting them in their nests to, maybe farm us?]\n\nPriest: [The ferals showed up when the spiders first showed up. The kidnapping only started 5 years ago, so I highly doubt the ferals are victims of abduction. Have you found any of our people in the den?]\n\nLucid: [No, we found Sugar, a hunter from Ant Hill. He said that everyone else had died trying to break out.]",
+    "text": "Priest: [It started 5 years ago. Those wretched horned spiders came from nowhere and started preying upon our people. We slowly lost our valuable hunters to their cunning ambushes... Stone Henge was bleeding dry. Without our hunters, we can't defend or feed ourselves.]\n\nPriest: [So we tried to offer various meats to the spiders in hopes of reducing our hunter casualties, but the spiders seemed only interested in live humans.]\n\nLucid: [We had found some feral humans living deep inside one of the spider nests. They had a whole village going, but they didn't speak our language. Maybe the spiders were abducting people and putting them in their nests to, maybe farm us?]\n\nPriest: [The ferals showed up when the spiders first showed up. The kidnapping only started 5 years ago, so I highly doubt the ferals are victims of abduction. Have you found any of our people in the den?]\n\nLucid: [No, but we found Sugar, a hunter from Ant Hill. He said that everyone else had died trying to break out.]",
     "opt": [
       {
         "to": "@henge help 2-1",
@@ -83,7 +111,7 @@
   },
   "henge help 2-1": {
     "title": "Stone Henge",
-    "text": "Lucid: [Very good. Let's put our conflicts behind us and work together to drive the spiders out of Stone Henge. We have brought powerful weapons from Jericho, strong enough to down a spider in a single volley.]\n\nPriest: [Thank you, Lucid. To be honest, when I first met you, I was a bit skeptical about your motives. I hope you found what you were looking for.]\n\nLucid: [I did not, but there are more important things in this world. Let us work together and rid the abominations from the frontier.]\n\nThe priest invites you all to watch him declare a state of emergency and distribute muskets to the finest hunters of Stone Henge.\nMost people in Stone Henge seems to have no idea what had been happening.\n\nBigs: [We'll need a day to familiarize your hunters with the muskets.]\n\nPriest: [Then we should strike in two days. We can't give the spiders much time to prepare.]",
+    "text": "Lucid: [Let's put our conflicts behind us and work together to drive the spiders out of Stone Henge. We have brought powerful weapons from Jericho, strong enough to down a spider in a single volley.]\n\nPriest: [Thank you, Lucid. To be honest, when I first met you, I was a bit skeptical about your motives. I hope you found what you were looking for.]\n\nLucid: [I did not, but there are more important things in this world. Let us work together and rid the abominations from the frontier.]\n\nThe priest invites you all to watch him declare a state of emergency and distribute muskets to the finest hunters of Stone Henge.\nMost people in Stone Henge seems to have no idea what had been happening.\n\nBigs: [We'll need a day to familiarize your hunters with the muskets.]\n\nPriest: [Then we should strike in two days. We can't give the spiders much time to prepare.]",
     "opt": [
       {
         "to": "@stone henge",
@@ -110,6 +138,10 @@
         "text": "Shop around"
       },
       {
+        "to": ">view gem>henge sigils>@stone henge",
+        "text": "Visit the mystic"
+      },
+      {
         "to": ">dropAll>>encounter>stone henge arena>@stone henge>>time>4>@stone henge",
         "text": "Visit training grounds"
       },
@@ -119,7 +151,7 @@
       },
       {
         "to": ">timeset>10>@henge fight",
-        "text": "Finish departure preparations",
+        "text": "Visit the temple",
         "reqs": ["var>quest>0"]
       },
       {
@@ -141,7 +173,7 @@
   },
   "henge fight": {
     "title": "Stone Henge",
-    "text": "You visit Pemmi at the training grounds.\n\nPemmi: [Are you ready?]",
+    "text": "You visit the temple.\n\nLucid: [It looks like they are going to make an offense against the horned spiders at last. Are you ready?]\n\nCheese: [About damn time.]",
     "opt": [
       {
         "to": "@henge fight ask",
@@ -155,7 +187,7 @@
   },
   "henge fight ask": {
     "title": "Stone Henge",
-    "text": "Pemmi: [There will be four different offense groups. The first group is Lucid, Bigs, and all of the adventurers from Jericho.]\n\nPemmi: [The second and third group are all made of the best hunters from Stone Henge. You, me, and Cheese belong to the last group. Our role is to wait by the spider forest and report and intercept any movements toward Stone Henge.]",
+    "text": "Pemmi: [There will be four different offense groups. The first group is Lucid, Bigs, and all of the adventurers from Jericho.]\n\nPemmi: [The second and third group are all made of the best hunters from Stone Henge. You, me, and Cheese belong to the last group. Our role is to wait by the spider forest and report and intercept any movements toward Stone Henge.]\n\nCheese: [What, they think we belong in the failure group?]\n\nPemmi: [No, but we certainly don't have the formal group hunting experience. Let's head out to the training grounds to meet up with the others.]",
     "opt": [
       {
         "to": ">timeset>10>@henge fight 2",
@@ -165,7 +197,7 @@
   },
   "henge fight 2": {
     "title": "Stone Henge",
-    "text": "You wait for everyone to arrive on the training grounds.\n\nCheese: [Where's Lucid?]\n\nPemmi: [All the other groups have departed earlier, Cheese.]\n\nPemmi: [We are heading out now, hopefully the spiders are distracted from the previous groups.]\n\nYou, Pemmi, Cheese, and three Stone Henge guards march on to the spider forest where the feral cave was located.\n\nPemmi: [We wait here now.]",
+    "text": "You meet up with everyone on the training grounds.\n\nPemmi: [We are heading out now, hopefully the spiders are distracted from the previous groups.]\n\nYou, Pemmi, Cheese, and three Stone Henge guards march on to the spider forest where the feral cave was located.\n\nPemmi: [We wait here now.]",
     "opt": [
       {
         "to": ">time>4>@henge fight 3",
@@ -175,7 +207,7 @@
   },
   "henge fight 3": {
     "title": "Stone Henge",
-    "text": "You wait.\n\nPemmi: [Look, there's several of them over there. We need to dispatch them before they get to Stone Henge!]",
+    "text": "You wait.\n\nPemmi: [Look, there's several of them over there. We need to take them out before they get to Stone Henge!]",
     "opt": [
       {
         "to": ">encounter>horned spider>@defeat>@henge fight 4",
@@ -209,17 +241,17 @@
   },
   "henge fight 6": {
     "title": "Stone Henge",
-    "text": "You move deeper into the forest.\nYou hear howling sounds from the trees.\n\nPemmi: [They're on the trees!]\n\nCheese casts fireball on the tree.\n\nPemmi: [Cheese, stop! Don't set the forest on fire!]\n\nGuard: [There's more here, come!]",
+    "text": "You move deeper into the forest.\nYou hear howling sounds from the trees.\n\nPemmi: [They're on the trees!]\n\nCheese casts fireball on the tree.\n\nPemmi: [Cheese, stop! Don't set the forest on fire!]\n\nGuard: [Here, come!]",
     "opt": [
       {
-        "to": ">join>henge scout>>encounter>guard spiders>@defeat>>dropAll>@henge fight 7",
+        "to": ">join>henge scout>>encounter>wounded horned spiders>@defeat>>dropAll>@henge fight 7",
         "text": "Proceed"
       }
     ]
   },
   "henge fight 7": {
     "title": "Stone Henge",
-    "text": "You move deeper into the forest into the nest.\nThe nest is packed with spider carcasses.\n\nCheese: [Holy grandma of god, that's a lot of spiders.]\n\nLucid: [Cheese? What are you doing here?]\n\nPemmi: [It's getting dark and I didn't see you come out, so we were worried.]\n\nLucid: [Everything is going according to plan here. Bigs just wanted more time exploring the ancient mines. Go back to town, we'll be there shortly.]\n\nYou return to Stone Henge.",
+    "text": "You move deeper into the forest into the nest.\nThe nest is packed with spider carcasses.\n\nCheese: [Holy grandma of god, that's a lot of dead spiders.]\n\nLucid: [Cheese? What are you doing here?]\n\nPemmi: [It's getting dark and I didn't see you come out, so we were worried.]\n\nLucid: [Everything is going according to plan here. Bigs just wanted more time exploring the ancient mines. Go back to town, we'll be there shortly.]\n\nYou return to Stone Henge.",
     "opt": [
       {
         "to": "@henge done",
@@ -239,7 +271,7 @@
   },
   "field 3": {
     "title": "Fields",
-    "text": "Lucid: [Well, we don't have anything to offer Stone Henge. I'll go in and get some supplies.]\n\nLucid comes back from Stone Henge with food and medical supplies, and you continue on to Ant Hill.\n\nLucid: [Alright, are we ready to head to Ant Hill?]\n\nPemmi: [I... want to stay in Stone Henge for now. The last two weeks were too bizarre for me. I want help clean up the mess here.]\n\nLucid: [Understandable. Take care, Pemmi. I'll see you soon.]",
+    "text": "Lucid: [Well, many of us aren't allowed in Stone Henge... I'll go in and get some supplies.]\n\nLucid comes back from Stone Henge with food and medical supplies.\nYou continue on to Ant Hill.\n\nLucid: [Alright, are we ready to head to Ant Hill?]\n\nPemmi: [I... want to stay in Stone Henge for now. The last two weeks were too bizarre for me. I'm sorry, but there isn't really a solid plan to save anyone... I want to take a little break.]\n\nLucid: [Understandable. Take care, Pemmi. I'll see you soon.]",
     "opt": [
       {
         "to": "@field 4",
@@ -285,7 +317,7 @@
   },
   "ant hill 3": {
     "title": "Ant Hill Underground",
-    "text": "Cheese: [FUCK!!! IS EVERYONE FUCKING DEAD?!]\n\nLucid: [Keep quiet, Cheese! There were no spiders outside, there can't be that many inside. Let's continue.]\n\nYou hear a shout from down the halls.\n\nLucid: [That sounds like someone shouting for help. Let's go!]\n\nYou run towards the shouting, and the spell light unveils yet more spiders in the darkness.",
+    "text": "Cheese: [WHAT THE FUCK!!! IS EVERYONE FUCKING DEAD?! What happened!]\n\nCheese starts bursting in tears.\n\nLucid: [Keep quiet, Cheese! There were no spiders outside, there can't be that many inside. Calm down, let's continue.]\n\nYou hear a shout from down the halls.\n\nLucid: [That sounds like someone shouting for help. Let's go!]\n\nYou run towards the shouting, and the spell light unveils yet more spiders in the darkness.",
     "opt": [
       {
         "to": ">encounter>wounded horned spiders>@defeat>@ant hill 4",
@@ -295,7 +327,7 @@
   },
   "ant hill 4": {
     "title": "Ant Hill Underground",
-    "text": "You kill the spiders, and someone comes out from the shadows.\n\n???: [My god... is that you?]\n\nIt is Sugar.\nHe is missing his left arm, covered in dirt and blood, and reeks with stench.\n\nSugar: [Hurry, come inside.]\n\nSugar leads you into the temple and sets up a wooden barricade.\n\nSugar: [I heard you fighting outside and screamed for help. I can't believe you made it in here... Is it safe outside?]\n\nLucid: [We don't know, Sugar. You and these five hunters are all that's left of Ant Hill?]\n\nSugar: [There are about twenty people deeper down in the lower dormitory tunnels. They're in a safe place with the remaining supplies. We came up to try to fight our way out... and got trapped here. We were just starting to run out of that god forsaken spider meat...]\n\nCheese: [First human meat, and now spider meat. Cruel fate.]\n\nSugar: [Cheese. I swore to myself I'd pluck out your eyes the next time I see you... but I can't believe I'm actually glad to see you here. Also, your dad died.]\n\nCheese: [...Where is Cobby?]\n\nSugar: [I killed him. He was a traitor to our people.]\n\nCheese: [Fuck you! You are an unbearable moron!]\n\nLucid: [...Enough fighting, let's focus on our common enemy. We'll help you clear the way out. After we secure the way out, we should move to Stone Henge with the remaining people down there.]\n\nSugar: [It's pitiful, but we are not in good shape to fight. We'll help, but we'll be of little use.]",
+    "text": "You kill the spiders, and someone comes out from the shadows.\n\n???: [My god... is that you?]\n\nIt is Sugar.\nHe is missing his left arm, covered in dirt and blood, and reeks with stench.\n\nSugar: [Hurry, come inside.]\n\nSugar leads you into the temple and sets up a wooden barricade.\n\nSugar: [I heard you fighting outside and screamed for help. I can't believe you made it in here... Is it safe outside?]\n\nLucid: [We don't know, Sugar. You and these five hunters are all that's left of Ant Hill?]\n\nSugar: [There are about twenty people deeper down in the lower dormitory tunnels. They're in a safe place with the remaining supplies. We came up to try to fight our way out... and got trapped here. We were just starting to run out of that god forsaken spider meat...]\n\nCheese: [First human meat, and now spider meat. Cruel fate.]\n\nSugar: [Cheese. I swore to myself I'd pluck out your eyes the next time I see you... but I can't believe I'm actually glad to see you here. Also, your dad died.]\n\nCheese: [...Where's Cobby?]\n\nSugar: [I killed him. He was a traitor to our people.]\n\nCheese: [Fuck you! You are an unbearable moron!]\n\nLucid: [...Enough fighting, let's focus on our common enemy. We'll help you clear the way out. After we secure the way out, we should move to Stone Henge with the remaining people down there.]\n\nSugar: [It's pitiful, but we are not in good shape to fight. We'll help, but we'll be of little use.]",
     "opt": [
       {
         "to": "@ant hill 5",
@@ -305,46 +337,46 @@
   },
   "ant hill 5": {
     "title": "Ant Hill Underground",
-    "text": "You are scouting underground Ant Hill for any remaining horned spiders.\n\nYou need to scout five locations in total: Upper dormitory tunnels, lower dormitory tunnels, storage tunnels, garden tunnels, and the entrance tunnels.",
+    "text": "You are scouting underground Ant Hill for any remaining horned spiders.\n\nYou need to scout four locations in total: Upper dormitory tunnels, lower dormitory tunnels, garden tunnels, and the entrance tunnels.",
     "opt": [
-      {
-        "to": ">custom>You scout the entrance tunnels and the guards' dormitory.>>encounter>horned spider>@defeat>>save>quest>2>@ant hill 5",
-        "text": "Scout entrance tunnels",
-        "reqs": ["var>quest>1"]
-      },
       {
         "to": "@ant hill 6",
         "text": "Lead the residents outside",
-        "reqs": ["var>quest>6"]
+        "reqs": ["var>scout entrance>1", "var>scout garden>1", "var>scout up>1", "var>scout low>1"]
       },
       {
-        "to": ">custom>You scout the garden tunnels.\nThe entire garden area is bright greenish yellow with glowing mushrooms growing rampant.\nIt seems to be safe.>>save>quest>3>@ant hill 5",
+        "to": ">custom>You scout the entrance tunnels and the guards' dormitory.>>encounter>horned spider>@defeat>>save>scout entrance>1>@ant hill 5",
+        "text": "Scout entrance tunnels",
+        "reqs": ["var>scout entrance>0"]
+      },
+      {
+        "to": ">custom>You scout the garden tunnels.\nThe entire garden area is bright greenish yellow with glowing mushrooms growing rampant.\nIt seems to be safe.>>save>scout garden>1>@ant hill 5",
         "text": "Scout garden tunnels",
-        "reqs": ["var>quest>2"]
+        "reqs": ["var>scout garden>0"]
       },
       {
-        "to": ">custom>You scout the upper dormitory tunnels.>>encounter>three horned spiders>@defeat>>save>quest>4>@ant hill 5",
+        "to": ">custom>You scout the upper dormitory tunnels.>>encounter>three horned spiders>@defeat>>save>scout up>1>@ant hill 5",
         "text": "Scout upper dormitory tunnels",
-        "reqs": ["var>quest>3"]
+        "reqs": ["var>scout up>0"]
       },
       {
         "to": "@ant hill lower dorm",
         "text": "Scout lower dormitory tunnels",
-        "reqs": ["var>quest>4"]
+        "reqs": ["var>scout low>0"]
       },
       {
         "to": "@ant hill storage",
         "text": "Scout storage tunnels",
-        "reqs": ["var>quest>5"]
+        "reqs": ["var>scout storage>0"]
       }
     ]
   },
   "ant hill lower dorm": {
     "title": "Ant Hill Underground",
-    "text": "You scout the lower dormitory tunnels and the waste storage tunnels.\nIt reeks of blood and feces.\n\nYou run into a heavily barricaded door.\n\nLucid: [This must be where the residents are hiding. Better not to bother them until we've secured the place.]",
+    "text": "You scout the lower dormitory tunnels and the waste storage tunnels.\nIt reeks of blood and feces.\n\nYou run into a heavily barricaded door.\n\nLucid: [This must be where the residents are hiding. Better not to bother them until we've secured the place.]\n\nYou scout the area for spiders.",
     "opt": [
       {
-        "to": ">encounter>three horned spiders>@defeat>>save>quest>5>@ant hill 5",
+        "to": ">encounter>three horned spiders>@defeat>>save>scout low>1>@ant hill 5",
         "text": "Continue"
       }
     ]
@@ -354,7 +386,7 @@
     "text": "You enter the storage tunnels.\nThere are destroyed wooden barricades and furniture everywhere.\n\nLucid: [Looks like this place was looted for food by the spiders after supplies were taken out by the residents. Let's search for any remaining supplies.]",
     "opt": [
       {
-        "to": ">item>healing salve>>save>quest>6>@ant hill 5",
+        "to": ">item>healing salve>>save>scout storage>1>@ant hill 5",
         "text": "Continue"
       }
     ]
@@ -647,7 +679,7 @@
   },
   "ant hill neutral 3": {
     "title": "Fields",
-    "text": "You lead your group of desperate residents toward the woods.\n\nLucid: [What... happened here?]\n\nThe Ant Hill woods are burnt down.\nThere are few greenery left among the vast fields of ash and burnt woods.\n\nLucid: [Some kind of... forest fire?]\n\nYou continue on to Stone Henge.\nIt seemed the forest fire destroyed almost all of the forest on the way.",
+    "text": "You lead your group of desperate residents toward the woods.\n\nLucid: [What... happened here?]\n\nThe Ant Hill woods are burnt down.\nThere are few greenery left among the vast fields of ash and burnt woods.\n\nLucid: [Some kind of forest fire?]\n\nYou continue on to Stone Henge.\nIt seemed the forest fire destroyed almost all of the forest on the way.",
     "opt": [
       {
         "to": ">timeset>10>@ant hill neutral 4",

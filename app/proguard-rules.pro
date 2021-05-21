@@ -20,10 +20,8 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--dontobfuscate
--optimizations !code/allocation/variable
-
--keep class com.example.textgame.*
+-keep class aoa.*
+-keep class aoa.ui.*
 -keep class com.google.gson.Gson.*
 -keep class com.google.gson.reflect.TypeToken
--keepclassmembers class com.example.textgame.game.* { <fields>; }
+-keepclassmembers class aoa.game.* { <fields>; }

@@ -25,7 +25,7 @@
     "loots": ["splinter spear"]
   },
   "three ants": {
-    "desc": "Ants with the size of a toddler crawl towards you.\nThey constantly wiggle their long antennae on their heads.\nAnts are usually not too aggressive, but these seem to be startled by your presence.",
+    "desc": "Ants as big as a toddler crawl towards you.\nThey constantly wiggle their long antennae on their heads.\nAnts are usually not too aggressive, but these seem to be startled by your presence.",
     "units": ["ant", "ant", "ant"],
     "loots": ["bug meat", "ant leg", "grass robe", "", ""]
   },
@@ -75,7 +75,7 @@
     "loots": ["hair ball"]
   },
   "squirrel": {
-    "desc": "A mean looking beast with a tail taller than you.\nNot very aggressive, but still pretty hard to kill.",
+    "desc": "A mean looking beast with a tail taller than you looks at you with curiosity.\nSquirrels are known to play with their victims for a long time before eating them alive.",
     "units": ["squirrel"],
     "loots": ["spine spear"]
   },
@@ -84,8 +84,18 @@
     "units": ["yellow butterfly"],
     "loots": ["long proboscis", "pollen ball"]
   },
+  "fire ant": {
+    "desc": "You face a lone fire ant as big as a toddler.\nIts mandibles are big enough to grab your head.",
+    "units": ["fire ant"],
+    "loots": ["pollen ball", "bug meat", "ant leg"]
+  },
+  "small bird": {
+    "desc": "You see a small bird grazing on the field.\nIt looks at you with curiosity.",
+    "units": ["small bird"],
+    "loots": ["feather"]
+  },
   "three fire ants": {
-    "desc": "Three fire ants with the size of a toddler crawl towards you.\nThese fire ants look much more aggressive compared to normal ants.",
+    "desc": "Three fire ants bigger than the size of a toddler crawl towards you.\nThese fire ants look much more aggressive compared to normal ants.",
     "units": ["fire ant", "fire ant", "fire ant"],
     "loots": ["pollen ball", "bug meat", "ant leg"]
   },
@@ -110,7 +120,7 @@
     "loots": ["mushroom pemmican"]
   },
   "horned spider": {
-    "desc": "A large spider covered in gray hair crawls toward you.\nIt is as big as you are and its mandibles are thicker than your arms.\nIt's unnaturally large horn on its head suggest its unnatural origin.\nYou are having a hard time just standing still.",
+    "desc": "A large spider covered in gray hair crawls toward you.\nIt is as big as you are and its mandibles are thicker than your arms.\nIts unnaturally large horn on its head suggest its unnatural origin.\nYou are having a hard time just standing still.",
     "units": ["horned spider"],
     "loots": []
   },
@@ -177,7 +187,7 @@
   "zombies": {
     "desc": "A group of bloated, burnt corpses are somehow standing on its own... It looks like they have sensed you somehow and approach you.",
     "units": ["zombie", "zombie", "zombie"],
-    "loots": []
+    "loots": ["silver sword", "", ""]
   },
   "zombie": {
     "desc": "A bloated, burnt corpse somehow standing on its own... It has sensed you and wants to eat you alive.",
@@ -209,9 +219,9 @@
     "units": ["vine mass", "vine mass"],
     "loots": ["metal saw", ""]
   },
-  "four vines": {
+  "three vines": {
     "desc": "A cluster of dark green vines attack you. There's some kind of rocks inside the vines, but it is covered in leaves and you can't tell just exactly what it really is.",
-    "units": ["vine mass", "vine mass", "vine mass", "vine mass"],
+    "units": ["vine mass", "vine mass", "vine mass"],
     "loots": ["metal saw"]
   },
   "mass of vines": {
@@ -225,7 +235,7 @@
     "loots": ["raptor fang", "beast meat"]
   },
   "ancient bug": {
-    "desc": "An ancient... pill bug? Does not look very threatening, but sure is big.",
+    "desc": "An ancient... pill bug? It does not look very threatening, but it sure is big.",
     "units": ["ancient bug"],
     "loots": ["chitin breastplate", "chitin gauntlets", "bug meat"]
   },
@@ -245,12 +255,12 @@
     "loots": ["cog system"]
   },
   "thief": {
-    "desc": "It's a thief!\nHe looks like he won't hesitate to kill you.",
+    "desc": "It's a thief!\nIt looks like he won't hesitate to kill you.",
     "units": ["highwayman"],
     "loots": ["coin purse", "fur jacket", "fur boots", "leather pants"]
   },
   "jericho guards": {
-    "desc": "People wearing fully plated brass armor approach you.\nThey wear funny metal and glass artifacts on their eyes.\nThey look pretty disciplined.",
+    "desc": "People wearing fully plated brass armor approach you.\nThey wear funny metal and glass things on their eyes.\nThey look pretty disciplined.",
     "units": ["jericho guard", "jericho guard", "jericho guard"],
     "loots": ["brass sword"]
   },

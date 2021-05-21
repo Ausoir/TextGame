@@ -2,18 +2,16 @@
     <style name="TextGame">
         <item name="colorPrimary">@color/gray</item>
         <item name="colorSecondary">@color/light</item>
-        <item name="android:background">@color/silver</item>
+        <item name="colorPrimaryDark">@color/silver</item>
         <item name="android:textColor">?attr/colorPrimary</item>
-        <item name="android:actionBarStyle">@style/actionBar</item>
         <item name="android:buttonStyle">@style/buttonStyle</item>
     </style>
 
     <style name="TextGameDark">
         <item name="colorPrimary">@color/light</item>
         <item name="colorSecondary">@color/silver</item>
-        <item name="android:background">@color/gray</item>
+        <item name="colorPrimaryDark">@color/gray</item>
         <item name="android:textColor">?attr/colorPrimary</item>
-        <item name="android:actionBarStyle">@style/actionBar</item>
         <item name="android:buttonStyle">@style/buttonStyle</item>
     </style>
 
@@ -22,6 +20,5 @@
         <item name="android:windowActionBar">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:buttonStyle">@style/buttonStyle</item>
     </style>
 </resources>

@@ -11,7 +11,7 @@
   },
   "start2": {
     "title": "Story",
-    "text": "You were born and raised in a settlement built around a conquered ant hill. Most residents here are hunters and craftsmen, and they feed themselves by hunting monsters, as farming techniques have long been lost here.\n\nYou, having neither the courage to hunt nor the skills to craft, have become a scout.",
+    "text": "You were born and raised in a settlement built around a conquered fire ant hill. Most residents here are hunters and craftsmen, and they feed themselves by hunting monsters, as farming techniques have long been lost here.\n\nYou, having neither the courage to hunt nor the skills to craft, have become a scout.",
     "opt": [
       {
         "to": "@start3",
@@ -71,7 +71,7 @@
   },
   "ant hill": {
     "title": "Ant Hill",
-    "text": "You are standing on the slanted streets of Ant Hill.\n\nThe streets are crowded with people walking around trying to buy meat from the hunter shops.\nNear the top of the hill you see the barred entrance to the underground where people take shelter during the night.",
+    "text": "You are standing on the slanted streets of Ant Hill.\n\nThe streets are crowded with people walking around trying to buy meat from the hunter shops.\nNear the top of the hill you see the barred entrance to the underground section of the settlement where people take shelter during the night.",
     "opt": [
       {
         "to": "@ant hill underground",
@@ -85,7 +85,7 @@
   },
   "ant hill underground": {
     "title": "Ant Hill Underground",
-    "text": "You open the barred gate and enter the underground section of the settlement.\n\nIt is mostly dark, and the only light sources here are from green glowing mushrooms planted along the hallways.\nYou walk through the familiar dirt mazes.",
+    "text": "You open the barred gate and enter the underground Ant Hill.\n\nIt is mostly dark, and the only light sources here are from green glowing mushrooms planted along the hallways.\nYou walk through the familiar dirt mazes.",
     "opt": [
       {
         "to": "@ant hill temple",
@@ -102,7 +102,7 @@
   },
   "ant hill home": {
     "title": "Home",
-    "text": "You arrive at your dormitory tunnels deep underground.\nYour roommates greet you.\n\nYou sit on your hammock and make a conversation with your roommates about hunting fire ants.\n\nYou hear people shouting and running in the halls outside.\nMaybe there is something going on outside on the surface...",
+    "text": "You arrive at your dormitory tunnels deep underground.\nYour roommates greet you.\n\nYou sit on your hammock and have a conversation with your roommates about hunting fire ants.\n\nYou hear people shouting and running in the halls outside.\nMaybe there is something going on outside on the surface...",
     "opt": [
       {
         "to": "@ant hill ambushed",
@@ -119,7 +119,7 @@
     "text": "You run outside to see the infamous horned spiders in the distance.\nYou can see some people getting kidnapped and dragged away.\nYour roommates cower back inside.\n\nIn the distance you see a girl getting dragged off by a horned spider, but the guards and hunters are too busy fighting other spiders.",
     "opt": [
       {
-        "to": ">encounter>horned spiders>@ant hill kidnapped>@ant hill aftermath",
+        "to": ">custom>You confront the horned spiders.>encounter>horned spiders>@ant hill kidnapped>@ant hill aftermath",
         "text": "Try to be a hero"
       },
       {
@@ -292,11 +292,60 @@
   },
   "ant hill next week": {
     "title": "Home",
-    "text": "It's been a week since the kidnapping incident. People went back to their normal lives, as death and disappearances aren't uncommon in Ant Hill.\n\nOne of the hunters let you know that the high priest is looking for you.",
+    "text": "It's been a week since the kidnapping incident.\nPeople went back to their normal lives, as death and disappearances aren't too uncommon in Ant Hill.\n\nYou return to your duties as a scout.",
     "opt": [
       {
+        "to": "@ant hill 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "ant hill 2": {
+    "title": "Ant Hill",
+    "text": "You are standing on the slanted streets of Ant Hill.\n\nThe streets are crowded with people walking around trying to buy meat from the hunter shops.\nNear the top of the hill you see the barred entrance to the underground where people take shelter during the night.",
+    "opt": [
+      {
+        "to": ">custom>You leave Ant Hill and scout the woods nearby for sources of danger or prey.\n\nYou spot something.>>combat>ant hill encounter>@ant hill defeat>@ant hill 3",
+        "text": "Go scouting",
+        "reqs": ["!var>temp>1"]
+      },
+      {
+        "to": ">custom>You leave Ant Hill and scout the woods nearby for sources of danger or prey.\n\nYou spot something.>>combat>ant hill encounter>@ant hill defeat>@ant hill 2",
+        "text": "Go scouting",
+        "reqs": ["var>temp>1"]
+      },
+      {
+        "to": ">view shop>Ant Hill Shop>@ant hill 2",
+        "text": "Shop around"
+      },
+      {
+        "to": ">view rest>@ant hill 2",
+        "text": "Go rest"
+      },
+      {
         "to": "@ant hill temple",
-        "text": "Visit the temple"
+        "text": "Visit the temple",
+        "reqs": ["var>temp>1"]
+      }
+    ]
+  },
+  "ant hill 3": {
+    "title": "Ant Hill",
+    "text": "You return to Ant Hill.\n\nOne of the guards let you know that the priest is looking for you.",
+    "opt": [
+      {
+        "to": ">save>temp>1>@ant hill 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "ant hill defeat": {
+    "title": "Home",
+    "text": "One of your fellow scouts find you dying on the field and drag you back to safety.\n\nBe aware that collapsing in battle means losing your weapon and having increased chance to flinch in combat. You may have to win multiple battles to undo this effect.",
+    "opt": [
+      {
+        "to": ">time>8>@ant hill 2",
+        "text": "Proceed"
       }
     ]
   },

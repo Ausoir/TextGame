@@ -153,6 +153,29 @@
       "death": "The pill bug rolls into a ball."
     }
   },
+  "small bird": {
+    "name": "small bird",
+    "speed": 1,
+    "health": 4,
+    "moves": [
+      "dodge",
+      "dodge",
+      "dodge",
+      "dodge",
+      "disengage",
+      "disengage",
+      "disengage",
+      "disengage",
+      "peck",
+      "peck",
+      "run"
+    ],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "death": "The bird flies away."
+    }
+  },
   "millipede": {
     "name": "millipede",
     "speed": 1,
@@ -271,7 +294,7 @@
   "Cobby": {
     "name": "Cobby",
     "speed": 1,
-    "health": 9,
+    "health": 12,
     "moves": [
       "charge tackle",
       "strike",
@@ -482,7 +505,7 @@
       "taunt",
       "greater parry",
       "defensive pose",
-      "grand slam"
+      "flurry"
     ],
     "skills": [],
     "status": [],
@@ -510,7 +533,7 @@
     "moves": [
       "blink",
       "fireball",
-      "fireball",
+      "incinerate",
       "confuse"
     ],
     "skills": [],
@@ -567,9 +590,7 @@
       "throw",
       "throw"
     ],
-    "skills": [
-      "initiative"
-    ],
+    "skills": [],
     "status": [],
     "flavors": {
       "pronoun": "she",
@@ -601,13 +622,14 @@
     "speed": 1,
     "health": 7,
     "moves": [
-      "charge",
+      "offensive pose",
+      "defensive pose",
       "acidic slash",
-      "weak guard",
-      "swing",
+      "guard",
+      "strike",
       "quick attack",
-      "cleaving charge",
-      "parry"
+      "charge tackle",
+      "greater riposte"
     ],
     "skills": [],
     "status": [],
@@ -639,12 +661,12 @@
   "amalgamation": {
     "name": "amalgamation",
     "speed": 1,
-    "health": 20,
+    "health": 30,
     "moves": [
       "engage",
       "grand slam",
       "regenerate",
-      "rest"
+      "prepare"
     ],
     "skills": [],
     "status": [
@@ -652,6 +674,13 @@
         "effect": "supernatural",
         "target": 1,
         "duration": -1
+      },
+      {
+        "effect": "health",
+        "target": 1,
+        "value": "1",
+        "duration": -1,
+        "text": "%Ur visibly regenerating!"
       }
     ],
     "flavors": {}
@@ -659,8 +688,9 @@
   "vine mass": {
     "name": "vine mass",
     "speed": 1,
-    "health": 6,
+    "health": 5,
     "moves": [
+      "adjust",
       "whirring slice",
       "whirring throw",
       "mind break",
@@ -678,7 +708,9 @@
         "value": "1"
       }
     ],
-    "flavors": {}
+    "flavors": {
+      "weapon": "circular blades"
+    }
   },
   "large vine mass": {
     "name": "large vine mass",
@@ -707,22 +739,22 @@
   "raptor": {
     "name": "raptor",
     "speed": 1,
-    "health": 7,
+    "health": 5,
     "moves": [
-      "charge",
+      "engage",
       "disengage",
       "berserk",
-      "bite",
+      "weak bite",
       "claw"
     ],
-    "skills": ["sneak"],
+    "skills": [],
     "status": [],
     "flavors": {}
   },
   "ancient bug": {
     "name": "ancient bug",
     "speed": 1,
-    "health": 10,
+    "health": 15,
     "moves": [
       "berserk",
       "bite",
@@ -741,7 +773,7 @@
   "ancientquito": {
     "name": "ancientquito",
     "speed": 1,
-    "health": 10,
+    "health": 12,
     "moves": [
       "engage",
       "guarded thrust",
@@ -865,6 +897,7 @@
     "moves": [
       "engage",
       "lethal strike",
+      "injure",
       "somersault"
     ],
     "skills": [],

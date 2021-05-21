@@ -41,15 +41,15 @@
     "desc": "do nothing.",
     "text": "mind%s %us own business"
   },
-  "rest": {
-    "effects": [],
-    "desc": "do nothing.",
-    "text": "rest%s"
-  },
   "adjust": {
     "effects": [],
     "desc": "adjust the balance of your unwieldy weapon.",
     "text": "adjust%s %us %w"
+  },
+  "balance": {
+    "effects": [],
+    "desc": "adjust the balance of your encumbering armor.",
+    "text": "fail%s to move"
   },
   "engage": {
     "effects": [
@@ -104,6 +104,26 @@
     ],
     "desc": "observe the enemy, gaining insight about their next moves.",
     "text": "observe%s"
+  },
+  "rest": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 1,
+        "value": "1"
+      },
+      {
+        "effect": "vulnerable",
+        "target": 1,
+        "duration": 2
+      },
+      {
+        "effect": "stun",
+        "target": 1
+      }
+    ],
+    "desc": "heal 1 damage but become vulnerable for 2 turns. Ends turn.",
+    "text": "rest%s"
   },
 
   "adrenaline": {
@@ -439,7 +459,7 @@
       {
         "effect": "block",
         "target": 1,
-        "value": "2",
+        "value": "1",
         "start_text": "%U gain%s %v block."
       },
       {
@@ -453,7 +473,7 @@
         "target": 1
       }
     ],
-    "desc": "gain 2 block. Bash everyone in melee to deal damage equal to current block.",
+    "desc": "gain 1 block. Bash everyone in melee to deal damage equal to current block.",
     "text": "strong bash%s %F"
   },
   "roundhouse kick": {
@@ -566,6 +586,10 @@
         "effect": "health",
         "target": 2,
         "value": "-1"
+      },
+      {
+        "effect": "stun",
+        "target": 1
       }
     ],
     "reqs": [
@@ -707,11 +731,50 @@
       {
         "effect": "thorn",
         "target": 1,
-        "duration": 2
+        "duration": 3
       }
     ],
-    "desc": "reflect 1 damage for 2 turns.",
+    "desc": "reflect 1 damage for 3 turns.",
     "text": "read%ies to retaliate"
+  },
+  "riposte": {
+    "effects": [
+      {
+        "effect": "thorn",
+        "target": 3,
+        "duration": 1
+      }
+    ],
+    "desc": "reflect the next hit with 3 damage.",
+    "text": "read%ies to riposte"
+  },
+  "greater riposte": {
+    "effects": [
+      {
+        "effect": "block",
+        "target": 1,
+        "value": "1",
+        "start_text": "%U gain%s %v block."
+      },
+      {
+        "effect": "thorn",
+        "target": 3,
+        "duration": 1
+      }
+    ],
+    "desc": "gain 1 block. Reflect the next hit with 3 damage.",
+    "text": "read%ies to riposte"
+  },
+  "offensive pose": {
+    "effects": [
+      {
+        "effect": "thorn",
+        "target": 1,
+        "duration": 10
+      }
+    ],
+    "desc": "reflect 1 damage for 10 turns.",
+    "text": "enter%s offensive posture"
   },
   "acidic slash": {
     "effects": [
@@ -1088,7 +1151,7 @@
       {
         "effect": "blood",
         "target": 2,
-        "value": "-2"
+        "value": "-1"
       }
     ],
     "reqs": [
@@ -1101,30 +1164,24 @@
         "target": -1
       }
     ],
-    "desc": "attack for 2 damage and heal for damage dealt.",
+    "desc": "deal 1 damage and heal for the damage dealt.",
     "text": "attack%s with zeal"
   },
   "guard break": {
     "effects": [
       {
-        "effect": "break",
+        "effect": "unblock",
         "target": 2,
         "text": "%Us block is gone!"
-      },
-      {
-        "effect": "injury",
-        "target": 2,
-        "duration": 2,
-        "text": "%Ur injured!"
       }
     ],
     "reqs": [
       {
-        "effect": "injury",
-        "target": -1
+        "effect": "melee",
+        "target": 1
       }
     ],
-    "desc": "remove target's block and apply injury for 2 turns. Cannot be used when injured.",
+    "desc": "deal damage equal to twice the target's block in melee.",
     "text": "guard break%s"
   },
   "weak guard": {
@@ -1137,7 +1194,7 @@
       }
     ],
     "desc": "gain 1 block.",
-    "text": "guard%s"
+    "text": "weak guard%s"
   },
   "guard": {
     "effects": [
@@ -1354,6 +1411,29 @@
     "desc": "heal 1 damage using 1 mana.",
     "text": "heal%s %uf"
   },
+  "greater heal": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 1,
+        "value": "5"
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-2"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "1"
+      }
+    ],
+    "desc": "heal 5 damage using 2 mana.",
+    "text": "cast%s greater heal"
+  },
   "heal allies": {
     "effects": [
       {
@@ -1395,21 +1475,33 @@
       {
         "effect": "vulnerable",
         "target": -1
+      },
+      {
+        "effect": "burn",
+        "target": -1
       }
     ],
-    "desc": "recover from injury, vulnerability, and cripple.",
+    "desc": "recover from injury, vulnerability, burn, and cripple.",
     "text": "recover%s from injury"
   },
   "omniscience": {
     "effects": [
       {
         "effect": "observe",
-        "target": 6
+        "target": 5
+      },
+      {
+        "effect": "observe",
+        "target": 7
       },
       {
         "effect": "mana",
         "target": 1,
         "value": "-1"
+      },
+      {
+        "effect": "shuffle",
+        "target": 1
       }
     ],
     "reqs": [
@@ -1419,7 +1511,7 @@
         "value": "1"
       }
     ],
-    "desc": "gain insight to everyone's moves using 1 mana.",
+    "desc": "refresh moveset and gain insight to everyone's moves using 1 mana.",
     "text": "enter%s absolute focus"
   },
   "clarity": {
@@ -1595,6 +1687,10 @@
         "effect": "mana",
         "target": 1,
         "value": "-1"
+      },
+      {
+        "effect": "burn",
+        "target": -2
       }
     ],
     "reqs": [
@@ -1606,6 +1702,41 @@
     ],
     "desc": "use 1 mana to deal 3 damage and push back a foe.",
     "text": "cast%s torrent"
+  },
+  "stone shot": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 2,
+        "value": "-3"
+      },
+      {
+        "effect": "cripple",
+        "target": 2,
+        "duration": 2,
+        "start_text": "%Ur crippled."
+      },
+      {
+        "effect": "injury",
+        "target": 2,
+        "duration": 2,
+        "start_text": "%Ur injured."
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "1"
+      }
+    ],
+    "desc": "use 1 mana to deal 3 damage and cause cripple and injury for 2 turns.",
+    "text": "cast%s stone shot"
   },
   "phase": {
     "effects": [
@@ -1687,21 +1818,9 @@
       {
         "effect": "redirect",
         "target": 1
-      },
-      {
-        "effect": "mana",
-        "target": 1,
-        "value": "-1"
       }
     ],
-    "reqs": [
-      {
-        "effect": "mana",
-        "target": 1,
-        "value": "1"
-      }
-    ],
-    "desc": "redirect the next incoming attack towards your target using 1 mana.",
+    "desc": "redirect the next incoming attack towards your target.",
     "text": "prepare%s to redirect"
   },
   "insight": {
@@ -1769,7 +1888,7 @@
       {
         "effect": "health",
         "target": 2,
-        "value": 99
+        "value": -99
       },
       {
         "effect": "mana",
@@ -1785,7 +1904,7 @@
       }
     ],
     "desc": "deal 99 damage to the target using 5 mana.",
-    "text": "point%s and say%s 'Death'"
+    "text": "point%s and say%s 'Die'"
   },
   "stone form": {
     "effects": [
@@ -1807,27 +1926,6 @@
     ],
     "desc": "turn yourself into stone for 2 turns, becoming invulnerable but unable to do anything.",
     "text": "turn%s into stone"
-  },
-  "petrify": {
-    "effects": [
-      {
-        "effect": "stun",
-        "target": 2,
-        "duration": 3
-      },
-      {
-        "effect": "stun",
-        "target": 2,
-        "start_text": "%U turn to stone."
-      },
-      {
-        "effect": "invulnerable",
-        "target": 2,
-        "duration": 3
-      }
-    ],
-    "desc": "turn target into stone for 3 turns, making them invulnerable but unable to do anything.",
-    "text": "cast%s petrify"
   },
   "teleport": {
     "effects": [
@@ -1914,6 +2012,36 @@
     "desc": "deal 3 damage to a target and nearby units using 1 mana.",
     "text": "cast%s fireball"
   },
+  "incinerate": {
+    "effects": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
+      },
+      {
+        "id": "burn",
+        "effect": "health",
+        "target": 4,
+        "duration": -1,
+        "value": "-1",
+        "text": "%Ur burning!"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "melee",
+        "target": 1
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "1"
+      }
+    ],
+    "desc": "set everyone nearby on fire using 1 mana.",
+    "text": "cast%s incineration"
+  },
   "dispel": {
     "effects": [
       {
@@ -1986,6 +2114,11 @@
       {
         "effect": "disengage",
         "target": 1
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-2"
       }
     ],
     "reqs": [
@@ -1995,8 +2128,41 @@
         "value": "2"
       }
     ],
-    "desc": "deal 2 damage to everyone but yourself using 2 mana. Hit targets are slowed for 1 turn.",
+    "desc": "deal 2 damage to everyone but yourself using 2 mana. Hit targets are slowed for 2 turns.",
     "text": "cast%s ice nova"
+  },
+  "petrify": {
+    "effects": [
+      {
+        "effect": "stun",
+        "target": 2,
+        "duration": 3
+      },
+      {
+        "effect": "stun",
+        "target": 2,
+        "start_text": "%U turn to stone."
+      },
+      {
+        "effect": "invulnerable",
+        "target": 2,
+        "duration": 3
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "-1"
+      }
+    ],
+    "reqs": [
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "1"
+      }
+    ],
+    "desc": "turn target into stone for 3 turns using 1 mana.",
+    "text": "cast%s petrify"
   },
 
   "long thrust": {
@@ -2219,6 +2385,25 @@
       }
     ],
     "desc": "deal 2 damage to one enemy and 1 damage to another enemy behind it. Ignores armor. Can be shot in melee.",
+    "text": "shoot%s a penetrating shot at %F"
+  },
+  "quicksilver shot": {
+    "effects": [
+      {
+        "effect": "pierce",
+        "target": 2,
+        "value": "-2"
+      },
+      {
+        "id": "burn",
+        "effect": "health",
+        "target": 2,
+        "duration": -1,
+        "value": "-1",
+        "text": "%Ur burning!"
+      }
+    ],
+    "desc": "deal 2 piercing damage and apply burn. Ignores armor. Can be shot in melee.",
     "text": "shoot%s a penetrating shot at %F"
   },
   "volley": {
@@ -2777,7 +2962,7 @@
         "effect": "health",
         "target": 1,
         "duration": 99,
-        "value": "-1"
+        "value": "1"
       },
       {
         "effect": "speed",
@@ -2786,14 +2971,19 @@
         "value": "-1"
       },
       {
-        "effect": "ability",
+        "effect": "supernatural",
         "target": 1,
-        "value": "gather mana"
+        "duration": 99
       },
       {
         "effect": "ability",
         "target": 1,
-        "value": "charge mana"
+        "value": "fireball"
+      },
+      {
+        "effect": "ability",
+        "target": 1,
+        "value": "haste"
       },
       {
         "effect": "ability",
@@ -2834,9 +3024,14 @@
       {
         "effect": "away",
         "target": 1
+      },
+      {
+        "effect": "mana",
+        "target": 1,
+        "value": "1"
       }
     ],
-    "desc": "enter lich form. Must be away.",
+    "desc": "enter lich form using 1 mana. Must be away.",
     "text": "turn%s into a mighty lich"
   },
   "blood parasite": {
@@ -2913,7 +3108,7 @@
       }
     ],
     "desc": "deal 1 damage to all enemies and heal yourself for the damage dealt using 2 mana. Must not be injured.",
-    "text": "siphon%s life from %F"
+    "text": "siphon%s enemies' life force"
   },
   "smite": {
     "effects": [
@@ -3200,7 +3395,7 @@
         "target": 1
       }
     ],
-    "desc": "strangle an enemy for 3 damage over 3 turns.",
+    "desc": "strangle an enemy for 2 damage over 2 turns.",
     "text": "strangle%s %F"
   },
   "poison": {
@@ -3419,5 +3614,16 @@
     ],
     "desc": "refresh moveset for free.",
     "text": "refresh%es"
+  },
+  "run": {
+    "effects": [
+      {
+        "effect": "health",
+        "target": 1,
+        "value": "-80"
+      }
+    ],
+    "desc": "retreat from combat.",
+    "text": "run%s away"
   }
 }

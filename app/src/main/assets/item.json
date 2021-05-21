@@ -1,4 +1,38 @@
 {
+  "ankh": {
+    "type": "sigil",
+    "value": 1000,
+    "gem": 1,
+    "desc": "a mysterious sigil said to bring you back to life once."
+  },
+  "belt of sustain": {
+    "type": "belt",
+    "value": 200,
+    "gem": 2,
+    "desc": "a metal belt. Continuously creates food and water and places them in attached metal pockets.",
+    "page": ">item>ambrosia paste>>to>page"
+  },
+  "bandage helmet": {
+    "type": "head",
+    "value": 1000,
+    "gem": 2,
+    "desc": "a tough helmet made out of countless rows of fabric. Using it will consume the helmet but grant you +4 health, possibly going over your health limit.",
+    "page": ">remove part>head>>overheal>4>>to>page"
+  },
+  "mystical orb": {
+    "type": "item",
+    "value": 1000,
+    "gem": 1,
+    "desc": "a magical container containing something good... Or does it?",
+    "page": ">remove part>item>>loot>mystical orb>>to>page"
+  },
+  "mystical text": {
+    "type": "item",
+    "value": 1000,
+    "gem": 1,
+    "desc": "a magical scroll containing some arcane knowledge... Or does it?",
+    "page": ">remove part>item>>loot>mystical text>>to>page"
+  },
   "pine needle javelin": {
     "type": "weapon",
     "value": 1,
@@ -79,6 +113,11 @@
     "type": "robe",
     "value": 1,
     "desc": "a grass robe made from woven grass fibers. Provides very little warmth."
+  },
+  "feather": {
+    "type": "head",
+    "value": 7,
+    "desc": "a reddish bird feather that people often wear on their ears on special occasions."
   },
   "long chitin jacket": {
     "type": "robe",
@@ -195,12 +234,6 @@
     "desc": "a bow carved from fish bones.",
     "moves": ["double shot", "double shot", "double shot"]
   },
-  "Lucid's amulet": {
-    "type": "necklace",
-    "value": 1000,
-    "desc": "a powerful magical necklace that lets you turn yourself or a volunteer into a small mouse. It is Lucid's personally valuable item. Makes you really wonder who he is.",
-    "moves": ["mouse form"]
-  },
   "furry foot wrap": {
     "type": "boots",
     "value": 1,
@@ -209,13 +242,13 @@
   },
   "silver sword": {
     "type": "weapon",
-    "value": 10,
+    "value": 16,
     "desc": "a silver sword that belonged to an unknown user. This rusted weapon must have been very valuable at one point.",
     "moves": ["slash", "parry", "cleansing strike"]
   },
   "silver spear": {
     "type": "weapon",
-    "value": 8,
+    "value": 12,
     "desc": "a wooden spear with precious silver tip.",
     "moves": ["guard", "strike", "cleansing strike"]
   },
@@ -234,7 +267,7 @@
     "type": "weapon",
     "value": 15,
     "desc": "a wooden stick with a kidney pierced at the tip. Somehow, the kidney is still fresh. Requires mana knowledge to use.",
-    "moves": ["guard", "torrent", "heal"]
+    "moves": ["stone shot", "torrent", "greater heal"]
   },
   "glass necklace": {
     "type": "necklace",
@@ -245,8 +278,8 @@
   "hand crossbow": {
     "type": "weapon",
     "value": 15,
-    "desc": "a handheld mechanical bow capable of firing a strong, piercing shot. Crossbows can be used in melee.",
-    "moves": ["penetrating shot"]
+    "desc": "a strange handheld mechanical bow coated with quicksilver. Can be used in both melee and range.",
+    "moves": ["penetrating shot", "quicksilver shot"]
   },
   "shrapnel": {
     "type": "offhand",
@@ -292,7 +325,7 @@
   },
   "fur boots": {
     "type": "boots",
-    "value": 10,
+    "value": 30,
     "desc": "sturdy fur boots. +1 Health.",
     "rating": 1
   },
@@ -309,14 +342,14 @@
   },
   "brass sword": {
     "type": "weapon",
-    "value": 15,
+    "value": 25,
     "desc": "a brass sword with steel edge. Light and sharp but fragile.",
     "moves": ["slash", "parry", "guard", "slash"]
   },
   "brass mace": {
     "type": "weapon",
-    "value": 10,
-    "desc": "a brass mace used by the authority in Jericho.",
+    "value": 20,
+    "desc": "a brass mace commonly used by the authority in Jericho.",
     "moves": ["strike", "guard", "grand slam", "slam"]
   },
   "prison clothes": {
@@ -339,13 +372,13 @@
   },
   "steel sword": {
     "type": "weapon",
-    "value": 25,
+    "value": 45,
     "desc": "a steel sword with steel edge. A powerful military grade weapon.",
     "moves": ["slash", "slash", "slash", "greater parry"]
   },
   "steel mace": {
     "type": "weapon",
-    "value": 25,
+    "value": 45,
     "desc": "a heavy steel mace. A powerful military grade weapon.",
     "moves": ["heavy guard", "stun", "slam", "slam"]
   },
@@ -356,10 +389,58 @@
     "moves": ["deadly shot", "deadly shot"]
   },
   "priest sigil": {
-    "type": "head",
+    "type": "sigil",
     "value": 100,
     "desc": "A sigil worn by the priest of Stone Henge that contains life force.",
     "moves": ["regenerate"]
+  },
+  "glasses": {
+    "type": "head",
+    "value": 10,
+    "desc": "Glass circles that you wear on your face.",
+    "moves": ["observe"]
+  },
+  "sand greave": {
+    "type": "legging",
+    "value": 8,
+    "desc": "a greave crafted from sand cluster hardened with bone glue. It's very protective, but a bit encumbering. +2 Health.",
+    "rating": 2,
+    "moves": ["balance"]
+  },
+  "sand armor": {
+    "type": "armor",
+    "value": 8,
+    "desc": "an armor crafted from sand cluster hardened with bone glue. It's very protective, but a bit encumbering. +2 Health.",
+    "rating": 2,
+    "moves": ["balance"]
+  },
+  "sand helmet": {
+    "type": "head",
+    "value": 8,
+    "desc": "a helmet crafted from sand cluster hardened with bone glue. It's very protective, but a bit encumbering. +2 Health.",
+    "rating": 2,
+    "moves": ["balance"]
+  },
+  "bone greave": {
+    "type": "legging",
+    "value": 9,
+    "desc": "a greave crafted from sand cluster hardened with bone glue. It's very protective, but very encumbering. +3 Health.",
+    "rating": 3,
+    "moves": ["balance", "weak guard"]
+  },
+  "bone armor": {
+    "type": "armor",
+    "value": 9,
+    "desc": "an armor crafted from the bones of a giant monster. It's incredibly protective, but very encumbering. +3 Health.",
+    "rating": 3,
+    "moves": ["balance", "weak guard"]
+  },
+  "bone helmet": {
+    "type": "head",
+    "value": 9,
+    "desc": "a helmet crafted from sand cluster hardened with bone glue. It's very protective, but very encumbering. +3 Health.",
+    "rating": 3,
+    "moves": ["balance", "weak guard"]
   },
 
   "human corpse": {
@@ -382,7 +463,7 @@
   },
   "blood droplet": {
     "type": "food",
-    "value": 2,
+    "value": 3,
     "rating": 3,
     "desc": "a drop of blood. Leaves an unpleasant taste in your mouth, but is very fulfilling. Heals 3 health on rest. Can be used outside combat to heal 2 health instantly.",
     "text": "You eat the blood droplet. Mmmm, chewy!",
@@ -402,20 +483,8 @@
   },
   "sturdy wood": {
     "type": "item",
-    "value": 1,
+    "value": 2,
     "desc": "this sturdy wood is suitable for building."
-  },
-  "spellcasting manual": {
-    "type": "item",
-    "value": 8,
-    "desc": "a manual that can teach you to be an apprentice spellcaster.",
-    "page": ">view specialize>apprentice>>remove part>item>>to>page"
-  },
-  "ranger manual": {
-    "type": "item",
-    "value": 10,
-    "desc": "a manual that can teach you to be a ranger.",
-    "page": ">view specialize>ranger>>remove part>item>>to>page"
   },
   "mushroom pemmican": {
     "type": "food",
@@ -429,12 +498,6 @@
     "desc": "a healing salve. Apply outside combat to heal 2 health immediately.",
     "page": ">remove part>item>>heal>2>>to>page"
   },
-  "warrior manual": {
-    "type": "item",
-    "value": 10,
-    "desc": "a manual that can teach you to be a warrior.",
-    "page": ">view specialize>warrior>>remove part>item>>to>page"
-  },
   "potion of experience": {
     "type": "item",
     "value": 100,
@@ -446,6 +509,24 @@
     "value": 1000,
     "desc": "a mysterious amulet that you don't remember having at all. Strange...",
     "page": ">copy>return>prev>@amulet of will"
+  },
+  "warrior manual": {
+    "type": "item",
+    "value": 10,
+    "desc": "a manual that can teach you to be a warrior.",
+    "page": ">view specialize>warrior>>remove part>item>>to>page"
+  },
+  "spellcasting manual": {
+    "type": "item",
+    "value": 10,
+    "desc": "a manual that can teach you to be an apprentice spellcaster.",
+    "page": ">view specialize>apprentice>>remove part>item>>to>page"
+  },
+  "ranger manual": {
+    "type": "item",
+    "value": 10,
+    "desc": "a manual that can teach you to be a ranger.",
+    "page": ">view specialize>ranger>>remove part>item>>to>page"
   },
   "shaman manual": {
     "type": "item",
@@ -470,11 +551,10 @@
     "value": 10,
     "desc": "a glass box of intricate arrangement of cogwheels and other machine parts. Could be sold for money."
   },
-  "lottery ticket": {
+  "gift card": {
     "type": "item",
-    "value": 2,
-    "desc": "a lottery ticket. One in a million chance to win 1 million gold!",
-    "page": ">remove part>item>>moneyAdd>0>>to>page"
+    "value": 100,
+    "desc": "a gift card."
   },
   "healing potion": {
     "type": "item",
@@ -484,27 +564,57 @@
   },
   "training manual": {
     "type": "item",
-    "value": 5,
+    "value": 7,
     "desc": "a manual that teaches you a set of moves.",
-    "page": ">view learn>>to>page"
+    "page": ">remove part>item>>view learn>>to>page"
+  },
+  "scroll of rest": {
+    "type": "item",
+    "value": 10,
+    "desc": "a scroll teaching you the move <Rest>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>rest>>to>page"
   },
   "scroll of whirlwind": {
     "type": "item",
-    "value": 5,
+    "value": 15,
     "desc": "a scroll teaching you the move <Whirlwind>.",
     "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>whirlwind>>to>page"
   },
   "scroll of kill": {
     "type": "item",
-    "value": 5,
+    "value": 25,
     "desc": "a scroll teaching you the spell <Kill>.",
     "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>kill>>to>page"
   },
+  "scroll of blood siphon": {
+    "type": "item",
+    "value": 25,
+    "desc": "a scroll teaching you the move <Blood Siphon>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>blood siphon>>to>page"
+  },
   "scroll of siphon": {
     "type": "item",
-    "value": 5,
+    "value": 25,
     "desc": "a scroll teaching you the spell <Siphon>.",
     "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>siphon>>to>page"
+  },
+  "scroll of attract mana": {
+    "type": "item",
+    "value": 15,
+    "desc": "a scroll teaching you the move <Attract Mana>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>attract mana>>to>page"
+  },
+  "scroll of ice nova": {
+    "type": "item",
+    "value": 35,
+    "desc": "a scroll teaching you the move <Ice Nova>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>ice nova>>to>page"
+  },
+  "scroll of petrify": {
+    "type": "item",
+    "value": 20,
+    "desc": "a scroll teaching you the move <Petrify>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>petrify>>to>page"
   },
   "coin bag": {
     "type": "item",
@@ -547,10 +657,22 @@
     "rating": 20,
     "desc": "an unknown paste. Doesn't taste like anything, but incredibly fulfilling."
   },
-  "belt of sustain": {
-    "type": "belt",
-    "value": 1000,
-    "desc": "a metal belt. Continuously creates food and water and places them in attached metal pockets.",
-    "page": ">item>ambrosia paste>to>page"
+  "scroll of lich form": {
+    "type": "item",
+    "value": 20,
+    "desc": "a scroll teaching you the move <Lich Form>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>lich form>>to>page"
+  },
+  "scroll of bless": {
+    "type": "item",
+    "value": 20,
+    "desc": "a scroll teaching you the move <Bless>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>bless>>to>page"
+  },
+  "scroll of regenerate": {
+    "type": "item",
+    "value": 20,
+    "desc": "a scroll teaching you the move <Regenerate>.",
+    "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>regenerate>>to>page"
   }
 }

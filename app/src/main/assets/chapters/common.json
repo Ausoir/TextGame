@@ -13,6 +13,16 @@
       }
     ]
   },
+  "restart": {
+    "title": "Restart",
+    "text": "",
+    "opt": [
+      {
+        "to": ">ad>>loadplayer>player>>saveplayer>save>>refresh chapter>@start",
+        "text": "Start Over"
+      }
+    ]
+  },
   "defeat": {
     "title": "Game Over",
     "text": "It is GAME OVER!",
@@ -28,7 +38,7 @@
     "text": "",
     "opt": [
       {
-        "to": ">loadplayer>player>>saveplayer>save>>refresh chapter>@start",
+        "to": ">ad>>loadplayer>player>>saveplayer>save>>refresh chapter>@start",
         "text": "Start Over"
       }
     ]
