@@ -7,22 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import aoa.R
-import aoa.game.PlayerModel
 import aoa.ui.EquipmentUI
 import com.google.android.material.snackbar.Snackbar
 
 class BuyFragment : EquipmentUI() {
-    lateinit var player: PlayerModel
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        itemList = arguments?.getStringArrayList("stock")!!
         val root = super.onCreateView(inflater, container, savedInstanceState)
-
         listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val itemName = titles[position].toLowerCase().substringBefore(" (")
+            val itemName = itemList[position]
             val item = itemMap[itemName] ?: return@OnItemClickListener
             val overlap = player.getSamePart(itemMap, item.name)
             if (overlap == null) {
@@ -36,6 +32,7 @@ class BuyFragment : EquipmentUI() {
                                 itemList.removeAt(position)
                                 val feedback = resources.getString(R.string.buy_done, itemName, item.value, "g").capitalize()
                                 Snackbar.make(listView, feedback, Snackbar.LENGTH_LONG).show()
+                                removeItem(position)
                             }
                             .setNegativeButton(android.R.string.cancel) { _, _ -> return@setNegativeButton }
                             .show()

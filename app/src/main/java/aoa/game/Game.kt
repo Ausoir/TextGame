@@ -16,8 +16,7 @@ class Game(context: Context){
     val encounters: EncounterController = EncounterController(fileManager)
     val variables: VariableController = VariableController(fileManager)
 
-    private var varMap = hashMapOf("%time" to player.model.getTime()
-    )
+    private var varMap = hashMapOf("%time" to player.model.getTime())
 
     init {
         if (player.model.seed == -1){
@@ -26,9 +25,8 @@ class Game(context: Context){
         player.model.unit.healthPt = (player.model.vars["health"] ?: "1").toInt()
         player.model.unit.allies = arrayListOf()
         player.model.unit.foes = arrayListOf()
-
-        player.model.real = 1
-//        player.model.vars["page"] = ">questFill>Guild of Retrieval 2>>view quest>@field 0"
+//        player.model.real = 1
+//        player.model.vars["page"] = "@day 1"
 //        player.model.vars["gethelp"] = "2"
 //        player.model.vars.remove("getweapon")
 //        player.model.vars.remove("gethelp")

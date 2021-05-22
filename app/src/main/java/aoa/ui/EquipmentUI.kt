@@ -9,6 +9,7 @@ import android.widget.ListView
 import androidx.fragment.app.Fragment
 import aoa.R
 import aoa.game.ItemModel
+import aoa.game.PlayerModel
 
 open class EquipmentUI : Fragment() {
     private val iconMap = mapOf(
@@ -19,9 +20,11 @@ open class EquipmentUI : Fragment() {
             "sigil" to R.drawable.ic_sigil
     )
     lateinit var listView: ListView
-    lateinit var titles: ArrayList<String>
+    lateinit var player: PlayerModel
+    lateinit var titles: ArrayList<String?>
     lateinit var itemMap: HashMap<String, ItemModel>
     lateinit var itemList: ArrayList<String>
+    lateinit var adapter: IconList
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -30,6 +33,8 @@ open class EquipmentUI : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_list, container, false)
         listView = root.findViewById(R.id.list_list) as ListView
+        player = arguments?.getParcelable("player")!!
+        itemList = arguments?.getStringArrayList("stock")!!
         @Suppress("UNCHECKED_CAST")
         itemMap = arguments?.getSerializable("item map") as HashMap<String, ItemModel>
 
@@ -42,7 +47,12 @@ open class EquipmentUI : Fragment() {
             subtitles.add(itemMapped.getDescription())
             icons.add(iconMap[itemMapped.type] ?: R.drawable.ic_armor)
         }
-        listView.adapter = IconList(activity as Activity, titles.toTypedArray(), subtitles.toTypedArray(), icons.toTypedArray())
+        adapter = IconList(activity as Activity, titles, subtitles, icons)
+        listView.adapter = adapter
         return root
+    }
+
+    fun removeItem(position: Int){
+        adapter.remove(adapter.getItem(position))
     }
 }

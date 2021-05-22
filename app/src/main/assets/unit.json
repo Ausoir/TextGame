@@ -153,6 +153,21 @@
       "death": "The pill bug rolls into a ball."
     }
   },
+  "mighty pill bug": {
+    "name": "mighty pill bug",
+    "speed": 1,
+    "health": 8,
+    "moves": [
+      "disengage",
+      "curl",
+      "charge tackle"
+    ],
+    "skills": [],
+    "status": [],
+    "flavors": {
+      "death": "The pill bug rolls into a ball."
+    }
+  },
   "small bird": {
     "name": "small bird",
     "speed": 1,
@@ -377,7 +392,7 @@
   "beetle": {
     "name": "beetle",
     "speed": 1,
-    "health": 8,
+    "health": 7,
     "moves": [
       "charge",
       "slack",
@@ -385,7 +400,9 @@
       "engage",
       "curl"
     ],
-    "skills": [],
+    "skills": [
+      "hardened"
+    ],
     "status": [],
     "flavors": {
       "death": "The beetle collapses with a thud."

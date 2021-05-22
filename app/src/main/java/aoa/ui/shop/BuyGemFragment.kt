@@ -22,9 +22,9 @@ class BuyGemFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_list, container, false)
         val listView = root.findViewById(R.id.list_list) as ListView
 
-        val titles = arrayOf("Purchase a gem", "Purchase 3 gems", "Purchase 7 gems")
-        val subtitles = arrayOf("2.00 USD", "5.00 USD", "10.00 USD")
-        val icons = arrayOf(R.drawable.ic_1, R.drawable.ic_3, R.drawable.ic_7)
+        val titles = arrayListOf<String?>("Purchase a gem", "Purchase 3 gems", "Purchase 7 gems")
+        val subtitles = arrayListOf("2.00 USD", "5.00 USD", "10.00 USD")
+        val icons = arrayListOf(R.drawable.ic_1, R.drawable.ic_3, R.drawable.ic_7)
         listView.adapter = IconList(activity as Activity, titles, subtitles, icons)
         listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (position) {

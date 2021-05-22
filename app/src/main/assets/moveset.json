@@ -293,6 +293,11 @@
         "target": 1
       },
       {
+        "effect": "unblock",
+        "target": 1,
+        "text": "%Us block is gone!"
+      },
+      {
         "effect": "health",
         "target": 1,
         "value": "-1"
@@ -580,12 +585,7 @@
       {
         "effect": "health",
         "target": 4,
-        "value": "-2"
-      },
-      {
-        "effect": "health",
-        "target": 2,
-        "value": "-1"
+        "value": "-3"
       },
       {
         "effect": "stun",
@@ -598,7 +598,7 @@
         "target": 1
       }
     ],
-    "desc": "deal 3 damage to your target and 2 damage to everyone around it.",
+    "desc": "deal 3 damage to your target and everyone around it.",
     "text": "perform%s grand cleave"
   },
   "whirlwind": {
@@ -741,7 +741,8 @@
     "effects": [
       {
         "effect": "thorn",
-        "target": 3,
+        "target": 1,
+        "value": 3,
         "duration": 1
       }
     ],
@@ -753,16 +754,17 @@
       {
         "effect": "block",
         "target": 1,
-        "value": "1",
+        "value": "3",
         "start_text": "%U gain%s %v block."
       },
       {
         "effect": "thorn",
-        "target": 3,
-        "duration": 1
+        "target": 1,
+        "duration": 1,
+        "value": 3
       }
     ],
-    "desc": "gain 1 block. Reflect the next hit with 3 damage.",
+    "desc": "gain 3 block. Reflect the next hit with 3 damage.",
     "text": "read%ies to riposte"
   },
   "offensive pose": {
@@ -1217,11 +1219,11 @@
       {
         "effect": "block",
         "target": 1,
-        "value": "4",
+        "value": "3",
         "start_text": "%U gain%s %v block."
       }
     ],
-    "desc": "gain 4 block. Removes any vulnerability.",
+    "desc": "gain 3 block. Remove any vulnerability.",
     "text": "guard%s firmly"
   },
   "defensive pose": {
@@ -3618,9 +3620,8 @@
   "run": {
     "effects": [
       {
-        "effect": "health",
-        "target": 1,
-        "value": "-80"
+        "effect": "run",
+        "target": 1
       }
     ],
     "desc": "retreat from combat.",

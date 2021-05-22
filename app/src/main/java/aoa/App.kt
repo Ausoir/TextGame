@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -509,6 +508,7 @@ class App : AppCompatActivity() {
     override fun onStart(){
         super.onStart()
         openDialog(game.player.model.vars["page"]!!)
+//        Tools.validate_chapter(game)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -532,6 +532,7 @@ class App : AppCompatActivity() {
                     )
                     .build()
         } else {
+            @Suppress("DEPRECATION")
             SoundPool(
                 3,
                 AudioManager.STREAM_MUSIC,
@@ -566,19 +567,6 @@ class App : AppCompatActivity() {
         }
         else -> {
             super.onOptionsItemSelected(item)
-        }
-    }
-
-    @Suppress("DEPRECATION")
-    private fun fullscreen() {
-        if (Build.VERSION.SDK_INT < 19) {
-            val v = this.window.decorView
-            v.systemUiVisibility = View.GONE
-        } else if (Build.VERSION.SDK_INT >= 19) {
-            val decorView = window.decorView
-            val uiOptions =
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-            decorView.systemUiVisibility = uiOptions
         }
     }
 

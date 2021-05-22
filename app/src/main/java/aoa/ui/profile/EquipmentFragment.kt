@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import aoa.App
 import aoa.R
-import aoa.game.PlayerModel
 import aoa.ui.EquipmentUI
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,11 +21,9 @@ class EquipmentFragment : EquipmentUI() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val player = arguments?.getParcelable<PlayerModel>("player")!!
-        itemList = player.equip
         val root = super.onCreateView(inflater, container, savedInstanceState)
         listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val itemName = titles[position].toLowerCase().substringBefore(" (")
+            val itemName = itemList[position]
             val item = itemMap[itemName] ?: return@OnItemClickListener
             if (item.page != null) {
                 AlertDialog.Builder(activity)

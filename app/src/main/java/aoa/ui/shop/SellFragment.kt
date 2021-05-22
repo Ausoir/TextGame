@@ -18,12 +18,9 @@ class SellFragment : EquipmentUI() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val player = arguments?.getParcelable<PlayerModel>("player")!!
-        itemList = player.equip
         val root = super.onCreateView(inflater, container, savedInstanceState)
-
         listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val itemName = titles[position].toLowerCase().substringBefore(" (")
+            val itemName = itemList[position]
             val item = itemMap[itemName] ?: return@OnItemClickListener
             if (item.value < 1000) {
                 AlertDialog.Builder(activity)
@@ -35,6 +32,7 @@ class SellFragment : EquipmentUI() {
                             player.money += selling.value
                             val feedback = resources.getString(R.string.sell_done, itemName, item.value, "g").capitalize()
                             Snackbar.make(listView, feedback, Snackbar.LENGTH_LONG).show()
+                            removeItem(position)
                         }
                         .setNegativeButton(android.R.string.cancel) { _, _ -> return@setNegativeButton }
                         .show()

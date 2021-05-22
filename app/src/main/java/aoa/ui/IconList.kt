@@ -10,9 +10,9 @@ import aoa.R
 
 class IconList(
     private val context: Activity,
-    private val maintitle: Array<String>,
-    private val subtitle: Array<String>,
-    private val imgid: Array<Int>
+    private val maintitle: ArrayList<String?>,
+    private val subtitle: ArrayList<String>,
+    private val imgid: ArrayList<Int>
 ) :
     ArrayAdapter<String?>(context, R.layout.listview, maintitle) {
         override fun getView(position: Int, view: View?, parent: ViewGroup): View {

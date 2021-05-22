@@ -29,6 +29,7 @@ object Grammar {
             }
         }
     }
+    @Suppress("unused")
     fun getArticleList(words: List<String>): String{
         if (words.size == 1){
             return getArticle(words[0])
@@ -37,7 +38,7 @@ object Grammar {
             return getArticle(words[0]) + " and " + getArticle(words[1])
         }
         val last = words.last()
-        return words.joinToString { it ->
+        return words.joinToString {
             if (it == last){
                 "and " + getArticle(it)
             } else {
@@ -89,13 +90,13 @@ object Grammar {
             }
         }
     }
-    fun ordinalIndexOf(str: String, substr: String?, nth: Int): Int {
+    private fun ordinalIndexOf(str: String, sub: String?, nth: Int): Int {
         var i = nth
-        var pos = str.indexOf(substr!!)
-        while (--i > 0 && pos != -1) pos = str.indexOf(substr, pos + 1)
+        var pos = str.indexOf(sub!!)
+        while (--i > 0 && pos != -1) pos = str.indexOf(sub, pos + 1)
         return pos
     }
-    fun substringAfter(str: String, substr: String?, nth: Int): String{
-        return str.substring(ordinalIndexOf(str, substr, nth) + 1)
+    fun substringAfter(str: String, sub: String?, nth: Int): String{
+        return str.substring(ordinalIndexOf(str, sub, nth) + 1)
     }
 }

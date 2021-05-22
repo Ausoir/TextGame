@@ -24,7 +24,7 @@
     "text": "You are at a woodcutters' village.\nThere are bulky lumberjacks dressed in leather and furs walking around.",
     "opt": [
       {
-        "to": ">view rest>@village rest",
+        "to": ">view rest>@village",
         "text": "Rest and heal"
       },
       {

@@ -129,6 +129,9 @@ data class Status(val id: String?, val effect: String, val target: Int, var dura
                     healthChange = value?.toInt() ?: 0
                 }
             }
+            "run" -> {
+                target.healthPt = 0
+            }
             "torment" -> {
                 healthChange = -(target.healthPt / 2)
             }
@@ -210,9 +213,10 @@ data class Status(val id: String?, val effect: String, val target: Int, var dura
                     result += imposer.inflict(oldHp - target.healthPt)
                     result += getStatusDescription(target, end_text)
                 }
-                if (target.getStatus("thorn") != null){
+                val thorn = target.getStatus("thorn")
+                if (thorn != null){
                     result += target.replaceNouns("%U retaliate%s.\n")
-                    result += imposer.inflict(-1)
+                    result += imposer.inflict(-(thorn.value?.toInt() ?: 1))
                 }
             }
         }

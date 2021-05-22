@@ -22,7 +22,7 @@ class CompanionFragment : Fragment() {
         val listView = root.findViewById(R.id.list_list) as ListView
         val player = arguments?.getParcelable<PlayerModel>("player")
 
-        val titles = ArrayList<String>()
+        val titles = ArrayList<String?>()
         val subtitles = ArrayList<String>()
         val icons = ArrayList<Int>()
         for (i in player!!.companion){
@@ -30,7 +30,7 @@ class CompanionFragment : Fragment() {
             subtitles.add(resources.getString(R.string.companion))
             icons.add(R.drawable.ic_friend)
         }
-        listView.adapter = IconList(activity as Activity, titles.toTypedArray(), subtitles.toTypedArray(), icons.toTypedArray())
+        listView.adapter = IconList(activity as Activity, titles, subtitles, icons)
         return root
     }
 }

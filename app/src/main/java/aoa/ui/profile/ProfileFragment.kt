@@ -32,7 +32,7 @@ class ProfileFragment : Fragment() {
         itemMap = arguments?.getSerializable("item map") ?: return root
 
         adapter.addFragment("", makeFragment(PlayerFragment(), arrayOf("player")))
-        adapter.addFragment("", makeFragment(EquipmentFragment(), arrayOf("player", "item map")))
+        adapter.addFragment("", makeFragment(EquipmentFragment(), arrayOf("player", "item map", "equip")))
         adapter.addFragment("", makeFragment(MovesetFragment(), arrayOf("moveset")))
         adapter.addFragment("", makeFragment(CompanionFragment(), arrayOf("player")))
         adapter.addFragment("", makeFragment(SettingFragment(), arrayOf("player")))
@@ -63,6 +63,7 @@ class ProfileFragment : Fragment() {
                 "player" -> bundle.putParcelable("player", player)
                 "item map" -> bundle.putSerializable("item map", itemMap)
                 "moveset" -> bundle.putSerializable("moveset", moveset)
+                "equip" -> bundle.putSerializable("stock", player.equip)
             }
         }
         fragment.arguments = bundle

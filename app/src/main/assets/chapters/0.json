@@ -130,7 +130,7 @@
   },
   "ant hill ambushed skip": {
     "title": "Home",
-    "text": "It's probably nothing... Even if it was, you'll hear it from someone else later.\nYou lay down on your hammock and rest while all your roommates leave to find out what's going on.\nYou fall asleep.",
+    "text": "It's probably nothing... Even if it was, you'll hear it from someone else later.\n\nYou lay down on your hammock and rest while all your roommates leave to find out what's going on.\nYou fall asleep.",
     "opt": [
       {
         "to": ">time>8>@ant hill aftermath",
@@ -351,7 +351,7 @@
   },
   "ant hill temple": {
     "title": "Ant Hill Temple",
-    "text": "You walk into the underground temple.\nThere is a blue stone altar in the center surrounded by glowing mushrooms.\nOn the bench at the corner of the room you spot Cobby, a veteran hunter of Ant Hill, and Cheese, son of the priest.\nThe priest dressed in white robe comes out from the back to greet you.\n\nPriest: [Welcome.]",
+    "text": "You walk into the underground temple.\nThere is a blue stone altar in the center surrounded by glowing mushrooms.\nOn the bench at the corner of the room you spot Cobby, a veteran hunter of Ant Hill, and Cheese, son of the priest.\n\nThe priest dressed in a white robe comes out from the back to greet you.\n\nPriest: [Welcome.]",
     "opt": [
       {
         "to": "@ant hill temple1",
@@ -371,7 +371,7 @@
   },
   "ant hill temple1": {
     "title": "Ant Hill Temple",
-    "text": "Priest: [A foreign visitor named Lucid hailing from the city of Jericho is with us right now. He's the spellcaster who escaped the spider nest.]\n\nLucid: [Hello.]\n\nPriest: [Anyways. As you well know, every month we send a hunter on an arduous journey to Stone Henge. Cobby here has been selected for that honor this month. You will assist him in his journey as his scout.]\n\nPriest: [Also... my son will be accompanying you. I know I may be burdening you with this, but please try your best. Don't prioritize taking care of him. Reaching Stone Henge comes first.]\n\nCheese: [What are you saying, dad? Why do you always make me look bad?]\n\nPriest: [...Anyways, we will hold a great feast tomorrow to celebrate Lucid's arrival and your departure.]\n\nYou see Lucid lost in thought with a worried look on his face.",
+    "text": "Priest: [A foreign visitor named Lucid hailing from the city of Jericho is with us right now. He's the spellcaster who escaped the spider nest.]\n\nLucid: [Hello.]\n\nPriest: [Anyways. As you well know, every month we send a hunter on an arduous journey to Stone Henge. Cobby here has been selected for that honor this month. You will assist him in his journey as his scout.]\n\nCobby: [Hi there.]\n\nCobby waves at you from the corner.\n\nCobby: [This is going to be a deadly journey. But it is far more honorable than normal scout work. I hope you are ready.]\n\nPriest: [Also... my son will be accompanying you. I know I may be burdening you with this, but please try your best. Don't prioritize taking care of him. Reaching Stone Henge comes first.]\n\nCheese: [What are you saying, dad? Why do you always make me look bad?]\n\nPriest: [...Anyways, we will hold a great feast tomorrow to celebrate Lucid's arrival and your departure.]\n\nYou see Lucid lost in thought with a worried look on his face.",
     "opt": [
       {
         "to": ">save>chapter>1>>refresh chapter>@start",
@@ -381,7 +381,7 @@
   },
   "ant hill temple2": {
     "title": "Ant Hill Temple",
-    "text": "Priest: [As you well know, every month we send a hunter on an arduous journey to Stone Henge to keep in touch with them. Cobby here has been selected for that honor this month. You will assist him in his journey as his scout.]\n\nPriest: [Also... my son will accompany you on the trip. I know I may be burdening you with this, but please try your best. Don't prioritize taking care of him. Reaching Stone Henge comes first.]\n\nCheese: [What are you saying, dad? Why do you always make me look bad?]\n\nPriest: [... Anyways, we will hold a feast for your departure tomorrow so you can say your good byes to your folks. Always remember that you are carrying out one of the most honorable quests for Ant Hill.]",
+    "text": "Priest: [As you well know, every month we send a hunter on an arduous journey to Stone Henge to keep in touch with them. Cobby here has been selected for that honor this month. You will assist him in his journey as his scout.]\n\nCobby: [Hi there.]\n\nCobby waves at you from the corner.\n\nCobby: [This is going to be a deadly journey. But it is far more honorable than normal scout work. I hope you are ready.]\n\nPriest: [Also... my son will accompany you on the trip. I know I may be burdening you with this, but please try your best. Don't prioritize taking care of him. Reaching Stone Henge comes first.]\n\nCheese: [What are you saying, dad? Why do you always make me look bad?]\n\nPriest: [... Anyways, we will hold a feast for your departure tomorrow so you can say your good byes to your folks. Always remember that you are carrying out one of the most honorable quests for Ant Hill.]",
     "opt": [
       {
         "to": ">save>chapter>1>>refresh chapter>@start",

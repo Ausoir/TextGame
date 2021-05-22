@@ -11,8 +11,7 @@ data class DialogOptionModel(var to: String, var text: String, var reqs: Array<S
     constructor(parcel: Parcel) : this(
             parcel.readString() ?: "",
             parcel.readString() ?: "",
-            parcel.readArray(String.javaClass.classLoader) as Array<String>) {
-    }
+            parcel.readArray(String.javaClass.classLoader) as Array<String>)
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(to)
@@ -22,6 +21,17 @@ data class DialogOptionModel(var to: String, var text: String, var reqs: Array<S
 
     override fun describeContents(): Int {
         return 0
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return other == this
+    }
+
+    override fun hashCode(): Int {
+        var result = to.hashCode()
+        result = 31 * result + text.hashCode()
+        result = 31 * result + (reqs?.contentHashCode() ?: 0)
+        return result
     }
 
     companion object CREATOR : Parcelable.Creator<DialogOptionModel> {

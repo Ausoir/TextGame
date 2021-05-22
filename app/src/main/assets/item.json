@@ -5,6 +5,13 @@
     "gem": 1,
     "desc": "a mysterious sigil said to bring you back to life once."
   },
+  "elixir": {
+    "type": "item",
+    "value": 1000,
+    "gem": 1,
+    "desc": "help you recover from your past injuries. Gets rid of most flinching.",
+    "page": ">forget>flinch>>forget>flinch>>to>page"
+  },
   "belt of sustain": {
     "type": "belt",
     "value": 200,
@@ -22,14 +29,14 @@
   "mystical orb": {
     "type": "item",
     "value": 1000,
-    "gem": 1,
+    "gem": 2,
     "desc": "a magical container containing something good... Or does it?",
     "page": ">remove part>item>>loot>mystical orb>>to>page"
   },
   "mystical text": {
     "type": "item",
     "value": 1000,
-    "gem": 1,
+    "gem": 2,
     "desc": "a magical scroll containing some arcane knowledge... Or does it?",
     "page": ">remove part>item>>loot>mystical text>>to>page"
   },
@@ -73,7 +80,13 @@
     "type": "offhand",
     "value": 3,
     "desc": "a wooden shield used to block.",
-    "moves": ["weak guard"]
+    "moves": ["guard"]
+  },
+  "sand shield": {
+    "type": "offhand",
+    "value": 9,
+    "desc": "a wooden shield coated in sand used to block.",
+    "moves": ["heavy guard"]
   },
   "ant leg": {
     "type": "weapon",
@@ -113,6 +126,12 @@
     "type": "robe",
     "value": 1,
     "desc": "a grass robe made from woven grass fibers. Provides very little warmth."
+  },
+  "fabric pants": {
+    "type": "pants",
+    "value": 3,
+    "desc": "a very comfortable fabric pants. Lets you kick easier.",
+    "moves": ["kick", "kick", "kick"]
   },
   "feather": {
     "type": "head",
@@ -209,6 +228,12 @@
     "value": 5,
     "desc": "a pair of chitin gauntlets. Allows you to punch.",
     "moves": ["punch"]
+  },
+  "slamming gauntlets": {
+    "type": "hands",
+    "value": 140,
+    "desc": "a pair of heavy gauntlets that can lock together to form a metal ball.",
+    "moves": ["grand slam"]
   },
   "chitin shield": {
     "type": "offhand",
@@ -576,7 +601,7 @@
   },
   "scroll of whirlwind": {
     "type": "item",
-    "value": 15,
+    "value": 20,
     "desc": "a scroll teaching you the move <Whirlwind>.",
     "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>whirlwind>>to>page"
   },
@@ -674,5 +699,11 @@
     "value": 20,
     "desc": "a scroll teaching you the move <Regenerate>.",
     "page": ">custom>You read the scroll.\n\nYou learn a new move!>>remove part>item>>learn>regenerate>>to>page"
+  },
+  "scroll of kick": {
+    "type": "item",
+    "value": 1,
+    "desc": "a scroll teaching you how to kick.",
+    "page": ">custom>You read the scroll.\n\nThe scrolls says: To kick, move your right leg forward quickly.>>remove part>item>>to>page"
   }
 }

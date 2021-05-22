@@ -9,7 +9,7 @@
     "units": ["horned spider", "horned spider"],
     "loots": ["", "", "", "", "", "", "", "blood droplet", "chitin breastplate", "chitin gauntlets", "chitin greave", "chitin shield"]
   },
-  "two feral humans": {
+  "Two feral humans": {
     "desc": "Two feral women wearing rags engage you.\nIt observes you carefully, as if hunting an animal.",
     "units": ["feral human", "feral human"],
     "loots": ["web bolas", "sharp stick", "splinter spear", "mushroom pemmican"]
@@ -100,7 +100,7 @@
     "loots": ["pollen ball", "bug meat", "ant leg"]
   },
   "bee": {
-    "desc": "A yellow bumble bee flies toward you.\nIt's cute looking.",
+    "desc": "A yellow bumble bee flies toward you.\nIt looks cute.",
     "units": ["bee"],
     "loots": ["pollen ball"]
   },
@@ -139,14 +139,24 @@
     "units": ["rat"],
     "loots": ["beast meat"]
   },
+  "rat swarm": {
+    "desc": "A swarm of ferocious beasts bigger than you approach you.\nRats are dangerous predators that can charge and shred you in seconds. Beware!",
+    "units": ["rat", "rat", "rat"],
+    "loots": ["beast meat"]
+  },
   "rotting pile": {
     "desc": "You find a rotting pile of leaves and manure behind a boulder.\nThe rotting pile is infested with pill bugs and worms.\nSome of them notice you and crawl out.",
-    "units": ["pill bug", "pill bug", "worm"],
+    "units": ["mighty pill bug", "mighty pill bug", "worm"],
     "loots": ["sturdy wood"]
   },
   "ant swarm": {
     "desc": "A swarm of ants are running for you right now.\nThey must've run out of things to feed their queen.",
     "units": ["ant", "ant", "ant", "ant", "ant"],
+    "loots": ["bug meat"]
+  },
+  "fire ant swarm": {
+    "desc": "A swarm of fire ants are crawling towards you.\nTheir skittering legs sounds like hailstorm.",
+    "units": ["fire ant", "fire ant", "fire ant", "fire ant", "fire ant"],
     "loots": ["bug meat"]
   },
   "stone henge arena": {

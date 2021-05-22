@@ -25,7 +25,7 @@
   },
   "sparring": {
     "title": "Training ground",
-    "text": "Cobby: [Let's learn about the basics of combat.]\n\nCobby: [On the top right, you'll see a cyan button that you can click to access your profile. You can view the list of your moves under <movesets> menu in the profile screen.]\n\nCobby: [Since you are not very skilled in fighting, you don't have many offensive moves. Let me teach you an offensive move.\n\nScobby teaches you <Bash>.\n\nCobby: [Now, try to deal damage to me. You will need to use your <Engage> move to get close to me before you can use any melee skills like <Bash>.]\n\nCobby: [Let's spar!]",
+    "text": "Cobby: [Let's learn about the basics of combat.]\n\nCobby: [On the top right, you'll see a cyan button that you can click to access your profile. You can view the list of your moves under the 'Movesets' menu in the profile screen.]\n\nCobby: [Since you are not very skilled in fighting, you don't have many offensive moves. Let me teach you an offensive move.]\n\nCobby teaches you <b><i>Bash</i></b>.\n\nCobby: [Now, try to deal damage to me. You will need to use your <b><i>Engage</i></b> move to get close to me before you can use any melee skills like <b><i>Bash</i></b>.]\n\nCobby: [Let's spar!]",
     "opt": [
       {
         "to": ">learn>bash>>encounter>Sparring Cobby>@sparring2>@sparring2",
@@ -66,15 +66,15 @@
     "opt": [
       {
         "to": ">learn>tackle>@sparring end",
-        "text": "Learn <Tackle>"
+        "text": "Learn <b><i>Tackle</i></b>"
       },
       {
         "to": ">learn>bash>@sparring end",
-        "text": "Learn <Bash>"
+        "text": "Learn <b><i>Bash</i></b>"
       },
       {
         "to": ">learn>charge>@sparring end",
-        "text": "Learn <Charge>"
+        "text": "Learn <b><i>Charge</i></b>"
       }
     ]
   },
@@ -480,7 +480,7 @@
   },
   "day 2-1-1": {
     "title": "Day 2 - Fields",
-    "text": "Cheese: [Guys, don't leave without me!]\n\nCobby: [Cheese, how many times do I have to tell you not to shout? You got a death wish, boy?]\n\nYou hear a buzzing sound.",
+    "text": "You wake Cobby up.\n\nCobby: [Yea, we could teach him a lesson. He should know better than to wander without us.]\n\nYou leave without Cheese.\n\nCheese: [Guys, don't leave without me!]\n\nCobby: [Cheese, how many times do I have to tell you not to shout? You got a death wish, boy?]\n\nYou hear a buzzing sound.",
     "opt": [
       {
         "to": ">encounter>bee>@journey defeat>>timeset>20>@day 2 end",
@@ -575,10 +575,10 @@
   },
   "day 2 end2-1": {
     "title": "Day 2 - Fields",
-    "text": "You leave Cheese on watch and go to sleep.\n\n...\n\nYou wake up to Cobby's painful screams.\nYou see that there are two bloodquitos sucking blood out of his left arm and right arm, respectively.\nThere is blood everywhere.\n\nCobby: [ARRRRGGHHHH!!!!!]\n\nCheese: [Cobby, shut up! I'm trying to sleep.].",
+    "text": "You side with Cheese and stop.\nYou make room to sleep and prepare to rest.\nYou leave Cheese on watch and go to sleep.\n\n...\n\nYou wake up to Cobby's painful screams.\nYou see that there are two bloodquitos sucking blood out of his left arm and right arm, respectively.\nThere is blood everywhere.\n\nCobby: [ARRRRGGHHHH!!!!!]\n\nYou see Cheese lying down sleeping under a tree.\n\nCheese: [Cobby, shut up! I'm trying to sleep.]",
     "opt": [
       {
-        "to": ">drop>Cobby>>drop>Cheese>>encounter>two bloodquitos>@journey defeat>>join>Cheese>timeset>10>@day 3-2",
+        "to": ">drop>Cobby>>drop>Cheese>>encounter>two bloodquitos>@journey defeat>>join>Cheese>>timeset>10>@day 3-2",
         "text": "Fight"
       }
     ]
@@ -599,7 +599,7 @@
   },
   "day 3-2": {
     "title": "Day 3 - Fields",
-    "text": "It is the third day.\nCobby: [I am very sick... I hope we don't get attacked.]\n\nCheese: [I'm sorry.]\n\nCobby: [Please lead us through the safest route.]\n\nWalking down a green valley, you see a giant blue beetle grazing on the grass. You remember Cobby telling you that he can craft good weapons out of blue beetle chitin.",
+    "text": "It is the third day.\nCobby: [I am very sick... I hope we don't get attacked.]\n\nCheese: [I'm sorry.]\n\nCobby: [Please lead us through the safest route.]\n\nWalking down a green valley, you see a giant blue beetle grazing on the grass.\nYou remember Cobby telling you earlier that he can craft good weapons out of blue beetle chitin.",
     "opt": [
       {
         "to": ">encounter>beetle>@journey defeat>>timeset>20>@day 3 end",
@@ -692,7 +692,7 @@
   },
   "stone henge trainer": {
     "title": "Stone Henge Trainer",
-    "text": "Trainer: [Welcome. I am a trainer known for my excellence in training discipline. If you have problems with the move <flinch>, I can help remove it for 3 gold.]",
+    "text": "Trainer: [Welcome. I am a trainer known for my excellence in training discipline. If you have problems with the move <b><i>Flinch</i></b>, I can help remove it for 3 gold.]",
     "opt": [
       {
         "to": ">moneyAdd>-3>>forget>flinch>@stone henge",
@@ -739,7 +739,7 @@
   },
   "stone henge tour": {
     "title": "Stone Henge",
-    "text": "Cobby: [I could use a drink too. Come with us, Cheese.]\n\nCheese: [No... We've been walking day and night for like the past week. Just let me sleep.]\n\nYou and Cobby leave the room to get to the tavern.\nPemmi, who was guarding the entrance of your guest room, stops you.\n\nPemmi: [Sorry! The priest instructed me to keep you inside for today. You've traveled a long way, and the priest wants you to get enough rest. I'll bring you food and drinks.]\n\nCobby: [Hmm... Okay. Maybe we should cool off today.]\n\nYou ask Pemmi for some drinks from the tavern.\n\nCobby: [Hey, Pemmi? why don't you join us for dinner? I'd like to learn about Stone Henge.]\n\nPemmi: [Sorry! the priest doesn't let his guards speak to visitors outside business. I'm pretty new here, so I don't want to break any rules, sorry!]\n\nCobby: [Okay... I'll see you around, Pemmi.]\n\nCobby: [You and me then, huh?]\n\n---\n\nA few hours pass, and you and Cobby are inebriated.\n\nCobby: [Ay, we should definitely call in Pemmi. You know, there are so many pretty faces in Stone Henge. I should try to take Pemmi back with us, you know? I'm 25 now and I need to find a bride!]\n\nCobby gets out of the room.\n\nYou pass out.",
+    "text": "Cobby: [I could use a drink too. Come with us, Cheese.]\n\nCheese: [No... We've been walking day and night for like the past week. Just let me sleep.]\n\nYou and Cobby leave the room to get to the tavern.\nPemmi, who was guarding the entrance of your guest room, stops you.\n\nPemmi: [Sorry! The priest instructed me to keep you inside for today. You've traveled a long way, and the priest wants you to get enough rest. I'll bring you food and drinks.]\n\nCobby: [Hmm... Okay. Maybe we should cool off today.]\n\nYou ask Pemmi for some drinks from the tavern.\n\nCobby: [Hey, Pemmi? why don't you join us for dinner? I'd like to learn about Stone Henge.]\n\nPemmi: [Sorry! the priest doesn't let his guards speak to visitors outside business. I'm pretty new here, so I don't want to break any rules, sorry!]\n\nCobby: [Okay... I'll see you around, Pemmi.]\n\nCobby: [You and me then, huh?]\n\n---\n\nA few hours pass, and you and Cobby are inebriated.\n\nCobby: [Ay, we should definitely call in Pemmi. You know, there are so many pretty faces in Stone Henge. I should try to take Pemmi back with us, you know? I'm 25 now and I need to find a bride!]\n\nCobby gets out the room.\n\nYou pass out.",
     "opt": [
       {
         "to": ">heal>8>>timeset>22>@stone henge 3",
@@ -793,7 +793,7 @@
   },
   "stone henge 7": {
     "title": "Spider Nest",
-    "text": "Cobby: [WAKE UP, GODDAMMIT!]\n\nYou snap out of your hypnosis.\n\nIn front of you stands Cobby with a knife in his hands. It looks like he just cut you free from your hand binding.\nYou see Cheese beside you, just as confused as you are.\n\nCobby: [We gotta get out of here, now!]\n\nYou look around.\nIt looks like you are in a spider nest.\nIt is dark, and the only source of light is from a blue glowing orb down the webbed halls.\nBeside the blue spell light you see someone who looks like Pemmi, the priest's guard that you met earlier.\n\nPemmi: [I sense another one coming. We can't run from it, so let's kill it quick!]\n\nCobby: [Cheese, stay back and alert us if there are more coming.]\n\nCheese: [Uh.. ok?]",
+    "text": "Cobby: [WAKE UP, GODDAMMIT!]\n\nYou snap out of your hypnosis.\n\nIn front of you stands Cobby with a knife in his hands. It looks like he just cut you free from your hand binding.\nYou see Cheese beside you, just as confused as you are.\n\nCobby: [We gotta get out of here, now!]\n\nYou look around.\n\nIt looks like you are in a dirt tunnel.\nIt is dark, and the only source of light is from a blue glowing orb down the webbed halls.\nBeside the blue spell light you see someone who looks like Pemmi, the priest's guard that you met earlier.\n\nPemmi: [I sense another one coming. We can't run from it, so let's kill it quick!]\n\nCobby: [Cheese, stay back and alert us if there are more coming.]\n\nCheese: [Uh.. ok?]",
     "opt": [
       {
         "to": ">drop>Cheese>>encounter>horned spider>@stone henge 8-1>@stone henge 8-2",
@@ -823,7 +823,7 @@
   },
   "stone henge 9": {
     "title": "Spider Nest",
-    "text": "You try to move quickly through the tunnels, but every surface is covered with sticky spiderwebs.\nYou have to stop and scrape off spiderwebs from under your feet every once in a while.\n\nPemmi: [I feel air... get the knife, that's the exit!]\n\nYou break through a spiderweb covering and reach the surface.\nYou are met with pleasant morning light leaking through the canopy of a forest.\n\nYour group continue moving, constantly looking back in paranoia, until you are out of the forest.\n\nCheese: [Guys, I'm exhausted. Please, what is going on?]\n\nPemmi: [I think we are far enough, let's find a place to rest...]",
+    "text": "You try to move quickly through the tunnels, but every surface is covered with sticky spiderwebs.\nYou have to stop and scrape off spiderwebs from under your feet every once in a while.\n\nPemmi: [I feel air... get the knife, that's the exit!]\n\nYou break through a spiderweb covering and reach the surface.\nYou are met with pleasant morning sunlight leaking through the canopy of a forest.\n\nYour group continue moving, constantly looking back in paranoia, until you are out of the forest.\n\nCheese: [Guys, I'm exhausted. Please, what is going on?]\n\nPemmi: [I think we are far enough, let's find a place to rest...]",
     "opt": [
       {
         "to": "@stone henge 10",

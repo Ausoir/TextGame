@@ -25,15 +25,12 @@ class SettingFragment : Fragment() {
         val listView = root.findViewById(R.id.list_list) as ListView
         val player = arguments?.getParcelable<PlayerModel>("player")!!
 
-        val titles = ArrayList<String>()
+        val titles = ArrayList<String?>()
         val subtitles = ArrayList<String>()
         val icons = ArrayList<Int>()
         titles.add("Start Over")
         subtitles.add("Erase data and start over from the very beginning.")
         icons.add(R.drawable.ic_restart)
-        titles.add("Turn Bright")
-        subtitles.add("")
-        icons.add(R.drawable.ic_hand)
         if ("mute" !in player.vars){
             titles.add("Mute")
             subtitles.add("Mute all sounds.")
@@ -43,7 +40,7 @@ class SettingFragment : Fragment() {
             subtitles.add("Unmute all sounds.")
             icons.add(R.drawable.ic_unmute)
         }
-        listView.adapter = IconList(activity as Activity, titles.toTypedArray(), subtitles.toTypedArray(), icons.toTypedArray())
+        listView.adapter = IconList(activity as Activity, titles, subtitles, icons)
         listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             when (titles[position]) {
                 "Start Over" -> {
@@ -57,7 +54,7 @@ class SettingFragment : Fragment() {
                             .setNegativeButton(android.R.string.cancel) { _, _ -> return@setNegativeButton }
                             .show()
                 }
-                "Turn Bright" -> {
+                "Pass Time" -> {
                     val app: App = activity as App
                     app.openDialog(">time>12>>to>page")
                 }

@@ -58,20 +58,20 @@ class HomeFragment : HtmlTextFragment() {
 
     private fun addDialogText(text: String) {
         var newText = text
-        newText = newText.replace("Lucid:", "<font color='#334488'>Lucid</font>:")
-        newText = newText.replace("Pemmi:", "<font color='#882266'>Pemmi</font>:")
-        newText = newText.replace("Cheese:", "<font color='#887733'>Cheese</font>:")
-        newText = newText.replace("Cobby:", "<font color='#774422'>Cobby</font>:")
-        newText = newText.replace("Sugar:", "<font color='#992222'>Sugar</font>:")
-        newText = newText.replace("Bigs:", "<font color='#443355'>Bigs</font>:")
-        newText = newText.replace("Priest:", "<font color='#335533'>Priest</font>:")
+        newText = newText.replace("Lucid:", "<font color='#334488'><b>Lucid</b></font>:")
+        newText = newText.replace("Pemmi:", "<font color='#882266'><b>Pemmi</b></font>:")
+        newText = newText.replace("Cheese:", "<font color='#887733'><b>Cheese</b></font>:")
+        newText = newText.replace("Cobby:", "<font color='#774422'><b>Cobby</b></font>:")
+        newText = newText.replace("Sugar:", "<font color='#992222'><b>Sugar</b></font>:")
+        newText = newText.replace("Bigs:", "<font color='#443355'><b>Bigs</b></font>:")
+        newText = newText.replace("Priest:", "<font color='#335533'><b>Priest</b></font>:")
         val quotes = newText.split("]")
         if (quotes.size > 1){
             var result = ""
             for (quote in quotes){
                 if (quote.isNotEmpty()) {
                     val split = quote.split("[")
-                    result += if (split.size > 1) split[0] + "[<font color='#DFDFDF'>${split[1]}</font>]"
+                    result += if (split.size > 1) split[0] + "[<font color='#DCDCDC'>${split[1]}</font>]"
                     else split[0]
                 }
             }

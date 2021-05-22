@@ -2,7 +2,6 @@ package aoa.ui.shop
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +25,7 @@ class QuestFragment : Fragment() {
         val listView = root.findViewById(R.id.list_list) as ListView
         val player = arguments?.getParcelable<PlayerModel>("player")!!
 
-        val titles = ArrayList<String>()
+        val titles = ArrayList<String?>()
         val subtitles = ArrayList<String>()
         val pages = ArrayList<String>()
         val icons = ArrayList<Int>()
@@ -37,7 +36,7 @@ class QuestFragment : Fragment() {
             subtitles.add(split[2])
             icons.add(R.drawable.ic_map)
         }
-        listView.adapter = IconList(activity as Activity, titles.toTypedArray(), subtitles.toTypedArray(), icons.toTypedArray())
+        listView.adapter = IconList(activity as Activity, titles, subtitles, icons)
         listView.onItemClickListener = OnItemClickListener { _, _, position, _ ->
             AlertDialog.Builder(activity)
                     .setTitle(R.string.quest_title)

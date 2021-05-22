@@ -38,11 +38,13 @@ class FileManager(private val context: Context) {
         }
     }
 
+    @Suppress("unused")
     fun readPref(name: String) : String? {
         val sharedPref = context.getSharedPreferences("TGDefault", Context.MODE_PRIVATE) ?: return null
         return sharedPref.getString(name, null)
     }
 
+    @Suppress("unused")
     fun writePref(name: String, data: String) {
         val sharedPref = context.getSharedPreferences("TGDefault", Context.MODE_PRIVATE) ?: return
         with (sharedPref.edit()) {

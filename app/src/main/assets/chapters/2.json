@@ -31,7 +31,7 @@
   },
   "woods 3 2": {
     "title": "Woods",
-    "text": "You are now on watch.\n\nYou haven't slept much, but you are very much awake.\n\nYou sit on a tree, looking up at the glittering night sky, thinking about this adventure of your lifetime.\nYou recall all those fights you had, about all the monsters that you have slain... and you've never hunted anything bigger than an ant before this journey.",
+    "text": "You are now on watch.\n\nYou haven't slept much, but you are very much awake.\n\nYou sit on a tree, looking up at the glittering night sky, thinking about this adventure of your lifetime.\nYou think of all those monsters that you have slain in the past week... and you've never hunted anything bigger than an ant before this journey.",
     "opt": [
       {
         "to": ">view advance>@woods 4",
@@ -58,7 +58,7 @@
     "text": "You try to make out the words.\n\nYou listen carefully...\n\nSuddenly, arrows fly from various directions.\n\nCobby: [We're under attack! ARGHHH!]\n\nCobby is hit by an arrow and collapses.",
     "opt": [
       {
-        "to": ">dropAll>encounter>henge guards>@defeat>>join>Cobby>@woods 5",
+        "to": ">dropAll>>encounter>henge guards>@defeat>>join>Cobby>@woods 5",
         "text": "Fight"
       }
     ]
@@ -75,7 +75,7 @@
   },
   "field 1": {
     "title": "Field",
-    "text": "You reach a clearing of grassy fields where you had encountered the blue beetle two days ago.\n\nCobby: [It is getting bright. If we rest here, we'll have sight of anyone approaching us. I'll take the first watch..]\n\nYou lie down and fall asleep in seconds. It feels like you haven't slept for days...",
+    "text": "You reach a clearing of grassy fields where you had encountered the blue beetle three days ago.\n\nCobby: [It is getting bright. If we rest here, we'll have sight of anyone approaching us. I'll take the first watch..]\n\nYou lie down and fall asleep in seconds. It feels like you haven't slept for days...",
     "opt": [
       {
         "to": ">timeset>20>@field 2",
@@ -85,7 +85,7 @@
   },
   "field 2": {
     "title": "Field",
-    "text": "Cobby: [Wake up... Take your watch.]\n\nYou barely get up and take the watch.\nYou desperately resist your eyelids from closing shut and watch for any hostiles from Stone Henge.\n\nYou somehow stay awake until sundown.\nYou wake Cobby up.\n\nCobby: [Ooh... just 5 more minutes.]\n\nCobby: [Alright... ok. It's night already, huh? I guess I should be thankful that there were no more ambushes. Let's get going.]",
+    "text": "Cobby: [Wake up... Take your watch.]\n\nYou force yourself to get up and take the watch.\nYou desperately resist your eyelids from closing shut and watch for any hostiles from Stone Henge.\n\nYou somehow stay awake until sundown.\nYou wake Cobby up.\n\nCobby: [Ooh... just 5 more minutes.]\n\nYou give him a minute.\n\nCobby: [Alright... ok, sorry. It's night already, huh? I guess I should be thankful that there were no more ambushes. Let's get going.]",
     "opt": [
       {
         "to": ">heal>8>@field done",
@@ -321,7 +321,7 @@
   },
   "ant hill escape 4-1": {
     "title": "River side",
-    "text": "You arrive on the other side of the river, physically and mentally exhausted.\nYou climb a tree and rest.\n\n...\n\n???: [Wake up!]\n\nCould it be Cobby? You open your eyes.\nIt is Lucid, the spellcaster from the spider forest.\n\nLucid: [I saw your exile from Ant Hill. This must be hard for you... Are you going back to Stone Henge?]",
+    "text": "You arrive on the other side of the river, physically and mentally exhausted.\nYou climb a tree and rest.\n\n...\n\n???: [Hey, wake up!]\n\nCould it be Cobby? You open your eyes.\nIt is Lucid, the spellcaster from the spider forest.\n\nLucid: [I saw your exile from Ant Hill. This must be hard for you... Are you going back to Stone Henge?]",
     "opt": [
       {
         "to": "@ant hill escape 4-1 2",
@@ -341,7 +341,7 @@
   },
   "ant hill escape 4-2": {
     "title": "River side",
-    "text": "You arrive on the other side of the river, physically and mentally exhausted.\nYou climb a tree and rest.\n\n...\n\n???: [Wake up!]\n\nCould it be Cobby? You open your eyes.\nYou see a stranger wearing black leather jacket.\nHe doesn't look hostile.\n\nStranger: [Hello friend, my name is Lucid. I am a foreign visitor from far away... I was one of the kidnapped folks from the horned spider incident back in Ant Hill. I saw your excommunication and followed you here.]",
+    "text": "You arrive on the other side of the river, physically and mentally exhausted.\nYou climb a tree and rest.\n\n...\n\n???: [Hey, wake up!]\n\nCould it be Cobby? You open your eyes.\nYou see a stranger wearing black leather jacket.\nHe doesn't look hostile.\n\nStranger: [Hello friend, my name is Lucid. I am a foreign visitor from far away... I was one of the kidnapped folks from the horned spider incident back in Ant Hill. I saw your excommunication and followed you here.]",
     "opt": [
       {
         "to": "@ant hill escape 4-2 2",
@@ -369,10 +369,6 @@
       },
       {
         "to": "@ant hill escape 6-2",
-        "text": "What is the priest hiding?"
-      },
-      {
-        "to": "@ant hill escape 6-3",
         "text": "Can you help me?"
       },
       {
@@ -383,18 +379,14 @@
   },
   "ant hill escape 6-1": {
     "title": "Woods",
-    "text": "Lucid: [I am... on a mission from Jericho. I've come all this way to scout around... for a place to look for a specific artifact. If you ever get to Jericho, I would tell you more about my job. But I don't think you'd have any use for such knowledge here.]",
+    "text": "Lucid: [I am on a mission from Jericho. I've come all this way to scout around, looking for some artifact. If you ever get to Jericho, I would tell you more about my job. But I don't think you'd have any use for such knowledge here.]",
     "opt": [
       {
         "to": "@ant hill escape 6-2",
-        "text": "What is the priest hiding?"
-      },
-      {
-        "to": "@ant hill escape 6-3",
         "text": "Can you help me?"
       },
       {
-        "to": "@ant hill escape 6-4",
+        "to": "@ant hill escape 6-3",
         "text": "What is Jericho like?"
       },
       {
@@ -405,7 +397,7 @@
   },
   "ant hill escape 6-2": {
     "title": "Woods",
-    "text": "Lucid: [My understanding is that it is your priest's duty to serve the greater good. I know this could be hard for you, but he may not necessarily have bad intentions.]",
+    "text": "Lucid: [I will accompany you to Stone Henge. But I can't help you prove your innocence in Ant Hill, I'm sorry.]",
     "opt": [
       {
         "to": "@ant hill escape 6-1",
@@ -413,7 +405,7 @@
       },
       {
         "to": "@ant hill escape 6-3",
-        "text": "Can you help me?"
+        "text": "What is Jericho like?"
       },
       {
         "to": "@day 1",
@@ -423,28 +415,6 @@
   },
   "ant hill escape 6-3": {
     "title": "Woods",
-    "text": "Lucid: [I will accompany you to Stone Henge. But as for Ant Hill... I'm sorry, I can't help you.]",
-    "opt": [
-      {
-        "to": "@ant hill escape 6-1",
-        "text": "Why were you at Ant Hill?"
-      },
-      {
-        "to": "@ant hill escape 6-2",
-        "text": "What is the priest hiding?"
-      },
-      {
-        "to": "@ant hill escape 6-4",
-        "text": "What is Jericho like?"
-      },
-      {
-        "to": "@day 1",
-        "text": "Proceed"
-      }
-    ]
-  },
-  "ant hill escape 6-4": {
-    "title": "Woods",
     "text": "Lucid: [Jericho may sound strange for you, since you lived in Ant Hill your whole life. Imagine lots of tall towers and moving metals. Also, the monsters that you see here are much smaller near Jericho. Nevertheless, Jericho is far from paradise.]",
     "opt": [
       {
@@ -453,10 +423,6 @@
       },
       {
         "to": "@ant hill escape 6-2",
-        "text": "What is the priest hiding?"
-      },
-      {
-        "to": "@ant hill escape 6-3",
         "text": "Can you help me?"
       },
       {
@@ -467,16 +433,16 @@
   },
   "day 1": {
     "title": "Woods",
-    "text": "Lucid: [Well then. Let us journey on.]\n\nYou finish your conversation with Lucid and begin your journey to Stone Henge.",
+    "text": "Lucid: [Well then. Let us journey on.]\n\nYou finish your conversation with Lucid and resume your journey to Stone Henge.",
     "opt": [
       {
-        "to": ">save>temp>0>@day 1-2",
+        "to": ">join>Lucid>>save>temp>0>@day 1-2",
         "text": "Proceed"
       }
     ]
   },
   "day 1-2": {
-    "title": "Woods",
+    "title": "Day 1 - Woods",
     "text": "This is your first day of journey towards Stone Henge... for the second time.\n\nYou are about the cross the goldenrod forest.\n\nLucid: [The forest is probably full of monsters, but is a shorter walk towards Stone Henge.]",
     "opt": [
       {
@@ -501,7 +467,7 @@
   },
   "day 1 end": {
     "title": "Day 1",
-    "text": "You walk all day long. It is getting dark.\n\nLucid: [Alright. I have a handy alert spell to wake us when monsters are nearby... It only works half the time, however. What do you want to do?]",
+    "text": "You walk all day long. It is getting dark.\n\nLucid: [Alright. I have a handy alert spell that can wake us up when there are fast moving things nearby. What do you want to do?]",
     "filler": [
       "%trand2"
     ],
@@ -521,7 +487,7 @@
     "text": "You trust in the alarm spell and go to sleep.\n\n...\n\nYou wake up to a sharp pain in your neck.\nIt's a giant blood red bloodquito drilling its proboscis into your flesh!\nBlood gushes out of your neck.\n\nYou scream!\n\nLucid: [Uh... huh? What?]",
     "opt": [
       {
-        "to": ">encounter>two bloodquitos>@journey defeat>>timeset>10>@day 2",
+        "to": ">encounter>three bloodquitos>@journey defeat>>timeset>10>@day 2",
         "text": "Fight"
       }
     ]
@@ -572,7 +538,7 @@
     "text": "You trust in the alarm spell and go to sleep.\n\n...\n\nYou wake up to a loud bustling sound.\nIt's a giant rat cuddling you in your sleep!\n\nYou panic and scream!\n\nThe rat attacks you.",
     "opt": [
       {
-        "to": ">encounter>rat>@journey defeat>>timeset>10>@day 3",
+        "to": ">encounter>rat swarm>@journey defeat>>timeset>10>@day 3",
         "text": "Fight"
       }
     ]
@@ -602,14 +568,14 @@
     "text": "Today is the last day of travel to Stone Henge.\nYou trail through a forest of deciduous trees.\n\nLucid: [This is a good spot for a meal.]\n\nYou sit down on a large rock and start cooking bug steaks.\n\nLucid: [Watch out, something's approaching us!]",
     "opt": [
       {
-        "to": ">encounter>ant swarm>@journey defeat>>encounter>ant swarm>@journey defeat>>encounter>ant swarm>@journey defeat>day 4-2",
+        "to": ">encounter>fire ant swarm>@journey defeat>>encounter>fire ant swarm>@journey defeat>>encounter>fire ant swarm>@journey defeat>@day 4-2",
         "text": "Prepare to fight"
       }
     ]
   },
   "day 4-2": {
     "title": "Day 4 - Woods",
-    "text": "Lucid: [That was... a lot. I'm glad I learned to cast lightning before coming to the frontier.]\n\nYou continue on the Stone Henge.",
+    "text": "Lucid: [That was... a lot. I'm glad I learned to cast lightning before coming to the frontier.]\n\nYou continue on to Stone Henge.",
     "opt": [
       {
         "to": "@stone henge outskirt",
@@ -664,8 +630,8 @@
     ]
   },
   "stone henge outskirt 2": {
-    "title": "Stone Henge",
-    "text": "Lucid: [Here we are. Stone Henge.]\n\nLucid: [You said that you were chased out of Stone Henge, right? Do you need help finding your friends?]",
+    "title": "Stone Henge Outskirts",
+    "text": "You are at Stone Henge outskirts.\n\nLucid: [Here we are. Stone Henge.]\n\nLucid: [You said that you were chased out of Stone Henge, right? Do you need help finding your friends?]",
     "opt": [
       {
         "to": "@stone henge outskirt 3-1",
@@ -827,7 +793,33 @@
   },
   "stone henge search 2": {
     "title": "Stone Henge",
-    "text": "You sneak around Stone Henge, looking for any clues to the whereabouts of Cheese or Pemmi.\nYou hide in the temple, listen to the guards, listen to rumors at the tavern, etc...\n\nHours pass.\nYou come back to Dolomite inn without any valuable information.\n\nLucid: [Ah, here you are, I was about to congratulate you. I have found Cheese and Pemmi.]\n\nCheese: [Oh, hey.]\n\nPemmi: [Oh!! You're back! Where's Cobby? How did it go in Ant Hill? It's a mess here in Stone Henge.]\n\nLucid: [Pemmi approached me when I visited the priest today. We had a private conversation and I learned that she is one of your friends.]\n\nPemmi: [I was laying low, trying to get people to see what's going on... but it's no use. Everyone trusts the priest.]\n\nLucid: [You did good, Pemmi. You saved Cheese before they got him to the nest.]\n\nCheese: [Yea. Also, it's not so bad here. Stone Henge has way better food. I don't mind living here, honestly.]\n\nPemmi: [No, Cheese... We need to put an end to this.]\n\nLucid: [Well, since we're all here, let's take some time to converse about what all happened.]",
+    "text": "You sneak around Stone Henge, looking for any clues to the whereabouts of Cheese or Pemmi.",
+    "opt": [
+      {
+        "to": "@stone henge search 2 2",
+        "text": "Return to Dolomite Inn"
+      },
+      {
+        "to": ">custom>You hide in the temple, listen to the guards, listen to rumors at the tavern, etc...\nBut you don't find any useful information.>@stone henge search 2",
+        "text": "Sneak around Stone Henge"
+      },
+      {
+        "to": ">custom>You sneak into the training grounds.>>dropAll>>encounter>stone henge arena>@stone henge search 2>>time>4>@stone henge search 2",
+        "text": "Sneak into the training grounds"
+      },
+      {
+        "to": ">custom>You sneak into the shop.>>view shop>Stone Henge Shop>@stone henge search 2",
+        "text": "Sneakily shop around"
+      },
+      {
+        "to": ">custom>You sneak into the mystic's shop.>>view gem>henge sigils>@stone henge search 2",
+        "text": "Sneakily visit the mystic"
+      }
+    ]
+  },
+  "stone henge search 2 2": {
+    "title": "Stone Henge",
+    "text": "You come back to Dolomite inn without any valuable information.\n\nLucid: [Ah, here you are, I was about to congratulate you. I have found Cheese and Pemmi.]\n\nCheese: [Oh, hey.]\n\nPemmi: [Oh!! You're back! Where's Cobby? How did it go in Ant Hill? It's a mess here in Stone Henge.]\n\nLucid: [Pemmi approached me when I visited the priest today. We had a private conversation and I learned that she is one of your friends.]\n\nPemmi: [I was laying low, trying to get people to see what's going on... but it's no use. Everyone trusts the priest.]\n\nLucid: [You did good, Pemmi. You saved Cheese before they got him to the nest.]\n\nCheese: [Yea. Also, it's not so bad here. Stone Henge has way better food. I don't mind living here, honestly.]\n\nPemmi: [No, Cheese... We need to put an end to this.]\n\nLucid: [Well, since we're all here, let's take some time to converse about what all happened.]",
     "opt": [
       {
         "to": "@stone henge search 3",

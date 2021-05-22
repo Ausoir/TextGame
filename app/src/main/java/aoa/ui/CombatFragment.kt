@@ -99,12 +99,6 @@ class CombatFragment : HtmlTextFragment() {
         }
     }
 
-    private fun addCombatant(unitName: String, faction: Int = -1){
-        if (unitMap[unitName] != null) {
-            addCombatant(unitMap[unitName]!!.copy(), faction)
-        }
-    }
-
     private fun updateFaction(){
         player.unit.target = player.unit.foes.shuffled()[0]
         for (ally in player.unit.allies){
@@ -358,10 +352,11 @@ class CombatFragment : HtmlTextFragment() {
 
     private fun victory(){
         endBattle()
+        if (arrayListOf(true, false).shuffled()[0]) page = ">advance>$page"
         if (loots.isNotEmpty()) {
             val loot = loots.shuffled()[0]
             if (loot != null) {
-                page = ">item>${loot.name}>>advance>$page"
+                page = ">item>${loot.name}>$page"
             }
         }
         addCombatText(resources.getString(R.string.victory))

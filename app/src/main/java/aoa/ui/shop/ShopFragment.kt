@@ -33,7 +33,7 @@ class ShopFragment : Fragment() {
         itemList = arguments?.getStringArrayList("stock")!!
         adapter.addFragment("", makeFragment(PlayerFragment(), arrayOf("player")))
         adapter.addFragment("Buy", makeFragment(BuyFragment(), arrayOf("player", "item map", "stock")))
-        adapter.addFragment("Sell", makeFragment(SellFragment(), arrayOf("player", "item map")))
+        adapter.addFragment("Sell", makeFragment(SellFragment(), arrayOf("player", "item map", "equip")))
         pager.adapter = adapter
         tabLayout.setupWithViewPager(pager)
         tabLayout.getTabAt(0)?.setIcon(R.drawable.ic_player)
@@ -57,6 +57,7 @@ class ShopFragment : Fragment() {
                 "player" -> bundle.putParcelable("player", player)
                 "item map" -> bundle.putSerializable("item map", itemMap)
                 "stock" -> bundle.putStringArrayList("stock", itemList)
+                "equip" -> bundle.putStringArrayList("stock", player.equip)
             }
         }
         fragment.arguments = bundle

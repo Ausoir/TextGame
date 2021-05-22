@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import aoa.R
-import aoa.game.PlayerModel
 import aoa.tools.Grammar
 import aoa.ui.EquipmentUI
 import com.google.android.material.snackbar.Snackbar
@@ -19,12 +18,9 @@ class BuySigilFragment : EquipmentUI() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val player = arguments?.getParcelable<PlayerModel>("player")!!
-        itemList = arguments?.getStringArrayList("stock")!!
         val root = super.onCreateView(inflater, container, savedInstanceState)
-
         listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val itemName = titles[position].toLowerCase().substringBefore(" (")
+            val itemName = itemList[position]
             val item = itemMap[itemName] ?: return@OnItemClickListener
             val overlap = player.getSamePart(itemMap, item.name)
             if (overlap == null) {

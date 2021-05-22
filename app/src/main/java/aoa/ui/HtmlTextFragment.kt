@@ -1,7 +1,6 @@
 package aoa.ui
 
 import android.text.Html
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
