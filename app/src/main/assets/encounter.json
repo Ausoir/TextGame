@@ -9,7 +9,7 @@
     "units": ["horned spider", "horned spider"],
     "loots": ["", "", "", "", "", "", "", "blood droplet", "chitin breastplate", "chitin gauntlets", "chitin greave", "chitin shield"]
   },
-  "Two feral humans": {
+  "two feral humans": {
     "desc": "Two feral women wearing rags engage you.\nIt observes you carefully, as if hunting an animal.",
     "units": ["feral human", "feral human"],
     "loots": ["web bolas", "sharp stick", "splinter spear", "mushroom pemmican"]

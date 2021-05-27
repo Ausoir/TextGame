@@ -27,11 +27,8 @@ class BuyGemFragment : Fragment() {
         val icons = arrayListOf(R.drawable.ic_1, R.drawable.ic_3, R.drawable.ic_7)
         listView.adapter = IconList(activity as Activity, titles, subtitles, icons)
         listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            when (position) {
-                0 -> Billing.requestPurchase1()
-                1 -> Billing.requestPurchase3()
-                2 -> Billing.requestPurchase7()
-            }
+            Billing.purchaseReady = true
+            Billing.requestPurchase(position)
         }
         return root
     }

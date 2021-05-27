@@ -197,7 +197,7 @@
   },
   "feral cave leave 7": {
     "title": "Deeper Caves",
-    "text": "Sugar leads your group to a room deep in the caverns.\nThere is a giant gaping hole in the center of the room with fragile wooden spiral stairs leading down the hole.\n\nSugar: [Careful, if you trip, you go splat.]\n\nYou reach the pitch black bottom.\nStrange moaning sounds come from behind the door.\n\nLucid: [This smell... It's from rotting human flesh. We should couple up to watch each other's backs. You with me and Sugar with Pemmi. Cheese, you should stay out of the fights and make sure our retreat is clear.]\n\nLucid opens the door.",
+    "text": "Sugar leads your group to a room deep in the caverns.\nThere is a giant gaping hole in the center of the room with fragile wooden spiral stairs leading down the hole.\n\nSugar: [Careful, if you trip, you go splat.]\n\nYou reach the pitch black bottom.\nStrange moaning sounds come from behind the door.\n\nLucid: [This smell... It's from rotting human flesh. We should couple up to watch each other's back. You with me and Sugar with Pemmi. Cheese, you should stay out of the fights and make sure our retreat is clear.]\n\nLucid opens the door.",
     "opt": [
       {
         "to": ">dropAll>>join>Lucid>>encounter>zombies>@feral cave leave 7 defeat>@feral cave leave 8",
@@ -440,7 +440,7 @@
   },
   "feral cave leave 17": {
     "title": "Deeper Caves",
-    "text": "You continue along the rails.\nDeeper in the mines, you start seeing glowing mushrooms again, lighting the way.\n\nYou exit the tunnel into a giant cave with high ceiling, with a crevice to the surface in the distance where sunlight shines down from.\n\nSugar: [YES!! Sunlight! Finally!]\n\nPemmi: [Wait, what the hell is THAT?]\n\nDirectly below the crevice is a strange dirt mound bathing in the sunlight.\nUpon a closer look, it looks like it's slowly expanding and shrinking, as if breathing.\n\nPemmi: [Could it be a creature? It's conveniently blocking our route... let's just sneak past it.]\n\nYou carefully approach the mound.\nOn a closer look, you realize that it is an amalgamation of flesh, moving as one, covered in faint blue glowing mushrooms.\n\nLucid: [This... is an abomination, hordes of moving corpses attracted to sunlight, melted to each other! This...]\n\nCheese sneezes.\n\nThe mound rises...",
+    "text": "You continue along the rails.\nDeeper in the mines, you start seeing glowing mushrooms again, lighting the way.\n\nYou exit the tunnel into a giant cave with high ceiling, with a crevice to the surface in the distance where sunlight shines down from.\n\nSugar: [Sunlight! Finally!]\n\nPemmi: [Wait, what the hell is <i>that</i>?]\n\nDirectly below the crevice is a strange dirt mound bathing in the sunlight.\nUpon a closer look, it looks like it's slowly expanding and shrinking, as if breathing.\n\nPemmi: [Could it be a creature? It's conveniently blocking our route... let's just sneak past it.]\n\nYou carefully approach the mound.\nOn a closer look, you realize that it is an amalgamation of flesh, moving as one, covered in faint blue glowing mushrooms.\n\nLucid: [This... is an abomination, hordes of moving corpses attracted to sunlight, melted to each other! This...]\n\nCheese sneezes.\n\nThe mound rises...",
     "opt": [
       {
         "to": ">join>Lucid>>join>Cheese2>>join>Pemmi>>join>Sugar>>encounter>amalgamation>@defeat>@feral cave leave 18",
@@ -535,6 +535,10 @@
       {
         "to": ">view shop>Stone Henge Shop>@to ant hill 3-1",
         "text": "Sneak into Stone Henge shop"
+      },
+      {
+        "to": ">view gem>henge sigils>@to ant hill 3-1",
+        "text": "Sneakily visit the mystic"
       }
     ]
   },
@@ -718,7 +722,7 @@
   },
   "to ant hill 16": {
     "title": "Ant Hill",
-    "text": "Cobby sighs.\n\nCobby: [Turns out, as messed up as it looks, the priest had his reasons to hide all this stuff from the people. If you haven't figured it out by now, let me tell you.]\n\nCobby: [These spiders... The priest told me how wickedly intelligent they are. When they attack a settlement, they pick off the strongest members and let the settlement repopulate.]\n\nCobby: [Years ago, when the leaders of Stone Henge first realized this, they have learned to just let a few people die every month. The spiders are too strong, and they couldn't risk their hunters dying off.]\n\nCobby: [Few years passed... They've learned to deliberately sacrifice some less useful folks every month to minimize the damage to their community... And have helped Ant Hill do the same.]",
+    "text": "Cobby sighs.\n\nCobby: [Turns out, as messed up as it looks, our priest had his reasons to hide all this stuff from the people. If you haven't figured it out by now, let me tell you.]\n\nYou take a seat.\n\nCobby: [These spiders... The priest told me how wickedly intelligent they are. When they attack a settlement, they pick off the strongest members and let the settlement repopulate.\n\nYears ago, when the leaders of Stone Henge first realized this, they have learned to just let a few people die every month. The spiders are too strong, and they couldn't risk their hunters dying off.\n\nFew years passed... They've learned to deliberately sacrifice some less useful folks every month to minimize the damage to their community... And have helped Ant Hill do the same.]",
     "opt": [
       {
         "to": "@to ant hill 17",
@@ -728,11 +732,11 @@
   },
   "to ant hill 17": {
     "title": "Ant Hill",
-    "text": "Cobby: [The leaders of Ant Hill and Stone Henge know just how strong the horned spiders are. We don't stand a chance.\nSugar wants to fight the spiders, but it's completely hopeless. They are strong, organized, and outnumber us by far. Every previous attempt to fight them ended with a massacre.]\n\nCobby: [But we're not completely without hope... There was a man here in Ant Hill by the name of Lucid. He had promised us that he will try to get help from his home settlement. But when he silently left Ant Hill, we thought he had bailed... But if your stories are true, we may be able to get us help from the outside.]",
+    "text": "Cobby: [The leaders of Ant Hill and Stone Henge know just how strong the horned spiders are. We don't stand a chance.\nSugar wants to fight the spiders, but it's completely hopeless. They are strong, organized, and outnumber us by far. Every previous attempt to fight them ended with a massacre.]\n\nCobby: [I've been looking for a man by the name of Lucid who was here in Ant Hill just a week or so ago. Our priest told me that he had promised us that he will try to get help from his home settlement. You said that he was with you at Stone Henge? If you can travel with him to make sure that we can get the help we need, we may be able to get ourselves out of this mess.]",
     "opt": [
       {
         "to": "@to ant hill 18",
-        "text": "So what now?"
+        "text": "So what will you do now?"
       }
     ]
   },
@@ -756,7 +760,7 @@
   },
   "to ant hill 19": {
     "title": "Ant Hill",
-    "text": "Cobby: [I see. Whatever you are up to, good luck.]\n\nThe wounded patient in front of him slowly raises his hand.\nYou realize that the patient is the priest of Ant Hill who had exiled you and Cobby.\n\nPriest: [Wait... Is Cheese with you?]\n\nIt looks like the priest had been impaled several times before Cobby saved him.\n\nPriest: [...Please tell him that I'm sorry.]",
+    "text": "Cobby: [Good luck.]\n\nThe wounded patient in front of him slowly raises his hand.\nYou realize that the patient is the priest of Ant Hill who had exiled you and Cobby.\n\nPriest: [Wait... Is Cheese with you?]\n\nIt looks like the priest had been impaled several times before Cobby saved him.\n\nPriest: [...Please tell him that I'm sorry.]",
     "opt": [
       {
         "to": "@to ant hill 20",
@@ -818,11 +822,11 @@
   },
   "to ant hill 23": {
     "title": "Ant Hill",
-    "text": "You return to the surface.\n\nOn your way down the streets, you see a floating purple thing in the distance slowing hovering away.\n\nYou follow it into the woods.\n\nAfter few minutes of looking around, you find Cheese sitting on a tree eating a boiled egg.\n\nHe stares at you.",
+    "text": "You return to the surface.\n\nOn your way down the streets, you see a floating purple thing in the distance slowing hovering away.\n\nYou follow it into the woods.\n\nAfter few minutes of looking around, you find Cheese sitting on a tree eating an egg.",
     "opt": [
       {
         "to": ">ad>>heal>1>>save>chapter>4>>refresh chapter>@start",
-        "text": "...Let's go."
+        "text": "..."
       }
     ]
   }

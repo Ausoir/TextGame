@@ -119,12 +119,12 @@
     "text": "You run outside to see the infamous horned spiders in the distance.\nYou can see some people getting kidnapped and dragged away.\nYour roommates cower back inside.\n\nIn the distance you see a girl getting dragged off by a horned spider, but the guards and hunters are too busy fighting other spiders.",
     "opt": [
       {
-        "to": ">custom>You confront the horned spiders.>encounter>horned spiders>@ant hill kidnapped>@ant hill aftermath",
+        "to": ">custom>You confront the horned spiders.>>encounter>horned spiders>@ant hill kidnapped>@ant hill aftermath",
         "text": "Try to be a hero"
       },
       {
         "to": ">time>5>@ant hill aftermath",
-        "text": "Run back inside. The spiders are as big as you are."
+        "text": "Run back inside"
       }
     ]
   },
@@ -190,61 +190,37 @@
     "text": "You follow Lucid through the tunnels.\nThe underground tunnel you are in feels similar to the underground Ant Hill, except the tunnels are larger and there are spiderweb cocoons on the walls.\n\nYou and the abductees keep running until you reach the exit blocked by leaves and spiderwebs.\nThere are lights leaking in from the outside.\n\nLucid: [That's the way out. This underground tunnel seems like their food storage area, which means there is a good chance that some of the spiders are nearby.]\n\nLucid: [You are a scout, right? Can you go outside and scout ahead for us?]",
     "opt": [
       {
-        "to": "@runaway1-1",
-        "text": "No! why me!"
-      },
-      {
-        "to": "@runaway2",
+        "to": "@runaway 2",
         "text": "Okay"
       }
     ]
   },
-  "runaway1-1": {
-    "title": "Kidnapped",
-    "text": "Lucid: [...Fine. If you hear a sound, please come out and help me.]\n\nLucid takes out his knife.\nHe slashes through the spiderwebs and crawls outside.\nYou hear one of the other abductees behind you call you a coward.\n\nA minute passed, and you hear Lucid scream from outside.",
-    "opt": [
-      {
-        "to": "@runaway1-2",
-        "text": "Proceed"
-      }
-    ]
-  },
-  "runaway2": {
+  "runaway 2": {
     "title": "Kidnapped",
     "text": "You crawl outside and look around the forest.\nIn the distance, you see people in rags wielding weapons.\nYou don't recognize any of them.\nYou crawl back inside and tell everyone.\n\nLucid: [We should wait for them to pass then sneak out.]\n\nAbductee: [Are you sure they're not people from Ant Hill? We gotta get out there and let them know we're here!]\n\nLucid: [But these people wear rags and wander the spider forest fearlessly. Something's not right.]\n\nAbductee: [You may not understand because you're foreigner, but Ant Hill don't have brigands or outlaws... Those people out there are safe. Follow me.]",
     "opt": [
       {
-        "to": "@runaway2-2",
+        "to": "@runaway 3",
         "text": "Follow"
       }
     ]
   },
-  "runaway2-2": {
+  "runaway 3": {
     "title": "Kidnapped",
     "text": "You follow the abductee outside.\n\nAbductee: [Hey, over here!]\n\nThe people in rags start throwing rocks at him.\n\nAbductee: [Oh, shit!]\n\nLucid: [Get ready to fight!]",
     "opt": [
       {
-        "to": ">encounter>two feral humans>@defeat>@runaway2-2-1",
+        "to": ">encounter>two feral humans>@defeat>@runaway 4",
         "text": "Fight"
       }
     ]
   },
-  "runaway1-2": {
-    "title": "Kidnapped",
-    "text": "You and the abductees peek outside and see Lucid being attacked by several people in rags. They point at you and shout.",
-    "opt": [
-      {
-        "to": ">encounter>two feral humans>@defeat>>drop>Lucid>@runaway2-2-1",
-        "text": "Fight"
-      }
-    ]
-  },
-  "runaway2-2-1": {
+  "runaway 4": {
     "title": "Kidnapped",
     "text": "You take down the feral human and look around.\nIt looks like all of the ferals have gone down, but 4 people have died as a result.\n\nYou inspect the feral humans and notice that they don't look particularly starved. What you thought was their rags actually seem to be some sort of clothing crafted from some leather.\n\nOne of the critically wounded feral woman opens her eyes slowly looks up. She stares at you with pleasing eyes and whimpers.\n\nYou try to communicate with her but she does not seem to understand you.\nThe other abductees fret you to just abandon her and leave the spider forest before the horned spiders return.\n\nYou leave the dying feral woman and depart with your group.",
     "opt": [
       {
-        "to": ">time>1>@ant hill outskirt",
+        "to": ">dropAll>>time>1>@ant hill outskirt",
         "text": "Proceed"
       }
     ]

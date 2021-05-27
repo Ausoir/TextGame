@@ -54,30 +54,12 @@
       "death": "Lucid: [Ugh..]\n\nLucid collapses."
     }
   },
-  "Abductee": {
-    "name": "abductee",
-    "speed": 1,
-    "health": 3,
-    "moves": [
-      "hesitate",
-      "engage",
-      "tackle",
-      "panic",
-      "kick"
-    ],
-    "skills": [],
-    "status": [],
-    "flavors": {
-      "pronoun": "he"
-    }
-  },
   "feral human": {
     "name": "feral human",
     "speed": 1,
     "health": 3,
     "moves": [
       "bola throw",
-      "disengage",
       "engage",
       "swing",
       "adjust"
@@ -364,12 +346,13 @@
   "yellow butterfly": {
     "name": "yellow butterfly",
     "speed": 1,
-    "health": 5,
+    "health": 7,
     "moves": [
       "engage",
       "suck",
       "pierce",
       "peck",
+      "regenerate",
       "disengage"
     ],
     "skills": [],
@@ -379,7 +362,7 @@
   "bee": {
     "name": "bumble bee",
     "speed": 1,
-    "health": 4,
+    "health": 5,
     "moves": [
       "slack",
       "slack",
@@ -392,12 +375,12 @@
   "beetle": {
     "name": "beetle",
     "speed": 1,
-    "health": 7,
+    "health": 8,
     "moves": [
-      "charge",
+      "charge tackle",
+      "slack",
       "slack",
       "tackle",
-      "engage",
       "curl"
     ],
     "skills": [
@@ -659,10 +642,10 @@
   "zombie": {
     "name": "zombie",
     "speed": 1,
-    "health": 13,
+    "health": 11,
     "moves": [
       "engage",
-      "slack",
+      "regenerate",
       "swing"
     ],
     "skills": [],
@@ -732,7 +715,7 @@
   "large vine mass": {
     "name": "large vine mass",
     "speed": 1,
-    "health": 10,
+    "health": 8,
     "moves": [
       "whirring slice",
       "whirring throw",
@@ -864,7 +847,7 @@
       "engage",
       "guard break",
       "strike",
-      "guard",
+      "heavy guard",
       "slam",
       "grand slam"
     ],

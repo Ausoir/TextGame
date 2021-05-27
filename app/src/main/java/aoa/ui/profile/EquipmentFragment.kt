@@ -31,7 +31,7 @@ class EquipmentFragment : EquipmentUI() {
                         .setMessage(resources.getString(R.string.use_confirm, itemName))
                         .setPositiveButton(android.R.string.ok) { _, _ ->
                             val app: App = activity as App
-                            app.openDialog(item.page)
+                            app.openDialog(">custom>You use the ${item.name}.>${item.page}")
                         }
                         .setNegativeButton(android.R.string.cancel) { _, _ -> return@setNegativeButton }
                         .show()

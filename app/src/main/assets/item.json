@@ -10,7 +10,7 @@
     "value": 1000,
     "gem": 1,
     "desc": "help you recover from your past injuries. Gets rid of most flinching.",
-    "page": ">forget>flinch>>forget>flinch>>to>page"
+    "page": ">remove part>item>>forget>flinch>>forget>flinch>>to>page"
   },
   "belt of sustain": {
     "type": "belt",

@@ -1,6 +1,7 @@
 package aoa.ui
 
 import android.os.Bundle
+import android.text.Html
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
@@ -51,7 +52,7 @@ class HomeFragment : HtmlTextFragment() {
 
     private fun addButton(name: String): Button {
         val button = Button(activity)
-        button.text = name
+        button.text = Html.fromHtml(name)
         layout.addView(button, 0)
         return button
     }
@@ -65,6 +66,7 @@ class HomeFragment : HtmlTextFragment() {
         newText = newText.replace("Sugar:", "<font color='#992222'><b>Sugar</b></font>:")
         newText = newText.replace("Bigs:", "<font color='#443355'><b>Bigs</b></font>:")
         newText = newText.replace("Priest:", "<font color='#335533'><b>Priest</b></font>:")
+        newText = newText.replace("Team Lead:", "<font color='#222233'><b>Team Lead</b></font>:")
         val quotes = newText.split("]")
         if (quotes.size > 1){
             var result = ""

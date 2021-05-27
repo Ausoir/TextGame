@@ -433,7 +433,7 @@
   },
   "day 1": {
     "title": "Woods",
-    "text": "Lucid: [Well then. Let us journey on.]\n\nYou finish your conversation with Lucid and resume your journey to Stone Henge.",
+    "text": "Lucid: [Well then. Let us journey on.]\n\nYou resume your journey to Stone Henge.",
     "opt": [
       {
         "to": ">join>Lucid>>save>temp>0>@day 1-2",
@@ -473,12 +473,12 @@
     ],
     "opt": [
       {
-        "to": ">save>trustcheese>1>>timeset>1>@day 1 end-%trand2",
+        "to": ">timeset>1>@day 1 end-%trand2",
         "text": "Trust the spell and sleep well, healing to full health"
       },
       {
-        "to": ">timeset>10>@day 2",
-        "text": "Just take the watch and heal 2 health"
+        "to": ">timeset>10>>heal>1>@day 2",
+        "text": "Just take the watch and heal 1 health"
       }
     ]
   },
@@ -524,12 +524,12 @@
     ],
     "opt": [
       {
-        "to": ">save>trustcheese>1>>timeset>1>@day 2 end-%trand2",
+        "to": ">timeset>1>@day 2 end-%trand2",
         "text": "Trust the spell and sleep well, healing to full health"
       },
       {
-        "to": ">timeset>10>>heal>2>@day 3",
-        "text": "Just take the watch and heal 2 health"
+        "to": ">timeset>10>>heal>1>@day 3",
+        "text": "Just take the watch and heal 1 health"
       }
     ]
   },
@@ -555,7 +555,7 @@
   },
   "day 3": {
     "title": "Day 3 - Fields",
-    "text": "It is the third day.\nLucid: [Just two more days and we'll be at Stone Henge.]\n\nYou walk across a pleasant green valley without any threats.",
+    "text": "It is the third day.\n\nLucid: [Just two more days and we'll be at Stone Henge.]\n\nYou walk across a pleasant green valley without any threats.",
     "opt": [
       {
         "to": ">timeset>10>@day 4",
@@ -680,7 +680,7 @@
     "text": "You stick to the shadows and try to sneak around.\nSuddenly, a glowing orb flies toward you.\n\nGuard: [Intruder!]\n\nYou run, but the spell light follows you.\nYou smack the spell orb away to the ground.\nSuddenly, you feel a sharp pain in your leg. You were shot by an arrow!\nYou collapse.\nThe guards run toward you.",
     "opt": [
       {
-        "to": ">heal>-2>>encounter>henge guards>@defeat>@stone henge caught 2",
+        "to": ">encounter>henge guards>@defeat>@stone henge caught 2",
         "text": "Fight"
       }
     ]
@@ -783,7 +783,7 @@
   },
   "stone henge search": {
     "title": "Stone Henge",
-    "text": "You sneak out of Stone Henge and start moving toward the woods.\n\nYou suddenly realize, that you don't remember how to get there from Stone Henge because you were deeply hypnotized the last time you were taken there.\nYou get lost in the woods for some time but somehow make it back to Stone Henge.\n\nYou crawl back to the inn and wait for Lucid's return from the temple.\n\n---\n\nLucid: [...Ah, a hot tempered spirit, aren't you? You should stay here one more day and try to find out where the nest is. I will help you as much as I can while I'm here. Stand still.]\n\nLucid turns you into a small mouse again.",
+    "text": "You sneak out of Stone Henge and start moving toward the woods.\n\nYou suddenly realize, that you don't remember how to get there from Stone Henge because you were deeply hypnotized the last time you were taken there.\nYou get lost in the woods for some time but somehow make it back to Stone Henge.\n\nYou crawl back to Lucid at Dolomite inn.\n\n---\n\nLucid: [...Ah, a hot tempered spirit, aren't you? You should stay here one more day and try to find out where the nest is. I will help you as much as I can while I'm here. Stand still.]\n\nLucid turns you into a small mouse.",
     "opt": [
       {
         "to": "@stone henge search 2",

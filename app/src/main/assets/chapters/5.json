@@ -11,7 +11,7 @@
   },
   "field 0": {
     "title": "Fields",
-    "text": "You journey on from Jericho until you reach the woodcutters' village once again.\n\nLucid: [We're here again...]\n\nPemmi: [Did they find out what those vine things were?]\n\nLucid: [I don't think so. We should be extremely careful near the canyon. We'll try to cross using a safe method. Let's ask the villagers here.]",
+    "text": "You are at the woodcutters' village again.\n\nPemmi: [Did they ever find out what those vine things were?]\n\nLucid: [I don't think so. We should be extremely careful near the canyon. We'll try to cross using a safe method. Let's ask the villagers here.]",
     "opt": [
       {
         "to": "@village",
@@ -39,7 +39,7 @@
   },
   "field 1": {
     "title": "Fields",
-    "text": "Villager: [The crevice? The bridge isn't done. Some people tried to cross it using a shifty air boat but it didn't work. They left it here, if you want to give it a try.]\n\nThe villager leads you to an old building, and you see a rather crude air boat inside.\n\nLucid: [This air boat was modified to utilize mana instead of Jericho's power field. I'm guessing it failed because it requires too much mana.]\n\nLucid: [But... if Cheese uses his amulet to provide mana for the boat, he could take us to the other side one by one.]\n\nCheese: [No! there's gotta be another way!]\n\nPemmi: [Cheese, come on. It's less than a minute of flying. You'll get used to it.]\n\nLucid: [There's another way, Cheese. Which is handing over your amulet to another person who can be the ferry man. Either way, you'll have to ride the boat at least once.]\n\nCheese: [...!]\n\nYou drag the boat out and Cheese takes each of you one by one across the canyon.\n\nCheese: [This is pain... This is torture...]\n\nYou leave the vomit stained air boat behind and continue the journey.",
+    "text": "Villager: [The crevice again? The bridge still isn't done. Some people tried to cross it using a shifty air boat but it didn't work. They left it here, if you want to give it a try.]\n\nThe villager leads you to an old building, with a crude air boat parked inside.\n\nLucid: [This air boat was modified to utilize mana instead of Jericho's power field. I'm guessing it failed because it requires too much mana.\nBut... if Cheese uses his amulet to provide mana for the boat, he could take us to the other side one by one.]\n\nCheese: [No! there's gotta be another way!]\n\nPemmi: [Cheese, come on. It's less than a minute of flying. You'll get used to it.]\n\nLucid: [There's another way, Cheese. Which is handing over your amulet to another person who can be the ferry man. Either way, you'll have to ride the boat at least once.]\n\nCheese: [...!]\n\nYou drag the boat out and Cheese takes each of you one by one across the canyon.\n\nCheese: [This is pain... This is torture...]\n\nYou leave the vomit stained air boat behind and continue the journey.",
     "opt": [
       {
         "to": "@field 2",
@@ -403,7 +403,7 @@
   },
   "ant hill 7": {
     "title": "Ant Hill",
-    "text": "You stand on the mound and look around the ruined streets.\n\nThere are numerous shadows moving behind vendor shops.\nYou look more carefully.\nOn a closer look, you realize all those shadows are horned spiders!\nTerrifying howling fill the air.\n\nSugar: [Inside! INSIDE!!]\n\nYou lock the gate and hurry back inside.\n\nSugar: [Hell... They've trapped us all... Just like in the feral caves... Except.. this time there is no way out.]",
+    "text": "You stand on the mound and look around the ruined streets.\n\nThere are numerous shadows moving behind vendor shops.\n\nYou look carefully.\n\nOn a closer look, you realize all those shadows are horned spiders!\nTerrifying howling fill the air.\n\nSugar: [Inside! INSIDE!!]\n\nYou lock the gate and hurry back inside.\n\nSugar: [Hell... They've trapped us all... Just like in the feral caves... Except.. this time there is no way out.]",
     "opt": [
       {
         "to": "@ant hill 8",
@@ -413,7 +413,7 @@
   },
   "ant hill 8": {
     "title": "Ant Hill Underground",
-    "text": "You barricade the entrance and gather up what little supplies are left.\nA sense of doom dominate the atmosphere.\n\nLucid: [We're going to be here for a long time. We should start butchering the spiders for meat. Stone Henge promised to send the best of their hunters to Ant Hill in a week...]\n\nSugar: [No chance. There's like... a hundred out there. I don't know how you think Stone Henge has won the fight, but they definitely didn't fight THAT many spiders.]\n\nSugar charges at Cheese.\nCheese stuns her and runs to the entrance.\n\nSugar: [Cheese... please... I gotta get outta here. I'm going insane!]\n\nCheese leaves.\nYou run outside, and watch him float away above the hordes of spiders.\nHe does not come back.",
+    "text": "You barricade the entrance and gather up what little supplies are left.\nA sense of doom dominate the atmosphere.\n\nLucid: [We're going to be here for a long time. We should start butchering the spiders for meat. Stone Henge promised to send the best of their hunters to Ant Hill in a week...]\n\nSugar: [No chance. There's like... a hundred out there. I don't know how you think Stone Henge has won the fight, but they definitely didn't fight THAT many spiders.]\n\nSugar charges at Cheese.\nCheese stuns her and runs away towards the entrance.\n\nSugar: [Cheese... please... I gotta get outta here. I'm going insane!]\n\nCheese leaves.\nYou run outside, and watch him float away above the hordes of spiders.\nHe does not come back.",
     "opt": [
       {
         "to": ">time>8>@ant hill neutral",
@@ -486,7 +486,7 @@
         "text": "Go outside"
       },
       {
-        "to": ">add>temp>1>view rest>@ant hill 14",
+        "to": ">add>temp>1>>view rest>@ant hill 14",
         "text": "Stay one more day",
         "reqs": ["!var>temp>8"]
       },
@@ -741,7 +741,7 @@
     "opt": [
       {
         "to": "@neutral end",
-        "text": "Proceed"
+        "text": "Hello, Cheese."
       }
     ]
   },

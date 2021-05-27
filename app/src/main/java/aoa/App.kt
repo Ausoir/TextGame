@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -22,20 +24,23 @@ import aoa.ui.shop.GemShopFragment
 import aoa.ui.shop.QuestFragment
 import aoa.ui.shop.ShopFragment
 
+
 class App : AppCompatActivity() {
     private lateinit var game: Game
     private lateinit var soundPool: SoundPool
+    private var savedInstanceState: Bundle? = null
     private var menu: Menu? = null
     private val sounds = hashMapOf<String, Int>()
     private var returnPage = ""
+    private var lastGemShop = ""
 
     private fun transition(destination: Fragment){
         supportFragmentManager.commit {
             setCustomAnimations(
-                    R.anim.slide_in,
-                    R.anim.fade_out,
-                    R.anim.fade_in,
-                    R.anim.slide_out
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.slide_out
             )
             replace(R.id.home, destination)
             addToBackStack(null)
@@ -71,6 +76,7 @@ class App : AppCompatActivity() {
         totalMoves.addAll(game.moves.getMoves(game.player.model.unit.moves))
         bundle.putSerializable("moveset", totalMoves)
         bundle.putSerializable("item map", game.item.model)
+        bundle.putSerializable("unit map", game.units.model)
         frag.arguments = bundle
         title = getString(R.string.profile_title)
         transition(frag)
@@ -391,6 +397,7 @@ class App : AppCompatActivity() {
                     viewShop(split[2], Grammar.substringAfter(to, ">", 3))
                 }
                 "view gem" -> {
+                    lastGemShop = split[2]
                     returnPage = Grammar.substringAfter(to, ">", 3)
                     viewGem(split[2], returnPage)
                 }
@@ -498,7 +505,7 @@ class App : AppCompatActivity() {
 
     private fun viewPage(newPage: String){
         title = getString(
-                R.string.page_title,
+            R.string.page_title,
             game.player.model.getTime().capitalize(),
             game.dialog.model[newPage]?.title
                 ?: ""
@@ -508,12 +515,15 @@ class App : AppCompatActivity() {
     override fun onStart(){
         super.onStart()
         openDialog(game.player.model.vars["page"]!!)
-//        Tools.validate_chapter(game)
+//        Tools.validateChapters(game)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.savedInstanceState = savedInstanceState
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main)
+        fullscreen()
 
         soundPool = if (Build.VERSION.SDK_INT
                 >= Build.VERSION_CODES.LOLLIPOP) {
@@ -573,14 +583,43 @@ class App : AppCompatActivity() {
     override fun onBackPressed() {
     }
 
+    @Suppress("DEPRECATION")
+    private fun fullscreen() {
+        if (Build.VERSION.SDK_INT < 19) {
+            val v = this.window.decorView
+            v.systemUiVisibility = View.GONE
+        } else if (Build.VERSION.SDK_INT >= 19) {
+            val decorView = window.decorView
+            val uiOptions =
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            decorView.systemUiVisibility = uiOptions
+        }
+    }
+
+    fun record(code: String, value: Int){
+        game.player.model.vars[code] = "$value"
+    }
+
     fun onPurchase(type: Int){
-        when (type) {
-            0 -> openDialog(">custom>${resources.getString(R.string.transaction_cancel)}>$returnPage")
-            in 1..9 -> {
-                game.player.model.real += type
-                openDialog(">custom>${resources.getString(R.string.transaction_done)}>$returnPage")
+        if (Billing.purchaseReady) {
+            Billing.purchaseReady = false
+            when (type) {
+                0 -> {
+                    openDialog(">custom>${resources.getString(R.string.transaction_cancel)}>>view gem>$lastGemShop>$returnPage")
+                }
+                in 1..9 -> {
+                    game.player.model.real += type
+                    openDialog(">custom>${resources.getString(R.string.transaction_done)}>>view gem>$lastGemShop>$returnPage")
+                }
+                else -> openDialog(
+                    ">custom>${
+                        resources.getString(
+                            R.string.transaction_fail,
+                            type
+                        )
+                    }>>view gem>$lastGemShop>$returnPage"
+                )
             }
-            else -> openDialog(">custom>${resources.getString(R.string.transaction_fail, type)}>$returnPage")
         }
     }
 }

@@ -16,6 +16,7 @@ import java.io.Serializable
 class ProfileFragment : Fragment() {
     private lateinit var player: PlayerModel
     private lateinit var itemMap: Serializable
+    private lateinit var unitMap: Serializable
     private lateinit var moveset: Serializable
 
     override fun onCreateView(
@@ -30,11 +31,12 @@ class ProfileFragment : Fragment() {
         moveset = arguments?.getSerializable("moveset") ?: return root
         player = arguments?.getParcelable("player") ?: return root
         itemMap = arguments?.getSerializable("item map") ?: return root
+        unitMap = arguments?.getSerializable("unit map") ?: return root
 
         adapter.addFragment("", makeFragment(PlayerFragment(), arrayOf("player")))
         adapter.addFragment("", makeFragment(EquipmentFragment(), arrayOf("player", "item map", "equip")))
         adapter.addFragment("", makeFragment(MovesetFragment(), arrayOf("moveset")))
-        adapter.addFragment("", makeFragment(CompanionFragment(), arrayOf("player")))
+        adapter.addFragment("", makeFragment(CompanionFragment(), arrayOf("player", "unit map")))
         adapter.addFragment("", makeFragment(SettingFragment(), arrayOf("player")))
         pager.adapter = adapter
         tabLayout.setupWithViewPager(pager)
@@ -62,6 +64,7 @@ class ProfileFragment : Fragment() {
             when (arg){
                 "player" -> bundle.putParcelable("player", player)
                 "item map" -> bundle.putSerializable("item map", itemMap)
+                "unit map" -> bundle.putSerializable("unit map", unitMap)
                 "moveset" -> bundle.putSerializable("moveset", moveset)
                 "equip" -> bundle.putSerializable("stock", player.equip)
             }

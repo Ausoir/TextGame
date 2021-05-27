@@ -4,7 +4,7 @@
     "text": "",
     "opt": [
       {
-        "to": ">timeset>14>>heal>9>>dropAll>>save>temp> >>join>Cheese2>@to jericho 1",
+        "to": ">timeset>14>>heal>9>>dropAll>>save>temp>0>>join>Cheese2>@to jericho 1",
         "text": "Begin"
       }
     ]
@@ -42,7 +42,7 @@
     "text": "You follow a narrow path leading down the canyon, trailing through strange dark green foliage growing on the cliff walls.\n\nCheese: [Wew, I just went way down to see how far this goes, and it's pitch black all the way down.]\n\nIt is getting dark, and you decide to set up camp here and decide whether or not to climb back up tomorrow.",
     "opt": [
       {
-        "to": ">view rest>>timeset>22>@canyon 2",
+        "to": ">heal>4>>timeset>22>@canyon 2",
         "text": "Rest and heal"
       }
     ]
@@ -87,7 +87,7 @@
       },
       {
         "to": "@canyon 6-2",
-        "text": "Light the surroundings with a fire"
+        "text": "Light the surroundings"
       },
       {
         "to": "@canyon 6-3",
@@ -122,7 +122,7 @@
   },
   "canyon 6-2": {
     "title": "Canyon",
-    "text": "You quickly get your campfire kit out and light the nearest bush.\n\nThe newly lit light reveals the corpse of Cheese in front of you, lying face up and lifeless...\n\nYou stumble backward.\nDozens and dozens of vines emerge from the darkness and approach you...",
+    "text": "You quickly get your campfire kit out and light the nearest bush.\n\nThe newly lit light reveals Cheese in front of you, lying face down in a puddle of blood...\n\nYou stumble backward.\nDozens and dozens of vines emerge from the darkness and approach you...",
     "opt": [
       {
         "to": ">encounter>three vines>@chasm 1>@canyon 6-1",
@@ -242,10 +242,10 @@
   },
   "canyon escape": {
     "title": "Fields",
-    "text": "You somehow destroy the giant mass of vines.\nWhirring sounds fade away.\n\nYou haul Cheese up the canyon and return to the camp.\n\nCheese: [O...Oof...]\n\nYou pull out a circular metal sheet from his leg and patch him up.",
+    "text": "You somehow destroy the giant mass of vines.\nWhirring sounds fade away.\n\nYou haul Cheese up the canyon and return to camp.\n\nCheese: [O...Oof...]\n\nYou pull out a circular metal sheet from his leg and patch him up.",
     "opt": [
       {
-        "to": ">view rest>>time>8>@canyon escape 2",
+        "to": ">heal>8>>time>8>@canyon escape 2",
         "text": "Rest and heal"
       }
     ]
@@ -253,6 +253,16 @@
   "canyon escape 2": {
     "title": "Fields",
     "text": "Cheese: [Aight... I think I can walk now... Let's get the hell out of here.]\n\nYou climb out of the canyon safely.",
+    "opt": [
+      {
+        "to": ">join>Cheese2>@field 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "canyon escape 3": {
+    "title": "Fields",
+    "text": "You spend a day away from the canyon for Cheese to seal his wounds.",
     "opt": [
       {
         "to": ">join>Cheese2>@field 2",
@@ -388,7 +398,7 @@
     "filler": ["%?t1"],
     "opt": [
       {
-        "to": ">view rest>@village rest",
+        "to": ">view rest>@village",
         "text": "Rest and heal"
       },
       {
@@ -408,16 +418,6 @@
       {
         "to": "@jericho woods",
         "text": "Continue on to Jericho"
-      }
-    ]
-  },
-  "village rest": {
-    "title": "Woodcutters' Village",
-    "text": "You roll out your sleeping bag and rest by the perimeter of the village.",
-    "opt": [
-      {
-        "to": "@village",
-        "text": "Proceed"
       }
     ]
   },
@@ -453,7 +453,17 @@
   },
   "jericho woods 3": {
     "title": "Woods",
-    "text": "Cheese: [What the hell was that? Why did you attack us?]\n\nHighwayman: [Ay, we just needed a bit of gold, ya kno... Nuthin personal, kid... Have mercy...]\n\nCheese: [You need gold? Then why did you attack us?]\n\nThe highwayman stares at Cheese for a moment and close his eyes. It looks like he fainted.\nYou leave them to die and continue along the river.\n\nOnce in a while you see wooden buildings and people dressed in leather and wearing strange metal objects on their face.\nBut every time you try to talk to them, they would just tell you to go away in a rude way.\n\nCheese: [You know, it's like the closer we get to Jericho, the more metal we find on these people's faces. Maybe that's why they act so cold? The metal in their faces must have drove them insane.]",
+    "text": "Cheese: [What the hell was that? Why did you attack us?]\n\nHighwayman: [Ay, we just needed a bit of gold, ya kno... Nuthin personal, kid... Have mercy...]\n\nCheese: [You need gold? Then why did you attack us?]\n\nThe highwayman stares at Cheese confusedly.\n\nYou leave them bleeding to death on the ground and continue along the river.",
+    "opt": [
+      {
+        "to": "@jericho woods 3 2",
+        "text": "Sure..."
+      }
+    ]
+  },
+  "jericho woods 3 2": {
+    "title": "Woods",
+    "text": "Once in a while you see wooden buildings and people dressed in leather and wearing strange metal objects on their face.\nBut every time you try to talk to them, they would just tell you to go away in a rude way.\n\nCheese: [You know, it's like the closer we get to Jericho, the more metal we find on these people's faces. Maybe that's why they act so cold? The metal in their faces must have drove them insane.]",
     "opt": [
       {
         "to": ">save>temp>0>@jericho woods 4",
@@ -497,7 +507,7 @@
   },
   "jericho woods 6-1": {
     "title": "Woods",
-    "text": "You tell Cheese that it's probably not a good idea to make a scene in an unfamiliar place.\nYou pass the tower and just continue down the river.\n\nAfter a bit of walking, you find yourself at the top of a waterfall.\nBelow the cliff are flat dirt fields reaching all the way to the horizon.\n\nCheese: [Dry dirt, all the way to the horizon. Is that Jericho?]\n\nIn the distance you see what must be Jericho, a cluster of tall towers in the middle of the dirt fields.\n\nAbove in the skies you see dozens and dozens of strange floating constructs, way larger than bloodquito or any monster you know.",
+    "text": "You tell Cheese that it's probably not a good idea to make a scene in an unfamiliar place.\n\nYou pass the tower and just continue down the river.\nAfter a bit of walking, you find yourself at the top of a waterfall.\nBelow the cliff are flat dirt fields reaching all the way to the horizon.\n\nCheese: [Dry dirt, all the way to the horizon. Is that Jericho?]\n\nIn the distance you see what must be Jericho, a cluster of tall towers in the middle of the dirt fields.\n\nAbove in the skies you see dozens and dozens of strange floating constructs, way larger than bloodquito or any monster you know.",
     "opt": [
       {
         "to": "@jericho woods 7",
@@ -527,7 +537,7 @@
   },
   "jericho woods 9": {
     "title": "Woods",
-    "text": "You are taking a nap.\n\nYou wake up to some bustling sounds.\nYou look up and see a thief stealing your entire baggage.\n\nYou wake Cheese up.\nThe thief draws a knife.",
+    "text": "You are taking a nap.\n\nYou wake up to some bustling sounds.\nYou look up and see a thief stealing your baggage.\n\nYou wake Cheese up.\nThe thief draws a knife.",
     "opt": [
       {
         "to": ">encounter>thief>@defeat>>time>4>@jericho woods 10",
@@ -537,7 +547,7 @@
   },
   "jericho woods 10": {
     "title": "Woods",
-    "text": "You leave the thief lying dead on the ground and proceed to search for the way down.\nThree people in full plate armor approach you.\n\nGuard: [Sir, can we ask you some questions?]\n\nCheese: [No. Why?]\n\nGuard: [Wait, is that a corpse? Take them down!]",
+    "text": "You leave the thief lying dead on the ground and proceed to search for the way down.\nThree people in metal armor approach you.\n\nGuard: [Sir, can we ask you some questions?]\n\nCheese: [No. Why?]\n\nThe guard notices the dead thief.\n\nGuard: [Wait, is that a corpse? Arrest them!]",
     "opt": [
       {
         "to": ">encounter>jericho guards>@jericho jail>@jericho woods 11",
@@ -593,7 +603,7 @@
         "text": "Coerce the merchant for a free ride"
       },
       {
-        "to": ">view shop>Empty Shop>@jericho woods 14",
+        "to": ">view shop>empty>@jericho woods 14",
         "text": "Pawn items"
       }
     ]
@@ -620,7 +630,7 @@
   },
   "jericho woods 15": {
     "title": "Jericho",
-    "text": "The boat flies over the massive dirt plains.\nThe closer you get to Jericho, the more you marvel at its looks.\nJericho, with all its strange metal structures, seems like a place from the wildest dreams.\n\nYou feel the cold breeze pass you by and throw up over the boat.\nYou turn around and realize that Cheese had bailed the boat long ago.\nHe is floating way behind you, trying to catch up.\n\nYou throw up again.\n\nYou enter Jericho.\nThe strange looking buildings are even stranger close up, with spinning metal blades and circular machinery everywhere.\nThe boat bumps into the side of a tower and slowly fall onto one of the flat roofs of the many buildings of Jericho.\n\nThe boat drops onto the roof with a thud.\nYou jump off the boat and throw up one last time.\nIn the distance you see a shimmering purple dot, which must be Cheese trying to catch up to you.",
+    "text": "The boat flies over the massive dirt plains.\nThe closer you get to Jericho, the more you marvel at its looks.\nJericho, with all its strange metal structures, seems like a place from the wildest dreams.\n\nYou feel the cold breeze pass you by and throw up over the boat.\nYou turn around and realize that Cheese had bailed the boat long ago.\nHe is floating way behind you, trying to catch up.\n\nYou throw up again.\n\nYou enter Jericho.\nThe strange looking buildings are even stranger close up, with spinning metal blades and circular machinery everywhere.\nThe boat bumps into the side of a tower and slowly fall onto one of the flat roofs of the many buildings of Jericho.\n\nThe boat drops onto the roof with a thud.\nYou jump off the boat and throw up one last time.\n\nIn the distance you see a shimmering purple dot, which must be Cheese trying to catch up to you.",
     "opt": [
       {
         "to": ">drop>Cheese2>>if>crime>0>@jericho woods 16-1>>if>crime>1>@jericho woods 16-2>@jericho woods 16-3",
@@ -640,10 +650,10 @@
   },
   "jericho woods 16-3": {
     "title": "Jericho",
-    "text": "Assistant: [Please, can you let me go now?]\n\nSuddenly, you hear busy footsteps everywhere around you.\nYou see guards pop out from behind the crates around you.\nThe assistant runs away toward the guards.\n\nAssistant: [HELP! They abducted me!]",
+    "text": "You look around for a way down the roof.\n\nSuddenly, you hear busy footsteps everywhere around you.\nYou see guards pop out from behind the crates around you.\n\nThe assistant runs away toward the guards.\n\nAssistant: [HELP! They abducted me!]\n\nThe assistant runs down the stairs out of sight.",
     "opt": [
       {
-        "to": ">encounter>guards>@jericho jail>@jericho woods 16-1",
+        "to": ">encounter>jericho guards>@jericho jail>@jericho woods 16-1",
         "text": "Fight"
       }
     ]
@@ -663,7 +673,7 @@
     "text": "The guards hold you down and cuff you.\n\nGuard: [Uh, what the?]\n\nYou see Cheese float away in ghost form.\n\nGuard: [Can't do anything about that... Let's just throw this one in prison.]\n\nYou are severely beaten by the guards and dragged into a large building complex under the cliff.\nThey take away your weapons and money.\nThey throw you in a large brass cell.",
     "opt": [
       {
-        "to": ">dropAll>>moneySet>0>>removeAll>>force item>prisoner clothes>>force item>prisoner pants>>force item>pickaxe>@jericho jail 2",
+        "to": ">dropAll>>moneySet>0>>removeAll>>force item>prison clothes>>force item>prison pants>>force item>pickaxe>@jericho jail 2",
         "text": "Proceed"
       }
     ]
@@ -717,7 +727,7 @@
     "text": "You wake up in the prison hospital.\nThe place is packed with badly burnt prisoners and guards.\nA guard comes in and escorts you out.\nYou look carefully, and it's Cheese in guard uniform.\n\nCheese: [You all looked the same, so I just fireballed everyone. Here, wear this.]",
     "opt": [
       {
-        "to": ">heal>4>>drop>pickaxe>>item>silk robe>@jericho jail 5",
+        "to": ">heal>4>>item>silk robe>@jericho jail 5",
         "text": "Proceed"
       }
     ]

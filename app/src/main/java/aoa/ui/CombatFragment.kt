@@ -28,6 +28,7 @@ class CombatFragment : HtmlTextFragment() {
     private lateinit var defeat: String
     private lateinit var player: PlayerModel
     private lateinit var unitMap: HashMap<String, UnitModel>
+    private var firstRun = true
     private var isTargetingMode = false
     private var buttons: ArrayList<Button> = ArrayList()
     private var turn = -1
@@ -69,6 +70,14 @@ class CombatFragment : HtmlTextFragment() {
         addCombatText("${(arguments?.getString("desc") ?: "")}\n\n")
         nextTurn()
         return root
+    }
+
+    override fun onResume(){
+        super.onResume()
+        if (!firstRun) {
+            val app: App = activity as App
+            app.openDialog(">to>page")
+        }
     }
 
     private fun addCombatText(text: String){

@@ -46,7 +46,11 @@ class Deck(var me: UnitModel, var moves: MutableList<MoveModel>, handSize: Int) 
         queue.shuffle()
         queue.add(-2)
         for (i in hand.indices){
-            hand[i] = queue.removeAt(0)
+            if (queue.size == 0){
+                hand[i] = -1
+            } else {
+                hand[i] = queue.removeAt(0)
+            }
         }
     }
 

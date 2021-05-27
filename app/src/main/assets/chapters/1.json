@@ -80,6 +80,16 @@
   },
   "sparring end": {
     "title": "Field",
+    "text": "Cobby: [Take this.]\n\nCobby gives you a <b>Healing Salve</b>.\n\nCobby: [You can use your items by clicking on them in the equipment menu in the profile. I think this is enough basics for now.]",
+    "opt": [
+      {
+        "to": "@sparring end 2",
+        "text": "Proceed"
+      }
+    ]
+  },
+  "sparring end 2": {
+    "title": "Field",
     "text": "Today is the day of departure.\n\nThe priest held a feast for Cobby, Cheese, and your departure from Ant Hill.\nYou eat as much as you can at the feast of Full Moon's Journey.\n\nRelatives and friends wave goodbye as you, Cheese, and Cobby leave Ant Hill through a dirt road sprinkled with flower petals.",
     "opt": [
       {
@@ -585,7 +595,7 @@
   },
   "day 3-1": {
     "title": "Day 3 - Fields",
-    "text": "It is the third day.\nCobby: [We are on our third day. Just two more days of walking and we'll be at Stone Henge.]\n\nCheese: [We could maybe spend an extra day resting. It's not good to walk this much, ya know?]\n\nWalking down a green valley, you see a giant blue beetle grazing on the grass.\n\nCobby: [Hey, that's a blue beetle. You wanna hunt it down? I'll craft you a nice weapon with its horn.]",
+    "text": "It is the third day.\n\nCobby: [We are on our third day. Just two more days of walking and we'll be at Stone Henge.]\n\nCheese: [We could maybe spend an extra day resting. It's not good to walk this much, ya know?]\n\nWalking down a green valley, you see a giant blue beetle grazing on the grass.\n\nCobby: [Hey, that's a blue beetle. You wanna hunt it down? I'll craft you a nice weapon with its horn.]",
     "opt": [
       {
         "to": ">encounter>beetle>@journey defeat>>timeset>20>@day 3 end",
@@ -599,7 +609,7 @@
   },
   "day 3-2": {
     "title": "Day 3 - Fields",
-    "text": "It is the third day.\nCobby: [I am very sick... I hope we don't get attacked.]\n\nCheese: [I'm sorry.]\n\nCobby: [Please lead us through the safest route.]\n\nWalking down a green valley, you see a giant blue beetle grazing on the grass.\nYou remember Cobby telling you earlier that he can craft good weapons out of blue beetle chitin.",
+    "text": "It is the third day.\n\nCobby: [I am very sick... I hope we don't get attacked.]\n\nCheese: [I'm sorry.]\n\nCobby: [Please lead us through the safest route.]\n\nWalking down a green valley, you see a giant blue beetle grazing on the grass.\nYou remember Cobby telling you earlier that he can craft good weapons out of blue beetle chitin.",
     "opt": [
       {
         "to": ">encounter>beetle>@journey defeat>>timeset>20>@day 3 end",
@@ -626,24 +636,14 @@
     "text": "Today is the last day of travel to Stone Henge.\nYour group trails through a forest of deciduous trees.\n\nCheese: [Now is usually around the time when we get ambushed by wildlife.]\n\nCobby: [Wait, I hear something.]\n\nYou look around and see nothing.\n\nSuddenly, you hear frenzied shouting from all around. You are ambushed by 4 people in rags wielding spears!",
     "opt": [
       {
-        "to": ">encounter>feral hunters>@journey defeat>>time>4>>if>spider>1>@day 4 2-1>@day 4 2-2",
+        "to": ">encounter>feral hunters>@journey defeat>>time>4>@day 4 2",
         "text": "Prepare to fight"
       }
     ]
   },
-  "day 4 2-1": {
+  "day 4 2": {
     "title": "Day 4 - Woods",
-    "text": "Cobby inspects the corpses of the feral humans.\n\nCobby: [Hmm... this is weird. These people wear primitive leather rags like some kind of animals... just like the ferals in the Spider Forest that you spoke of. Cheese, for god's sake, don't defile the corpses!]\n\nCobby: [We should bury the corpses under leaves here and mark it. We'll notify Stone Henge of this...]\n\nCheese: [Can I have this corpse? I just... never mind.]\n\nYou proceed to Stone Henge.",
-    "opt": [
-      {
-        "to": "@day 4 3",
-        "text": "Proceed"
-      }
-    ]
-  },
-  "day 4 2-2": {
-    "title": "Day 4 - Woods",
-    "text": "Cobby inspects the corpses of the feral humans.\n\nCobby: [Hmm... this is weird. These people wear primitive leather rags, like some kind of animals. Cheese, for god's sake, don't defile the corpses!]\n\nCobby: [We should bury the corpses under leaves here and mark it. We'll notify Stone Henge of this.]\n\nCheese: [Can I have this corpse? She's pretty cute... Never mind.]\n\nYou proceed to Stone Henge.",
+    "text": "Cobby inspects the corpses of the feral humans.\n\nCobby: [Hmm... this is weird. These people wear primitive leather rags, like some kind of animals. Cheese, for god's sake, don't defile the corpses!]\n\nCobby: [We should bury the corpses under leaves here and mark it. We'll notify Stone Henge of this.]\n\nCheese: [Can I have this corpse? She's pretty cute...]\n\nCobby: [Cheese...]\n\nCheese: [I'm kidding... I've never seen a corpse in my life, c'mon.]\n\nYou proceed to Stone Henge.",
     "opt": [
       {
         "to": "@day 4 3",
@@ -695,7 +695,7 @@
     "text": "Trainer: [Welcome. I am a trainer known for my excellence in training discipline. If you have problems with the move <b><i>Flinch</i></b>, I can help remove it for 3 gold.]",
     "opt": [
       {
-        "to": ">moneyAdd>-3>>forget>flinch>@stone henge",
+        "to": ">moneyAdd>-3>>forget>flinch>>custom>The trainer helps you rehabilitate.>@stone henge",
         "text": "Train me",
         "reqs": [
           "moneyG>3"

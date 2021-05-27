@@ -1,6 +1,7 @@
 package aoa.ui
 
 import android.os.Bundle
+import android.text.Html
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,7 @@ class AdvanceFragment : HtmlTextFragment() {
         textView.movementMethod = ScrollingMovementMethod()
         layout = root.findViewById(R.id.home_button_container) as LinearLayout
         val page = arguments?.getString("page") ?: "invalid"
+        @Suppress("UNCHECKED_CAST")
         val specMap = arguments?.getSerializable("specMap") as HashMap<String, SpecialModel>
         val specString = arguments?.getString("spec") ?: "basic"
         val spec = specMap[specString]!!
@@ -44,7 +46,7 @@ class AdvanceFragment : HtmlTextFragment() {
                         )
                     }\n\n<font color='#709570'>Available specializations</font>:\n\n"
             )
-            addButton("Stay as $specString").setOnClickListener {
+            addButton("Stay as <b><i>$specString</i></b>").setOnClickListener {
                 val app: App = activity as App
                 app.openDialog(page)
             }
@@ -53,7 +55,7 @@ class AdvanceFragment : HtmlTextFragment() {
                 val text = advSpec?.getDescription(adv) ?: "INVALID"
                 val flavor = advSpec?.flavor ?: "INVALID"
                 addText("$text\n\n")
-                addButton("Become ${Grammar.getArticle(adv)}").setOnClickListener {
+                addButton("Become <b><i>${Grammar.getArticle(adv)}</i></b>").setOnClickListener {
                     val app: App = activity as App
                     app.openDialog(">custom>$flavor>>specialize>$adv>$page")
                 }
@@ -64,7 +66,7 @@ class AdvanceFragment : HtmlTextFragment() {
 
     private fun addButton(name: String) : Button {
         val button = Button(activity)
-        button.text = name
+        button.text = Html.fromHtml(name)
         layout.addView(button, 0)
         return button
     }

@@ -288,6 +288,16 @@ data class MoveModel(val effects: List<Status>, val reqs: List<Status>?, val spe
                             }
                         }
                     }
+                    40 -> { //far aoe
+                        if (me.target != null) {
+                            result += status.add(me.target!!, me)
+                            for (someone in everyone) {
+                                if (someone.position == me.target!!.position) {
+                                    result += status.add(someone, me)
+                                }
+                            }
+                        }
+                    }
                     5 -> { //foes
                         for (someone in me.foes) {
                             result += status.add(someone, me)
@@ -323,6 +333,16 @@ data class MoveModel(val effects: List<Status>, val reqs: List<Status>?, val spe
                         for (someone in everyone) {
                             if (someone.position == me.position && someone != me) {
                                 result += someone.removeStatus(status.id, status.effect)
+                            }
+                        }
+                    }
+                    -40 -> { //far aoe
+                        if (me.target != null) {
+                            result += me.target!!.removeStatus(status.id, status.effect)
+                            for (someone in everyone) {
+                                if (someone.position == me.target!!.position) {
+                                    result += someone.removeStatus(status.id, status.effect)
+                                }
                             }
                         }
                     }

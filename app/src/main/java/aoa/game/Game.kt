@@ -25,8 +25,14 @@ class Game(context: Context){
         player.model.unit.healthPt = (player.model.vars["health"] ?: "1").toInt()
         player.model.unit.allies = arrayListOf()
         player.model.unit.foes = arrayListOf()
-//        player.model.real = 1
-//        player.model.vars["page"] = "@day 1"
+
+        //----REMOVE AFTER TEST----
+//        player.model.unit.moves.clear()
+//        player.model.unit.moves.add("win")
+//        player.model.money = 10
+//        player.model.vars["chapter"] = "1"
+//        refreshChapter()
+//        player.model.vars["page"] = "@day 4"
 //        player.model.vars["gethelp"] = "2"
 //        player.model.vars.remove("getweapon")
 //        player.model.vars.remove("gethelp")
@@ -92,8 +98,9 @@ class Game(context: Context){
     }
 
     fun getRandomList(index: String): ArrayList<String>{
-        val rand = Random(player.model.seed.toLong() + player.model.time)
         val vars = variables.model[index] ?: return arrayListOf()
+        if (vars.isEmpty()) return arrayListOf()
+        val rand = Random(player.model.seed.toLong() + player.model.time)
         val shuffled = vars.shuffled(rand)
         val result = arrayListOf<String>()
         for (i in 0 until rand.nextInt(vars.size) + 1){

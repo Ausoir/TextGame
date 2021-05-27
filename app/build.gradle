@@ -11,8 +11,8 @@ android {
         applicationId "aoa.artifactsofabyss"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 4
-        versionName "4"
+        versionCode 12
+        versionName "12"
     }
 
     buildTypes {
@@ -51,5 +51,4 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation "com.android.billingclient:billing-ktx:3.0.0"
-
 }

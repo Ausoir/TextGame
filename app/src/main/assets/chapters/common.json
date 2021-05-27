@@ -8,7 +8,7 @@
         "text": "Erase data and start over"
       },
       {
-        "to": "@start",
+        "to": ">timeset>10>@start",
         "text": "Restart chapter"
       }
     ]
@@ -18,7 +18,7 @@
     "text": "",
     "opt": [
       {
-        "to": ">ad>>loadplayer>player>>saveplayer>save>>refresh chapter>@start",
+        "to": ">ad>>timeset>10>>loadplayer>player>>saveplayer>save>>refresh chapter>@start",
         "text": "Start Over"
       }
     ]
@@ -28,7 +28,7 @@
     "text": "It is GAME OVER!",
     "opt": [
       {
-        "to": ">ad>>loadplayer>player>>saveplayer>save>>refresh chapter>@start",
+        "to": ">ad>>timeset>10>>loadplayer>player>>saveplayer>save>>refresh chapter>@start",
         "text": "Start Over"
       }
     ]

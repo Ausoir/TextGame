@@ -50,6 +50,6 @@
     <string name="quest">Select a contract.</string>
     <string name="quest_confirm">Start this contract?</string>
     <string name="transaction_cancel">Transaction canceled.</string>
-    <string name="transaction_fail">Failed to reach Billing server!\n\nError code: %1$d</string>
+    <string name="transaction_fail">Failed to reach server!\n\nError code: %1$d</string>
     <string name="transaction_done">Transaction success!</string>
 </resources>

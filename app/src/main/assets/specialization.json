@@ -81,8 +81,16 @@
     "text": "Learn various shape changing moves and curses. Heal back to full health after combat.",
     "flavor": "You are able to exploit your affinity with nature and the supernatural to take the upper hand in combat. You are now a shaman!",
     "skill": "spirit remedy",
+    "deck": "nature deck",
+    "health": 3,
+    "branch": ["mystic"]
+  },
+  "mystic": {
+    "text": "Learn powerful shape changing moves and curses. Heal back to full health after combat.",
+    "flavor": "You gain access to powerful curses and rare abilities. You are now a mystic!",
+    "skill": "spirit remedy",
     "deck": "shaman deck",
-    "health": 3
+    "health": 4
   },
   "apprentice": {
     "text": "Gain access to spells and mana recharging movesets.",

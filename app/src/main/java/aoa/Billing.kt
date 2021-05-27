@@ -8,12 +8,10 @@ object Billing: PurchasesUpdatedListener {
     private lateinit var billingClient: BillingClient
     private lateinit var billingClientStateListener: BillingClientStateListener
     private val skuList = listOf("purchase_gem", "purchase_gem_3", "purchase_gem_7")
-    var requestPurchase1: () -> Unit = {
-        Log.d("billing", "Reestablishing connection")
+    var purchaseReady = false
+    var requestPurchase: (Int) -> Unit = {
         billingClient.startConnection(billingClientStateListener)
     }
-    var requestPurchase3 = requestPurchase1
-    var requestPurchase7 = requestPurchase1
 
     fun setupBillingClient(context: App) {
         this.context = context
@@ -23,15 +21,13 @@ object Billing: PurchasesUpdatedListener {
             .build()
         billingClientStateListener = object : BillingClientStateListener {
             override fun onBillingSetupFinished(billingResult: BillingResult) {
-                Log.d("billing", "Setup finished with code ${billingResult.responseCode}")
-                Billing.context.onPurchase(-20000 + billingResult.responseCode)
+                context.record("billingSetup", billingResult.responseCode)
                 if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
                     loadAllSKUs()
                 }
             }
 
             override fun onBillingServiceDisconnected() {
-                Log.d("billing", "Setup disconnected")
             }
         }
         billingClient.startConnection(billingClientStateListener)
@@ -45,36 +41,12 @@ object Billing: PurchasesUpdatedListener {
             .build()
         billingClient.querySkuDetailsAsync(params) { billingResult, skuDetailsList ->
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && !skuDetailsList.isNullOrEmpty()) {
-                for (skuDetails in skuDetailsList) {
-                    when (skuDetails.sku) {
-                        "purchase_gem" -> {
-                            requestPurchase1 = {
-                                val billingFlowParams = BillingFlowParams
-                                    .newBuilder()
-                                    .setSkuDetails(skuDetails)
-                                    .build()
-                                billingClient.launchBillingFlow(context, billingFlowParams)
-                            }
-                        }
-                        "purchase_gem_3" -> {
-                            requestPurchase3 = {
-                                val billingFlowParams = BillingFlowParams
-                                    .newBuilder()
-                                    .setSkuDetails(skuDetails)
-                                    .build()
-                                billingClient.launchBillingFlow(context, billingFlowParams)
-                            }
-                        }
-                        "purchase_gem_7" -> {
-                            requestPurchase7 = {
-                                val billingFlowParams = BillingFlowParams
-                                    .newBuilder()
-                                    .setSkuDetails(skuDetails)
-                                    .build()
-                                billingClient.launchBillingFlow(context, billingFlowParams)
-                            }
-                        }
-                    }
+                requestPurchase = {
+                    val billingFlowParams = BillingFlowParams
+                        .newBuilder()
+                        .setSkuDetails(skuDetailsList[it])
+                        .build()
+                    billingClient.launchBillingFlow(context, billingFlowParams)
                 }
             }
         }
